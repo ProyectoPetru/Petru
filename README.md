@@ -26,11 +26,11 @@ Proyecto final realizado en el marco del quinto tramo del curso fullstack de EGG
 
 > Desarrollador Front-end
 
-### •	Cecilia Alsina:
+### •	[Cecilia Alsina](https://github.com/Ceci-Alsina):
 
 > Desarrollador Front-end
 
-### • Darío :
+### • [Dario Litterio](https://github.com/Darioezequiel17):
 
 > Desarrollador Back-end
 
