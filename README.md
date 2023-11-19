@@ -34,7 +34,7 @@ Proyecto final realizado en el marco del quinto tramo del curso fullstack de EGG
 
 > Desarrollador Back-end
 
-### •	Flavio Romero Averna:
+### •	[Flavio Romero Averna](https://github.com/flavioav):
 
 Scrum master
 
@@ -44,14 +44,14 @@ Scrum master
 
 > Desarrollador Front-end
 
-### •	Matias Quispe:
+### •	[Matias Quispe](https://github.com/matias4280):
 
 > Desarrollador Back-end
 
-### •	Nahiara Denice Alegre:
+### •	[Nahiara Denice Alegre](https://github.com/NahiDenice):
 
 > Desarrollador Back-end
-
+ 
 ## Requerimientos del proyecto:
 
 ● Registro y Login con Spring Security
