@@ -48,7 +48,7 @@ Scrum master
 
 > Desarrollador Back-end
 
-### •	Nahiara Denice Alegre:
+### •	[Nahiara Denice Alegre](https://github.com/NahiDenice):
 
 > Desarrollador Back-end
 
