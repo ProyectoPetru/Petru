@@ -36,7 +36,7 @@ Proyecto final realizado en el marco del quinto tramo del curso fullstack de EGG
 
 ### •	[Flavio Romero Averna](https://github.com/flavioav):
 
-Scrum master
+> Scrum master
 
 > Desarrollador Front-end
 
