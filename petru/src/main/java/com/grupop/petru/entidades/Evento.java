@@ -27,7 +27,7 @@ public class Evento {
    @GenericGenerator(name = "uuid", strategy = "uuid2")
    private String id;
    private String nombre;
-   @Temporal(TemporalType.DATE)
+   @Temporal(TemporalType.TIMESTAMP)
    private Date fecha;
    private String link;
    @ManyToOne

@@ -36,5 +36,6 @@ public class Tarea {
    private TipoTarea tipoTarea;
    @OneToMany
    private List<Etiqueta> etiquetas;
+   private Boolean baja;
 
 }

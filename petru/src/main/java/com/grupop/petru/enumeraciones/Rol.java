@@ -12,6 +12,7 @@ package com.grupop.petru.enumeraciones;
 
 
 public enum Rol {
+   VISITA,
    CLIENTE,
    COLABORADOR,
    ADMIN;

@@ -39,5 +39,6 @@ public class Usuario {
    @Column(columnDefinition = "LONGTEXT")
    @Basic(optional = true)
    private String descripcion;
+   private Boolean baja;
 
 }

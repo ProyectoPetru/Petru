@@ -41,5 +41,6 @@ public class Proyecto {
    @Column(columnDefinition = "LONGTEXT")
    @Basic(optional = true)
    private String notas;
+   private Boolean baja;
 
 }
