@@ -125,24 +125,24 @@
 
 /* Modifico el estilo de la barra vertical */
 /* Ancho de toda la barra */
-::-webkit-scrollbar {
+#navbar ::-webkit-scrollbar {
     width: 4px;
 }
 
 /* El espacio en el que esta la barra */
-::-webkit-scrollbar-track {
+#navbar ::-webkit-scrollbar-track {
     background: var(--secondary);
 }
 
 /* La barra */
-::-webkit-scrollbar-thumb {
+#navbar ::-webkit-scrollbar-thumb {
     background: var(--accent);
     width: 2px;
     border-radius: 5px;
 }
 
 /* Cuando paso por encima de la barra */
-::-webkit-scrollbar-thumb:hover {
+#navbar ::-webkit-scrollbar-thumb:hover {
     background: var(--text);
 }
 
