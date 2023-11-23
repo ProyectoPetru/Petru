@@ -1,0 +1,179 @@
+#navbar {
+    display: flex;
+    align-items: center;
+    background-color: var(--secondary);
+    width: 100%;
+    height: 3rem;
+    transition: background .4s;
+}
+
+#navbar .inicio,
+.medio,
+.fin {
+    display: flex;
+}
+
+#navbar .inicio {
+    margin: 0 auto 0 0;
+}
+
+#navbar .medio {
+    margin: 0 auto 0 auto;
+}
+
+#navbar .fin {
+    margin: 0 0 0 auto;
+}
+
+#navbar .item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 1rem 0 1rem;
+}
+
+#navbar .item a {
+    cursor: pointer;
+    transition: color .4s;
+}
+
+#navbar .item a:hover {
+    color: var(--primary);
+}
+
+@keyframes tooltip-in {
+    from {
+        opacity: 0%;
+        color: var(--text);
+    }
+
+    to {
+        opacity: 100%;
+        color: var(--primary);
+    }
+}
+
+@keyframes tooltip-out {
+    from {
+        opacity: 100%;
+        color: var(--primary);
+    }
+
+    to {
+        opacity: 0%;
+        color: var(--text);
+    }
+}
+
+#navbar .tooltip {
+    position: absolute;
+    text-shadow: 1px 1px 2px var(--contrast);
+    font-size: .9rem;
+    animation: tooltip-in .4s ease-in 0s 1 normal forwards;
+}
+
+#navbar .tooltip.down {
+    margin-top: 3rem;
+}
+
+#navbar .tooltip.right {
+    margin-left: 5rem;
+}
+
+#navbar .tooltip.left {
+    margin-left: -6rem;
+}
+
+#navbar .tooltip-hide {
+    animation: tooltip-out .4s ease-in 0s 1 normal forwards;
+}
+
+@keyframes dropdown-in {
+    from {
+        top: -10rem;
+    }
+
+    to {
+        top: 3rem;
+    }
+}
+
+@keyframes dropdown-out {
+    from {
+        top: 3rem;
+    }
+
+    to {
+        top: -10rem;
+    }
+}
+
+#navbar .dropdown {
+    position: absolute;
+    z-index: -1;
+    background: var(--secondary);
+    padding: .2rem .4rem;
+    border-radius: .2rem;
+    min-width: 8rem;
+    max-width: 14rem;
+    min-height: 0;
+    max-height: 11.4rem;
+    overflow-x: none;
+    overflow-y: auto;
+    animation: dropdown-in .2s ease-out 0s 1 normal forwards;
+}
+
+/* Modifico el estilo de la barra vertical */
+/* Ancho de toda la barra */
+#navbar ::-webkit-scrollbar {
+    width: 4px;
+}
+
+/* El espacio en el que esta la barra */
+#navbar ::-webkit-scrollbar-track {
+    background: var(--secondary);
+}
+
+/* La barra */
+#navbar ::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    width: 2px;
+    border-radius: 5px;
+}
+
+/* Cuando paso por encima de la barra */
+#navbar ::-webkit-scrollbar-thumb:hover {
+    background: var(--text);
+}
+
+#navbar .dropdown .list {
+    cursor: pointer;
+    display: flex;
+    background: var(--secondary);
+    height: 2rem;
+    padding: .1rem .4rem;
+    border-radius: .4rem;
+    align-items: center;
+}
+
+#navbar .dropdown .list:hover {
+    filter: brightness(80%);
+}
+
+#navbar .dropdown .list a {
+    text-decoration: none;
+    color: var(--accent);
+}
+
+#navbar .dropdown .list:hover a {
+    filter: brightness(300%);
+}
+
+#navbar .dropdown .list svg {
+    border-radius: 50%;
+    margin: 0 .2rem 0 0;
+}
+
+#navbar .dropdown-hide {
+    animation: dropdown-out .2s ease-out 0s 1 normal forwards;
+}
