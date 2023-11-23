@@ -20,9 +20,9 @@
     margin: 0 1rem 0 1rem;
     width: 32px;
     height: 32px;
-    transition: filter .4s;
+    transition: color .4s;
 }
 
 #footer .fin .icono:hover {
-    filter: invert(100);
+    color: var(--primary);
 }

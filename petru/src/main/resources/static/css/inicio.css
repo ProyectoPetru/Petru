@@ -85,7 +85,7 @@ main .inicio .detalles p {
 main .inicio .detalles .divider {
     height: 1px;
     margin: 1rem 1rem 1rem 1rem;
-    background: var(--primary);
+    background: var(--text);
 }
 
 main .inicio .detalles .cajas {
@@ -184,7 +184,7 @@ main .inicio .detalles .caja .informacion-hide {
     }
 
     main .inicio .detalles {
-        margin: 2rem 0 0 0;
+        margin: 2rem 1rem 0 1rem;
         width: auto;
     }
 
