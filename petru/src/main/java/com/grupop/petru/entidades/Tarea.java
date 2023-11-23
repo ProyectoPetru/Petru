@@ -11,6 +11,8 @@ package com.grupop.petru.entidades;
 
 import com.grupop.petru.enumeraciones.TipoTarea;
 import java.util.List;
+
+import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -34,7 +36,7 @@ public class Tarea {
    private Proyecto proyecto;
    @Enumerated(EnumType.STRING)
    private TipoTarea tipoTarea;
-   @OneToMany
+   @OneToMany @Basic(optional = true)
    private List<Etiqueta> etiquetas;
    private Boolean baja;
 
