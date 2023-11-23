@@ -42,7 +42,7 @@ public class PortalControlador {
     public String registro(@RequestParam String nombre, @RequestParam String email, @RequestParam String clave,
            @RequestParam String clave2, MultipartFile archivo, @RequestParam Long telefono, String descripcion, ModelMap modelo) {
         try {
-            usuarioServicio.registrar(archivo, nombre, email, clave, clave2, telefono, descripcion);
+            usuarioServicio.registrarUsuario(archivo, nombre, email, clave, clave2, telefono, descripcion);
             modelo.put("exito", "Usuario registrado correctamente!");
             return "index.html";
         } catch (MiException ex) {
