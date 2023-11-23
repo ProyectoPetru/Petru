@@ -46,7 +46,7 @@ document.addEventListener("click", (element) => {
             setTimeout(() => {
                 if (e.classList.contains("dropdown-hide")) {
                     e.classList.remove("dropdown-hide")
-                    document.querySelector("main").style.zIndex = 0
+                    document.querySelector(".main").style.zIndex = 0
                     e.hidden = true
                 }
             }, 200)
