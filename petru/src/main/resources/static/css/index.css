@@ -1,0 +1,29 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #202020;
+    color: white;
+}
+
+div {
+}
+
+div div {
+    display: flex;
+    align-items: center;
+    user-select: none;
+}
+
+div div .letra {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000000;
+    font-size: 3rem;
+    width: 4rem;
+    height: 4rem;
+    margin: .1rem .2rem .1rem .2rem;
+}
+
+div div .palabra {
+    font-size: 2.5rem;
+}

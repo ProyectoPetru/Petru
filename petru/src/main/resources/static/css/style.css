@@ -1,0 +1,26 @@
+:root[data-theme="light"] {
+    --text: #0b0524;
+    --background: #e1dbfa;
+    --primary: #c3e43f;
+    --secondary: #b4a3f5;
+    --accent: #b9df20;
+    --contrast: black;
+}
+
+:root[data-theme="dark"] {
+    --text: #ffffff;
+    --background: #202020;
+    --primary: #404040;
+    --secondary: #101010;
+    --accent: #f1f1f1;
+    --contrast: white;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--background);
+    color: var(--text);
+    margin: 0;
+    overflow-x: hidden;
+    transition: background .4s;
+}
