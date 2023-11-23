@@ -34,6 +34,10 @@ if (document.documentElement.clientWidth > WIDTH_TOOLTIP) {
 
 /* Maneja que los dropdowns desaparezcan cuando se clickea afuera de ellos */
 document.addEventListener("click", (element) => {
+    console.log(Array.from(document.querySelector("#navbar").querySelectorAll(".dropdown")).filter((e) => !e.hidden).length);
+    if (Array.from(document.querySelector("#navbar").querySelectorAll(".dropdown")).filter((e) => !e.hidden).length < 1) {
+        return
+    }
     if (element.target.closest(".item") == null || element.target.closest(".item").querySelector(".dropdown") == null) {
         Array.from(document.querySelector("#navbar").querySelectorAll(".dropdown")).map(e => {
             e.classList.add("dropdown-hide")
