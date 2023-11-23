@@ -1,0 +1,231 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #202020;
+    color: white;
+}
+
+#inicio {
+    margin: 4rem 0 0 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: start;
+}
+
+#inicio .acronimo {
+    display: flex;
+    user-select: none;
+    flex-direction: column;
+}
+
+#inicio .acronimo div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#inicio .acronimo div .letra {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000000;
+    font-size: 3rem;
+    width: 4rem;
+    height: 4rem;
+    margin: .1rem .2rem .1rem .2rem;
+}
+
+#inicio .acronimo div .palabra {
+    text-align: start;
+    width: 20rem;
+    font-size: 2rem;
+    overflow-x: hidden;
+    z-index: -1;
+    animation: palabra-in .5s ease-out 0s 1 normal forwards;
+}
+
+@keyframes palabra-in {
+    from {
+        opacity: 0;
+        transform: translateX(-10rem);
+    }
+
+    30% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 1;
+    }
+
+    70% {
+        transform: translateX(.8rem);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+#inicio .detalles {
+    padding: 1rem;
+    border-radius: .2rem;
+    background: black;
+    width: 50rem;
+    font-size: 1.3rem;
+    user-select: none;
+    text-align: center;
+}
+
+#inicio .detalles p {
+    margin: 0;
+}
+
+#inicio .detalles .divider {
+    height: 1px;
+    margin: 1rem 1rem 1rem 1rem;
+    background: #202020;
+}
+
+#inicio .detalles .cajas {
+    background: #202020;
+    padding: .5rem;
+}
+
+#inicio .detalles .caja .nombre {
+    display: flex;
+}
+
+#inicio .detalles .caja .nombre:hover {
+    text-shadow: 0 0 2px gray;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#inicio .detalles .caja .informacion {
+    display: flex;
+    color: #909090;
+    animation: info-in .4s ease 0s 1 normal forwards;
+}
+
+#inicio .detalles .caja .informacion span {
+    text-align: start;
+    width: 30rem;
+}
+
+#inicio .detalles .caja .informacion img {
+    align-self: center;
+    margin: 0 2rem 0 auto;
+}
+
+#inicio .detalles .caja .informacion[hidden] {
+    display: none;
+}
+
+#inicio .detalles .caja .informacion-hide {
+    animation: info-out .4s ease 0s 1 normal forwards;
+}
+
+@keyframes info-in {
+    0% {
+        max-height: 0;
+        padding: 0;
+        opacity: 0%;
+    }
+
+    50% {
+        opacity: 0%;
+    }
+
+    100% {
+        max-height: 40rem;
+        padding: 1rem 0 1rem 2rem;
+        opacity: 100%;
+    }
+}
+
+@keyframes info-out {
+    0% {
+        max-height: 40rem;
+        padding: 1rem 0 1rem 2rem;
+        opacity: 100%;
+    }
+
+    50% {
+        opacity: 0%;
+    }
+
+    100% {
+        max-height: 0;
+        padding: 0;
+        opacity: 0%;
+    }
+}
+
+@media (max-width: 800px) {
+    #inicio {
+        display: block;
+    }
+
+    #inicio .acronimo div .palabra {
+        position: absolute;
+        text-align: start;
+        margin-left: 12.4rem;
+        width: 8rem;
+        font-size: 1.3rem;
+        overflow-x: hidden;
+    }
+
+    #inicio .detalles {
+        margin: 2rem 0 0 0;
+        width: auto;
+    }
+
+    #inicio .detalles .cajas {
+        text-align: start;
+    }
+
+    #inicio .detalles .caja .informacion {
+        flex-wrap: wrap-reverse;
+        justify-content: center;
+    }
+
+    #inicio .detalles .caja .informacion img {
+        margin: 0;
+    }
+
+    @keyframes info-in {
+        0% {
+            max-height: 0;
+            padding: 0;
+            opacity: 0%;
+        }
+    
+        50% {
+            opacity: 0%;
+        }
+    
+        100% {
+            max-height: 40rem;
+            padding: .5rem 0 .5rem .2rem;
+            opacity: 100%;
+        }
+    }
+    
+    @keyframes info-out {
+        0% {
+            max-height: 40rem;
+            padding: .5rem 0 .5rem .2rem;
+            opacity: 100%;
+        }
+    
+        50% {
+            opacity: 0%;
+        }
+    
+        100% {
+            max-height: 0;
+            padding: 0;
+            opacity: 0%;
+        }
+    }
+}
