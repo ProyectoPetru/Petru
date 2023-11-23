@@ -1,8 +1,9 @@
 main {
     position: relative;
+    z-index: 0;
 }
 
-.registro-container {
+main .registro-container {
     text-align: center;
     box-shadow: 0px 0px 1rem .5rem var(--secondary);
     width: 18rem;
@@ -12,7 +13,7 @@ main {
     background: var(--secondary);
 }
 
-.registro-container input {
+main .registro-container input {
     font-family: Arial, Helvetica, sans-serif;
     font-size: .85rem;
     margin: .3rem 0 .3rem 0;
@@ -23,7 +24,7 @@ main {
     padding: 0 .5rem;
 }
 
-.registro-container textarea {
+main .registro-container textarea {
     font-family: Arial, Helvetica, sans-serif;
     font-size: .85rem;
     margin: .3rem 0 .3rem 0;
@@ -37,7 +38,7 @@ main {
     padding: .5rem .5rem;
 }
 
-.registro-container button[type=submit] {
+main .registro-container button[type=submit] {
     --button-hover-color: rgb(75, 255, 75);
     margin: .3rem 0 .3rem 0;
     background: var(--primary);
@@ -50,7 +51,7 @@ main {
     transition: box-shadow 1s, background 1s;
 }
 
-.registro-container button[type=reset] {
+main .registro-container button[type=reset] {
     --button-hover-color: rgb(248, 62, 62);
     margin: .3rem 0 .3rem 0;
     background: var(--primary);
@@ -62,17 +63,17 @@ main {
     transition: box-shadow 1s, background 1s;
 }
 
-.registro-container button:hover {
+main .registro-container button:hover {
     cursor: pointer;
     background: var(--button-hover-color);
     box-shadow: 0 0 .3rem .1rem var(--button-hover-color);
 }
 
-.registro-container label[for=imagen] {
+main .registro-container label[for=imagen] {
     display: none;
 }
 
-.registro-container .registro-foto {
+main .registro-container .registro-foto {
     border: .1rem solid black;
     height: 200px;
     width: 200px;
@@ -80,7 +81,7 @@ main {
     transition: opacity 0.5s;
 }
 
-.registro-container .registro-camara {
+main .registro-container .registro-camara {
     z-index: 100;
     position: absolute;
     margin: 4.6rem 0 0 4.6rem;
@@ -90,12 +91,12 @@ main {
     transition: opacity 0.5s;
 }
 
-.registro-container label:hover .registro-foto {
+main .registro-container label:hover .registro-foto {
     opacity: 50%;
     cursor: pointer;
     transition: opacity 0.5s;
 }
 
-.registro-container label:hover .registro-camara {
+main .registro-container label:hover .registro-camara {
     opacity: 100%;
 }

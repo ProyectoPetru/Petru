@@ -1,4 +1,5 @@
 #navbar {
+    user-select: none;
     display: flex;
     align-items: center;
     background-color: var(--secondary);
