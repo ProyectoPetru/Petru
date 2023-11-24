@@ -122,8 +122,13 @@ public class UsuarioServicio implements UserDetailsService {
         }
     }
 
+    @Transactional(readOnly = true)
+    public List<Usuario> listarUsuarios() {
+        List<Usuario> usuarios = new ArrayList();
+        usuarios = usuarioRepositorio.findAll();
+        return usuarios;
+    }
 
-    
     // VALIDACIONES
 
     private void validar(String nombre, String email, String clave, String clave2, Long telefono) throws MiException {
