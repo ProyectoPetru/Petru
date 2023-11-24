@@ -1,6 +1,6 @@
 # Petru
 
-![GitHub contributors](https://img.shields.io/github/contributors/ProyectoPetru/Petru?link=https%3A%2F%2Fgithub.com%2FProyectoPetru%2FPetru%2Fgraphs%2Fcontributors)
+<img alt="GitHub contributors" src="https://img.shields.io/github/contributors/ProyectoPetru/Petru?link=https%3A%2F%2Fgithub.com%2FProyectoPetru%2FPetru%2Fgraphs%2Fcontributors">
 
 Proyecto final realizado en el marco del quinto tramo del curso fullstack de EGG Cooperation. EQUIPO "P"
 
