@@ -52,6 +52,8 @@ public class UsuarioServicio implements UserDetailsService {
         usuario.setClave(new BCryptPasswordEncoder().encode(clave));
         usuario.setRol(Rol.VISITA);
         usuario.setBaja(Boolean.FALSE);
+        usuario.setTelefono(telefono);
+        usuario.setDescripcion(descripcion);
         Imagen imagen = imagenServicio.guardar(archivo);
         usuario.setImagen(imagen);
         usuarioRepositorio.save(usuario);
@@ -75,6 +77,8 @@ public class UsuarioServicio implements UserDetailsService {
             usuario.setClave(new BCryptPasswordEncoder().encode(clave));
             Imagen imagen = imagenServicio.guardar(archivo);
             usuario.setImagen(imagen);
+            usuario.setTelefono(telefono);
+            usuario.setDescripcion(descripcion);
             usuarioRepositorio.save(usuario);
         }
     }

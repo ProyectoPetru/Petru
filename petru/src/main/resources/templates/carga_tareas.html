@@ -30,14 +30,18 @@
                         <th scope="col">Colaborador</th>
                         <th scope="col">Estado</th>
                         <th scope="col">Fecha límite</th>
-                        <th scope="col">Notas</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>
-                            <input type="text" class="form-control" placeholder="Nombre del cliente">
-
+                            <select class="form-select form-select-sm">
+                                <option selected>Seleccionar cliente</option>
+                                <option value="1">Cliente A</option>
+                                <option value="2">Cliente B</option>
+                                <option value="3">Cliente C</option>
+                            </select>
                         </td>
 
                         <td>
@@ -45,10 +49,12 @@
 
                         </td>
                         <td>
-                            <div class="d-flex align-items-center">
-                                <img src="foto.jpg" alt="Foto" class="rounded-circle" width="50" height="50">
-                                <input type="email" class="form-control ms-3" placeholder="Email">
-                            </div>
+                            <select class="form-select form-select-sm">
+                                <option selected>Seleccionar Agente</option>
+                                <option value="1">Agente A</option>
+                                <option value="2">Agente B</option>
+                                <option value="3">Agente C</option>
+                            </select>
                         </td>
                         <td>
                             <select class="form-select form-select-sm">
@@ -62,200 +68,13 @@
                             <input type="date" class="form-control">
                         </td>
                         <td>
-                            <button type="button" class="btn btn-outline-dark" data-bs-toggle="popover"
-                                data-bs-placement="right" data-bs-custom-class="Notas"
-                                data-bs-title="Acá iría un th para traer el titulo de la nota"
-                                data-bs-content="Acá iría un th para traer el texto de la nota"
-                                aria-describedby="popover873671">
-                                Ver notas
+                            <button type="button" class="btn btn-outline-dark" type="button" value="Input">
+                               Cargar
                             </button>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            <input type="text" class="form-control" placeholder="Nombre del cliente">
-
-                        </td>
-
-                        <td>
-                            <input type="text" class="form-control" placeholder="Nombre del proyecto">
-
-                        </td>
-                        <td>
-                            <div class="d-flex align-items-center">
-                                <img src="foto.jpg" alt="Foto" class="rounded-circle" width="50" height="50">
-                                <input type="email" class="form-control ms-3" placeholder="Email">
-                            </div>
-                        </td>
-                        <td>
-                            <select class="form-select">
-                                <option selected>Selecciona un estado</option>
-                                <option value="1">Pendiente</option>
-                                <option value="2">En proceso</option>
-                                <option value="3">Listo</option>
-                            </select>
-                        </td>
-                        <td>
-                            <input type="date" class="form-control">
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-outline-secondary" data-bs-toggle="popover"
-                                data-bs-placement="right" data-bs-custom-class="custom-popover"
-                                data-bs-title="Custom popover"
-                                data-bs-content="This popover is themed via CSS variables."
-                                aria-describedby="popover873671">
-                                Ver notas
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="text" class="form-control" placeholder="Nombre del cliente">
-
-                        </td>
-
-                        <td>
-                            <input type="text" class="form-control" placeholder="Nombre del proyecto">
-
-                        </td>
-                        <td>
-                            <div class="d-flex align-items-center">
-                                <img src="foto.jpg" alt="Foto" class="rounded-circle" width="50" height="50">
-                                <input type="email" class="form-control ms-3" placeholder="Email">
-                            </div>
-                        </td>
-                        <td>
-                            <select class="form-select">
-                                <option selected>Selecciona un estado</option>
-                                <option value="1">Pendiente</option>
-                                <option value="2">En proceso</option>
-                                <option value="3">Listo</option>
-                            </select>
-                        </td>
-                        <td>
-                            <input type="date" class="form-control">
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-bd-primary" data-bs-toggle="popover"
-                                data-bs-placement="right" data-bs-custom-class="custom-popover"
-                                data-bs-title="Custom popover"
-                                data-bs-content="This popover is themed via CSS variables."
-                                aria-describedby="popover873671">
-                                Ver notas
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="text" class="form-control" placeholder="Nombre del cliente">
-
-                        </td>
-
-                        <td>
-                            <input type="text" class="form-control" placeholder="Nombre del proyecto">
-
-                        </td>
-                        <td>
-                            <div class="d-flex align-items-center">
-                                <img src="foto.jpg" alt="Foto" class="rounded-circle" width="50" height="50">
-                                <input type="email" class="form-control ms-3" placeholder="Email">
-                            </div>
-                        </td>
-                        <td>
-                            <select class="form-select">
-                                <option selected>Selecciona un estado</option>
-                                <option value="1">Pendiente</option>
-                                <option value="2">En proceso</option>
-                                <option value="3">Listo</option>
-                            </select>
-                        </td>
-                        <td>
-                            <input type="date" class="form-control">
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-outline-secondary" data-bs-toggle="popover"
-                                data-bs-placement="right" data-bs-custom-class="custom-popover"
-                                data-bs-title="Custom popover"
-                                data-bs-content="This popover is themed via CSS variables."
-                                aria-describedby="popover873671">
-                                Ver notas
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="text" class="form-control" placeholder="Nombre del cliente">
-
-                        </td>
-
-                        <td>
-                            <input type="text" class="form-control" placeholder="Nombre del proyecto">
-
-                        </td>
-                        <td>
-                            <div class="d-flex align-items-center">
-                                <img src="foto.jpg" alt="Foto" class="rounded-circle" width="50" height="50">
-                                <input type="email" class="form-control ms-3" placeholder="Email">
-                            </div>
-                        </td>
-                        <td>
-                            <select class="form-select">
-                                <option selected>Selecciona un estado</option>
-                                <option value="1">Pendiente</option>
-                                <option value="2">En proceso</option>
-                                <option value="3">Listo</option>
-                            </select>
-                        </td>
-                        <td>
-                            <input type="date" class="form-control">
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-secondary" data-bs-toggle="popover"
-                                data-bs-placement="right" data-bs-custom-class="custom-popover"
-                                data-bs-title="Custom popover"
-                                data-bs-content="This popover is themed via CSS variables."
-                                aria-describedby="popover873671">
-                                Ver notas
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="text" class="form-control" placeholder="Nombre del cliente">
-
-                        </td>
-
-                        <td>
-                            <input type="text" class="form-control" placeholder="Nombre del proyecto">
-
-                        </td>
-                        <td>
-                            <div class="d-flex align-items-center">
-                                <img src="foto.jpg" alt="Foto" class="rounded-circle" width="50" height="50">
-                                <input type="email" class="form-control ms-3" placeholder="Email">
-                            </div>
-                        </td>
-                        <td>
-                            <select class="form-select">
-                                <option selected>Selecciona un estado</option>
-                                <option value="1">Pendiente</option>
-                                <option value="2">En proceso</option>
-                                <option value="3">Listo</option>
-                            </select>
-                        </td>
-                        <td>
-                            <input type="date" class="form-control">
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-bd-success" data-bs-toggle="popover"
-                                data-bs-placement="right" data-bs-custom-class="custom-popover"
-                                data-bs-title="Custom popover"
-                                data-bs-content="This popover is themed via CSS variables."
-                                aria-describedby="popover873671">
-                                Ver notas
-                            </button>
-                        </td>
-                    </tr>
+                                                                    
+                    
                 </tbody>
             </table>
 

@@ -85,22 +85,28 @@ main .inicio .detalles p {
 main .inicio .detalles .divider {
     height: 1px;
     margin: 1rem 1rem 1rem 1rem;
-    background: var(--primary);
+    background: var(--text);
 }
 
 main .inicio .detalles .cajas {
-    background: var(--background);
     padding: .5rem;
+    text-align: start;
 }
 
 main .inicio .detalles .caja .nombre {
-    display: flex;
+    display: inline-block;
+    text-align: start;
+    background: linear-gradient(currentColor 0 0) bottom left/ var(--underline-width, 0%) 0.1em no-repeat;
+    color: var(--text);
+    padding: 0 .5em 0.2em;
+    text-decoration: none;
+    transition: background-size 0.5s;
 }
 
 main .inicio .detalles .caja .nombre:hover {
-    text-shadow: 0 0 2px var(--accent);
-    text-decoration: underline;
     cursor: pointer;
+    text-shadow: 0 0 1px var(--accent);
+    --underline-width: 100%;
 }
 
 main .inicio .detalles .caja .informacion {
@@ -178,7 +184,7 @@ main .inicio .detalles .caja .informacion-hide {
     }
 
     main .inicio .detalles {
-        margin: 2rem 0 0 0;
+        margin: 2rem 1rem 0 1rem;
         width: auto;
     }
 
@@ -201,29 +207,29 @@ main .inicio .detalles .caja .informacion-hide {
             padding: 0;
             opacity: 0%;
         }
-    
+
         50% {
             opacity: 0%;
         }
-    
+
         100% {
             max-height: 40rem;
             padding: .5rem 0 .5rem .2rem;
             opacity: 100%;
         }
     }
-    
+
     @keyframes info-out {
         0% {
             max-height: 40rem;
             padding: .5rem 0 .5rem .2rem;
             opacity: 100%;
         }
-    
+
         50% {
             opacity: 0%;
         }
-    
+
         100% {
             max-height: 0;
             padding: 0;
