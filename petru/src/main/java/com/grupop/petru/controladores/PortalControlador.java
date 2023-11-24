@@ -96,8 +96,16 @@ public class PortalControlador {
         return "login.html";
     }
 
-    @GetMapping("/carga")
-    public String carga(@RequestParam(required = false) String error, HttpSession session, ModelMap modelo) {
+    @GetMapping("/carga_tareas")
+    public String carga_tareas(@RequestParam(required = false) String error, HttpSession session, ModelMap modelo) {
+        Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+
+        modelo.addAttribute("usuariosession", logueado);
+
+        return "carga_tareas.html";
+    }
+    @GetMapping("/carga_proyecto")
+    public String carga_proyecto(@RequestParam(required = false) String error, HttpSession session, ModelMap modelo) {
         Usuario logueado = (Usuario) session.getAttribute("usuariosession");
 
         modelo.addAttribute("usuariosession", logueado);

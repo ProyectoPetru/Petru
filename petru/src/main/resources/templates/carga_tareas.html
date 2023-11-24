@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Carga de proyectos</title>
+    <title>Carga de tareas</title>
     <link rel="icon" href="/img/logo.png" type="image/x-icon">
     <title>Lista de Tareas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -23,15 +23,16 @@
 
     <main style="position: relative;">
         <div class="table-responsive">
-            <div class="container mt-5">
-                <table class="table table-striped" th:action="@{/carga}" method="POST">
+            <div class="container mt-6">
+                <table class="table table-striped" th:action="@{/carga_tareas}" method="POST">
                     <thead class="table-dark">
                         <tr class="table-striped">
                             <th scope="col">Cliente</th>
-                            <th scope="col">Nombre del Proyecto</th>
+                            <th scope="col">Proyecto</th>
                             <th scope="col">Colaborador</th>
                             <th scope="col">Estado</th>
                             <th scope="col">Fecha límite</th>
+                            <th scope="col">Nueva tarea</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -45,11 +46,69 @@
                                     <option value="3">Cliente C</option>
                                 </select>
                             </td>
+                            <td>
+                                <select class="form-select form-select-sm">
+                                    <option selected>Seleccionar Proyecto</option>
+                                    <option value="1">Proyecto 1</option>
+                                    <option value="2">Proyecto 2</option>
+                                    <option value="3">Proyecto 3</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select class="form-select form-select-sm">
+                                    <option selected>Seleccionar Agente</option>
+                                    <option value="1">Agente A</option>
+                                    <option value="2">Agente B</option>
+                                    <option value="3">Agente C</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select class="form-select form-select-sm">
+                                    <option selected>Selecciona un estado</option>
+                                    <option value="1">Pendiente</option>
+                                    <option value="2">En proceso</option>
+                                    <option value="3">Listo</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="date" class="form-control" placeholder="fecha límite de la tarea">
+                            </td>
 
-<<<<<<< HEAD
+                            <td>
+                                <input type="text" class="form-control" placeholder="Escriba aquí la tarea">
+
+                            </td>
+
+
+                            <td>
+                                <button class="btn btn-outline-dark" value="Input">
+                                    Cargar tarea
+
+                                </button>
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+
+                <tbody>
+                    <tr>
                         <td>
-                            <input type="text" class="form-control" placeholder="Nombre del proyecto">
-
+                            <select class="form-select form-select-sm">
+                                <option selected>Seleccionar cliente</option>
+                                <option value="1">Cliente A</option>
+                                <option value="2">Cliente B</option>
+                                <option value="3">Cliente C</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class="form-select form-select-sm">
+                                <option selected>Seleccionar Proyecto</option>
+                                <option value="1">Proyecto 1</option>
+                                <option value="2">Proyecto 2</option>
+                                <option value="3">Proyecto 3</option>
+                            </select>
                         </td>
                         <td>
                             <select class="form-select form-select-sm">
@@ -70,49 +129,23 @@
                         <td>
                             <input type="date" class="form-control">
                         </td>
+
+                        <td>
+                            <input type="text" class="form-control" placeholder="Escriba aquí la tarea">
+
+                        </td>
+
+
                         <td>
                             <button class="btn btn-outline-dark" value="Input">
-                                Cargar proyecto
+                                Cargar tarea
 
                             </button>
                         </td>
                     </tr>
-                                                                    
-                    
-                </tbody>
-            </table>
-=======
-                            <td>
-                                <input type="text" class="form-control" placeholder="Nombre del proyecto">
->>>>>>> a08805a8febac6111739de35661fa2d3f1f068b1
 
-                            </td>
-                            <td>
-                                <select class="form-select form-select-sm">
-                                    <option selected>Seleccionar Agente</option>
-                                    <option value="1">Agente A</option>
-                                    <option value="2">Agente B</option>
-                                    <option value="3">Agente C</option>
-                                </select>
-                            </td>
-                            <td>
-                                <select class="form-select form-select-sm">
-                                    <option selected>Selecciona un estado</option>
-                                    <option value="1">Pendiente</option>
-                                    <option value="2">En proceso</option>
-                                    <option value="3">Listo</option>
-                                </select>
-                            </td>
-                            <td>
-                                <input type="date" class="form-control">
-                            </td>
-                            <td>
-                                <button class="btn btn-outline-dark" value="Input">
-                                    Cargar
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
+
+                </tbody>
                 </table>
             </div>
         </div>
