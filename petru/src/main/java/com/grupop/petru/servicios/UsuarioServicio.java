@@ -69,6 +69,7 @@ public class UsuarioServicio implements UserDetailsService {
             String clave2,
             Long telefono, String descripcion) throws MiException {
         validar(nombre, email, clave, clave2, telefono);
+        try {
         Optional<Usuario> respuesta = usuarioRepositorio.findById(idUsuario);
         if (respuesta.isPresent()) {
             Usuario usuario = respuesta.get();
@@ -80,6 +81,9 @@ public class UsuarioServicio implements UserDetailsService {
             usuario.setTelefono(telefono);
             usuario.setDescripcion(descripcion);
             usuarioRepositorio.save(usuario);
+        }        
+        } catch (Exception e) {
+                System.err.println(e.getMessage());
         }
     }
 
@@ -88,22 +92,30 @@ public class UsuarioServicio implements UserDetailsService {
     // ALTA Y BAJA DE USUARIO
     @Transactional
     public void altaDeUsuario(String idUsuario) throws MiException {
+        try{
         Optional<Usuario> respuesta = usuarioRepositorio.findById(idUsuario);
         if (respuesta.isPresent()) {
             Usuario usuario = respuesta.get();
             usuario.setBaja(false);
-            usuarioRepositorio.save(usuario);
+            usuarioRepositorio.save(usuario);            
+        }
+        } catch (Exception e) {
+                System.err.println(e.getMessage());
         }
 
     }
 
     @Transactional
     public void bajaDeUsuario(String idUsuario) throws MiException {
+        try{
         Optional<Usuario> respuesta = usuarioRepositorio.findById(idUsuario);
         if (respuesta.isPresent()) {
             Usuario usuario = respuesta.get();
             usuario.setBaja(true);
             usuarioRepositorio.save(usuario);
+        }
+        } catch (Exception e) {
+                System.err.println(e.getMessage());
         }
 
     }
@@ -114,11 +126,15 @@ public class UsuarioServicio implements UserDetailsService {
 
     @Transactional
     public void modificarRolUsuario(String idUsuario, Rol rol) {
+        try{
         Optional<Usuario> respuesta = usuarioRepositorio.findById(idUsuario);
         if (respuesta.isPresent()) {
             Usuario usuario = respuesta.get();
             usuario.setRol(rol);
             usuarioRepositorio.save(usuario);
+        }
+        } catch (Exception e) {
+                System.err.println(e.getMessage());
         }
     }
 
