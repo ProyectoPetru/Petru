@@ -24,7 +24,7 @@
     <main style="position: relative;">
         <div class="table-responsive">
             <div class="container mt-6">
-               
+                <table class="table table-striped" th:action="@{/carga_proyecto}" method="POST"></table>               
 
                 <tbody>
                     <div class=" container rounded-3 border border-2 border-dark my-5 bg-white" style="height:auto;">
@@ -79,7 +79,7 @@
                                 <div class=" col-8">
                             <input class=" py-3 form-control shadow" placeholder="Ingrese la tarea" type="text" id="inputText"> 
                                 </div>
-                                <div class="col-2">
+                                <div class="col-2 ">
                                     <!-- método para ingresar la tarea -->
                                     <button  class=" mt-2 btn btn-dark"> Cargar tarea </button>
                                 </div>
@@ -106,14 +106,7 @@
                                     </label>
                                 </div>
                                 
-                                <div class="col-2">
-                                    <!-- método para ingresar la tarea -->
-                                    <button  class=" mt-2 btn btn-dark"> Editar </button>
-                                </div>
-                                <div class="col-2">
-                                    <!-- método para ingresar la tarea -->
-                                    <button  class=" mt-2 btn btn-dark"> Borrar </button>
-                                </div>
+                              
                             </div>
                             <div class="row">
                                 <div class=" col-8">
@@ -122,14 +115,7 @@
                                       Entides y servicios
                                     </label>
                                 </div>
-                                <div class="col-2">
-                                    <!-- método para ingresar la tarea -->
-                                    <button  class=" mt-2 btn btn-dark"> Editar </button>
-                                </div>
-                                <div class="col-2">
-                                    <!-- método para ingresar la tarea -->
-                                    <button  class=" mt-2 btn btn-dark"> Borrar </button>
-                                </div>
+                                
                             </div>
                             <div class="row">
                                 <div class=" col-8">
@@ -138,14 +124,7 @@
                                       Controladores
                                     </label>
                                 </div>
-                                <div class="col-2">
-                                    <!-- método para ingresar la tarea -->
-                                    <button  class=" mt-2 btn btn-dark"> Editar </button>
-                                </div>
-                                <div class="col-2">
-                                    <!-- método para ingresar la tarea -->
-                                    <button  class=" mt-2 btn btn-dark"> Borrar </button>
-                                </div>
+                               
                             </div>
                             <div class="row">
                                 <div class=" col-8">
@@ -154,16 +133,20 @@
                                       Seguridad
                                     </label>
                                 </div>
-                                <div class="col-2">
-                                    <!-- método para ingresar la tarea -->
-                                    <button  class=" mt-2 btn btn-dark"> Editar </button>
-                                </div>
-                                <div class="col-2">
-                                    <!-- método para ingresar la tarea -->
-                                    <button  class=" mt-2 btn btn-dark"> Borrar </button>
-                                </div>
+                                <br>
+                                <br>
+                               
                             </div>
-                            <div class="d-grid gap-4 d-md-block">
+                            <div class="d-grid gap-2 col-6 mx-auto">
+                                <!-- método para ingresar la tarea -->
+                                <button  class=" mt-2 btn btn-primary"> Editar selección </button>
+                            </div>
+                            
+                            <div class="d-grid gap-2 col-6 mx-auto">
+                                <!-- método para ingresar la tarea -->
+                                <button  class=" mt-2 btn btn-danger"> Borrar selección </button>
+                            </div>
+                            <div class="d-grid gap-2 col-6 mx-auto">
                                 <!-- método para ingresar la tarea -->
                                 <button  class=" mt-2 btn btn-dark" type="button"> Guardar las tareas cargadas </button>
                             </div>
