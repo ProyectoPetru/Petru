@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-PetruApplication<petru>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.grupop.petru.PetruApplication",
+            "projectName": "petru",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
