@@ -24,71 +24,12 @@
     <main style="position: relative;">
         <div class="table-responsive">
             <div class="container mt-6">
-                <table class="table table-striped" th:action="@{/carga_tareas}" method="POST">
-                    <thead class="table-dark">
-                        <tr class="table-striped">
-                            <th scope="col">Cliente</th>
-                            <th scope="col">Proyecto</th>
-                            <th scope="col">Colaborador</th>
-                            <th scope="col">Estado</th>
-                            <th scope="col">Fecha límite</th>
-                            <th scope="col">Nueva tarea</th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <select class="form-select form-select-sm">
-                                    <option selected>Seleccionar cliente</option>
-                                    <option value="1">Cliente A</option>
-                                    <option value="2">Cliente B</option>
-                                    <option value="3">Cliente C</option>
-                                </select>
-                            </td>
-                            <td>
-                                <select class="form-select form-select-sm">
-                                    <option selected>Seleccionar Proyecto</option>
-                                    <option value="1">Proyecto 1</option>
-                                    <option value="2">Proyecto 2</option>
-                                    <option value="3">Proyecto 3</option>
-                                </select>
-                            </td>
-                            <td>
-                                <select class="form-select form-select-sm">
-                                    <option selected>Seleccionar Agente</option>
-                                    <option value="1">Agente A</option>
-                                    <option value="2">Agente B</option>
-                                    <option value="3">Agente C</option>
-                                </select>
-                            </td>
-                            <td>
-                                <select class="form-select form-select-sm">
-                                    <option selected>Selecciona un estado</option>
-                                    <option value="1">Pendiente</option>
-                                    <option value="2">En proceso</option>
-                                    <option value="3">Listo</option>
-                                </select>
-                            </td>
-                            <td>
-                                <input type="date" class="form-control" placeholder="fecha límite de la tarea">
-                            </td>
-
-                            <td>
-                                <button class="btn btn-outline-dark" value="Input">
-                                    Cargar tarea
-                                </button>
-                            </td>
-                        </tr>
-
-
-                    </tbody>
-                </table>
+               
 
                 <tbody>
                     <div class=" container rounded-3 border border-2 border-dark my-5 bg-white" style="height:auto;">
                         <div>
-                            <h1 class=" h1">Carga de Tareas</h1> 
+                            <h1 class=" h1">Nueva tarea</h1> 
                         
                         </div>
                         <br>
@@ -221,6 +162,10 @@
                                     <!-- método para ingresar la tarea -->
                                     <button  class=" mt-2 btn btn-dark"> Borrar </button>
                                 </div>
+                            </div>
+                            <div class="d-grid gap-4 d-md-block">
+                                <!-- método para ingresar la tarea -->
+                                <button  class=" mt-2 btn btn-dark" type="button"> Guardar las tareas cargadas </button>
                             </div>
                         </div>
                             <hr>
