@@ -32,7 +32,7 @@ public class PortalControlador {
     private UsuarioServicio usuarioServicio;
     
  // a futuro se podria ver si agregamos esto   @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
-    @GetMapping("/")
+    @GetMapping(path = {"/", "/inicio"})
     public String index(HttpSession session, ModelMap modelo) {
         Usuario logueado = (Usuario) session.getAttribute("usuariosession");
         if (logueado == null) {
