@@ -1,0 +1,239 @@
+main {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--background);
+    color: var(--text);
+    position: relative;
+    z-index: 0;
+}
+
+main .inicio {
+    padding: 4rem 0 4rem 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: start;
+}
+
+main .inicio .acronimo {
+    display: flex;
+    user-select: none;
+    flex-direction: column;
+}
+
+main .inicio .acronimo div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main .inicio .acronimo div .letra {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--secondary);
+    font-size: 3rem;
+    width: 4rem;
+    height: 4rem;
+    margin: .1rem .2rem .1rem .2rem;
+}
+
+main .inicio .acronimo div .palabra {
+    text-align: start;
+    width: 20rem;
+    font-size: 2rem;
+    overflow-x: hidden;
+    z-index: -1;
+    animation: palabra-in .5s ease-out 0s 1 normal forwards;
+}
+
+@keyframes palabra-in {
+    from {
+        opacity: 0;
+        transform: translateX(-10rem);
+    }
+
+    30% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 1;
+    }
+
+    70% {
+        transform: translateX(.8rem);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+main .inicio .detalles {
+    padding: 1rem;
+    border-radius: .2rem;
+    background: var(--secondary);
+    width: 50rem;
+    font-size: 1.3rem;
+    user-select: none;
+    text-align: center;
+}
+
+main .inicio .detalles p {
+    margin: 0;
+}
+
+main .inicio .detalles .divider {
+    height: 1px;
+    margin: 1rem 1rem 1rem 1rem;
+    background: var(--text);
+}
+
+main .inicio .detalles .cajas {
+    padding: .5rem;
+    text-align: start;
+}
+
+main .inicio .detalles .caja .nombre {
+    display: inline-block;
+    text-align: start;
+    background: linear-gradient(currentColor 0 0) bottom left/ var(--underline-width, 0%) 0.1em no-repeat;
+    color: var(--text);
+    padding: 0 .5em 0.2em;
+    text-decoration: none;
+    transition: background-size 0.5s;
+}
+
+main .inicio .detalles .caja .nombre:hover {
+    cursor: pointer;
+    text-shadow: 0 0 1px var(--accent);
+    --underline-width: 100%;
+}
+
+main .inicio .detalles .caja .informacion {
+    display: flex;
+    color: var(--accent);
+    animation: info-in .4s ease 0s 1 normal forwards;
+}
+
+main .inicio .detalles .caja .informacion span {
+    text-align: start;
+    width: 30rem;
+}
+
+main .inicio .detalles .caja .informacion img {
+    align-self: center;
+    margin: 0 2rem 0 auto;
+}
+
+main .inicio .detalles .caja .informacion[hidden] {
+    display: none;
+}
+
+main .inicio .detalles .caja .informacion-hide {
+    animation: info-out .4s ease 0s 1 normal forwards;
+}
+
+@keyframes info-in {
+    0% {
+        max-height: 0;
+        padding: 0;
+        opacity: 0%;
+    }
+
+    50% {
+        opacity: 0%;
+    }
+
+    100% {
+        max-height: 40rem;
+        padding: 1rem 0 1rem 2rem;
+        opacity: 100%;
+    }
+}
+
+@keyframes info-out {
+    0% {
+        max-height: 40rem;
+        padding: 1rem 0 1rem 2rem;
+        opacity: 100%;
+    }
+
+    50% {
+        opacity: 0%;
+    }
+
+    100% {
+        max-height: 0;
+        padding: 0;
+        opacity: 0%;
+    }
+}
+
+@media (max-width: 1200px) {
+    main .inicio {
+        display: block;
+    }
+
+    main .inicio .acronimo div .palabra {
+        position: absolute;
+        text-align: start;
+        margin-left: 12.4rem;
+        width: 8rem;
+        font-size: 1.3rem;
+        overflow-x: hidden;
+    }
+
+    main .inicio .detalles {
+        margin: 2rem 1rem 0 1rem;
+        width: auto;
+    }
+
+    main .inicio .detalles .cajas {
+        text-align: start;
+    }
+
+    main .inicio .detalles .caja .informacion {
+        flex-wrap: wrap-reverse;
+        justify-content: center;
+    }
+
+    main .inicio .detalles .caja .informacion img {
+        margin: 0;
+    }
+
+    @keyframes info-in {
+        0% {
+            max-height: 0;
+            padding: 0;
+            opacity: 0%;
+        }
+
+        50% {
+            opacity: 0%;
+        }
+
+        100% {
+            max-height: 40rem;
+            padding: .5rem 0 .5rem .2rem;
+            opacity: 100%;
+        }
+    }
+
+    @keyframes info-out {
+        0% {
+            max-height: 40rem;
+            padding: .5rem 0 .5rem .2rem;
+            opacity: 100%;
+        }
+
+        30% {
+            opacity: 0%;
+        }
+
+        100% {
+            max-height: 0;
+            padding: 0;
+            opacity: 0%;
+        }
+    }
+}

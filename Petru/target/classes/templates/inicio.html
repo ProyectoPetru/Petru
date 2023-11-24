@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" xlmns:th="https://thymeleaf.org/"
+    xlmns:sec="https://thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/img/logo.png" type="image/x-icon"> 
+    <title>Inicio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Montserrat&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/inicio.css">
+</head>
+
+<body>
+    <nav th:replace="/fragments/navbar.html :: nav"></nav>
+
+    <main>
+        <div class="inicio">
+            <div class="acronimo">
+                <div>
+                    <span class="letra">P</span>
+                    <span class="palabra">ublicidades</span>
+                </div>
+                <div>
+                    <span class="letra">E</span>
+                    <span class="palabra">n</span>
+                </div>
+                <div>
+                    <span class="letra">T</span>
+                    <span class="palabra">iempo</span>
+                </div>
+                <div>
+                    <span class="letra">R</span>
+                    <span class="palabra">eal</span>
+                </div>
+                <div>
+                    <span class="letra">U</span>
+                    <span class="palabra">nicas</span>
+                </div>
+            </div>
+            <div class="detalles">
+                <p>
+                    Somos una agencia publicitaria de primer nivel, dedicada a impulsar a empresas con nuestros metodos
+                    inovadores de marketing. <br> <br>
+                    Contratando nuestros servicios, dispones de nuestro gestor de proyectos, que cuenta con las
+                    siguientes
+                    herramientas:
+                </p>
+
+                <div class="divider"></div>
+
+                <div class="cajas">
+                    <div class="caja">
+                        <div class="nombre" onclick="handleClick(event)">1. Supervision de las tareas.</div>
+                        <div hidden class="informacion">
+                            <span>
+                                Podras supervisar el estado de las tareas que los colaboradores estan haciendo, asi
+                                mismo
+                                podras ver cuales
+                                ya han sido terminadas y cuales faltan por hacer.
+                            </span>
+                            <img src="/img/caja-informacion-1.jpg" alt="Tareas" width="200px">
+                        </div>
+                    </div>
+                    <div class="caja">
+                        <div class="nombre" onclick="handleClick(event)">2. Calendario de eventos y organizador de
+                            reuniones.</div>
+                        <div hidden class="informacion">
+                            <span>
+                                Tendras acceso a un calendario en el que podras ver eventos importantes y organizar
+                                reuniones con colaboradores por si quiere contactarse con ellos.
+                            </span>
+                            <img src="/img/caja-informacion-2.jpg" alt="Organizacion" width="200px">
+                        </div>
+                    </div>
+                    <div class="caja">
+                        <div class="nombre" onclick="handleClick(event)">3. Informacion detallada de cada proyecto.
+                        </div>
+                        <div hidden class="informacion">
+                            <span>
+                                Cada tarea del proyecto que usted cree, contara con notas para que pueda marcar
+                                cosas adicionales o detalles que quisiera que se tengan en cuenta a la hora de
+                                realizarse.
+                            </span>
+                            <img src="/img/caja-informacion-3.jpg" alt="Organizacion" width="200px">
+                        </div>
+                    </div>
+                    <div class="caja">
+                        <div class="nombre" onclick="handleClick(event)">4. Contacto con colaboradores por via email o
+                            telefonica.</div>
+                        <div hidden class="informacion">
+                            <span>
+                                Cada colaborador que acepte su proyecto tendra un email y un numero de telefono, estas
+                                vias de contacto podran ser utilizadas para contactar rapidamente a cierto colaborador
+                                si es una emergencia o algo que no pueda esperar a una reunion.
+                            </span>
+                            <img src="/img/caja-informacion-4.jpeg" alt="Organizacion" width="200px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </main>
+
+    <alert th:replace="/fragments/alertas.html"></alert>
+    <footer th:replace="/fragments/footer.html :: footer"></footer>
+
+    <script src="/js/inicio.js"></script>
+    <script src="/js/index.js"></script>
+</body>
+
+</html>
