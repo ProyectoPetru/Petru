@@ -11,7 +11,7 @@ const cambiarFoto = () => {
 
     if (file.size < 600000) {
         reader.onload = function(e) {
-            const image = document.getElementById("registro-logo")
+            const image = document.querySelector("#registro-logo")
     
             image.src = e.target.result
         }
@@ -20,9 +20,8 @@ const cambiarFoto = () => {
     } else {
         document.querySelector("#imagen").value = ""
         document.querySelector("#registro-logo").src = "/img/user.png"
-        document.querySelector("#errorAlert").getElementsByClassName("alert-info")[0].innerHTML = "La imagen no puede pesar mas de 600kb"
-        document.querySelector("#errorAlert").hidden = false
-        exitTimer()
+        document.querySelector("#alertas").querySelector(".error").querySelector(".informacion").innerHTML = "La imagen no puede pesar mas de 600kb"
+        document.querySelector("#alertas").querySelector(".error").hidden = false
     }
 }
 
@@ -31,5 +30,5 @@ cambiarFoto()
 
 /* Borro la foto cuando se usa el boton "limpiar" */
 const manejoReset = () => {
-    document.getElementById("registro-logo").src = "/img/user.png"
+    document.querySelector("#registro-logo").src = "/img/user.png"
 }
