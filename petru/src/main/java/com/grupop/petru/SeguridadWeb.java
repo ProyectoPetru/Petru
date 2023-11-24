@@ -19,9 +19,11 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
+@Deprecated
 public class SeguridadWeb extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -32,26 +34,33 @@ public class SeguridadWeb extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(usuarioServicio)
                 .passwordEncoder(new BCryptPasswordEncoder());
     }
+   @Override
+    protected void configure(HttpSecurity http) throws Exception { // Este método se sobrescribe para agregar más                                                                 // configuraciones
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
-                .antMatchers("/admin/*").hasRole("ADMIN")
-                .antMatchers("/css/*", "/js/*", "/img/*", "/**")
-                .permitAll()
-                .and().formLogin()
-                .loginPage("/login")
-                .loginProcessingUrl("/logincheck")
-                .usernameParameter("email")
-                .passwordParameter("clave")
-                .defaultSuccessUrl("/inicio")
-                .permitAll()
-                .and().logout()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/login")
-                .permitAll()
-                .and().csrf()
-                .disable();
+                .authorizeRequests(requests -> requests // utilizando sintaxis Lambda DSL para configurar las  solicitudes HTTP.                                                        
+                        .antMatchers("/admin/*").hasRole("ADMIN") // para preautorizar a los roles del controlador ADMIN
+                        .antMatchers("/css/*", "/js/*", "/img/*", "/**") //// autorizando todas las solicitudes a los patrones de URL especificados                                                                       
+                        .permitAll())
+
+                .formLogin(login -> login
+                        .loginPage("/login")
+                        .loginProcessingUrl("/logincheck")
+                        .usernameParameter("email")
+                        .passwordParameter("clave")
+                        .defaultSuccessUrl("/")
+                        .permitAll())
+
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/login")
+                        .permitAll())
+
+                .csrf(csrf -> csrf
+                   .disable());
+
+               
+
     }
+
 }

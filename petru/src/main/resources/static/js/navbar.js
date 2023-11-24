@@ -34,7 +34,6 @@ if (document.documentElement.clientWidth > WIDTH_TOOLTIP) {
 
 /* Maneja que los dropdowns desaparezcan cuando se clickea afuera de ellos */
 document.addEventListener("click", (element) => {
-    console.log(Array.from(document.querySelector("#navbar").querySelectorAll(".dropdown")).filter((e) => !e.hidden).length);
     if (Array.from(document.querySelector("#navbar").querySelectorAll(".dropdown")).filter((e) => !e.hidden).length < 1) {
         return
     }
@@ -46,7 +45,7 @@ document.addEventListener("click", (element) => {
             setTimeout(() => {
                 if (e.classList.contains("dropdown-hide")) {
                     e.classList.remove("dropdown-hide")
-                    document.querySelector(".main").style.zIndex = 0
+                    document.querySelector("main").style.zIndex = 0
                     e.hidden = true
                 }
             }, 200)
@@ -97,7 +96,6 @@ Array.from(document.querySelector("#navbar").querySelectorAll(".dropdown")).map(
 
 /* cuando se use el atributo redirect, se va a llamar a esta funcion */
 Array.from(document.querySelector("#navbar").querySelectorAll("[redirect]")).map(e => {
-    console.log(e.getAttribute("redirect"));
     e.addEventListener("click", () => {
         document.location = e.getAttribute("redirect")
     })

@@ -82,6 +82,7 @@ public class ImagenServicio {
     }
         
     @Transactional(readOnly = true)
+    @Deprecated
     public Imagen getOne(String id) {
         return imagenRepositorio.getOne(id);
     }

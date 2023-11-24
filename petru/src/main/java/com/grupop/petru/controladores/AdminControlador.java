@@ -1,6 +1,8 @@
 
 package com.grupop.petru.controladores;
 
+import com.grupop.petru.entidades.Usuario;
+
 /**
  *
  * @authors  Nahiara Denice Alegre - Matias Quispe - Juan Pablo Pontini
@@ -12,7 +14,13 @@ package com.grupop.petru.controladores;
 import com.grupop.petru.entidades.Usuario;
 import com.grupop.petru.enumeraciones.Rol;
 import com.grupop.petru.servicios.UsuarioServicio;
+<<<<<<< HEAD
 import java.util.List;
+=======
+
+import javax.servlet.http.HttpSession;
+
+>>>>>>> ca6b646e8cbbf7718e381bb3599843e3c1b188c2
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -29,7 +37,11 @@ public class AdminControlador {
     private UsuarioServicio usuarioServicio;
 
     @GetMapping("/dashboard")
-    public String panelAdmin() {
+    public String panelAdmin(HttpSession session, ModelMap modelo) {
+        Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+
+        modelo.addAttribute("usuariosession", logueado);
+
         return "dashboard.html";
     }
     

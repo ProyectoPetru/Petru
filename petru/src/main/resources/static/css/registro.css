@@ -13,6 +13,10 @@ main .registro-container {
     background: var(--secondary);
 }
 
+main .registro-container div {
+    margin: .5rem 0 .5rem 0;
+}
+
 main .registro-container input {
     font-family: Arial, Helvetica, sans-serif;
     font-size: .85rem;

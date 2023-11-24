@@ -10,7 +10,7 @@ package com.grupop.petru.excepciones;
  *           Salvador Caldarella - Sebastián A. Petrini
  */
 
-public class MiException extends Exception{
+public class MiException extends Exception {
 
     public MiException(String msg) {
         super(msg);

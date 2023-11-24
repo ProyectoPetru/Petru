@@ -5,48 +5,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" href="/img/logo.png" type="image/x-icon"> 
+    <title>Ingresar</title>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Montserrat&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/inicio.css">
+    <link rel="stylesheet" href="/css/login.css">
 </head>
 
 <body>
     <nav th:replace="/fragments/navbar.html :: nav"></nav>
-    <form class="formulario" th:actions="@{/logincheck}" method="POST">
-        <div class="mensaje">
-            <h3>Bienvenido a P.E.T.R.U.! Por favor logueate aqui abajo</h3>
-        </div>
-        <div class="container-fluid m-5 contenedor">
-            <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
-                <div class="card-body">
-                    <h5 class="card-title">Error!</h5>
-                    <p class="card-text" th:text="${error}"></p>
+    <main>
+        <form class="login-container" th:action="@{/logincheck}" method="POST">
+            <div>
+                <div>
+                    <input type="email" class="form-control" name="email" placeholder="Correo Electronico">
+                </div>
+                <div>
+                    <input type="password" class="form-control" name="clave" placeholder="Contraseña">
+                </div>
+                <div>
+                    Eres nuevo? <a href="/registrar">registrate</a>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary mt-3 botones">Ingresar</button>
                 </div>
             </div>
-            <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito">
-                <div class="card-body">
-                    <h5 class="card-title">Exito!</h5>
-                    <p class="card-text" th:text="${exito}"></p>
-                </div>
-            </div>
-
-            <div>
-                <input type="email" class="form-control" name="email" placeholder="Correo Electronico">
-            </div>
-            <div>
-                <input type="password" class="form-control" name="clave" placeholder="Contraseña">
-            </div>
-            <button type="submit" class="btn btn-primary mt-3 botones">Ingresar!</button>
-
-    </form>
-
-
+        </form>
+    </main>
 
     <footer th:replace="/fragments/footer.html :: footer"></footer>
 
-    <script src="/js/inicio.js"></script>
     <script src="/js/index.js"></script>
 </body>
 
