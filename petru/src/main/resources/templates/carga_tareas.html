@@ -7,6 +7,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Carga de proyectos</title>
+    <link rel="icon" href="/img/logo.png" type="image/x-icon">
+    <title>Lista de Tareas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Montserrat&display=swap"
@@ -19,31 +21,32 @@
 <body>
     <nav th:replace="/fragments/navbar.html :: nav"></nav>
 
-    <div class="table-responsive">
-        
-        <div class="container mt-5">
-            <table class="table table-striped" th:action="@{/carga}" method="POST">
-                <thead class="table-dark">
-                    <tr class="table-striped">
-                        <th scope="col">Cliente</th>
-                        <th scope="col">Nombre del Proyecto</th>
-                        <th scope="col">Colaborador</th>
-                        <th scope="col">Estado</th>
-                        <th scope="col">Fecha límite</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <select class="form-select form-select-sm">
-                                <option selected>Seleccionar cliente</option>
-                                <option value="1">Cliente A</option>
-                                <option value="2">Cliente B</option>
-                                <option value="3">Cliente C</option>
-                            </select>
-                        </td>
+    <main style="position: relative;">
+        <div class="table-responsive">
+            <div class="container mt-5">
+                <table class="table table-striped" th:action="@{/carga}" method="POST">
+                    <thead class="table-dark">
+                        <tr class="table-striped">
+                            <th scope="col">Cliente</th>
+                            <th scope="col">Nombre del Proyecto</th>
+                            <th scope="col">Colaborador</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Fecha límite</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <select class="form-select form-select-sm">
+                                    <option selected>Seleccionar cliente</option>
+                                    <option value="1">Cliente A</option>
+                                    <option value="2">Cliente B</option>
+                                    <option value="3">Cliente C</option>
+                                </select>
+                            </td>
 
+<<<<<<< HEAD
                         <td>
                             <input type="text" class="form-control" placeholder="Nombre del proyecto">
 
@@ -78,9 +81,43 @@
                     
                 </tbody>
             </table>
+=======
+                            <td>
+                                <input type="text" class="form-control" placeholder="Nombre del proyecto">
+>>>>>>> a08805a8febac6111739de35661fa2d3f1f068b1
 
+                            </td>
+                            <td>
+                                <select class="form-select form-select-sm">
+                                    <option selected>Seleccionar Agente</option>
+                                    <option value="1">Agente A</option>
+                                    <option value="2">Agente B</option>
+                                    <option value="3">Agente C</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select class="form-select form-select-sm">
+                                    <option selected>Selecciona un estado</option>
+                                    <option value="1">Pendiente</option>
+                                    <option value="2">En proceso</option>
+                                    <option value="3">Listo</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="date" class="form-control">
+                            </td>
+                            <td>
+                                <button class="btn btn-outline-dark" value="Input">
+                                    Cargar
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
+    </main>
+
     <footer th:replace="/fragments/footer.html :: footer"></footer>
     <script>
         // Inicializar el popover utilizando JavaScript
@@ -93,6 +130,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+    <script src="/js/index.js"></script>
 </body>
 
 </html>

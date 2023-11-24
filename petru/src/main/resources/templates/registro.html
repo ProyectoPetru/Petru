@@ -5,7 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" href="/img/logo.png" type="image/x-icon"> 
+    <title>Registro</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- Fuente de la letra -->
@@ -48,6 +49,9 @@
                 <div>
                     <input hidden type="file" accept=".jpg, .jpeg, .png" name="archivo" id="imagen"
                         placeholder="Ingrese una foto" onchange="cambiarFoto()" value="/img/user.png">
+                </div>
+                <div>
+                    Ya tienes cuenta? <a href="/login">ingresa</a>
                 </div>
                 <div>
                     <button type="reset" onclick="manejoReset()">Limpiar</button>

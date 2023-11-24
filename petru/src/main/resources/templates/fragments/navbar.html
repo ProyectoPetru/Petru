@@ -6,7 +6,7 @@
     <div class="inicio">
         <!-- Cada elemento lleva la etiqueta "item" -->
         <div class="item">
-            <a class="icono" href="/">
+            <a class="icono" href="/inicio">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16">
                     <path fill="currentColor"
                         d="M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z" />
@@ -81,7 +81,7 @@
                 </svg>
             </a>
             <div hidden class="dropdown">
-                <div class="list">
+                <div class="list" redirect="/carga">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                         <path fill="currentColor"
                             d="M8 16q.825 0 1.413-.588T10 14q0-.825-.588-1.413T8 12q-.825 0-1.413.588T6 14q0 .825.588 1.413T8 16Zm8 0q.825 0 1.413-.588T18 14q0-.825-.588-1.413T16 12q-.825 0-1.413.588T14 14q0 .825.588 1.413T16 16Zm-4-6q.825 0 1.413-.588T14 8q0-.825-.588-1.413T12 6q-.825 0-1.413.588T10 8q0 .825.588 1.413T12 10Zm0 12q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22Zm0-2q3.35 0 5.675-2.325T20 12q0-3.35-2.325-5.675T12 4Q8.65 4 6.325 6.325T4 12q0 3.35 2.325 5.675T12 20Zm0-8Z" />
@@ -134,14 +134,14 @@
 
             <!-- Le puse un poco de margen a la izquierda para que no se salga de pantalla -->
             <div hidden class="dropdown" style="margin-left: -6rem;">
-                <div class="list">
+                <div class="list" redirect="/admin/dashboard">
                     <a>Admin</a>
                 </div>
                 <div class="list" onclick="cambiarTema()">
                     <a>Cambiar Tema</a>
                 </div>
                 <div class="list">
-                    <a>Perfil</a>
+                    <a>Perfil 🚫</a>
                 </div>
                 <div class="list" redirect="/logout">
                     <a>Cerrar Sesion</a>
@@ -150,7 +150,7 @@
         </div>
 
         <!-- Usuario comun -->
-        <div class="item" th:if="${usuariosession != null}">
+        <div class="item" th:if="${usuariosession != null}" sec:authorize="!hasRole('ADMIN')">
             <a class="icono">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
                     <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -165,7 +165,7 @@
                     <a>Cambiar Tema</a>
                 </div>
                 <div class="list">
-                    <a>Perfil</a>
+                    <a>Perfil 🚫</a>
                 </div>
                 <div class="list" redirect="/logout">
                     <a>Cerrar Sesion</a>
