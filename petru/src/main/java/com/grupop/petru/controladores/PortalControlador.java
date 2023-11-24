@@ -58,7 +58,7 @@ public class PortalControlador {
         try {
             usuarioServicio.registrarUsuario(archivo, nombre, email, clave, clave2, telefono, descripcion);
             modelo.put("exito", "Usuario registrado correctamente!");
-            return "index.html";
+            return "inicio.html";
         } catch (MiException ex) {
             modelo.put("error", ex.getMessage());
             modelo.put("nombre", nombre);
@@ -79,12 +79,11 @@ public class PortalControlador {
 
     @GetMapping("/carga")
     public String carga(@RequestParam(required = false) String error, ModelMap modelo) {
-        if (error != null) {
-            modelo.put("error", "Usuario o Contraseña invalidos!");
-        }
         return "carga_tareas.html";
     }
 
-    
-
+    @GetMapping("/contacto")
+    public String contacto(@RequestParam(required = false) String error, ModelMap modelo) {
+        return "contacto.html";
+    }
 }
