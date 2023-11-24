@@ -9,9 +9,12 @@ package com.grupop.petru.controladores;
  *           Salvador Caldarella - Sebastián A. Petrini
  */
 
+import com.grupop.petru.entidades.Usuario;
 import com.grupop.petru.excepciones.MiException;
 import com.grupop.petru.servicios.UsuarioServicio;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,8 +31,13 @@ public class PortalControlador {
     @Autowired
     private UsuarioServicio usuarioServicio;
     
+ // a futuro se podria ver si agregamos esto   @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping("/")
-    public String index() {
+    public String index(HttpSession session) {
+        Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+        if (logueado.getRol().toString().equals("ADMIN")) {
+            return "redirect:/admin/dashboard";
+        }
         return "inicio.html";
     }
     
