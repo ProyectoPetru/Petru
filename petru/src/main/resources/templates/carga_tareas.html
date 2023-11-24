@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" xlmns:th="https://thymeleaf.org/"
+    xlmns:sec="https://thymeleaf.org/extras/spring-security">
+<<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Carga de tareas</title>
+    <link rel="icon" href="/img/logo.png" type="image/x-icon">
+    <title>Lista de Tareas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&amp;family=Montserrat&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
+    </script>
+</head>
+<body>
+    <nav id="navbar">
+    <!-- CSS de la navbar -->
+    <link rel="stylesheet" href="/css/navbar.css">
+
+    <!-- Elementos al inicio de la navbar -->
+    <div class="inicio">
+        <!-- Cada elemento lleva la etiqueta "item" -->
+        <div class="item">
+            <a class="icono" href="/inicio">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16">
+                    <path fill="currentColor" d="M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z"></path>
+                </svg>
+            </a>
+            <!-- Solo se muestra cuando el mouse pasa por encima y la pantalla tiene una resolucion mayor a WIDTH_TOOLTIP -->
+            <span hidden="" class="tooltip right">Inicio</span>
+        </div>
+    </div>
+
+    <!-- Elementos en el medio de la navbar -->
+    <div class="medio">
+        
+
+        
+    </div>
+
+    <!-- Elementos al final de la navbar -->
+    <div class="fin">
+
+        <!-- Usuario admin -->
+        
+
+        <!-- Usuario comun -->
+        
+
+        <!-- Usuario no logueado -->
+        <div class="item">
+            <a class="icono" href="/login">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M12 21v-2h7V5h-7V3h7q.825 0 1.413.588T21 5v14q0 .825-.588 1.413T19 21h-7Zm-2-4l-1.375-1.45l2.55-2.55H3v-2h8.175l-2.55-2.55L10 7l5 5l-5 5Z"></path>
+                </svg>
+            </a>
+            <span hidden="" class="tooltip left">Ingresar</span>
+        </div>
+    </div>
+
+    <!-- Script de la navbar -->
+    <script src="/js/navbar.js"></script>
+</nav>
+
+    <main style="position: relative;">
+        <div class="table-responsive">
+            <div class="container mt-6">
+                <table class="table table-striped" action="/carga_proyecto" method="POST"></table>               
+
+                
+                    <div class=" container rounded-3 border border-2 border-dark my-5 bg-white" style="height:auto;">
+                        <div>
+                            <h1 class=" h1">Nueva tarea</h1> 
+                        
+                        </div>
+                        <br>
+                        
+                            
+                                <select class="form-select form-select-sm">
+                                    <option selected="">Seleccionar cliente</option>
+                                    <option value="1">Cliente A</option>
+                                    <option value="2">Cliente B</option>
+                                    <option value="3">Cliente C</option>
+                                </select>
+                            
+                            <br>
+                            
+                                <select class="form-select form-select-sm">
+                                    <option selected="">Seleccionar Proyecto</option>
+                                    <option value="1">Proyecto 1</option>
+                                    <option value="2">Proyecto 2</option>
+                                    <option value="3">Proyecto 3</option>
+                                </select>
+                            
+                            <br>
+                            
+                                <select class="form-select form-select-sm">
+                                    <option selected="">Seleccionar Agente</option>
+                                    <option value="1">Agente A</option>
+                                    <option value="2">Agente B</option>
+                                    <option value="3">Agente C</option>
+                                </select>
+                            
+                            <br>
+                            
+                                <select class="form-select form-select-sm">
+                                    <option selected="">Selecciona un estado</option>
+                                    <option value="1">Pendiente</option>
+                                    <option value="2">En proceso</option>
+                                    <option value="3">Listo</option>
+                                </select>
+                            
+                            <br>
+
+                            
+                                <input type="date" class="form-control">
+                            
+                            <br>
+                            <div class="row">
+                                <div class="d-grid gap-2 d-md-block">
+                            <input class=" py-3 form-control shadow" placeholder="Ingrese la tarea" type="text" id="inputText"> 
+                                </div>
+                                <div class=class="d-grid gap-2 d-md-block">
+                                    <!-- método para ingresar la tarea -->
+                                    <button class=" mt-2 btn btn-dark"> Cargar tarea </button>
+                                </div>
+                            </div>
+                            
+                        
+                        <hr>
+                        <div>
+                            <h3 class=" h1">Tareas cargadas</h3> 
+                        
+                        </div>
+
+                        <div class="row rounded bg-white">
+                            <div class=" col-12"> 
+                            <ul class=" list-group" id="list"></ul>
+                            </div> 
+                    
+                    
+                            <div class="row">
+                                <div class=" col-8">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                      Diagramar UML
+                                    </label>
+                                </div>
+                                
+                               
+                            </div>
+                            <div class="row">
+                                <div class=" col-8">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                      Entides y servicios
+                                    </label>
+                                </div>
+                                
+                            </div>
+                            <div class="row">
+                                <div class=" col-8">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                      Controladores
+                                    </label>
+                                </div>
+                                
+                            </div>
+                            <div class="row">
+                                <div class=" col-8">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                      Seguridad
+                                    </label>
+                                </div>
+                                <br>
+                                <br>
+                            </div>
+                            <div class="d-grid gap-2 d-md-block">
+                                <button class="btn btn-primary" type="button">Editar selección</button>
+                                <button class="btn btn-danger" type="button">Borrar selección</button>
+                              </div>
+                            <div class="d-grid gap-4 d-md-block">
+                                <!-- método para ingresar la tarea -->
+                                <button class=" mt-2 btn btn-dark" type="button"> Guardar las tareas cargadas </button>
+                            </div>
+                        </div>
+                            <hr>
+                        <div class="row rounded bg-white">
+                            <div class=" col-12"> 
+                            <ul class=" list-group" id="list"></ul>
+                            </div> 
+                        </div> 
+
+                    </div>
+                
+                
+            </div>
+
+        </div>
+    </main>
+
+    <alert id="alertas">
+    <link rel="stylesheet" href="/css/alertas.css">
+
+    <div class="exito" hidden="">
+        <span class="titulo">Exito</span>
+        <div class="divider"></div>
+        <span class="informacion"></span>
+        <script>
+            setTimeout(() => {
+                const exito = document.querySelector("#alertas").querySelector(".exito")
+                exito.classList.add("exito-hide")
+                setTimeout(() => {
+                    exito.classList.remove("exito-hide")
+                    exito.hidden = true
+                }, 800)
+            }, 2500)
+        </script>
+    </div>
+
+    <div class="error" hidden="hidden">
+        <div class="detalles">
+            <span class="titulo">Error</span>
+            <div class="divider"></div>
+            <span class="informacion"></span>
+        </div>
+        <div>
+            <svg class="salir" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 15 15">
+                <path fill="currentColor" fill-rule="evenodd" d="M11.782 4.032a.575.575 0 1 0-.813-.814L7.5 6.687L4.032 3.218a.575.575 0 0 0-.814.814L6.687 7.5l-3.469 3.468a.575.575 0 0 0 .814.814L7.5 8.313l3.469 3.469a.575.575 0 0 0 .813-.814L8.313 7.5l3.469-3.468Z" clip-rule="evenodd"></path>
+            </svg>
+        </div>
+    </div>
+
+    <script src="/js/alertas.js"></script>
+</alert>
+    <footer id="footer">
+    <link rel="stylesheet" href="/css/footer.css">
+
+    <div class="inicio">
+        <strong><span class="miembros">EQUIPO P ©2023&nbsp;</span></strong>
+        <script>
+            document.querySelector(".miembros").innerHTML += " ©" + new Date().getFullYear() + "&nbsp;"
+        </script>
+    </div>
+    <div class="fin">
+        <a class="icono" href="/contacto">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24">
+                <path fill="currentColor" d="m20.34 9.32l-14-7a3 3 0 0 0-4.08 3.9l2.4 5.37a1.06 1.06 0 0 1 0 .82l-2.4 5.37A3 3 0 0 0 5 22a3.14 3.14 0 0 0 1.35-.32l14-7a3 3 0 0 0 0-5.36Zm-.89 3.57l-14 7a1 1 0 0 1-1.35-1.3l2.39-5.37a2 2 0 0 0 .08-.22h6.89a1 1 0 0 0 0-2H6.57a2 2 0 0 0-.08-.22L4.1 5.41a1 1 0 0 1 1.35-1.3l14 7a1 1 0 0 1 0 1.78Z"></path>
+            </svg>
+        </a>
+        <a class="icono" href="https://github.com/ProyectoPetru/Petru" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33c.85 0 1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"></path>
+            </svg>
+        </a>
+    </div>
+</footer>
+    <script>
+        // Inicializar el popover utilizando JavaScript
+        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+            return new bootstrap.Popover(popoverTriggerEl);
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="/js/index.js"></script>
+
+
+</body>
+</html>
