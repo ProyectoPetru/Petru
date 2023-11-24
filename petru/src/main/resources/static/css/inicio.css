@@ -226,7 +226,7 @@ main .inicio .detalles .caja .informacion-hide {
             opacity: 100%;
         }
 
-        50% {
+        30% {
             opacity: 0%;
         }
 
