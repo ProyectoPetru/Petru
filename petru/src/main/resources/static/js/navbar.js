@@ -96,7 +96,6 @@ Array.from(document.querySelector("#navbar").querySelectorAll(".dropdown")).map(
 
 /* cuando se use el atributo redirect, se va a llamar a esta funcion */
 Array.from(document.querySelector("#navbar").querySelectorAll("[redirect]")).map(e => {
-    console.log(e.getAttribute("redirect"));
     e.addEventListener("click", () => {
         document.location = e.getAttribute("redirect")
     })

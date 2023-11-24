@@ -48,7 +48,7 @@ public class SeguridadWeb extends WebSecurityConfigurerAdapter {
                         .loginProcessingUrl("/logincheck")
                         .usernameParameter("email")
                         .passwordParameter("clave")
-                        .defaultSuccessUrl("/inicio") // falta crear la vista inicio con funcionalidades, esta no debería tener nada
+                        .defaultSuccessUrl("/")
                         .permitAll())
 
                 .logout(logout -> logout
