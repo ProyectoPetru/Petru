@@ -110,7 +110,7 @@ public class PortalControlador {
 
         modelo.addAttribute("usuariosession", logueado);
 
-        return "carga_tareas.html";
+        return "carga_proyectos.html";
     }
 
     @GetMapping("/contacto")

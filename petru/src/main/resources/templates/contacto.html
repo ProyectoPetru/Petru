@@ -4,24 +4,42 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/img/logo.png" type="image/x-icon"> 
-    <title>Contacto</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <title>contacto</title>
+    <!-- Fuente de la letra -->
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Montserrat&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/contacto.css">
+    <link rel="stylesheet" href="/src/main/resources/static/css/style.css">
+    <link rel="stylesheet" href="...\static\css\contacto.css">
+
 </head>
 
 <body>
+
     <nav th:replace="/fragments/navbar.html :: nav"></nav>
     <main>
-        <h1> En trabajo... </h1>
+        <div class="formulario-container">
+            <div class="info-form">
+                <h2> Contactanos </h2>
+                <p>nuestros servicios de atencion estan disponibles de 8 a 19hs, responderemos tu email o consulta lo
+                    antes posible</p>
+                <a href="#"></a>123-456-789 </a>
+
+            </div>
+            <form action="#" autocomplete="off">
+                <input type="text" name="nombre" id="nombre" placeholder="ingrese su nombre y apellido" class="campo">
+                <input type="email" name="correoelectronico" placeholder="ingrese su correo electronico">
+                <textarea name="mensaje" cols="30" rows="10"></textarea>
+                <input type="submit" name="enviar" value="enviar mensaje" class="btn-enviar">
+            </form>
+
+        </div>
     </main>
 
     <footer th:replace="/fragments/footer.html :: footer"></footer>
 
-    <script src="/js/index.js"></script>
+
+    <script src="petru/src/main/resources/static/js/index.js"></script>
 </body>
 
 </html>

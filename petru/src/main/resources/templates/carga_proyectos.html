@@ -23,7 +23,7 @@
 
     <main style="position: relative;">
         <div class="table-responsive">
-            <div class="container mt-5">
+            <div class="container">
                 <table class="table table-striped" th:action="@{/carga_proyecto}" method="POST">
                     <thead class="table-dark">
                         <tr class="table-striped">
@@ -125,6 +125,7 @@
         </div>
     </main>
 
+    <alert th:replace="/fragments/alertas.html"></alert>
     <footer th:replace="/fragments/footer.html :: footer"></footer>
     <script>
         // Inicializar el popover utilizando JavaScript

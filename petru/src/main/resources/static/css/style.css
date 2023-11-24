@@ -16,6 +16,11 @@
     --contrast: white;
 }
 
+html {
+    position: relative;
+    min-height: 100%;
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
     background: var(--background);
@@ -23,4 +28,8 @@ body {
     margin: 0;
     overflow-x: hidden;
     transition: background .4s;
+}
+
+main {
+    margin: 5rem 0 10rem 0;
 }
