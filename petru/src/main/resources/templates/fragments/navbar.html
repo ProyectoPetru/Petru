@@ -6,7 +6,7 @@
     <div class="inicio">
         <!-- Cada elemento lleva la etiqueta "item" -->
         <div class="item">
-            <a class="icono">
+            <a class="icono" href="/">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16">
                     <path fill="currentColor"
                         d="M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z" />
@@ -19,7 +19,7 @@
 
     <!-- Elementos en el medio de la navbar -->
     <div class="medio">
-        <div class="item">
+        <div class="item" th:if="${usuariosession != null}">
             <a class="icono">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
                     <path fill="currentColor"
@@ -73,7 +73,7 @@
             </div>
         </div>
 
-        <div class="item">
+        <div class="item" th:if="${usuariosession != null}">
             <a class="icono">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
                     <path fill="currentColor"
@@ -124,7 +124,7 @@
     <div class="fin">
 
         <!-- Usuario admin -->
-        <div class="item">
+        <div class="item" sec:authorize="${hasRole('ADMIN')}">
             <a class="icono">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
                     <path fill="currentColor"
@@ -143,14 +143,14 @@
                 <div class="list">
                     <a>Perfil</a>
                 </div>
-                <div class="list">
+                <div class="list" redirect="/logout">
                     <a>Cerrar Sesion</a>
                 </div>
             </div>
         </div>
 
         <!-- Usuario comun -->
-        <div class="item" style="display: none;">
+        <div class="item" th:if="${usuariosession != null}">
             <a class="icono">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
                     <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -161,21 +161,21 @@
                 </svg>
             </a>
             <div hidden class="dropdown" style="margin-left: -6rem;">
-                <div class="list">
-                    <a onclick="cambiarTema()">Cambiar Tema</a>
+                <div class="list" onclick="cambiarTema()">
+                    <a>Cambiar Tema</a>
                 </div>
                 <div class="list">
                     <a>Perfil</a>
                 </div>
-                <div class="list">
+                <div class="list" redirect="/logout">
                     <a>Cerrar Sesion</a>
                 </div>
             </div>
         </div>
 
         <!-- Usuario no logueado -->
-        <div class="item" style="display: none;">
-            <a class="icono">
+        <div class="item" th:if="${usuariosession == null}">
+            <a class="icono" href="/login">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
                     <path fill="currentColor"
                         d="M12 21v-2h7V5h-7V3h7q.825 0 1.413.588T21 5v14q0 .825-.588 1.413T19 21h-7Zm-2-4l-1.375-1.45l2.55-2.55H3v-2h8.175l-2.55-2.55L10 7l5 5l-5 5Z" />

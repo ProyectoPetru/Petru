@@ -36,6 +36,7 @@
 #navbar .item a {
     cursor: pointer;
     transition: color .4s;
+    color: var(--text);
 }
 
 #navbar .item a:hover {

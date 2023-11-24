@@ -9,9 +9,12 @@ package com.grupop.petru.controladores;
  *           Salvador Caldarella - Sebastián A. Petrini
  */
 
+import com.grupop.petru.entidades.Usuario;
 import com.grupop.petru.excepciones.MiException;
 import com.grupop.petru.servicios.UsuarioServicio;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,8 +31,19 @@ public class PortalControlador {
     @Autowired
     private UsuarioServicio usuarioServicio;
     
-    @GetMapping("/")
-    public String index() {
+ // a futuro se podria ver si agregamos esto   @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+    @GetMapping(path = {"/", "/inicio"})
+    public String index(HttpSession session, ModelMap modelo) {
+        Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+        if (logueado == null) {
+            return "inicio.html";
+        }
+        if (logueado.getRol().toString().equals("ADMIN")) {
+            return "redirect:/admin/dashboard";
+        }
+
+        modelo.addAttribute("usuariosession", logueado);
+
         return "inicio.html";
     }
     
@@ -61,6 +75,14 @@ public class PortalControlador {
             modelo.put("error", "Usuario o Contraseña invalidos!");
         }
         return "login.html";
+    }
+
+    @GetMapping("/carga")
+    public String carga(@RequestParam(required = false) String error, ModelMap modelo) {
+        if (error != null) {
+            modelo.put("error", "Usuario o Contraseña invalidos!");
+        }
+        return "carga_tareas.html";
     }
 
     
