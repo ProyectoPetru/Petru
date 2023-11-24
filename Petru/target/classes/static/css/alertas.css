@@ -1,0 +1,134 @@
+@keyframes alert-in {
+    0% {
+        transform: translateX(30rem);
+    }
+
+    90% {
+        transform: translateX(-1rem);
+    }
+
+    100% {
+        transform: translateX(0rem);
+    }
+}
+
+@keyframes alert-out {
+    0% {
+        transform: translateX(0rem);
+    }
+
+    100% {
+        transform: translateX(30rem);
+    }
+}
+
+#alertas .exito {
+    position: fixed;
+
+    right: 2rem;
+    bottom: 1rem;
+
+    min-width: 15rem;
+    max-width: 30rem;
+    min-height: 3rem;
+    max-height: 6rem;
+
+    background: rgb(20, 165, 20);
+    padding: .5rem;
+    border-radius: .5rem;
+
+    display: flex;
+    flex-direction: column;
+
+    animation: alert-in .8s ease-in-out 0s 1 normal forwards;
+}
+
+#alertas .exito-hide {
+    animation: alert-out .8s ease-in-out 0s 1 normal forwards;
+}
+
+#alertas .exito[hidden] {
+    display: none;
+}
+
+#alertas .exito .titulo {
+    color: var(--text);
+    font-size: 1.3rem;
+    margin: 0 5% 0 8%;
+    user-select: none;
+}
+
+#alertas .exito .divider {
+    height: 1px;
+    margin: .3rem 5% .3rem 5%;
+    width: 90%;
+    background: var(--text);
+}
+
+#alertas .exito .informacion {
+    color: var(--text);
+    margin: .2rem 10% 1rem 10%;
+}
+
+#alertas .error {
+    position: fixed;
+
+    right: 2rem;
+    bottom: 1rem;
+
+    min-width: 9rem;
+    max-width: 30rem;
+    min-height: 3rem;
+    max-height: 6rem;
+
+    background: rgb(255, 42, 42);
+    padding: .5rem;
+    border-radius: .5rem;
+
+    display: flex;
+    align-items: center;
+
+    animation: alert-in .8s ease-in-out 0s 1 normal forwards;
+}
+
+#alertas .error-hide {
+    animation: alert-out .8s ease-in-out 0s 1 normal forwards;
+}
+
+#alertas .error[hidden] {
+    display: none;
+}
+
+#alertas .error .detalles {
+    display: flex;
+    flex-direction: column;
+}
+
+#alertas .error .titulo {
+    color: var(--text);
+    font-size: 1.3rem;
+    margin: 0 5% 0 8%;
+    user-select: none;
+}
+
+#alertas .error .divider {
+    height: 1px;
+    margin: .3rem 5% .3rem 5%;
+    width: 90%;
+    background: var(--text);
+}
+
+#alertas .error .informacion {
+    color: var(--text);
+    margin: .2rem 10% 1rem 10%;
+}
+
+#alertas .error .salir {
+    color: var(--text);
+    margin: 0 .8rem 0 .8rem;
+}
+
+#alertas .error .salir:hover {
+    filter: brightness(50%);
+    cursor: pointer;
+}
