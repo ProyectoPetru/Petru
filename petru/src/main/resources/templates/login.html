@@ -14,7 +14,7 @@
 
 <body>
     <nav th:replace="/fragments/navbar.html :: nav"></nav>
-    <form class="formulario" th:actions="@{/logincheck}" method="POST">
+    <form class="formulario" th:action="@{/logincheck}" method="POST">
         <div class="mensaje">
             <h3>Bienvenido a P.E.T.R.U.! Por favor logueate aqui abajo</h3>
         </div>

@@ -33,11 +33,17 @@ public class PortalControlador {
     
  // a futuro se podria ver si agregamos esto   @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping("/")
-    public String index(HttpSession session) {
+    public String index(HttpSession session, ModelMap modelo) {
         Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+        if (logueado == null) {
+            return "inicio.html";
+        }
         if (logueado.getRol().toString().equals("ADMIN")) {
             return "redirect:/admin/dashboard";
         }
+
+        modelo.addAttribute("usuariosession", logueado);
+
         return "inicio.html";
     }
     

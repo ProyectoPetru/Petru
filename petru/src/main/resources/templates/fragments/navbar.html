@@ -19,7 +19,7 @@
 
     <!-- Elementos en el medio de la navbar -->
     <div class="medio">
-        <div class="item" th:if="${usuariosesion != null}">
+        <div class="item" th:if="${usuariosession != null}">
             <a class="icono">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
                     <path fill="currentColor"
@@ -73,7 +73,7 @@
             </div>
         </div>
 
-        <div class="item" th:if="${usuariosesion != null}">
+        <div class="item" th:if="${usuariosession != null}">
             <a class="icono">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
                     <path fill="currentColor"
@@ -150,7 +150,7 @@
         </div>
 
         <!-- Usuario comun -->
-        <div class="item" th:if="${usuariosesion != null}">
+        <div class="item" th:if="${usuariosession != null}">
             <a class="icono">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
                     <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -174,7 +174,7 @@
         </div>
 
         <!-- Usuario no logueado -->
-        <div class="item" th:if="${usuariosesion == null}">
+        <div class="item" th:if="${usuariosession == null}">
             <a class="icono" href="/login">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
                     <path fill="currentColor"
