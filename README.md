@@ -1,5 +1,7 @@
 # Petru
 
+![GitHub contributors](https://img.shields.io/github/contributors/ProyectoPetru/Petru)
+
 Proyecto final realizado en el marco del quinto tramo del curso fullstack de EGG Cooperation. EQUIPO "P"
 
 ## Miembros del proyecto:
