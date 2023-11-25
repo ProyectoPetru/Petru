@@ -5,6 +5,7 @@
     --secondary: #b4a3f5;
     --accent: #b9df20;
     --contrast: black;
+    --current: white;
 }
 
 :root[data-theme="dark"] {
@@ -14,6 +15,7 @@
     --secondary: #101010;
     --accent: #f1f1f1;
     --contrast: white;
+    --current: black;
 }
 
 html {
@@ -31,5 +33,5 @@ body {
 }
 
 main {
-    margin: 5rem 0 10rem 0;
+    margin: 0 0 10rem 0;
 }

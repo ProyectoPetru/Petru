@@ -1,0 +1,273 @@
+#proyecto {
+    display: grid;
+    justify-items: end;
+    grid-template-columns: 1fr 10fr;
+    margin: 0 2rem 0 2rem;
+}
+
+#proyecto .calendario {
+    margin: 0 2rem 0 0;
+}
+
+#proyecto .contenedor {
+    filter: contrast(90%);
+    background: var(--background);
+    width: 100%;
+    height: 40rem;
+    overflow: auto;
+    display: flex;
+    justify-content: space-around;
+    margin: 0 0 0 2rem;
+}
+
+#proyecto .contenedor>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#proyecto .contenedor>div .tipo {
+    text-decoration: underline;
+    margin: .5rem 0 .5rem 0;
+    font-size: 2rem;
+}
+
+#proyecto .contenedor>div .tarea {
+    display: flex;
+    box-shadow: 0 0 .1rem .05rem var(--background);
+    filter: contrast(80%);
+    background: var(--background);
+    width: 8rem;
+    border-radius: .1rem;
+    padding: .5rem 1rem .5rem 1rem;
+    margin: .2rem 0 .2rem 0;
+    transition: box-shadow .4s;
+}
+
+#proyecto .contenedor>div .tarea:hover {
+    box-shadow: .05rem .05rem .2rem .1rem var(--contrast);
+}
+
+#proyecto .contenedor>div .tarea .etiqueta:hover {
+    border: 1px solid var(--contrast) !important;
+}
+
+#proyecto .contenedor>div .tarea .tooltip {
+    position: absolute;
+    background: var(--current);
+    color: var(--text);
+    opacity: 1;
+    margin-top: -1.2rem;
+    font-size: .9rem;
+}
+
+#proyecto .contenedor>div .tarea svg {
+    margin: 0 0 0 auto;
+    color: var(--text);
+    transition: transform .4s, color .4s, opacity .4s;
+}
+
+#proyecto .contenedor>div .tarea svg:hover {
+    cursor: pointer;
+    color: var(--accent);
+    transform: rotate(-45deg);
+}
+
+#proyecto .contenedor>div .tarea svg.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#proyecto .agregar {
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 0 .1rem .05rem rgb(105, 191, 105);
+    filter: contrast(80%);
+    background: rgb(105, 191, 105);
+    width: 8rem;
+    border-radius: .1rem;
+    padding: .5rem 1rem .5rem 1rem;
+    margin: .2rem 0 .2rem 0;
+    transition: box-shadow .4s;
+}
+
+#proyecto .agregar:hover {
+    cursor: pointer;
+    box-shadow: .05rem .05rem .2rem .1rem var(--contrast);
+}
+
+#proyecto .agregar-input {
+    display: flex;
+    box-shadow: 0 0 .1rem .05rem var(--background) !important;
+    filter: contrast(80%);
+    background: var(--background);
+    width: 8rem;
+    border-radius: .1rem;
+    padding: 0 1rem;
+}
+
+#proyecto .agregar-input form {
+    display: flex;
+    align-items: center;
+}
+
+#proyecto .agregar-input input {
+    background: none;
+    color: var(--text);
+    border: 1px solid var(--background);
+    width: 6rem;
+    border: 1;
+    border-radius: .1rem;
+    padding: .7rem 3rem .7rem 1rem;
+}
+
+#proyecto .ventana .agregar-input input {
+    width: 4rem;
+    padding: .7rem 5rem .7rem 1rem;
+}
+
+#proyecto .agregar-input button[type=submit] {
+    margin: 0 .7rem 0 0;
+    position: absolute;
+    right: 0;
+    background: none;
+    color: var(--text);
+    transition: color .4s, border .4s;
+    border: 1px solid var(--text);
+    border-radius: .2rem;
+}
+
+#proyecto .agregar-input button[type=submit]:hover {
+    border: 1px solid green;
+    color: green;
+}
+
+#proyecto .ventana .agregar-input select {
+    margin: 0 .7rem 0 0;
+    position: absolute;
+    right: 2rem;
+    background: none;
+    color: var(--text);
+    border: 1px solid var(--text);
+    border-radius: .2rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+    width: 1.6rem;
+    padding: .15rem .1rem .15rem .1rem;
+}
+
+
+#proyecto .ventana {
+    position: fixed;
+    opacity: 90%;
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    width: 40rem;
+    height: 23rem;
+    padding: 2rem;
+    background: var(--secondary);
+}
+
+#proyecto .ventana[hidden] {
+    display: none;
+}
+
+#proyecto .ventana .cambiar-nombre input {
+    margin: 0 0 0 1rem;
+    font-size: 2rem;
+    background: none;
+    color: var(--text);
+    width: 20rem;
+    height: 2.5rem;
+    border: .1rem solid var(--background);
+    padding: .2rem .5rem;
+    border-radius: .3rem;
+}
+
+#proyecto .ventana .cambiar-nombre button[type=submit] {
+    margin: 0 0 0 .5rem;
+    background: none;
+    color: var(--text);
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.5rem;
+    padding: .2rem .2rem;
+    border: .1rem solid var(--secondary);
+    border-radius: .3rem;
+    transition: border .4s, color .4s;
+}
+
+#proyecto .ventana .cambiar-nombre button[type=submit]:hover {
+    cursor: pointer;
+    color: green;
+    border: .1rem solid green;
+}
+
+#proyecto .ventana .etiquetas {
+    text-align: center;
+    margin: 0 2rem 0 auto;
+}
+
+#proyecto .ventana .etiquetas .titulo {
+    font-size: 2rem;
+    text-decoration: underline;
+}
+
+#proyecto .ventana .etiquetas .etiqueta {
+    color: var(--text);
+    text-shadow: 1px 1px 1px var(--current);
+    padding: .5rem .2rem;
+    margin: .5rem 0 .5rem 0;
+}
+
+#proyecto .ventana .salir {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: .5rem;
+    transition: color .4s;
+}
+
+#proyecto .ventana .salir:hover {
+    cursor: pointer;
+    color: rgb(219, 62, 62);
+}
+
+@media(max-width: 1000px) {
+    #proyecto {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+    }
+
+    #proyecto .calendario {
+        width: 15rem;
+    }
+
+    #proyecto .contenedor {
+        display: flex;
+        margin: 0;
+        flex-direction: column;
+        align-items: center;
+        width: 15rem;
+    }
+
+    #proyecto .ventana {
+        width: 20rem;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #proyecto .ventana .cambiar-nombre input {
+        margin: 0 0 0 .2rem;
+        width: 15rem;
+    }
+
+    #proyecto .ventana .etiquetas {
+        margin: auto 0 0 0;
+    }
+}
