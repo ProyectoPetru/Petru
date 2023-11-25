@@ -36,13 +36,13 @@ document.addEventListener("click", (element) => {
         if (element.target.closest(".ventana") != null) {
             Array.from(document.querySelector("#proyecto").querySelector(".ventana").querySelectorAll(".agregar")).filter((e) => e.classList.contains("agregar-input")).map((e) => {
                 e.removeChild(e.querySelector("form"))
-                e.textContent = "➕"
+                e.innerHTML = "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'> <path fill='currentColor' d='M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z'/></svg>"
                 e.classList.remove("agregar-input")
             })
         }
         if (document.querySelector("#proyecto").querySelector(".contenedor").querySelector(".agregar-input") != null) {
             document.querySelector("#proyecto").querySelector(".contenedor").querySelector(".agregar").removeChild(document.querySelector("#proyecto").querySelector(".contenedor").querySelector(".agregar").querySelector("form"))
-            document.querySelector("#proyecto").querySelector(".contenedor").querySelector(".agregar").textContent = "➕"
+            document.querySelector("#proyecto").querySelector(".contenedor").querySelector(".agregar").innerHTML = "<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'> <path fill='currentColor' d='M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z'/></svg>"
             document.querySelector("#proyecto").querySelector(".contenedor").querySelector(".agregar").classList.remove("agregar-input")
         }
     }
@@ -54,7 +54,7 @@ document.querySelector("#proyecto").querySelector(".contenedor").querySelector("
     }
 
     e.target.classList.add("agregar-input")
-    e.target.textContent = ""
+    e.target.removeChild(e.target.querySelector("svg"))
     const form = document.createElement("form")
     form.action = "/tarea/registro"
     const id = document.createElement("input")

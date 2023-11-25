@@ -81,19 +81,25 @@
 #proyecto .agregar {
     display: flex;
     justify-content: center;
-    box-shadow: 0 0 .1rem .05rem rgb(105, 191, 105);
+    box-shadow: 0 0 .1rem .05rem var(--background);
     filter: contrast(80%);
-    background: rgb(105, 191, 105);
+    background: var(--background);
     width: 8rem;
     border-radius: .1rem;
     padding: .5rem 1rem .5rem 1rem;
     margin: .2rem 0 .2rem 0;
-    transition: box-shadow .4s;
+    transition: box-shadow .4s, color .4s;
+}
+
+#proyecto .agregar svg,
+path {
+    pointer-events: none;
 }
 
 #proyecto .agregar:hover {
     cursor: pointer;
-    box-shadow: .05rem .05rem .2rem .1rem var(--contrast);
+    color: green;
+    box-shadow: .05rem .05rem .2rem .1rem green;
 }
 
 #proyecto .agregar-input {

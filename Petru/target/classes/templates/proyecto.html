@@ -30,7 +30,8 @@
                         th:id="${tarea.id}">
                         <div>
                             <div style="display: flex;">
-                                <div class="etiqueta" th:each="etiqueta : ${tarea.etiquetas}" th:style="${'transition: border .4s; border: 1px solid ' + etiqueta.color + '; border-radius: .2rem; margin: 0 .3rem .2rem .3rem; height: 6px; width: 15px; background: ' + etiqueta.color}">
+                                <div class="etiqueta" th:each="etiqueta : ${tarea.etiquetas}"
+                                    th:style="${'transition: border .4s; border: 1px solid ' + etiqueta.color + '; border-radius: .2rem; margin: 0 .3rem .2rem .3rem; height: 6px; width: 15px; background: ' + etiqueta.color}">
                                     <span hidden class="tooltip" th:text="${etiqueta.nombre}"></span>
                                 </div>
                             </div>
@@ -43,7 +44,9 @@
                         </svg>
                     </div>
                     <div class="agregar" th:tarea="${proyecto.id}">
-                        ➕
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z" />
+                        </svg>
                     </div>
                 </div>
                 <div class="haciendo">
@@ -52,7 +55,8 @@
                         th:id="${tarea.id}">
                         <div>
                             <div style="display: flex;">
-                                <div class="etiqueta" th:each="etiqueta : ${tarea.etiquetas}" th:style="${'transition: border .4s; border: 1px solid ' + etiqueta.color + '; border-radius: .2rem; margin: 0 .3rem .2rem .3rem; height: 6px; width: 15px; background: ' + etiqueta.color}">
+                                <div class="etiqueta" th:each="etiqueta : ${tarea.etiquetas}"
+                                    th:style="${'transition: border .4s; border: 1px solid ' + etiqueta.color + '; border-radius: .2rem; margin: 0 .3rem .2rem .3rem; height: 6px; width: 15px; background: ' + etiqueta.color}">
                                     <span hidden class="tooltip" th:text="${etiqueta.nombre}"></span>
                                 </div>
                             </div>
@@ -71,7 +75,8 @@
                         th:id="${tarea.id}">
                         <div>
                             <div style="display: flex;">
-                                <div class="etiqueta" th:each="etiqueta : ${tarea.etiquetas}" th:style="${'transition: border .4s; border: 1px solid ' + etiqueta.color + '; border-radius: .2rem; margin: 0 .3rem .2rem .3rem; height: 6px; width: 15px; background: ' + etiqueta.color}">
+                                <div class="etiqueta" th:each="etiqueta : ${tarea.etiquetas}"
+                                    th:style="${'transition: border .4s; border: 1px solid ' + etiqueta.color + '; border-radius: .2rem; margin: 0 .3rem .2rem .3rem; height: 6px; width: 15px; background: ' + etiqueta.color}">
                                     <span hidden class="tooltip" th:text="${etiqueta.nombre}"></span>
                                 </div>
                             </div>
@@ -104,8 +109,11 @@
                         th:style="${'background:' + etiqueta.color}">
                         <span th:text="${etiqueta.nombre}"></span>
                     </div>
-                    <div class="agregar" th:tarea="${tarea.id}" th:if="${tarea.etiquetas == null || tarea.etiquetas.size() < 3}">
-                        ➕
+                    <div class="agregar" th:tarea="${tarea.id}"
+                        th:if="${tarea.etiquetas == null || tarea.etiquetas.size() < 3}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z" />
+                        </svg>
                     </div>
                 </div>
             </div>
