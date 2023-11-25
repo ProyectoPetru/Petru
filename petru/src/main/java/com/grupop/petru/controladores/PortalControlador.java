@@ -134,6 +134,7 @@ public class PortalControlador {
         modelo.addAttribute("usuariosession", logueado);
 
         Proyecto proyecto = new Proyecto();
+        proyecto.setId("pro1");
         proyecto.setNombre("Algo");
         proyecto.setNotas("notas");
         proyecto.setVisibilidad(Visibilidad.PUBLICO);

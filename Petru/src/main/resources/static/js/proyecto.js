@@ -57,6 +57,11 @@ document.querySelector("#proyecto").querySelector(".contenedor").querySelector("
     e.target.textContent = ""
     const form = document.createElement("form")
     form.action = "/tarea/registro"
+    const id = document.createElement("input")
+    id.hidden = true
+    id.type = "text"
+    id.name = "id"
+    id.value = e.target.getAttribute("tarea")
     const input = document.createElement("input")
     input.type = "text"
     input.name = "nombre"
@@ -65,6 +70,7 @@ document.querySelector("#proyecto").querySelector(".contenedor").querySelector("
     submit.textContent = "✔"
     submit.type = "submit"
     submit.classList.add("agregar-submit")
+    form.appendChild(id)
     form.appendChild(input)
     form.appendChild(submit)
     e.target.appendChild(form)
@@ -83,6 +89,7 @@ Array.from(document.querySelector("#proyecto").querySelector(".ventana").querySe
         form.action = "/etiqueta/registro"
         const id = document.createElement("input")
         id.hidden = true
+        id.type = "text"
         id.name = "id"
         id.value = e.target.getAttribute("tarea")
         const input = document.createElement("input")
@@ -90,6 +97,7 @@ Array.from(document.querySelector("#proyecto").querySelector(".ventana").querySe
         input.name = "nombre"
         input.autocomplete = "off"
         const select = document.createElement("select")
+        select.name = "color"
         const blue = document.createElement("option")
         blue.style.background = "blue"
         blue.value = "blue"
