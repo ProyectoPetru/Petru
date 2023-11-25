@@ -151,6 +151,9 @@ public class UsuarioServicio implements UserDetailsService {
         if (nombre.isEmpty() || nombre == null) {
             throw new MiException("el nombre no puede ser nulo o estar vacío");
         }
+        if (nombre.length() > 14) {
+            throw new MiException("el nombre no puede contener mas de 12 caracteres");
+        }
         if (email.isEmpty() || email == null) {
             throw new MiException("el email no puede ser nulo o estar vacio");
         }

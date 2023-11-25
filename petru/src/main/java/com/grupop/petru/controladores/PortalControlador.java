@@ -2,6 +2,7 @@
 package com.grupop.petru.controladores;
 
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
+import com.grupop.petru.entidades.Comentario;
 import com.grupop.petru.entidades.Etiqueta;
 import com.grupop.petru.entidades.Proyecto;
 import com.grupop.petru.entidades.Tarea;
@@ -155,6 +156,11 @@ public class PortalControlador {
         etiqueta3.setNombre("Matematica");
         etiqueta3.setColor("yellow");
         tarea1.setEtiquetas(Arrays.asList(new Etiqueta[] {etiqueta1, etiqueta2, etiqueta3}));
+        Comentario comentario1 = new Comentario();
+        comentario1.setId("com1");
+        comentario1.setContenido("hola");
+        comentario1.setUsuario(logueado);
+        tarea1.setComentarios(Arrays.asList(new Comentario[] {comentario1}));
 
         Tarea tarea2 = new Tarea();
         tarea2.setId("tar2");

@@ -91,8 +91,7 @@
     transition: box-shadow .4s, color .4s;
 }
 
-#proyecto .agregar svg,
-path {
+#proyecto .agregar svg, path {
     pointer-events: none;
 }
 
@@ -164,7 +163,6 @@ path {
     padding: .15rem .1rem .15rem .1rem;
 }
 
-
 #proyecto .ventana {
     position: fixed;
     opacity: 90%;
@@ -178,6 +176,14 @@ path {
 }
 
 #proyecto .ventana[hidden] {
+    display: none;
+}
+
+#proyecto .ventana .tarea-ventana {
+    display: flex;
+}
+
+#proyecto .ventana .tarea-ventana[hidden] {
     display: none;
 }
 
@@ -212,9 +218,48 @@ path {
     border: .1rem solid green;
 }
 
+#proyecto .ventana .comentarios {
+    background: var(--secondary);
+    filter: contrast(80%);
+    width: 20rem;
+    height: 20rem;
+    margin: 1rem 2rem 1rem 2rem;
+    overflow: auto;
+}
+
+#proyecto .ventana .comentarios .comentario {
+    width: 18rem;
+    border: 1px solid var(--text);
+    border-radius: 1rem;
+}
+
+#proyecto .ventana .comentarios .comentario .usuario {
+    display: grid;
+    grid-template-columns: 1fr 1fr 10fr;
+    align-items: center;
+    margin: .5rem;
+}
+
+#proyecto .ventana .comentarios .comentario .usuario img {
+    border: 1px solid var(--text);
+    border-radius: 50%;
+    margin: 0 .5rem 0 0;
+}
+
+#proyecto .ventana .comentarios .comentario .usuario span {
+    font-size: 1.1rem;
+    width: 15rem;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#proyecto .ventana .comentarios .comentario .contenido {
+    margin: .5rem .3rem .5rem .3rem;
+}
+
 #proyecto .ventana .etiquetas {
     text-align: center;
-    margin: 0 2rem 0 auto;
+    margin: 0 auto 0 2rem;
 }
 
 #proyecto .ventana .etiquetas .titulo {

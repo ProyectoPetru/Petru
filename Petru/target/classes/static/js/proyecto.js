@@ -12,10 +12,8 @@ Array.from(document.querySelector("#proyecto").querySelector(".contenedor").quer
 
 Array.from(document.querySelector("#proyecto").querySelector(".contenedor").querySelectorAll(".tarea")).map((e) => {
     e.querySelector("svg").addEventListener("click", () => {
-        document.querySelector("#proyecto").querySelector(".ventana").querySelector(".cambiar-nombre").querySelector("input[name=id]").value = e.id
-        Array.from(document.querySelector("#proyecto").querySelector(".ventana").querySelectorAll(".etiquetas")).map((e) => e.hidden = true)
+        Array.from(document.querySelector("#proyecto").querySelector(".ventana").querySelectorAll(".ventana>div")).map((e) => e.hidden = true)
         document.querySelector("#proyecto").querySelector(".ventana").querySelector(`#${e.id}`).hidden = false
-        document.querySelector("#proyecto").querySelector(".ventana").querySelector(".cambiar-nombre").querySelector("input[name=nombre]").value = e.querySelector(".titulo").textContent
         document.querySelector("#proyecto").querySelector(".ventana").hidden = false
     })
 })
