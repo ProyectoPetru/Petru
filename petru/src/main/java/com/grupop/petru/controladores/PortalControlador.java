@@ -117,4 +117,13 @@ public class PortalControlador {
 
         return "contacto.html";
     }
+
+    @GetMapping("/proyecto")
+    public String proyecto(@RequestParam(required = false) String error, HttpSession session, ModelMap modelo) {
+        Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+
+        modelo.addAttribute("usuariosession", logueado);
+
+        return "proyecto.html";
+    }
 }
