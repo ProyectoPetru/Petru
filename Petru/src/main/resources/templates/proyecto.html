@@ -104,7 +104,7 @@
                         th:style="${'background:' + etiqueta.color}">
                         <span th:text="${etiqueta.nombre}"></span>
                     </div>
-                    <div class="agregar" th:if="${tarea.etiquetas == null || tarea.etiquetas.size() < 3}">
+                    <div class="agregar" th:tarea="${tarea.id}" th:if="${tarea.etiquetas == null || tarea.etiquetas.size() < 3}">
                         ➕
                     </div>
                 </div>

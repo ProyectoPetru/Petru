@@ -33,10 +33,12 @@ document.addEventListener("click", (element) => {
     }
 
     if (element.target.closest(".agregar") == null) {
-        if (document.querySelector("#proyecto").querySelector(".ventana").querySelector(".agregar-input") != null) {
-            document.querySelector("#proyecto").querySelector(".ventana").querySelector(".agregar").removeChild(document.querySelector("#proyecto").querySelector(".ventana").querySelector(".agregar").querySelector("form"))
-            document.querySelector("#proyecto").querySelector(".ventana").querySelector(".agregar").textContent = "➕"
-            document.querySelector("#proyecto").querySelector(".ventana").querySelector(".agregar").classList.remove("agregar-input")
+        if (element.target.closest(".ventana") != null) {
+            Array.from(document.querySelector("#proyecto").querySelector(".ventana").querySelectorAll(".agregar")).filter((e) => e.classList.contains("agregar-input")).map((e) => {
+                e.removeChild(e.querySelector("form"))
+                e.textContent = "➕"
+                e.classList.remove("agregar-input")
+            })
         }
         if (document.querySelector("#proyecto").querySelector(".contenedor").querySelector(".agregar-input") != null) {
             document.querySelector("#proyecto").querySelector(".contenedor").querySelector(".agregar").removeChild(document.querySelector("#proyecto").querySelector(".contenedor").querySelector(".agregar").querySelector("form"))
@@ -69,46 +71,53 @@ document.querySelector("#proyecto").querySelector(".contenedor").querySelector("
     input.focus()
 })
 
-document.querySelector("#proyecto").querySelector(".ventana").querySelector(".agregar").addEventListener("click", (e) => {
-    if (e.target.tagName == "INPUT" || e.target.tagName == "BUTTON" || e.target.tagName == "SELECT") {
-        return
-    }
+Array.from(document.querySelector("#proyecto").querySelector(".ventana").querySelectorAll(".agregar")).map((e) => {
+    e.addEventListener("click", (e) => {
+        if (e.target.tagName == "INPUT" || e.target.tagName == "BUTTON" || e.target.tagName == "SELECT") {
+            return
+        }
 
-    e.target.classList.add("agregar-input")
-    e.target.textContent = ""
-    const form = document.createElement("form")
-    form.action = "/etiqueta/registro"
-    const input = document.createElement("input")
-    input.type = "text"
-    input.name = "nombre"
-    input.autocomplete = "off"
-    const select = document.createElement("select")
-    const blue = document.createElement("option")
-    blue.style.background = "blue"
-    blue.value = "blue"
-    blue.text = "🟦"
-    const red = document.createElement("option")
-    red.value = "red"
-    red.text = "🟥"
-    const yellow = document.createElement("option")
-    yellow.value = "yellow"
-    yellow.text = "🟨"
-    const green = document.createElement("option")
-    green.value = "green"
-    green.text = "🟩"
-    select.appendChild(blue)
-    select.appendChild(red)
-    select.appendChild(yellow)
-    select.appendChild(green)
-    const submit = document.createElement("button")
-    submit.textContent = "✔"
-    submit.type = "submit"
-    submit.classList.add("agregar-submit")
-    form.appendChild(input)
-    form.appendChild(select)
-    form.appendChild(submit)
-    e.target.appendChild(form)
-    input.focus()
+        e.target.classList.add("agregar-input")
+        e.target.textContent = ""
+        const form = document.createElement("form")
+        form.action = "/etiqueta/registro"
+        const id = document.createElement("input")
+        id.hidden = true
+        id.name = "id"
+        id.value = e.target.getAttribute("tarea")
+        const input = document.createElement("input")
+        input.type = "text"
+        input.name = "nombre"
+        input.autocomplete = "off"
+        const select = document.createElement("select")
+        const blue = document.createElement("option")
+        blue.style.background = "blue"
+        blue.value = "blue"
+        blue.text = "🟦"
+        const red = document.createElement("option")
+        red.value = "red"
+        red.text = "🟥"
+        const yellow = document.createElement("option")
+        yellow.value = "yellow"
+        yellow.text = "🟨"
+        const green = document.createElement("option")
+        green.value = "green"
+        green.text = "🟩"
+        select.appendChild(blue)
+        select.appendChild(red)
+        select.appendChild(yellow)
+        select.appendChild(green)
+        const submit = document.createElement("button")
+        submit.textContent = "✔"
+        submit.type = "submit"
+        submit.classList.add("agregar-submit")
+        form.appendChild(id)
+        form.appendChild(input)
+        form.appendChild(select)
+        form.appendChild(submit)
+        e.target.appendChild(form)
+        input.focus()
+    })
 })
 
 Array.from(document.querySelector("#proyecto").querySelectorAll(".tarea")).map((e) => {
