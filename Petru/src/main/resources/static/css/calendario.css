@@ -1,0 +1,12 @@
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+#calendar {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+#event-details {
+    display: none;
+}
