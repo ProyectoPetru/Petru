@@ -94,8 +94,7 @@
             <div hidden class="ventana">
                 <div class="tarea-ventana" hidden th:each="tarea : ${tareas}" th:id="${tarea.id}">
                     <div class="cambiar-nombre">
-                        <form action="/proyecto" method="post">
-                            <input hidden type="text" name="id" th:value="${tarea.id}">
+                        <form th:action="@{/tarea/modificar/__${tarea.id}__}" method="POST">
                             <input type="text" name="nombre" th:value="${tarea.nombre}">
                             <button type="submit">✔</button>
                         </form>
@@ -106,7 +105,7 @@
                                     <span class="nombre" th:text="${usuariosession.nombre}"></span>
                                 </div>
                                 <div class="contenido">
-                                    <form th:action="@{/comentario/registro}" method="post">
+                                    <form th:action="@{/comentario/registro}" method="POST">
                                         <input hidden type="text" name="id" th:value="${tarea.id}">
                                         <textarea name="contenido" placeholder="Agregar comentario..."></textarea>
                                         <button type="submit">✔</button>
@@ -124,6 +123,9 @@
                                 <div class="contenido">
                                     <span th:text="${comentario.contenido}"></span>
                                 </div>
+                            </div>
+                            <div class="comentario" style="text-align: center; padding: 1rem 0 1rem 0;" th:if="${tarea.comentarios == null}">
+                                No hay comentarios
                             </div>
                         </div>
                     </div>
