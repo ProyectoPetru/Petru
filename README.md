@@ -2,6 +2,9 @@
 
 <a href="https://github.com/ProyectoPetru/Petru/graphs/contributors" alt="Contributors">
         <img src="https://img.shields.io/github/contributors/ProyectoPetru/Petru" /></a>
+<a href="https://github.com/ProyectoPetru/Petru/commits/main" alt="Commit activity">
+        <img src="https://img.shields.io/github/commit-activity/t/ProyectoPetru/Petru" /></a>
+
 
 Proyecto final realizado en el marco del quinto tramo del curso fullstack de EGG Cooperation. EQUIPO "P"
 
