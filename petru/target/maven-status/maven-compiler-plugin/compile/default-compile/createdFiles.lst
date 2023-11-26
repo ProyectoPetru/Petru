@@ -11,6 +11,7 @@ com\grupop\petru\repositorios\TareaRepositorio.class
 com\grupop\petru\entidades\Tarea.class
 com\grupop\petru\servicios\ImagenServicio.class
 com\grupop\petru\repositorios\ImagenRepositorio.class
+com\grupop\petru\controladores\ErrorControlador.class
 com\grupop\petru\entidades\Imagen.class
 com\grupop\petru\servicios\UsuarioServicio.class
 com\grupop\petru\enumeraciones\TipoTarea.class

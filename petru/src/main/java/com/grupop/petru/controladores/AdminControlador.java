@@ -1,8 +1,6 @@
 
 package com.grupop.petru.controladores;
 
-import com.grupop.petru.entidades.Usuario;
-
 /**
  *
  * @authors  Nahiara Denice Alegre - Matias Quispe - Juan Pablo Pontini
@@ -12,10 +10,10 @@ import com.grupop.petru.entidades.Usuario;
  */
 
 import com.grupop.petru.entidades.Usuario;
+import com.grupop.petru.entidades.Usuario;
 import com.grupop.petru.enumeraciones.Rol;
 import com.grupop.petru.servicios.UsuarioServicio;
 import java.util.List;
-
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

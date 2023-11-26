@@ -1,15 +1,22 @@
+
 package com.grupop.petru.controladores;
+
+/**
+ *
+ * @authors  Nahiara Denice Alegre - Matias Quispe - Juan Pablo Pontini
+ *           Flavio Romero Averna - Dario Litterio - Cecilia Alsina
+ *           Manuel Dominich Martinez - Maximo Carbonetti
+ *           Salvador Caldarella - Sebastián A. Petrini
+ */
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.grupop.petru.entidades.Usuario;
 
 @Controller
@@ -20,13 +27,9 @@ public class ErrorControlador implements ErrorController {
         ModelAndView errorPage = new ModelAndView("error");
 
         Usuario logueado = (Usuario) session.getAttribute("usuariosession");
-
         modelo.addAttribute("usuariosession", logueado);
-        
         String errorMsg = "";
-        
         int httpErrorCode = getErrorCode(httpRequest);
-        
         switch (httpErrorCode) {
             case 400: {
                 errorMsg = "El recurso solicitado no existe";
@@ -49,7 +52,6 @@ public class ErrorControlador implements ErrorController {
                 break;
             }
         }
-        
         errorPage.addObject("codigo", httpErrorCode);
         errorPage.addObject("mensaje", errorMsg);
         return errorPage;
