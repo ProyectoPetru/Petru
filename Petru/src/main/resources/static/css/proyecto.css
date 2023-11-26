@@ -45,6 +45,10 @@
 }
 
 #proyecto .contenedor>div .tarea:hover {
+    cursor: grab;
+}
+
+#proyecto .contenedor>div .tarea:hover {
     box-shadow: .05rem .05rem .2rem .1rem var(--contrast);
 }
 
@@ -61,13 +65,13 @@
     font-size: .9rem;
 }
 
-#proyecto .contenedor>div .tarea svg {
+#proyecto .contenedor>div .tarea .pencil {
     margin: 0 0 0 auto;
     color: var(--text);
     transition: transform .4s, color .4s, opacity .4s;
 }
 
-#proyecto .contenedor>div .tarea svg:hover {
+#proyecto .contenedor>div .tarea .pencil:hover {
     cursor: pointer;
     color: var(--accent);
     transform: rotate(-45deg);
@@ -80,6 +84,7 @@
 
 #proyecto .agregar {
     display: flex;
+    order: 999;
     justify-content: center;
     box-shadow: 0 0 .1rem .05rem var(--background);
     filter: contrast(80%);
@@ -263,7 +268,7 @@
 #proyecto .ventana .comentarios .agregar-comentario .contenido textarea {
     background: none;
     color: var(--text);
-    border: 2px solid var(--background);
+    border: 1px solid var(--text);
     border-radius: 1rem;
     min-width: 14rem;
     max-width: 14rem;

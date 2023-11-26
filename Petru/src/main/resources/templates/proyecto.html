@@ -27,7 +27,7 @@
                 <div class="pendientes">
                     <span class="tipo">Pendientes</span>
                     <div class="tarea" th:each="tarea : ${tareas}" th:if="${tarea.tipoTarea.name() == 'TODO'}"
-                        th:id="${tarea.id}">
+                        th:id="${tarea.id}" draggable="true" ondragstart="dragStart(event)">
                         <div>
                             <div style="display: flex;">
                                 <div class="etiqueta" th:each="etiqueta : ${tarea.etiquetas}"
@@ -37,7 +37,7 @@
                             </div>
                             <span class="titulo" th:text="${tarea.nombre}"></span>
                         </div>
-                        <svg class="hidden" hidden xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        <svg class="pencil hidden" hidden xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                             viewBox="0 0 24 24">
                             <path fill="currentColor"
                                 d="m14.06 9l.94.94L5.92 19H5v-.92L14.06 9m3.6-6c-.25 0-.51.1-.7.29l-1.83 1.83l3.75 3.75l1.83-1.83c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29m-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75Z" />
@@ -52,7 +52,7 @@
                 <div class="haciendo">
                     <span class="tipo">Haciendo</span>
                     <div class="tarea" th:each="tarea : ${tareas}" th:if="${tarea.tipoTarea.name() == 'DOING'}"
-                        th:id="${tarea.id}">
+                        th:id="${tarea.id}" draggable="true" ondragstart="dragStart(event)">
                         <div>
                             <div style="display: flex;">
                                 <div class="etiqueta" th:each="etiqueta : ${tarea.etiquetas}"
@@ -62,7 +62,7 @@
                             </div>
                             <span class="titulo" th:text="${tarea.nombre}"></span>
                         </div>
-                        <svg class="hidden" hidden xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        <svg class="pencil hidden" hidden xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                             viewBox="0 0 24 24">
                             <path fill="currentColor"
                                 d="m14.06 9l.94.94L5.92 19H5v-.92L14.06 9m3.6-6c-.25 0-.51.1-.7.29l-1.83 1.83l3.75 3.75l1.83-1.83c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29m-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75Z" />
@@ -72,7 +72,7 @@
                 <div class="hechas">
                     <span class="tipo">Hechas</span>
                     <div class="tarea" th:each="tarea : ${tareas}" th:if="${tarea.tipoTarea.name() == 'DONE'}"
-                        th:id="${tarea.id}">
+                        th:id="${tarea.id}" draggable="true" ondragstart="dragStart(event)">
                         <div>
                             <div style="display: flex;">
                                 <div class="etiqueta" th:each="etiqueta : ${tarea.etiquetas}"
@@ -82,7 +82,7 @@
                             </div>
                             <span class="titulo" th:text="${tarea.nombre}"></span>
                         </div>
-                        <svg class="hidden" hidden xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        <svg class="pencil hidden" hidden xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                             viewBox="0 0 24 24">
                             <path fill="currentColor"
                                 d="m14.06 9l.94.94L5.92 19H5v-.92L14.06 9m3.6-6c-.25 0-.51.1-.7.29l-1.83 1.83l3.75 3.75l1.83-1.83c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29m-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75Z" />
@@ -118,7 +118,8 @@
                                 <div class="usuario">
                                     <img src="/img/user.png" width="24px" height="24px" alt="">
                                     <span class="nombre" th:text="${comentario.usuario.nombre}"></span>
-                                    <span class="fecha" th:text="${comentario.fecha.date + '/' + (comentario.fecha.month + 1) + '/' + (comentario.fecha.year + 1900)}"></span>
+                                    <span class="fecha"
+                                        th:text="${comentario.fecha.date + '/' + (comentario.fecha.month + 1) + '/' + (comentario.fecha.year + 1900)}"></span>
                                 </div>
                                 <div class="contenido">
                                     <span th:text="${comentario.contenido}"></span>

@@ -137,3 +137,47 @@ Array.from(document.querySelector("#proyecto").querySelectorAll(".tarea")).map((
     })
     return e
 })
+
+Array.from(document.querySelector("#proyecto").querySelector(".contenedor").querySelectorAll(".tarea")).map((e) => {
+    e.addEventListener("dragstart", (e) => {
+
+        document.querySelector("#proyecto").querySelector(".contenedor").querySelector(".hechas")
+    })
+})
+
+function dragStart(e) {
+    let selected = e.target
+
+    document.querySelector("#proyecto").querySelector(".contenedor").querySelector(".pendientes").addEventListener("dragover", (e) => {
+        e.preventDefault()
+    })
+    document.querySelector("#proyecto").querySelector(".contenedor").querySelector(".pendientes").addEventListener("drop", (e) => {
+        if (selected != null) {
+            document.querySelector("#proyecto").querySelector(".contenedor").querySelector(".pendientes").appendChild(selected)
+            document.location = `/tarea/modificar/${selected.id}?tipoTarea=TODO`
+            selected = null
+        }
+    })
+
+    document.querySelector("#proyecto").querySelector(".contenedor").querySelector(".haciendo").addEventListener("dragover", (e) => {
+        e.preventDefault()
+    })
+    document.querySelector("#proyecto").querySelector(".contenedor").querySelector(".haciendo").addEventListener("drop", (e) => {
+        if (selected != null) {
+            document.querySelector("#proyecto").querySelector(".contenedor").querySelector(".haciendo").appendChild(selected)
+            document.location = `/tarea/modificar/${selected.id}?tipoTarea=DOING`
+            selected = null
+        }
+    })
+
+    document.querySelector("#proyecto").querySelector(".contenedor").querySelector(".hechas").addEventListener("dragover", (e) => {
+        e.preventDefault()
+    })
+    document.querySelector("#proyecto").querySelector(".contenedor").querySelector(".hechas").addEventListener("drop", (e) => {
+        if (selected != null) {
+            document.querySelector("#proyecto").querySelector(".contenedor").querySelector(".hechas").appendChild(selected)
+            document.location = `/tarea/modificar/${selected.id}?tipoTarea=DONE`
+            selected = null
+        }
+    })
+}
