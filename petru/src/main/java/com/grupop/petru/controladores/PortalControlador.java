@@ -2,6 +2,7 @@
 package com.grupop.petru.controladores;
 
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
+import com.grupop.petru.entidades.Comentario;
 import com.grupop.petru.entidades.Etiqueta;
 import com.grupop.petru.entidades.Proyecto;
 import com.grupop.petru.entidades.Tarea;
@@ -21,6 +22,7 @@ import com.grupop.petru.excepciones.MiException;
 import com.grupop.petru.servicios.UsuarioServicio;
 
 import java.util.Arrays;
+import java.util.Date;
 
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -130,6 +132,8 @@ public class PortalControlador {
     @GetMapping("/proyecto")
     public String proyecto(@RequestParam(required = false) String error, HttpSession session, ModelMap modelo) {
         Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+        Usuario seba = new Usuario();
+        seba.setNombre("Sebastian");
 
         modelo.addAttribute("usuariosession", logueado);
 
@@ -155,6 +159,27 @@ public class PortalControlador {
         etiqueta3.setNombre("Matematica");
         etiqueta3.setColor("yellow");
         tarea1.setEtiquetas(Arrays.asList(new Etiqueta[] {etiqueta1, etiqueta2, etiqueta3}));
+        Comentario comentario1 = new Comentario();
+        comentario1.setId("com1");
+        comentario1.setContenido("hola");
+        comentario1.setUsuario(seba);
+        comentario1.setFecha(new Date());
+        Comentario comentario2 = new Comentario();
+        comentario2.setId("com2");
+        comentario2.setContenido("Deja de adelantarte manuel!!!");
+        comentario2.setUsuario(seba);
+        comentario2.setFecha(new Date());
+        Comentario comentario3 = new Comentario();
+        comentario3.setId("com3");
+        comentario3.setContenido("Bueno disculpa, aca tenes un lorem awujodbawuib dauw buidwabuwiab duawbd uiawbuidbwauiauidbuiwa");
+        comentario3.setUsuario(seba);
+        comentario3.setFecha(new Date());
+        Comentario comentario4 = new Comentario();
+        comentario4.setId("com4");
+        comentario4.setContenido("Tenes que estar re aburrido, no?");
+        comentario4.setUsuario(seba);
+        comentario4.setFecha(new Date());
+        tarea1.setComentarios(Arrays.asList(new Comentario[] {comentario1, comentario2, comentario3, comentario4}));
 
         Tarea tarea2 = new Tarea();
         tarea2.setId("tar2");

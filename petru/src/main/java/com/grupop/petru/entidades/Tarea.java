@@ -23,7 +23,6 @@ import javax.persistence.OneToMany;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
-
 @Data
 @Entity
 public class Tarea {
@@ -34,9 +33,13 @@ public class Tarea {
    private String nombre;
    @ManyToOne
    private Proyecto proyecto;
+   @OneToMany
+   @Basic(optional = true)
+   private List<Comentario> comentarios;
    @Enumerated(EnumType.STRING)
    private TipoTarea tipoTarea;
-   @OneToMany @Basic(optional = true)
+   @OneToMany
+   @Basic(optional = true)
    private List<Etiqueta> etiquetas;
    private Boolean baja;
 
