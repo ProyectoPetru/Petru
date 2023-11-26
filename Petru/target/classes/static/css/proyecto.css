@@ -199,7 +199,7 @@
     border-radius: .3rem;
 }
 
-#proyecto .ventana .cambiar-nombre button[type=submit] {
+#proyecto .ventana .cambiar-nombre>form>button[type=submit] {
     margin: 0 0 0 .5rem;
     background: none;
     color: var(--text);
@@ -212,7 +212,7 @@
     transition: border .4s, color .4s;
 }
 
-#proyecto .ventana .cambiar-nombre button[type=submit]:hover {
+#proyecto .ventana .cambiar-nombre>form>button[type=submit]:hover {
     cursor: pointer;
     color: green;
     border: .1rem solid green;
@@ -227,7 +227,78 @@
     overflow: auto;
 }
 
+#proyecto .ventana .comentarios .agregar-comentario {
+    margin: .5rem auto .5rem auto;
+    width: 18rem;
+    border: 1px solid var(--text);
+    border-radius: 1rem;
+}
+
+#proyecto .ventana .comentarios .agregar-comentario .usuario {
+    display: grid;
+    grid-template-columns: 1fr 1fr 10fr;
+    align-items: center;
+    margin: .5rem;
+}
+
+#proyecto .ventana .comentarios .agregar-comentario .usuario img {
+    border: 1px solid var(--text);
+    border-radius: 50%;
+    margin: 0 .5rem 0 0;
+}
+
+#proyecto .ventana .comentarios .agregar-comentario .usuario .nombre {
+    font-size: 1.1rem;
+    width: 15rem;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#proyecto .ventana .comentarios .agregar-comentario .contenido form {
+    margin: .5rem .3rem .5rem .3rem;
+    display: flex;
+    align-items: center;
+}
+
+#proyecto .ventana .comentarios .agregar-comentario .contenido textarea {
+    background: none;
+    color: var(--text);
+    border: 2px solid var(--background);
+    border-radius: 1rem;
+    min-width: 14rem;
+    max-width: 14rem;
+    min-height: 2rem;
+    max-height: 8rem;
+    padding: .5rem .5rem .1rem .5rem;
+    font-size: 1rem;
+}
+
+#proyecto .ventana .comentarios .agregar-comentario .contenido button[type=submit] {
+    color: var(--text);
+    border: 1px solid var(--secondary);
+    border-radius: 1rem;
+    background: none;
+    height: 2rem;
+    width: 2rem;
+    margin: 0 .2rem 0 .2rem;
+    transition: color .4s, border .4s;
+}
+
+#proyecto .ventana .comentarios .agregar-comentario .contenido button[type=submit]:hover {
+    cursor: pointer;
+    color: green;
+    border: 1px solid green;
+}
+
+#proyecto .ventana .comentarios .divider {
+    margin: .2rem auto .2rem auto;
+    background: var(--contrast);
+    width: 90%;
+    height: 1px;
+}
+
 #proyecto .ventana .comentarios .comentario {
+    margin: .5rem auto .5rem auto;
     width: 18rem;
     border: 1px solid var(--text);
     border-radius: 1rem;
@@ -246,14 +317,20 @@
     margin: 0 .5rem 0 0;
 }
 
-#proyecto .ventana .comentarios .comentario .usuario span {
-    font-size: 1.1rem;
-    width: 15rem;
+#proyecto .ventana .comentarios .comentario .usuario .nombre {
+    font-size: 1rem;
+    width: 10rem;
     white-space: nowrap;
     overflow: hidden;
 }
 
+#proyecto .ventana .comentarios .comentario .usuario .fecha {
+    font-size: 1rem;
+    margin: 0 .5rem 0 auto;
+}
+
 #proyecto .ventana .comentarios .comentario .contenido {
+    font-size: .9rem;
     margin: .5rem .3rem .5rem .3rem;
 }
 
@@ -309,6 +386,11 @@
 
     #proyecto .ventana {
         width: 20rem;
+        height: 35rem;
+    }
+
+    #proyecto .ventana .tarea-ventana {
+        display: flex;
         flex-direction: column;
         align-items: center;
     }
@@ -316,6 +398,10 @@
     #proyecto .ventana .cambiar-nombre input {
         margin: 0 0 0 .2rem;
         width: 15rem;
+    }
+
+    #proyecto .ventana .comentarios {
+        margin: .5rem 0 .5rem 0;
     }
 
     #proyecto .ventana .etiquetas {

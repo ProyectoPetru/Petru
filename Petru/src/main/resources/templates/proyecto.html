@@ -100,10 +100,25 @@
                             <button type="submit">✔</button>
                         </form>
                         <div class="comentarios">
+                            <div class="agregar-comentario" th:if="${usuariosession != null}">
+                                <div class="usuario">
+                                    <img src="/img/user.png" width="24px" height="24px" alt="">
+                                    <span class="nombre" th:text="${usuariosession.nombre}"></span>
+                                </div>
+                                <div class="contenido">
+                                    <form th:action="@{/comentario/registro}" method="post">
+                                        <input hidden type="text" name="id" th:value="${tarea.id}">
+                                        <textarea name="contenido" placeholder="Agregar comentario..."></textarea>
+                                        <button type="submit">✔</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="divider" th:if="${usuariosession != null}"></div>
                             <div class="comentario" th:each="comentario : ${tarea.comentarios}">
                                 <div class="usuario">
                                     <img src="/img/user.png" width="24px" height="24px" alt="">
-                                    <span>MMMMMMMMMMMMMMMMMMMM</span>
+                                    <span class="nombre" th:text="${comentario.usuario.nombre}"></span>
+                                    <span class="fecha" th:text="${comentario.fecha.date + '/' + (comentario.fecha.month + 1) + '/' + (comentario.fecha.year + 1900)}"></span>
                                 </div>
                                 <div class="contenido">
                                     <span th:text="${comentario.contenido}"></span>
