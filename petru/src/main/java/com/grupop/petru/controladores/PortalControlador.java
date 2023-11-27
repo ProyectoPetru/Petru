@@ -1,10 +1,7 @@
 
 package com.grupop.petru.controladores;
 
-import com.grupop.petru.entidades.Comentario;
-import com.grupop.petru.entidades.Etiqueta;
-import com.grupop.petru.entidades.Proyecto;
-import com.grupop.petru.entidades.Tarea;
+
 
 /**
  *
@@ -15,23 +12,15 @@ import com.grupop.petru.entidades.Tarea;
  */
 
 import com.grupop.petru.entidades.Usuario;
-import com.grupop.petru.enumeraciones.TipoTarea;
-import com.grupop.petru.enumeraciones.Visibilidad;
 import com.grupop.petru.excepciones.MiException;
 import com.grupop.petru.servicios.ProyectoServicio;
 import com.grupop.petru.servicios.UsuarioServicio;
 
-import java.util.Arrays;
-import java.util.Date;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
