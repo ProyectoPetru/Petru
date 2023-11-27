@@ -35,12 +35,12 @@
 
 #navbar .item a {
     cursor: pointer;
-    transition: color .4s;
+    transition: filter .4s;
     color: var(--text);
 }
 
 #navbar .item a:hover {
-    color: var(--primary);
+    filter: brightness(70%);
 }
 
 #navbar .item .icono img {
@@ -48,6 +48,14 @@
     height: 32px;
     border-radius: 50%;
     border: 1px solid var(--text);
+}
+
+#navbar .item .icono .little-cfg {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    margin: -1rem 0 0 1.5rem;
 }
 
 @keyframes tooltip-in {

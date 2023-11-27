@@ -33,7 +33,8 @@
                     <a th:text="${proyecto.nombre}"></a>
                 </div>
                 <div class="list agregar-proyecto">
-                    <svg style="pointer-events: none" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <svg style="pointer-events: none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24">
                         <path fill="currentColor" d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z" />
                     </svg>
                 </div>
@@ -93,9 +94,18 @@
         <!-- Usuario admin -->
         <div class="item" sec:authorize="${hasRole('ADMIN')}">
             <a class="icono">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
-                    <path fill="currentColor"
-                        d="M12 14v2a6 6 0 0 0-6 6H4a8 8 0 0 1 8-8Zm0-1c-3.315 0-6-2.685-6-6s2.685-6 6-6s6 2.685 6 6s-2.685 6-6 6Zm0-2c2.21 0 4-1.79 4-4s-1.79-4-4-4s-4 1.79-4 4s1.79 4 4 4Zm9 6h1v5h-8v-5h1v-1a3 3 0 1 1 6 0v1Zm-2 0v-1a1 1 0 1 0-2 0v1h2Z" />
+                <img th:src="@{/imagen/__${usuariosession.imagen.id}__}" width="48px" height="48px" alt="usuario">
+                <svg class="little-cfg" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                    <defs>
+                        <mask id="ipSConfig0">
+                            <g fill="none" stroke-linejoin="round" stroke-width="4">
+                                <path fill="#fff" stroke="#fff"
+                                    d="m24 4l-6 6h-8v8l-6 6l6 6v8h8l6 6l6-6h8v-8l6-6l-6-6v-8h-8z" />
+                                <path fill="#000" stroke="#000" d="M24 30a6 6 0 1 0 0-12a6 6 0 0 0 0 12Z" />
+                            </g>
+                        </mask>
+                    </defs>
+                    <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSConfig0)" />
                 </svg>
             </a>
 
