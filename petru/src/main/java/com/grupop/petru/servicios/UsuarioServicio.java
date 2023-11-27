@@ -44,8 +44,9 @@ public class UsuarioServicio implements UserDetailsService {
 
     @Transactional
     public void registrarUsuario(MultipartFile archivo, String nombre, String email, String clave, String clave2,
-            Long telefono, String descripcion) throws MiException {
+            Long telefono, String descripcion) throws MiException {                  
         validar(nombre, email, clave, clave2, telefono);
+        validarYaRegistrado(email);
         Usuario usuario = new Usuario();
         usuario.setNombre(nombre);
         usuario.setEmail(email);
@@ -56,7 +57,8 @@ public class UsuarioServicio implements UserDetailsService {
         usuario.setDescripcion(descripcion);
         Imagen imagen = imagenServicio.guardar(archivo);
         usuario.setImagen(imagen);
-        usuarioRepositorio.save(usuario);
+        usuarioRepositorio.save(usuario);        
+                       
     }
 
 
@@ -167,6 +169,14 @@ public class UsuarioServicio implements UserDetailsService {
             throw new MiException("el telefono no puede ser nulo o estar vacio");
         }
     }
+
+public void validarYaRegistrado(String email) throws MiException{
+    Usuario usuario = usuarioRepositorio.buscarPorEmail(email);
+    if (usuario != null) {
+        throw new MiException("Ya existe un usuario registrado con ese email");        
+    }
+}
+
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
