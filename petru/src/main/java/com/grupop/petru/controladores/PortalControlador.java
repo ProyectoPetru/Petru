@@ -24,6 +24,7 @@ import com.grupop.petru.servicios.UsuarioServicio;
 import java.util.Arrays;
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -225,9 +226,10 @@ public class PortalControlador {
     }
 
     @GetMapping("/tarea/modificar/{id}")
-    public String modificarTarea(@PathVariable String id, @RequestParam String tipoTarea, ModelMap modelo) {
+    public String modificarTarea(@PathVariable String id, @RequestParam String tipoTarea, ModelMap modelo, HttpServletRequest request) {
         modelo.put("error", "La tarea con la id " + id + " esta en " + tipoTarea);
 
-        return "inicio.html";
+        String referer = request.getHeader("Referer");
+        return "redirect:"+ referer;
     }
 }
