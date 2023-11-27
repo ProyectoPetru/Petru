@@ -171,9 +171,49 @@
     filter: brightness(300%);
 }
 
-#navbar .dropdown .list svg {
+#navbar .dropdown .list img {
     border-radius: 50%;
     margin: 0 .2rem 0 0;
+}
+
+#navbar .dropdown .list.agregar-proyecto {
+    display: flex;
+    justify-content: center;
+    transition: color .4s;
+}
+
+#navbar .dropdown .list.agregar-proyecto form {
+    display: flex;
+    align-items: center;
+}
+
+#navbar .dropdown .list.agregar-proyecto form input {
+    height: 1.5rem;
+    background: none;
+    color: var(--text);
+    width: 7rem;
+    border: 1px solid var(--text);
+    padding: 0 3rem 0 .5rem;
+}
+
+#navbar .dropdown .list.agregar-proyecto form button {
+    position: absolute;
+    margin: 0 0 0 8.5rem;
+    color: var(--text);
+    border: 1px solid var(--text);
+    border-radius: .2rem;
+    background: none;
+    transition: color .4s, border .4s;
+}
+
+#navbar .dropdown .list.agregar-proyecto form button:hover {
+    cursor: pointer;
+    color: green;
+    border-color: green;
+}
+
+#navbar .dropdown .list.agregar-proyecto:hover {
+    color: green;
 }
 
 #navbar .dropdown-hide {

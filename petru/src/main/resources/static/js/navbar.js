@@ -34,9 +34,16 @@ if (document.documentElement.clientWidth > WIDTH_TOOLTIP) {
 
 /* Maneja que los dropdowns desaparezcan cuando se clickea afuera de ellos */
 document.addEventListener("click", (element) => {
-    if (Array.from(document.querySelector("#navbar").querySelectorAll(".dropdown")).filter((e) => !e.hidden).length < 1) {
+    if (Array.from(document.querySelector("#navbar").querySelectorAll(".dropdown")).filter((e) => !e.hidden).length < 1
+        &&
+        document.querySelector("#navbar").querySelector(".agregar-proyecto").querySelector("svg") != null) {
         return
     }
+
+    if (element.target.closest(".agregar-proyecto") == null) {
+        document.querySelector("#navbar").querySelector(".agregar-proyecto").innerHTML = "<svg style='pointer-events: none' xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path fill='currentColor' d='M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z' /></svg>"
+    }
+
     if (element.target.closest(".item") == null || element.target.closest(".item").querySelector(".dropdown") == null) {
         Array.from(document.querySelector("#navbar").querySelectorAll(".dropdown")).map(e => {
             e.classList.add("dropdown-hide")
@@ -100,3 +107,29 @@ Array.from(document.querySelector("#navbar").querySelectorAll("[redirect]")).map
         document.location = e.getAttribute("redirect")
     })
 })
+
+if (document.querySelector("#navbar").querySelector(".agregar-proyecto") != null) {
+    document.querySelector("#navbar").querySelector(".agregar-proyecto").addEventListener("click", (e) => {
+        if (e.target.tagName == "INPUT" || e.target.tagName == "BUTTON") {
+            return
+        }
+
+        e.target.innerHTML = ""
+        const form = document.createElement("form")
+        form.action = "/proyecto/registro"
+        form.method = "POST"
+        form.enctype = "multipart/form-data"
+        form.innerHTML = "<input hidden type='file' name='archivo' value='/img/user.png'>"
+        const input = document.createElement("input")
+        input.type = "text"
+        input.name = "nombre"
+        input.autocomplete = "off"
+        const submit = document.createElement("button")
+        submit.textContent = "✔"
+        submit.type = "submit"
+        form.appendChild(input)
+        form.appendChild(submit)
+        e.target.appendChild(form)
+        input.focus()
+    })
+}

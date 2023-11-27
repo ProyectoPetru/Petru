@@ -33,6 +33,7 @@ public class Proyecto {
    private String id;
    private String nombre;
    @OneToOne
+   @Basic(optional = true)
    private Imagen imagen;
    @ManyToMany
    private List<Usuario> usuarios;

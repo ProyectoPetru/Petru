@@ -1,7 +1,6 @@
 
 package com.grupop.petru.controladores;
 
-import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.grupop.petru.entidades.Comentario;
 import com.grupop.petru.entidades.Etiqueta;
 import com.grupop.petru.entidades.Proyecto;
@@ -19,6 +18,7 @@ import com.grupop.petru.entidades.Usuario;
 import com.grupop.petru.enumeraciones.TipoTarea;
 import com.grupop.petru.enumeraciones.Visibilidad;
 import com.grupop.petru.excepciones.MiException;
+import com.grupop.petru.servicios.ProyectoServicio;
 import com.grupop.petru.servicios.UsuarioServicio;
 
 import java.util.Arrays;
@@ -42,6 +42,8 @@ public class PortalControlador {
 
     @Autowired
     private UsuarioServicio usuarioServicio;
+    @Autowired
+    private ProyectoServicio proyectoServicio;
 
     // a futuro se podria ver si agregamos esto
     // @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
@@ -64,6 +66,8 @@ public class PortalControlador {
 
         modelo.addAttribute("usuariosession", logueado);
 
+        modelo.addAttribute("proyectos", proyectoServicio.listarTodos());
+
         return "inicio.html";
     }
 
@@ -78,7 +82,8 @@ public class PortalControlador {
 
     @PostMapping("/registro")
     public String registro(@RequestParam String nombre, @RequestParam String email, @RequestParam String clave,
-            @RequestParam String clave2, MultipartFile archivo, @RequestParam Long telefono, String descripcion,
+            @RequestParam String clave2, @RequestParam MultipartFile archivo, @RequestParam Long telefono,
+            String descripcion,
             ModelMap modelo) {
         try {
             usuarioServicio.registrarUsuario(archivo, nombre, email, clave, clave2, telefono, descripcion);
@@ -111,6 +116,7 @@ public class PortalControlador {
 
         return "carga_tareas.html";
     }
+
     @GetMapping("/carga_proyecto")
     public String carga_proyecto(@RequestParam(required = false) String error, HttpSession session, ModelMap modelo) {
         Usuario logueado = (Usuario) session.getAttribute("usuariosession");
@@ -158,7 +164,7 @@ public class PortalControlador {
         etiqueta2.setColor("red");
         etiqueta3.setNombre("Matematica");
         etiqueta3.setColor("yellow");
-        tarea1.setEtiquetas(Arrays.asList(new Etiqueta[] {etiqueta1, etiqueta2, etiqueta3}));
+        tarea1.setEtiquetas(Arrays.asList(new Etiqueta[] { etiqueta1, etiqueta2, etiqueta3 }));
         Comentario comentario1 = new Comentario();
         comentario1.setId("com1");
         comentario1.setContenido("hola");
@@ -171,7 +177,8 @@ public class PortalControlador {
         comentario2.setFecha(new Date());
         Comentario comentario3 = new Comentario();
         comentario3.setId("com3");
-        comentario3.setContenido("Bueno disculpa, aca tenes un lorem awujodbawuib dauw buidwabuwiab duawbd uiawbuidbwauiauidbuiwa");
+        comentario3.setContenido(
+                "Bueno disculpa, aca tenes un lorem awujodbawuib dauw buidwabuwiab duawbd uiawbuidbwauiauidbuiwa");
         comentario3.setUsuario(seba);
         comentario3.setFecha(new Date());
         Comentario comentario4 = new Comentario();
@@ -179,7 +186,7 @@ public class PortalControlador {
         comentario4.setContenido("Tenes que estar re aburrido, no?");
         comentario4.setUsuario(seba);
         comentario4.setFecha(new Date());
-        tarea1.setComentarios(Arrays.asList(new Comentario[] {comentario1, comentario2, comentario3, comentario4}));
+        tarea1.setComentarios(Arrays.asList(new Comentario[] { comentario1, comentario2, comentario3, comentario4 }));
 
         Tarea tarea2 = new Tarea();
         tarea2.setId("tar2");
@@ -189,7 +196,7 @@ public class PortalControlador {
         Etiqueta etiqueta4 = new Etiqueta();
         etiqueta4.setNombre("Agricultura");
         etiqueta4.setColor("green");
-        tarea2.setEtiquetas(Arrays.asList(new Etiqueta[] {etiqueta4}));
+        tarea2.setEtiquetas(Arrays.asList(new Etiqueta[] { etiqueta4 }));
 
         Tarea tarea3 = new Tarea();
         tarea3.setId("tar3");
@@ -198,8 +205,27 @@ public class PortalControlador {
         tarea3.setTipoTarea(TipoTarea.DONE);
 
         modelo.addAttribute("proyecto", proyecto);
-        modelo.addAttribute("tareas", Arrays.asList(new Tarea[] {tarea1, tarea2, tarea3}));
+        modelo.addAttribute("tareas", Arrays.asList(new Tarea[] { tarea1, tarea2, tarea3 }));
 
         return "proyecto.html";
+    }
+
+    @PostMapping("/proyecto/registro")
+    public String proyectoRegistro(@RequestParam String nombre, @RequestParam MultipartFile archivo, ModelMap modelo,
+            HttpSession session) {
+        Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+
+        modelo.addAttribute("usuariosession", logueado);
+
+        try {
+            proyectoServicio.guardar(archivo, nombre, Visibilidad.PUBLICO, "s",
+                    Arrays.asList(new Usuario[] { logueado }));
+        } catch (MiException e) {
+            modelo.put("error", e);
+
+            return "inicio.html";
+        }
+
+        return "redirect:/inicio";
     }
 }

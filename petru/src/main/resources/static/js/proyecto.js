@@ -55,6 +55,7 @@ document.querySelector("#proyecto").querySelector(".contenedor").querySelector("
     e.target.removeChild(e.target.querySelector("svg"))
     const form = document.createElement("form")
     form.action = "/tarea/registro"
+    form.method = "POST"
     const id = document.createElement("input")
     id.hidden = true
     id.type = "text"
@@ -85,6 +86,7 @@ Array.from(document.querySelector("#proyecto").querySelector(".ventana").querySe
         e.target.textContent = ""
         const form = document.createElement("form")
         form.action = "/etiqueta/registro"
+        form.method = "POST"
         const id = document.createElement("input")
         id.hidden = true
         id.type = "text"
