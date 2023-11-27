@@ -43,7 +43,7 @@ public class AdminControlador {
     public String listar(ModelMap modelo) {
         List<Usuario> usuarios = usuarioServicio.listarUsuarios();
         modelo.addAttribute("usuarios", usuarios);
-        return "/usuarios/listar.html";
+        return "usuario_list";
     }
 
     @GetMapping("/modificarRol/{id}")
