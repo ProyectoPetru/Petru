@@ -172,8 +172,11 @@
 }
 
 #navbar .dropdown .list img {
+    width: 24px;
+    height: 24px;
+    border: 1px solid var(--text);
     border-radius: 50%;
-    margin: 0 .2rem 0 0;
+    margin: 0 .5rem 0 0;
 }
 
 #navbar .dropdown .list.agregar-proyecto {

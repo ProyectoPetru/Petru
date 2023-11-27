@@ -12,6 +12,10 @@ package com.grupop.petru.servicios;
 import com.grupop.petru.entidades.Imagen;
 import com.grupop.petru.excepciones.MiException;
 import com.grupop.petru.repositorios.ImagenRepositorio;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +31,7 @@ public class ImagenServicio {
 
     @Transactional
     public Imagen guardar(MultipartFile archivo) throws MiException {
-        if (archivo != null) {
+        if (!archivo.getContentType().equals("application/octet-stream")) {
             try {
                 Imagen imagen = new Imagen();
                 imagen.setTipo(archivo.getContentType());
@@ -38,9 +42,31 @@ public class ImagenServicio {
                 System.err.println(e.getMessage());
             }
         }
-        return null;
+
+        InputStream inputStream = ClassLoader.getSystemResourceAsStream("static/img/user.png");
+        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+
+        int nRead;
+        byte[] data = new byte[1024];
+
+        try {
+            while ((nRead = inputStream.read(data, 0, data.length)) != -1) {
+                buffer.write(data, 0, nRead);
+            }
+
+            buffer.flush();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        Imagen imagen = new Imagen();
+        imagen.setNombre("user");
+        imagen.setTipo("image/png");
+        imagen.setContenido(buffer.toByteArray());
+        return imagenRepositorio.save(imagen);
     }
-    
+
     @Transactional
     public Imagen actualizar(MultipartFile archivo, String id) throws MiException {
         if (archivo != null) {
@@ -52,8 +78,9 @@ public class ImagenServicio {
                         imagen = respuesta.get();
                     }
                 }
-                //lo pongo fuera del if, para que en caso que la imágen no exista, se cree una nueva y la devuelva 
-                //(para evitar que se cargen nulas en la actualizacion de usuario y proyecto)
+                // lo pongo fuera del if, para que en caso que la imágen no exista, se cree una
+                // nueva y la devuelva
+                // (para evitar que se cargen nulas en la actualizacion de usuario y proyecto)
                 imagen.setTipo(archivo.getContentType());
                 imagen.setNombre(archivo.getName());
                 imagen.setContenido(archivo.getBytes());
@@ -64,7 +91,7 @@ public class ImagenServicio {
         }
         return null;
     }
-    
+
     @Transactional
     public void eliminar(String id) throws MiException {
         try {
@@ -80,15 +107,24 @@ public class ImagenServicio {
             System.err.println(e.getMessage());
         }
     }
-        
+
     @Transactional(readOnly = true)
-    @Deprecated
     public Imagen getOne(String id) {
         return imagenRepositorio.getOne(id);
     }
 
     @Transactional(readOnly = true)
+    public Imagen getById(String id) throws MiException {
+        Optional<Imagen> imagen = imagenRepositorio.findById(id);
+        if (imagen.isPresent()) {
+            return imagen.get();
+        }
+        
+        throw new MiException("Imagen no encontrada");
+    }
+
+    @Transactional(readOnly = true)
     public List<Imagen> listarTodos() {
         return imagenRepositorio.findAll();
-    }     
+    }
 }

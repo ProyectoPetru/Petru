@@ -1,6 +1,7 @@
 package com.grupop.petru.controladores;
 
 import org.omg.CORBA.UserException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -18,18 +19,25 @@ import com.grupop.petru.servicios.ImagenServicio;
 @Controller
 @RequestMapping("/imagen")
 public class ImagenControlador {
+    @Autowired
     private ImagenServicio imagenServicio;
 
     @GetMapping("/{id}")
-    public ResponseEntity<byte[]> getImage(@PathVariable String id, ModelMap model) {
-        Imagen imagen = imagenServicio.getOne(id);
+    public ResponseEntity<byte[]> getImage(@PathVariable String id) {
+        Imagen imagen;
+        try {
+            imagen = imagenServicio.getById(id);
 
-        byte[] image = imagen.getContenido();
+            byte[] image = imagen.getContenido();
 
-        HttpHeaders headers = new HttpHeaders();
+            HttpHeaders headers = new HttpHeaders();
 
-        headers.setContentType(MediaType.IMAGE_JPEG);
+            headers.setContentType(MediaType.IMAGE_JPEG);
 
-        return new ResponseEntity<>(image, headers, HttpStatus.OK);
+            return new ResponseEntity<>(image, headers, HttpStatus.OK);
+        } catch (MiException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

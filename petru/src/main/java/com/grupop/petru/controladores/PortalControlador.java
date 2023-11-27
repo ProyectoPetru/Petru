@@ -211,7 +211,7 @@ public class PortalControlador {
     }
 
     @PostMapping("/proyecto/registro")
-    public String proyectoRegistro(@RequestParam String nombre, @RequestParam MultipartFile archivo, ModelMap modelo,
+    public String proyectoRegistro(@RequestParam String nombre, @RequestParam(required = false) MultipartFile archivo, ModelMap modelo,
             HttpSession session) {
         Usuario logueado = (Usuario) session.getAttribute("usuariosession");
 
