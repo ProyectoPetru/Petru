@@ -67,7 +67,7 @@
     <main style="position: relative;">
         <div class="table-responsive">
             <div class="container mt-6">
-                <table class="table table-striped" action="/carga_proyecto" method="POST"></table>               
+                <table class="table table-striped" action="@{/carga_tareas}" method="POST"></table>               
 
                 
                     <div class=" container rounded-3 border border-2 border-dark my-5 bg-white" style="height:auto;">
@@ -113,8 +113,7 @@
                                 </select>
                             
                             <br>
-
-                            
+                            <label for="username">Fecha límite de la tarea</label><br>                            
                                 <input type="date" class="form-control">
                             
                             <br>
@@ -122,9 +121,10 @@
                                 <div class="d-grid gap-2 d-md-block">
                             <input class=" py-3 form-control shadow" placeholder="Ingrese la tarea" type="text" id="inputText"> 
                                 </div>
-                                <div class=class="d-grid gap-2 d-md-block">
+                                
+                                <div class="d-grid gap-2 d-md-block">
                                     <!-- método para ingresar la tarea -->
-                                    <button class=" mt-2 btn btn-dark"> Cargar tarea </button>
+                                    <button class="btn btn-dark"> Cargar tarea </button>
                                 </div>
                             </div>
                             
@@ -180,8 +180,8 @@
                                 <br>
                             </div>
                             <div class="d-grid gap-2 d-md-block">
-                                <button class="btn btn-primary" type="button">Editar selección</button>
-                                <button class="btn btn-danger" type="button">Borrar selección</button>
+                                <button class="btn btn-outline-primary" type="button">Editar selección</button>
+                                <button class="btn btn-outline-danger" type="button">Borrar selección</button>
                               </div>
                             <div class="d-grid gap-4 d-md-block">
                                 <!-- método para ingresar la tarea -->
