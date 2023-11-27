@@ -148,6 +148,7 @@
 }
 
 #proyecto .agregar-input button[type=submit]:hover {
+    cursor: pointer;
     border: 1px solid green;
     color: green;
 }
@@ -269,7 +270,7 @@
     background: none;
     color: var(--text);
     border: 1px solid var(--text);
-    border-radius: 1rem 0 0 1rem;
+    border-radius: 1rem .2rem .2rem 1rem;
     min-width: 14rem;
     max-width: 14rem;
     min-height: 2rem;

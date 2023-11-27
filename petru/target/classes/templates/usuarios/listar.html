@@ -43,7 +43,7 @@
                                 <td th:text="${usuario.nombre}"></td>
                                 <td th:text="${usuario.email}"></td>
                                 <td th:text="${usuario.telefono}"></td>
-                                <td th:text="${usuario.imagen.contenido}"></td>
+                                <td><img th:src="@{/imagen/__${usuario.imagen.id}__}" width="64px" height="64px" alt=""></td>
                                 <td th:text="${usuario.descripcion}"></td>
                                 <td>
                                     <a th:href="@{/usuario/modificar/__${usuario.id}__}">

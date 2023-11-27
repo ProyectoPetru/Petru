@@ -40,10 +40,13 @@ public class AdminControlador {
     }
     
     @GetMapping("/usuarios")
-    public String listar(ModelMap modelo) {
+    public String listar(ModelMap modelo, HttpSession session) {
+        Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+
+        modelo.addAttribute("usuariosession", logueado);
         List<Usuario> usuarios = usuarioServicio.listarUsuarios();
         modelo.addAttribute("usuarios", usuarios);
-        return "usuario_list";
+        return "/usuarios/listar.html";
     }
 
     @GetMapping("/modificarRol/{id}")
