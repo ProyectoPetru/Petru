@@ -135,20 +135,15 @@ public class PortalControlador {
         return "contacto.html";
     }
 
-    @GetMapping("/proyecto")
-    public String proyecto(@RequestParam(required = false) String error, HttpSession session, ModelMap modelo) {
+    @GetMapping("/proyecto/{id}")
+    public String proyecto(@PathVariable String id, @RequestParam(required = false) String error, HttpSession session, ModelMap modelo) {
         Usuario logueado = (Usuario) session.getAttribute("usuariosession");
         Usuario seba = new Usuario();
         seba.setNombre("Sebastian");
 
         modelo.addAttribute("usuariosession", logueado);
 
-        Proyecto proyecto = new Proyecto();
-        proyecto.setId("pro1");
-        proyecto.setNombre("Algo");
-        proyecto.setNotas("notas");
-        proyecto.setVisibilidad(Visibilidad.PUBLICO);
-        proyecto.setBaja(false);
+        Proyecto proyecto = proyectoServicio.getOne(id);
 
         Tarea tarea1 = new Tarea();
         tarea1.setId("tar1");
@@ -227,5 +222,12 @@ public class PortalControlador {
         }
 
         return "redirect:/inicio";
+    }
+
+    @GetMapping("/tarea/modificar/{id}")
+    public String modificarTarea(@PathVariable String id, @RequestParam String tipoTarea, ModelMap modelo) {
+        modelo.put("error", "La tarea con la id " + id + " esta en " + tipoTarea);
+
+        return "inicio.html";
     }
 }

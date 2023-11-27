@@ -28,7 +28,7 @@
             </a>
             <!-- Clase dropdown para abrir un menu al clickear el icono -->
             <div hidden class="dropdown">
-                <div class="list" th:each="proyecto : ${proyectos}">
+                <div class="list" th:each="proyecto : ${proyectos}" th:redirect="@{/proyecto/__${proyecto.id}__}">
                     <img th:src="@{/imagen/__${proyecto.imagen.id}__}" alt="">
                     <a th:text="${proyecto.nombre}"></a>
                 </div>
@@ -119,13 +119,7 @@
         <!-- Usuario comun -->
         <div class="item" th:if="${usuariosession != null}" sec:authorize="!hasRole('ADMIN')">
             <a class="icono">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
-                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                        stroke-width="2">
-                        <circle cx="12" cy="8" r="5" />
-                        <path d="M20 21a8 8 0 1 0-16 0m16 0a8 8 0 1 0-16 0" />
-                    </g>
-                </svg>
+                <img th:src="@{/imagen/__${usuariosession.imagen.id}__}" width="48px" height="48px" alt="usuario">
             </a>
             <div hidden class="dropdown" style="margin-left: -6rem;">
                 <div class="list" onclick="cambiarTema()">

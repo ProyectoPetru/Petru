@@ -91,7 +91,6 @@ public class ProyectoServicio {
     }
     
     @Transactional(readOnly = true)
-    @Deprecated
     public Proyecto getOne(String id) {
         return proyectoRepositorio.getOne(id);
     }

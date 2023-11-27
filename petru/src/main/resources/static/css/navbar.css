@@ -43,6 +43,13 @@
     color: var(--primary);
 }
 
+#navbar .item .icono img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--text);
+}
+
 @keyframes tooltip-in {
     from {
         opacity: 0%;
