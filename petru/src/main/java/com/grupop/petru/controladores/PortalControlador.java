@@ -18,6 +18,7 @@ import com.grupop.petru.servicios.UsuarioServicio;
 
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -125,5 +126,39 @@ public class PortalControlador {
 
         return "contacto.html";
     }
-    
+
+    @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_COLABORADOR', 'ROLE_ADMIN')")
+    @GetMapping("/perfil")
+    public String perfil(ModelMap modelo,HttpSession session){
+
+        Usuario usuario = (Usuario) session.getAttribute("usuariosession");
+
+         modelo.put("usuariosession", usuario);
+
+        return "perfil.html";
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_COLABORADOR', 'ROLE_ADMIN')")
+    @PostMapping("/perfil/{id}")
+    public String actualizar (MultipartFile archivo, String idUsuario, String nombre, String email, String clave,
+    String clave2, Long telefono, String descripcion, ModelMap modelo) throws MiException {
+
+        try {
+
+            usuarioServicio.modificarUsuario(archivo, idUsuario, nombre, email, clave, clave2, telefono, descripcion);
+            
+            modelo.put("exito", "Tu usuario se actualizo correctamente!");
+            
+            return "inicio.html";
+        } catch (MiException ex) {
+
+            modelo.put("error", ex.getMessage());
+            
+            modelo.put("nombre", nombre);
+           
+            modelo.put("email", email);
+            
+            return "perfil.html";
+        }
+    }
 }
