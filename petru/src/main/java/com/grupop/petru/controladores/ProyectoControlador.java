@@ -38,8 +38,7 @@ public class ProyectoControlador {
     @Autowired
     private ProyectoServicio proyectoServicio;
     
-    
-    
+     
     @GetMapping("/{id}")
     public String proyecto(@PathVariable String id, @RequestParam(required = false) String error, HttpSession session, ModelMap modelo) {
         Usuario logueado = (Usuario) session.getAttribute("usuariosession");
