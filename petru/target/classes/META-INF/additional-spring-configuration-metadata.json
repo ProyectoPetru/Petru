@@ -1,5 +1,0 @@
-{"properties": [{
-  "name": "spring.mail.email",
-  "type": "java.lang.String",
-  "description": "Email de la empresa"
-}]}
