@@ -1,0 +1,36 @@
+<alert id="alertas">
+    <link rel="stylesheet" href="/css/alertas.css">
+
+    <div class="exito" th:hidden="${exito == null}">
+        <span class="titulo">Exito</span>
+        <div class="divider"></div>
+        <span class="informacion" th:text="${exito}"></span>
+        <script>
+            setTimeout(() => {
+                const exito = document.querySelector("#alertas").querySelector(".exito")
+                exito.classList.add("exito-hide")
+                setTimeout(() => {
+                    exito.classList.remove("exito-hide")
+                    exito.hidden = true
+                }, 800)
+            }, 2500)
+        </script>
+    </div>
+
+    <div class="error" th:hidden="${error == null}">
+        <div class="detalles">
+            <span class="titulo">Error</span>
+            <div class="divider"></div>
+            <span class="informacion" th:text="${error}"></span>
+        </div>
+        <div>
+            <svg class="salir" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 15 15">
+                <path fill="currentColor" fill-rule="evenodd"
+                    d="M11.782 4.032a.575.575 0 1 0-.813-.814L7.5 6.687L4.032 3.218a.575.575 0 0 0-.814.814L6.687 7.5l-3.469 3.468a.575.575 0 0 0 .814.814L7.5 8.313l3.469 3.469a.575.575 0 0 0 .813-.814L8.313 7.5l3.469-3.468Z"
+                    clip-rule="evenodd" />
+            </svg>
+        </div>
+    </div>
+
+    <script src="/js/alertas.js"></script>
+</alert>
