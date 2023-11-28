@@ -1,3 +1,10 @@
+main>h1 {
+    background: var(--secondary);
+    border-top: 1px solid var(--background);
+    padding: 1rem 0 1rem 0;
+    margin: 0 0 2rem 0;
+}
+
 #proyecto {
     display: grid;
     justify-items: end;
@@ -97,7 +104,8 @@
     transition: box-shadow .4s, color .4s;
 }
 
-#proyecto .agregar svg, path {
+#proyecto .agregar svg,
+path {
     pointer-events: none;
 }
 
@@ -404,6 +412,7 @@
     }
 
     #proyecto .calendario {
+        margin: 0 0 2rem 0;
         width: 15rem;
     }
 

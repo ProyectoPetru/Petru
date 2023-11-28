@@ -23,12 +23,12 @@
                 <p>nuestros servicios de atencion estan disponibles de 8 a 19hs, responderemos tu email o consulta lo
                     antes posible</p>
                 <a href="#"></a>123-456-789 </a>
-
             </div>
-            <form action="#" autocomplete="off">
+            <form action="/contacto" method="POST" autocomplete="off">
                 <input type="text" name="nombre" id="nombre" placeholder="ingrese su nombre y apellido" class="campo">
-                <input type="email" name="correoelectronico" placeholder="ingrese su correo electronico">
-                <textarea name="mensaje" cols="30" rows="10"></textarea>
+                <input type="email" name="email" placeholder="ingrese su correo electronico">
+                <input type="text" name="titulo" placeholder="ingrese su titulo">
+                <textarea name="cuerpo" cols="30" rows="10"></textarea>
                 <input type="submit" name="enviar" value="enviar mensaje" class="btn-enviar">
             </form>
 

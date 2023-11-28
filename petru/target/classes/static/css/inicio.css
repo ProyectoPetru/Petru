@@ -1,6 +1,5 @@
 main {
     font-family: 'Montserrat', sans-serif;
-    background: var(--background);
     color: var(--text);
     position: relative;
     z-index: 0;

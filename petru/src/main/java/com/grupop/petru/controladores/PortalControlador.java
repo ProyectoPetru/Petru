@@ -13,6 +13,7 @@ package com.grupop.petru.controladores;
 
 import com.grupop.petru.entidades.Usuario;
 import com.grupop.petru.excepciones.MiException;
+import com.grupop.petru.servicios.EmailServicio;
 import com.grupop.petru.servicios.ProyectoServicio;
 import com.grupop.petru.servicios.UsuarioServicio;
 
@@ -34,6 +35,8 @@ public class PortalControlador {
     private UsuarioServicio usuarioServicio;
     @Autowired
     private ProyectoServicio proyectoServicio;
+    @Autowired
+    private EmailServicio emailServicio;
 
     // a futuro se podria ver si agregamos esto
     // @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
@@ -124,6 +127,15 @@ public class PortalControlador {
         modelo.addAttribute("usuariosession", logueado);
 
         return "contacto.html";
+    }
+
+    @PostMapping("/contacto")
+    public String contactar(@RequestParam String nombre, @RequestParam String email, @RequestParam String titulo, @RequestParam String cuerpo) {
+        cuerpo = "<div><h1 style='margin: 0 0 1rem 0'>" + nombre + "</h1>\n<h2 style='margin: 0 0 1rem 0'>" + email + "</h2>\n<h4 style='margin: 0 1rem 0 1rem; font-weight: normal'>" + cuerpo + "</h4><div>";
+
+        emailServicio.sendEmail(titulo, cuerpo);
+
+        return "redirect:/";
     }
     
 }
