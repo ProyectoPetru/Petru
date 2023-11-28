@@ -9,39 +9,26 @@ package com.grupop.petru.entidades;
  *           Salvador Caldarella - Sebastián A. Petrini
  */
 
-
-import com.grupop.petru.enumeraciones.Visibilidad;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.Lob;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 @Data
 @Entity
-public class Proyecto {
+public class Archivo {
    @Id
    @GeneratedValue(generator = "uuid")
    @GenericGenerator(name = "uuid", strategy = "uuid2")
    private String id;
    private String nombre;
-   @OneToOne
-   @Basic(optional = true)
-   private Archivo archivo;
-   @ManyToMany
-   private List<Usuario> usuarios;
-   @Enumerated(EnumType.STRING)
-   private Visibilidad visibilidad;
-   @Column(columnDefinition = "LONGTEXT")
-   @Basic(optional = true)
-   private String notas;
-   private Boolean baja;
+   private String tipo;
+   @Lob
+   @Basic(fetch = FetchType.LAZY)
+   private byte[] contenido;
 
 }

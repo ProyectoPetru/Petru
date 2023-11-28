@@ -28,8 +28,7 @@
             </a>
             <!-- Clase dropdown para abrir un menu al clickear el icono -->
             <div hidden class="dropdown">
-                <div class="list" th:each="proyecto : ${proyectos}" th:redirect="@{/proyecto/__${proyecto.id}__}">
-                    <img th:src="@{/imagen/__${proyecto.imagen.id}__}" alt="">
+                <div class="list" style="display: flex; justify-content: center;" th:each="proyecto : ${proyectos}" th:redirect="@{/proyecto/__${proyecto.id}__}">
                     <a th:text="${proyecto.nombre}"></a>
                 </div>
                 <div class="list agregar-proyecto">
@@ -92,7 +91,7 @@
     <div class="fin">
 
         <!-- Usuario admin -->
-        <div class="item" sec:authorize="${hasRole('ADMIN')}">
+        <div class="item" th:if="${usuariosession != null}" sec:authorize="${hasRole('ADMIN')}">
             <a class="icono">
                 <img th:src="@{/imagen/__${usuariosession.imagen.id}__}" width="48px" height="48px" alt="usuario">
                 <svg class="little-cfg" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">

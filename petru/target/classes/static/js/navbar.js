@@ -119,7 +119,6 @@ if (document.querySelector("#navbar").querySelector(".agregar-proyecto") != null
         form.action = "/proyecto/registro"
         form.method = "POST"
         form.enctype = "multipart/form-data"
-        form.innerHTML = "<input hidden type='file' name='archivo'>"
         const input = document.createElement("input")
         input.type = "text"
         input.name = "nombre"
