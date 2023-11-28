@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" xlmns:th="https://thymeleaf.org/"
+    xlmns:sec="https://thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <title>contacto</title>
+    <!-- Fuente de la letra -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Montserrat&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/contacto.css">
+</head>
+
+<body>
+
+    <nav th:replace="/fragments/navbar.html :: nav"></nav>
+
+    <main style="position: relative;">
+        <div class="formulario-container">
+            <div class="info-form">
+                <h2> Contactanos </h2>
+                <p>nuestros servicios de atencion estan disponibles de 8 a 19hs, responderemos tu email o consulta lo
+                    antes posible</p>
+                <a href="#"> 123-456-789 </a>
+            </div>
+            <form action="/contacto" method="POST" autocomplete="off">
+                <input type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre y apellido" class="campo">
+                <input type="email" name="email" placeholder="Ingrese su correo electronico">
+                <input type="text" name="titulo" placeholder="Ingrese su titulo">
+                <textarea name="cuerpo" placeholder="Ingrese un cuerpo"></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </main>
+
+    <footer th:replace="/fragments/footer.html :: footer"></footer>
+
+
+    <script src="/js/index.js"></script>
+</body>
+
+</html>
