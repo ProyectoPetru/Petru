@@ -28,9 +28,6 @@ public class ProyectoServicio {
     @Autowired
     private ProyectoRepositorio proyectoRepositorio;
     
-    @Autowired
-    private ImagenServicio imagenServicio;
-    
     @Transactional
     public void guardar(MultipartFile archivo, String nombre, Visibilidad visibilidad, 
             String notas, List<Usuario> usuarios) throws MiException {
@@ -40,8 +37,7 @@ public class ProyectoServicio {
         proyecto.setVisibilidad(visibilidad);
         proyecto.setUsuarios(usuarios);
         proyecto.setNotas(notas);
-        Imagen imagen = imagenServicio.guardar(archivo);
-        proyecto.setImagen(imagen);
+        // proyecto.setArchivo(archivo);
         proyecto.setBaja(Boolean.FALSE);
         proyectoRepositorio.save(proyecto);
     }

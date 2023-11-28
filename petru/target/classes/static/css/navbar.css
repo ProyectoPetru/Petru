@@ -40,7 +40,7 @@
 }
 
 #navbar .item a:hover {
-    filter:contrast(10%);
+    filter: opacity(60%);
 }
 
 #navbar .item .icono img {

@@ -9,6 +9,7 @@ package com.grupop.petru.servicios;
  */
 
 
+import com.grupop.petru.entidades.Archivo;
 import com.grupop.petru.excepciones.MiException;
 import com.grupop.petru.repositorios.ArchivoRepositorio;
 
