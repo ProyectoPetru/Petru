@@ -23,105 +23,88 @@
 
     <main style="position: relative;">
         <div class="table-responsive">
-            <div class="container">
+            <div class="container mt-6">
                 <table class="table table-striped" th:action="@{/carga_proyecto}" method="POST">
-                    <thead class="table-dark">
-                        <tr class="table-striped">
-                            <th scope="col">Cliente</th>
-                            <th scope="col">Nombre del Proyecto</th>
-                            <th scope="col">Colaborador</th>
-                            <th scope="col">Estado</th>
-                            <th scope="col">Fecha límite</th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
+                    <div class=" container rounded-3 border border-2 border-dark my-5 bg-white" style="height:auto;">
+
+
+                        <div>
+                            <h1 class=" h1">Nuevo proyecto</h1>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="d-grid gap-2 d-md-block">
+                                <input class=" py-3 form-control shadow" placeholder="Ingrese el nombre del proyecto "
+                                    type="text" id="inputText">
+                            </div>
+
+                        </div>
+                        <br>
+
+                        <div class="row">
+                            <div class="d-grid gap-2 d-md-block">
                                 <select class="form-select form-select-sm">
                                     <option selected>Seleccionar cliente</option>
                                     <option value="1">Cliente A</option>
                                     <option value="2">Cliente B</option>
                                     <option value="3">Cliente C</option>
                                 </select>
-                            </td>
-
-                            <td>
-                                <input type="text" class="form-control" placeholder="Nombre del proyecto">
-
-                            </td>
-                            <td>
+                            </div>
+                            <p>
+                            </p>
+                            <div class="d-grid gap-2 d-md-block">
                                 <select class="form-select form-select-sm">
                                     <option selected>Seleccionar Agente</option>
-                                    <option value="1">Agente A</option>
-                                    <option value="2">Agente B</option>
-                                    <option value="3">Agente C</option>
+                                    <option value="1">Pedro García</option>
+                                    <option value="2">Enzo Pérez</option>
+                                    <option value="3">Sarah Connor</option>
                                 </select>
-                            </td>
-                            <td>
+                            </div>
+                            <p>
+                            </p>
+                            <div class="d-grid gap-2 d-md-block">
                                 <select class="form-select form-select-sm">
-                                    <option selected>Selecciona un estado</option>
+                                    <option selected>Seleccionar Estado</option>
                                     <option value="1">Pendiente</option>
-                                    <option value="2">En proceso</option>
-                                    <option value="3">Listo</option>
+                                    <option value="2">En Proceso</option>
+                                    <option value="3">Listo!</option>
                                 </select>
-                            </td>
-                            <td>
-                                <input type="date" class="form-control">
-                            </td>
-                            <td>
+                            </div>
+                            <p>
+                            </p>
+                            <div class="d-grid gap-2 d-md-block">
+                                <label for="username">Fecha límite del proyecto</label><br>
+                                <input type="date" class="form-control" >
+
+                            </div>
+                            <p>
+                            </p>
+                            <div class="d-grid gap-2 d-md-block">
+                                <button class="btn btn-outline-primary" value="Input">
+                                    Cargar tarea al proyecto
+                                </button>
+                            </div>
+                            <p>
+                            </p>
+                            <div class="d-grid gap-2 d-md-block">
                                 <button class="btn btn-outline-dark" value="Input">
                                     Cargar proyecto
-
                                 </button>
-                            </td>
-                        </tr>
+                            </div>
+                            <p>
+                            </p>
+                        </div>
 
 
-                    </tbody>
+                    </div>
+
                 </table>
-                <td>
-                    <select class="form-select form-select-sm">
-                        <option selected>Seleccionar cliente</option>
-                        <option value="1">Cliente A</option>
-                        <option value="2">Cliente B</option>
-                        <option value="3">Cliente C</option>
-                    </select>
-                </td>
-
-                <td>
-                    <input type="text" class="form-control" placeholder="Nombre del proyecto">
 
 
-                </td>
-                <td>
-                    <select class="form-select form-select-sm">
-                        <option selected>Seleccionar Agente</option>
-                        <option value="1">Agente A</option>
-                        <option value="2">Agente B</option>
-                        <option value="3">Agente C</option>
-                    </select>
-                </td>
-                <td>
-                    <select class="form-select form-select-sm">
-                        <option selected>Selecciona un estado</option>
-                        <option value="1">Pendiente</option>
-                        <option value="2">En proceso</option>
-                        <option value="3">Listo</option>
-                    </select>
-                </td>
-                <td>
-                    <input type="date" class="form-control">
-                </td>
-                <td>
-                    <button class="btn btn-outline-dark" value="Input">
-                        Cargar
-                    </button>
-                </td>
-                </tr>
-                </tbody>
-                </table>
             </div>
+
+
         </div>
     </main>
 
