@@ -19,6 +19,8 @@ import com.grupop.petru.enumeraciones.Visibilidad;
 import com.grupop.petru.excepciones.MiException;
 import com.grupop.petru.servicios.ProyectoServicio;
 import com.grupop.petru.servicios.TareaServicio;
+import com.grupop.petru.servicios.UsuarioServicio;
+import java.util.ArrayList;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -43,7 +45,8 @@ public class ProyectoControlador {
     private ProyectoServicio proyectoServicio;
     @Autowired
     private TareaServicio tareaServicio;
-    
+    @Autowired
+    private UsuarioServicio usuarioServicio;
      
     @GetMapping("/{id}")
     public String proyecto(@PathVariable String id, @RequestParam(required = false) String error, HttpSession session, ModelMap modelo) {
@@ -65,6 +68,15 @@ public class ProyectoControlador {
     public String carga_proyecto(@RequestParam(required = false) String error, HttpSession session, ModelMap modelo) {
         Usuario logueado = (Usuario) session.getAttribute("usuariosession");
 
+        List<Usuario> clientes = usuarioServicio.listarClientes();
+        List<Usuario> agentes = usuarioServicio.listarColaboradores();
+        List<String> visibilidad = new ArrayList();
+        for(Visibilidad v: Visibilidad.values()){
+            visibilidad.add(v.toString());
+        }
+        modelo.addAttribute("clientes", clientes);
+        modelo.addAttribute("agentes", agentes);
+        modelo.addAttribute("visibilidad", visibilidad);
         modelo.addAttribute("usuariosession", logueado);
 
         return "carga_proyectos.html";
