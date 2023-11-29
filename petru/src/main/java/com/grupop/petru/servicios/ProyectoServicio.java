@@ -33,9 +33,12 @@ public class ProyectoServicio {
     
     @Transactional
     public void guardar(MultipartFile archivo, String nombre, Visibilidad visibilidad, 
-            String notas, List<Usuario> usuarios) throws MiException {
-        validar(nombre, visibilidad);
+            String notas, String idUsuario, String idCliente) throws MiException {
+        validar(nombre, visibilidad, idUsuario, idCliente);
         Proyecto proyecto = new Proyecto();
+        List<Usuario> usuarios = new ArrayList();
+        usuarios.add(usuarioServicio.getOne(idUsuario));
+        usuarios.add(usuarioServicio.getOne(idCliente));
         proyecto.setNombre(nombre);
         proyecto.setVisibilidad(visibilidad);
         proyecto.setUsuarios(usuarios);
@@ -65,12 +68,18 @@ public class ProyectoServicio {
 
     // VALIDACIONES
 
-    private void validar(String nombre, Visibilidad visibilidad) throws MiException {
+    private void validar(String nombre, Visibilidad visibilidad, String idUsuario, String idCliente) throws MiException {
         if (nombre.isEmpty() || nombre == null) {
             throw new MiException("el nombre no puede ser nulo o estar vacío");
         }
         if (visibilidad == null) {
             throw new MiException("La visibilidad no puede ser nulo o estar vacio");
+        }
+        if (!usuarioServicio.esCliente(idCliente)){
+            throw new MiException("El Cliente no es Válido");
+        }
+        if (!usuarioServicio.esColaborador(idUsuario)){
+            throw new MiException("El Colaborador no es Válido");
         }
     }
     
