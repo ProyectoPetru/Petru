@@ -1,11 +1,17 @@
+
 package com.grupop.petru.servicios;
 
+/**
+ *
+ * @authors  Nahiara Denice Alegre - Matias Quispe - Juan Pablo Pontini
+ *           Flavio Romero Averna - Dario Litterio - Cecilia Alsina
+ *           Manuel Dominich Martinez - Maximo Carbonetti
+ *           Salvador Caldarella - Sebastián A. Petrini
+ */
 
 import java.util.Properties;
-
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
