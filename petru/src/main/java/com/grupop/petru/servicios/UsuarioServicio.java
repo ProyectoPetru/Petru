@@ -194,4 +194,23 @@ public void validarYaRegistrado(String email) throws MiException{
         }
     }
 
+    public Boolean esCliente(String idCliente){
+        Usuario usuario = getOne(idCliente);
+        if (!usuario.getRol().toString().equals("CLIENTE") || usuario.getBaja() == true)
+            return false;
+        return true;
+    }
+
+    public Boolean esColaborador(String idUsuario){
+        Usuario usuario = getOne(idUsuario);
+        if (!usuario.getRol().toString().equals("COLABORADOR") || usuario.getBaja() == true)
+            return false;
+        return true;
+    }
+
+    @Transactional(readOnly = true)
+    public Usuario getOne(String id) {
+        return usuarioRepositorio.getOne(id);
+    }
+
 }
