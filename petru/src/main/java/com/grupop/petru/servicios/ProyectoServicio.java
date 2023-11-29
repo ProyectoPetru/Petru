@@ -15,6 +15,7 @@ import com.grupop.petru.entidades.Usuario;
 import com.grupop.petru.enumeraciones.Visibilidad;
 import com.grupop.petru.excepciones.MiException;
 import com.grupop.petru.repositorios.ProyectoRepositorio;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,12 +28,17 @@ public class ProyectoServicio {
     
     @Autowired
     private ProyectoRepositorio proyectoRepositorio;
+    @Autowired
+    private UsuarioServicio usuarioServicio;
     
     @Transactional
     public void guardar(MultipartFile archivo, String nombre, Visibilidad visibilidad, 
-            String notas, List<Usuario> usuarios) throws MiException {
-        validar(nombre, visibilidad);
+            String notas, String idUsuario, String idCliente) throws MiException {
+        validar(nombre, visibilidad, idUsuario, idCliente);
         Proyecto proyecto = new Proyecto();
+        List<Usuario> usuarios = new ArrayList();
+        usuarios.add(usuarioServicio.getOne(idUsuario));
+        usuarios.add(usuarioServicio.getOne(idCliente));
         proyecto.setNombre(nombre);
         proyecto.setVisibilidad(visibilidad);
         proyecto.setUsuarios(usuarios);
@@ -46,12 +52,12 @@ public class ProyectoServicio {
     // ALTA Y BAJA DEL PROYECTO
     
     @Transactional
-    public void alta(String id) throws MiException {
+    public void altaBaja(String id) throws MiException {
         try{
         Optional<Proyecto> respuesta = proyectoRepositorio.findById(id);
         if (respuesta.isPresent()) {
             Proyecto proyecto = respuesta.get();
-            proyecto.setBaja(false);
+            proyecto.setBaja(!proyecto.getBaja());
             proyectoRepositorio.save(proyecto);            
         }
         } catch (Exception e) {
@@ -60,29 +66,20 @@ public class ProyectoServicio {
 
     }
 
-    @Transactional
-    public void baja(String id) throws MiException {
-        try{
-        Optional<Proyecto> respuesta = proyectoRepositorio.findById(id);
-        if (respuesta.isPresent()) {
-            Proyecto proyecto = respuesta.get();
-            proyecto.setBaja(true);
-            proyectoRepositorio.save(proyecto);            
-        }
-        } catch (Exception e) {
-                System.err.println(e.getMessage());
-        }
-    }   
-    
-
     // VALIDACIONES
 
-    private void validar(String nombre, Visibilidad visibilidad) throws MiException {
+    private void validar(String nombre, Visibilidad visibilidad, String idUsuario, String idCliente) throws MiException {
         if (nombre.isEmpty() || nombre == null) {
             throw new MiException("el nombre no puede ser nulo o estar vacío");
         }
         if (visibilidad == null) {
             throw new MiException("La visibilidad no puede ser nulo o estar vacio");
+        }
+        if (!usuarioServicio.esCliente(idCliente)){
+            throw new MiException("El Cliente no es Válido");
+        }
+        if (!usuarioServicio.esColaborador(idUsuario)){
+            throw new MiException("El Colaborador no es Válido");
         }
     }
     
