@@ -146,6 +146,20 @@ public class UsuarioServicio implements UserDetailsService {
         usuarios = usuarioRepositorio.findAll();
         return usuarios;
     }
+    
+    @Transactional(readOnly = true)
+    public List<Usuario> listarClientes() {
+        List<Usuario> usuarios = new ArrayList();
+        usuarios = usuarioRepositorio.buscarClientes();
+        return usuarios;
+    }
+    
+    @Transactional(readOnly = true)
+    public List<Usuario> listarColaboradores() {
+        List<Usuario> usuarios = new ArrayList();
+        usuarios = usuarioRepositorio.buscarColaborador();
+        return usuarios;
+    }
 
     // VALIDACIONES
 
