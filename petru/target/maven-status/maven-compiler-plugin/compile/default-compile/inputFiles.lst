@@ -12,6 +12,7 @@ C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\ser
 C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\entidades\Usuario.java
 C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\repositorios\UsuarioRepositorio.java
 C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\SeguridadWeb.java
+C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\entidades\Token.java
 C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\controladores\AdminControlador.java
 C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\servicios\ProyectoServicio.java
 C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\controladores\ProyectoControlador.java
@@ -37,3 +38,4 @@ C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\rep
 C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\servicios\ArchivoServicio.java
 C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\controladores\ErrorControlador.java
 C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\controladores\EtiquetaControlador.java
+C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\repositorios\TokenRepositorio.java
