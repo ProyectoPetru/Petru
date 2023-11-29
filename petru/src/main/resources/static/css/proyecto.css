@@ -128,7 +128,7 @@ path {
     box-shadow: 0 0 .1rem .05rem var(--background) !important;
     filter: contrast(80%);
     background: var(--background);
-    width: 8rem;
+    width: 10rem;
     border-radius: .1rem;
     padding: 0 1rem;
 }
@@ -142,14 +142,14 @@ path {
     background: none;
     color: var(--text);
     border: 1px solid var(--background);
-    width: 6rem;
+    width: 8rem;
     border: 1;
     border-radius: .1rem;
     padding: .7rem 3rem .7rem 1rem;
 }
 
 #proyecto .ventana .agregar-input input {
-    width: 4rem;
+    width: 6rem;
     padding: .7rem 5rem .7rem 1rem;
 }
 
@@ -421,7 +421,7 @@ path {
     }
 
     #proyecto .calendario {
-        margin: 0 0 2rem 0;
+        margin: 2rem 0 2rem 0;
         width: 15rem;
     }
 
@@ -431,6 +431,10 @@ path {
         flex-direction: column;
         align-items: center;
         width: 15rem;
+    }
+
+    #proyecto .contenedor>div {
+        padding: 0;
     }
 
     #proyecto .ventana {
