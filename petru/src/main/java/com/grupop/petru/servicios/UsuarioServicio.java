@@ -10,9 +10,11 @@ package com.grupop.petru.servicios;
  */
 
 import com.grupop.petru.entidades.Imagen;
+import com.grupop.petru.entidades.Token;
 import com.grupop.petru.entidades.Usuario;
 import com.grupop.petru.enumeraciones.Rol;
 import com.grupop.petru.excepciones.MiException;
+import com.grupop.petru.repositorios.TokenRepositorio;
 import com.grupop.petru.repositorios.UsuarioRepositorio;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,14 +42,23 @@ public class UsuarioServicio implements UserDetailsService {
     private UsuarioRepositorio usuarioRepositorio;
 
     @Autowired
+    private TokenRepositorio tokenRepositorio;
+
+    @Autowired
     private ImagenServicio imagenServicio;
+
+    @Autowired
+    private EmailServicio emailServicio;
 
     @Transactional
     public void registrarUsuario(MultipartFile archivo, String nombre, String email, String clave, String clave2,
-            Long telefono, String descripcion) throws MiException {                  
+            Long telefono, String descripcion) throws MiException {       
+
         validar(nombre, email, clave, clave2, telefono);
         validarYaRegistrado(email);
+
         Usuario usuario = new Usuario();
+
         usuario.setNombre(nombre);
         usuario.setEmail(email);
         usuario.setClave(new BCryptPasswordEncoder().encode(clave));
@@ -55,10 +66,17 @@ public class UsuarioServicio implements UserDetailsService {
         usuario.setBaja(Boolean.FALSE);
         usuario.setTelefono(telefono);
         usuario.setDescripcion(descripcion);
+
         Imagen imagen = imagenServicio.guardar(archivo);
         usuario.setImagen(imagen);
-        usuarioRepositorio.save(usuario);        
-                       
+
+        usuario = usuarioRepositorio.save(usuario);
+
+        Token token = new Token(usuario);
+
+        tokenRepositorio.save(token);
+
+        emailServicio.sendEmail(email, "Verificacion de usuario " + nombre, "<div><h1 style='margin: 0 0 1rem 0'>" + nombre + "</h1>\n<h2 style='margin: 0 0 1rem 0'>" + email + "</h2>\n<h4 style='margin: 0 1rem 0 1rem; font-weight: normal'>Entra a <a href='http://localhost:8080/usuario/autenticar/" + token.getId() + "'>este link</a> para auntenticarte</h4><div>");
     }
 
 
@@ -227,4 +245,21 @@ public void validarYaRegistrado(String email) throws MiException{
         return usuarioRepositorio.getOne(id);
     }
 
+    @Transactional(readOnly = true)
+    public Usuario getByToken(String id) {
+        return tokenRepositorio.getByToken(id);
+    }
+
+    @Transactional(readOnly = true)
+    public Token getToken(String id) {
+        return tokenRepositorio.getOne(id);
+    }
+
+    public void inhabilitarToken(String id) {
+        Token token = tokenRepositorio.getOne(id);
+
+        token.setUsado(true);
+
+        tokenRepositorio.save(token);
+    }
 }
