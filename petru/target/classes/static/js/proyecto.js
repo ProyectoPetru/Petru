@@ -59,8 +59,8 @@ document.querySelector("#proyecto").querySelector(".contenedor").querySelector("
     const id = document.createElement("input")
     id.hidden = true
     id.type = "text"
-    id.name = "id"
-    id.value = e.target.getAttribute("tarea")
+    id.name = "idProyecto"
+    id.value = e.target.closest("#proyecto").getAttribute("proyecto")
     const input = document.createElement("input")
     input.type = "text"
     input.name = "nombre"
@@ -90,7 +90,7 @@ Array.from(document.querySelector("#proyecto").querySelector(".ventana").querySe
         const id = document.createElement("input")
         id.hidden = true
         id.type = "text"
-        id.name = "id"
+        id.name = "idTarea"
         id.value = e.target.getAttribute("tarea")
         const input = document.createElement("input")
         input.type = "text"
@@ -157,7 +157,7 @@ function dragStart(e) {
         if (selected != null) {
             if (selected.closest(".pendientes") == null) {
                 document.querySelector("#proyecto").querySelector(".contenedor").querySelector(".pendientes").appendChild(selected)
-                document.location = `/tarea/modificar/${selected.id}?tipoTarea=TODO`
+                document.location = `/tarea/modificar-rol/${selected.id}?tipoTarea=TODO`
             }
             selected = null
         }
@@ -170,7 +170,7 @@ function dragStart(e) {
         if (selected != null) {
             if (selected.closest(".haciendo") == null) {
                 document.querySelector("#proyecto").querySelector(".contenedor").querySelector(".haciendo").appendChild(selected)
-                document.location = `/tarea/modificar/${selected.id}?tipoTarea=DOING`
+                document.location = `/tarea/modificar-rol/${selected.id}?tipoTarea=DOING`
             }
             selected = null
         }
@@ -183,7 +183,7 @@ function dragStart(e) {
         if (selected != null) {
             if (selected.closest(".hechas") == null) {
                 document.querySelector("#proyecto").querySelector(".contenedor").querySelector(".hechas").appendChild(selected)
-                document.location = `/tarea/modificar/${selected.id}?tipoTarea=DONE`
+                document.location = `/tarea/modificar-rol/${selected.id}?tipoTarea=DONE`
             }
             selected = null
         }

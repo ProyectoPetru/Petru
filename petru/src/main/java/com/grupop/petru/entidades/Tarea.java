@@ -43,4 +43,11 @@ public class Tarea {
    private List<Etiqueta> etiquetas;
    private Boolean baja;
 
+   public void addEtiqueta(Etiqueta etiqueta) {
+      etiquetas.add(etiqueta);
+   }
+
+   public void addComentario(Comentario comentario) {
+      comentarios.add(comentario);
+   }
 }

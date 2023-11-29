@@ -7,6 +7,7 @@ package com.grupop.petru.servicios;
  *           Salvador Caldarella - Sebastián A. Petrini
  */
 
+import com.grupop.petru.entidades.Etiqueta;
 import com.grupop.petru.entidades.Proyecto;
 import com.grupop.petru.entidades.Tarea;
 import com.grupop.petru.enumeraciones.TipoTarea;
@@ -35,14 +36,13 @@ public class TareaServicio {
    
    //-------------------------------------CREAR-----------------------------------------------------// 
    @Transactional
-   public void crearTarea(String id, String nombre, String idProyecto)throws MiException{
+   public void crearTarea(String idProyecto, String nombre)throws MiException{
     
        Proyecto proyecto = (Proyecto) proyectoRepositorio.findById(idProyecto).get();
        
        
        Tarea tarea = new Tarea();
        
-       tarea.setId(id);
        tarea.setNombre(nombre);
        tarea.setProyecto(proyecto);
        //tarea.setEtiquetas(etiqueta);
@@ -61,10 +61,18 @@ public class TareaServicio {
         return tarea;
     }
    
- //-------------------------------------MODIFICAR-----------------------------------------------------//
-    public void modificarTarea(String id, String nombre, String idProyecto, String idEtiqueta) throws MiException{
+ //---------------------------------------LISTAR POR PROYECTO -----------------------------------------------------//
+    public List<Tarea> listarTareasProyecto(String id){
     
-       validar(id, nombre, idProyecto, idEtiqueta);
+        List<Tarea> tareas = tareaRepositorio.getTareaByProyecto(id);
+        
+        return tareas;
+    }
+   
+ //-------------------------------------MODIFICAR-----------------------------------------------------//
+    public void modificarTarea(String id, String nombre, String idProyecto, TipoTarea tipoTarea, List<Etiqueta> etiquetas) throws MiException{
+    
+       validar(id, nombre, idProyecto);
         
        Optional<Tarea> respuestaTarea = tareaRepositorio.findById(id);
        Optional<Proyecto> respuestaProyecto = proyectoRepositorio.findById(idProyecto);
@@ -83,8 +91,8 @@ public class TareaServicio {
            tarea.setId(id);
            tarea.setNombre(nombre);
            tarea.setProyecto(proyecto);
-           //tarea.setEtiquetas();
-           tarea.setTipoTarea(TipoTarea.TODO);
+           tarea.setTipoTarea(tipoTarea);
+           tarea.setEtiquetas(etiquetas);
        
           tareaRepositorio.save(tarea);
         } 
@@ -102,7 +110,7 @@ public class TareaServicio {
      }
  
     //-------------------------------------VALIDAR -----------------------------------------------------//
-    private void validar (String id, String nombre, String idProyecto, String idEtiqueta) throws MiException{
+    private void validar (String id, String nombre, String idProyecto) throws MiException{
     
         if(id == null){
             throw new MiException("El ID no puede ser NULO");
@@ -115,9 +123,9 @@ public class TareaServicio {
         if(idProyecto == null || idProyecto.isEmpty()){
             throw new MiException("El PROYECTO no puede ser NULO o estar VACIO");
         }
-        
-//        if(idEtiqueta == null || idEtiqueta.isEmpty()){
-//            throw new MiException("La ETIQUETA no puede ser NULA o estar VACIA");
-//        }
+    }
+
+    public Tarea getOne(String id) {
+        return tareaRepositorio.getOne(id);
     }
 }

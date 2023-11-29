@@ -2,7 +2,7 @@ main>h1 {
     background: var(--secondary);
     border-top: 1px solid var(--background);
     padding: 1rem 0 1rem 0;
-    margin: 0 0 2rem 0;
+    margin: 0;
 }
 
 #proyecto {
@@ -13,7 +13,7 @@ main>h1 {
 }
 
 #proyecto .calendario {
-    margin: 0 2rem 0 0;
+    margin: 2rem 2rem 0 0;
 }
 
 #proyecto .contenedor {
@@ -25,6 +25,7 @@ main>h1 {
     display: flex;
     justify-content: space-around;
     margin: 0 0 0 2rem;
+    padding: 2rem 0 0 0;
 }
 
 #proyecto .contenedor>div {
@@ -45,7 +46,7 @@ main>h1 {
     box-shadow: 0 0 .1rem .05rem var(--background);
     filter: contrast(80%);
     background: var(--background);
-    width: 8rem;
+    width: 10rem;
     border-radius: .1rem;
     padding: .5rem 1rem .5rem 1rem;
     margin: .2rem 0 .2rem 0;
@@ -64,6 +65,11 @@ main>h1 {
     border: 1px solid var(--contrast) !important;
 }
 
+#proyecto .contenedor>div .tarea .titulo {
+    margin: 0 1rem 0 0;
+    pointer-events: none;
+}
+
 #proyecto .contenedor>div .tarea .tooltip {
     position: absolute;
     background: var(--current);
@@ -74,7 +80,9 @@ main>h1 {
 }
 
 #proyecto .contenedor>div .tarea .pencil {
-    margin: 0 0 0 auto;
+    position: absolute;
+    display: flex;
+    margin: 0 0 0 9rem;
     color: var(--text);
     transition: transform .4s, color .4s, opacity .4s;
 }
@@ -97,7 +105,7 @@ main>h1 {
     box-shadow: 0 0 .1rem .05rem var(--background);
     filter: contrast(80%);
     background: var(--background);
-    width: 8rem;
+    width: 10rem;
     border-radius: .1rem;
     padding: .5rem 1rem .5rem 1rem;
     margin: .2rem 0 .2rem 0;

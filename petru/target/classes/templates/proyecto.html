@@ -18,7 +18,7 @@
 
     <main style="position: relative;">
         <h1 th:text="${proyecto.nombre}" style="text-align: center;"></h1>
-        <div id="proyecto">
+        <div id="proyecto" th:proyecto="${proyecto.id}">
             <div class="calendario">
                 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
                 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
@@ -94,8 +94,8 @@
             <div hidden class="ventana">
                 <div class="tarea-ventana" hidden th:each="tarea : ${tareas}" th:id="${tarea.id}">
                     <div class="cambiar-nombre">
-                        <form th:action="@{/tarea/modificar/__${tarea.id}__}" method="POST">
-                            <input type="text" name="nombre" th:value="${tarea.nombre}">
+                        <form th:action="@{/tarea/modificar-nombre/__${tarea.id}__}" method="POST">
+                            <input type="text" name="nombre" th:value="${tarea.nombre}" autocomplete="off">
                             <button type="submit">✔</button>
                         </form>
                         <div class="comentarios">
@@ -106,7 +106,8 @@
                                 </div>
                                 <div class="contenido">
                                     <form th:action="@{/comentario/registro}" method="POST">
-                                        <input hidden type="text" name="id" th:value="${tarea.id}">
+                                        <input hidden type="text" name="idTarea" th:value="${tarea.id}">
+                                        <input hidden type="text" name="idUsuario" th:value="${usuariosession.id}">
                                         <textarea name="contenido" placeholder="Agregar comentario..."></textarea>
                                         <button type="submit">✔</button>
                                     </form>
