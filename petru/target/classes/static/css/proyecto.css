@@ -192,6 +192,7 @@ path {
     display: flex;
     justify-self: center;
     align-self: center;
+    z-index: 999;
     width: 40rem;
     height: 23rem;
     padding: 2rem;
