@@ -46,12 +46,12 @@ public class ProyectoServicio {
     // ALTA Y BAJA DEL PROYECTO
     
     @Transactional
-    public void alta(String id) throws MiException {
+    public void altaBaja(String id) throws MiException {
         try{
         Optional<Proyecto> respuesta = proyectoRepositorio.findById(id);
         if (respuesta.isPresent()) {
             Proyecto proyecto = respuesta.get();
-            proyecto.setBaja(false);
+            proyecto.setBaja(!proyecto.getBaja());
             proyectoRepositorio.save(proyecto);            
         }
         } catch (Exception e) {
@@ -59,21 +59,6 @@ public class ProyectoServicio {
         }
 
     }
-
-    @Transactional
-    public void baja(String id) throws MiException {
-        try{
-        Optional<Proyecto> respuesta = proyectoRepositorio.findById(id);
-        if (respuesta.isPresent()) {
-            Proyecto proyecto = respuesta.get();
-            proyecto.setBaja(true);
-            proyectoRepositorio.save(proyecto);            
-        }
-        } catch (Exception e) {
-                System.err.println(e.getMessage());
-        }
-    }   
-    
 
     // VALIDACIONES
 
