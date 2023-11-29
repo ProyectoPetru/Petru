@@ -1,112 +1,240 @@
 <!DOCTYPE html>
 <html lang="es" data-theme="light" xlmns:th="https://thymeleaf.org/"
     xlmns:sec="https://thymeleaf.org/extras/spring-security">
-
-
-<head>
+<<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Lista de tareas</title>
     <link rel="icon" href="/img/logo.png" type="image/x-icon">
-    
     <title>Lista de Tareas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Montserrat&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&amp;family=Montserrat&amp;display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
     </script>
-</head>
+    </head>
 
-<body>
+    <body>
+        <nav id="navbar">
+            <!-- CSS de la navbar -->
+            <link rel="stylesheet" href="/css/navbar.css">
 
-    <div class=" container rounded-3 border border-2 border-dark my-5 bg-white" style="height:auto;">
-        <div>
-        <h1 class=" h1">Lista de Tareas</h1> 
-    
-    </div>
-        <hr>
-    <div class="row rounded bg-white">
-        <div class=" col-12"> 
-        <ul class=" list-group" id="list"></ul>
-        </div> 
+            <!-- Elementos al inicio de la navbar -->
+            <div class="inicio">
+                <!-- Cada elemento lleva la etiqueta "item" -->
+                <div class="item">
+                    <a class="icono" href="/inicio">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16">
+                            <path fill="currentColor"
+                                d="M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z">
+                            </path>
+                        </svg>
+                    </a>
+                    <!-- Solo se muestra cuando el mouse pasa por encima y la pantalla tiene una resolucion mayor a WIDTH_TOOLTIP -->
+                    <span hidden="" class="tooltip right">Inicio</span>
+                </div>
+            </div>
+
+            <!-- Elementos en el medio de la navbar -->
+            <div class="medio">
+
+            </div>
+
+            <!-- Elementos al final de la navbar -->
+            <div class="fin">
+
+                <!-- Usuario admin -->
 
 
-        <div class="row">
-            <div class=" col-8">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                  Diagramar UML
-                </label>
+                <!-- Usuario comun -->
+
+
+                <!-- Usuario no logueado -->
+                <div class="item">
+                    <a class="icono" href="/login">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M12 21v-2h7V5h-7V3h7q.825 0 1.413.588T21 5v14q0 .825-.588 1.413T19 21h-7Zm-2-4l-1.375-1.45l2.55-2.55H3v-2h8.175l-2.55-2.55L10 7l5 5l-5 5Z">
+                            </path>
+                        </svg>
+                    </a>
+                    <span hidden="" class="tooltip left">Ingresar</span>
+                </div>
             </div>
-            
-            <div class="col-2">
-                <!-- método para ingresar la tarea -->
-                <button  class=" mt-2 btn btn-dark"> Editar </button>
-            </div>
-            <div class="col-2">
-                <!-- método para ingresar la tarea -->
-                <button  class=" mt-2 btn btn-dark"> Borrar </button>
-            </div>
-        </div>
-        <div class="row">
-            <div class=" col-8">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                  Entides y servicios
-                </label>
-            </div>
-            <div class="col-2">
-                <!-- método para ingresar la tarea -->
-                <button  class=" mt-2 btn btn-dark"> Editar </button>
-            </div>
-            <div class="col-2">
-                <!-- método para ingresar la tarea -->
-                <button  class=" mt-2 btn btn-dark"> Borrar </button>
-            </div>
-        </div>
-        <div class="row">
-            <div class=" col-8">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                  Controladores
-                </label>
-            </div>
-            <div class="col-2">
-                <!-- método para ingresar la tarea -->
-                <button  class=" mt-2 btn btn-dark"> Editar </button>
-            </div>
-            <div class="col-2">
-                <!-- método para ingresar la tarea -->
-                <button  class=" mt-2 btn btn-dark"> Borrar </button>
-            </div>
-        </div>
-        <div class="row">
-            <div class=" col-8">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                  Seguridad
-                </label>
-            </div>
-            <div class="col-2">
-                <!-- método para ingresar la tarea -->
-                <button  class=" mt-2 btn btn-dark"> Editar </button>
-            </div>
-            <div class="col-2">
-                <!-- método para ingresar la tarea -->
-                <button  class=" mt-2 btn btn-dark"> Borrar </button>
-            </div>
-        </div>
-    </div>
-        <hr>
-    <div class="row rounded bg-white">
-        <div class=" col-12"> 
-        <ul class=" list-group" id="list"></ul>
-        </div> 
-    </div> 
-    
- </div>
-    
-</body>
+
+            <!-- Script de la navbar -->
+            <script src="/js/navbar.js"></script>
+        </nav>
+        <main style="position: relative;">
+            <table class="table table-striped" action="@{tarea/listar_tarea}" method="POST"> </table>
+
+                <div class=" container rounded-3 border border-2 border-dark my-5 bg-white" style="height:auto;">
+                    <div>
+                        <h1 class=" h1">Lista de Tareas</h1>
+
+                    </div>
+                    <select class="form-select form-select-sm">
+                        <option selected="">Seleccionar Proyecto</option>
+                        <option value="1">Proyecto 1</option>
+                        <option value="2">Proyecto 2</option>
+                        <option value="3">Proyecto 3</option>
+                    </select>
+                    <p></p>
+                    <div class="d-grid gap-2 d-md-block">
+                        <button class="btn btn-outline-dark" value="Input">
+                            Buscar tareas asignadas al proyecto seleccionado
+                        </button>
+                    </div>
+                    <hr>
+                    <div class="row rounded bg-white">
+                        <div class=" col-8">
+                            <ul class=" list-group" id="list"></ul>
+                        </div>
+                        <div class="table-responsive">
+
+                            <table class="table table-borderless">
+                                <thead>
+                                    <tr>
+                                        <th> Tarea</th>
+                                        <th> Cliente</th>
+                                        <th> Agente</th>
+                                        <th>Estado</th>
+                                        <th>Fecha límite</th>
+                                        <th>Notas</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Diagramar UML</td>
+                                        <td>Pepito Honguito</td>
+                                        <td>Enzo Pérez</td>
+                                        <th>Listo!</th>
+                                        <th>25/11/2023</th>
+                                        <th>link a notas </th>
+                                    </tr>
+                                    <tr>
+                                        <td>Entidades y Servicios</td>
+                                        <td>Pepito Honguito</td>
+                                        <td>Enzo Pérez</td>
+                                        <th>En proceso</th>
+                                        <th>05/12/2023</th>
+                                        <th>link a notas </th>
+                                    </tr>
+                                    <tr>
+                                        <td>Controladores</td>
+                                        <td>Pepito Honguito</td>
+                                        <td>Enzo Pérez</td>
+                                        <th>Pendiente</th>
+                                        <th>15/12/2023</th>
+                                        <th>link a notas </th>
+                                    </tr>
+                                    <tr>
+                                        <td>Seguridad</td>
+                                        <td>Pepito Honguito</td>
+                                        <td>Sarah Connor</td>
+                                        <th>Pendiente</th>
+                                        <th>25/12/2023</th>
+                                        <th>link a notas </th>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+                            <div>
+                                <h1 class=" h1">Modificar tareas</h1>
+
+                            </div>
+                            <hr>
+
+
+                            <div class="row rounded bg-white">
+                                <div class=" col-12">
+                                    <ul class=" list-group" id="list"></ul>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class=" col-8">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Diagramar UML
+                                    </label>
+                                </div>
+
+                                <div class="col-2">
+                                    <!-- método para ingresar la tarea -->
+                                    <button class=" mt-2 btn btn-outline-primary"> Editar </button>
+                                </div>
+                                <div class="col-2">
+                                    <!-- método para ingresar la tarea -->
+                                    <button class=" mt-2 btn btn-outline-danger"> Borrar </button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class=" col-8">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Entides y servicios
+                                    </label>
+                                </div>
+                                <div class="col-2">
+                                    <!-- método para ingresar la tarea -->
+                                    <button class=" mt-2 btn btn-outline-primary"> Editar </button>
+                                </div>
+                                <div class="col-2">
+                                    <!-- método para ingresar la tarea -->
+                                    <button class=" mt-2 btn btn-outline-danger"> Borrar </button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class=" col-8">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Controladores
+                                    </label>
+                                </div>
+                                <div class="col-2">
+                                    <!-- método para ingresar la tarea -->
+                                    <button class=" mt-2 btn btn-outline-primary"> Editar </button>
+                                </div>
+                                <div class="col-2">
+                                    <!-- método para ingresar la tarea -->
+                                    <button class=" mt-2 btn btn-outline-danger"> Borrar </button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class=" col-8">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Seguridad
+                                    </label>
+                                </div>
+                                <div class="col-2">
+                                    <!-- método para ingresar la tarea -->
+                                    <button class=" mt-2 btn btn-outline-primary"> Editar </button>
+                                </div>
+                                <div class="col-2">
+                                    <!-- método para ingresar la tarea -->
+                                    <button class=" mt-2 btn btn-outline-danger"> Borrar </button>
+                                </div>
+                                <p></p>
+
+                                <div class="d-grid gap-2 d-md-block">
+                                    <button class="btn btn-outline-dark" value="Input">
+                                        Guardar modificaciones
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <br>
+
+
+                </div>
+           
+        </main>
+    </body>
+
 </html>
