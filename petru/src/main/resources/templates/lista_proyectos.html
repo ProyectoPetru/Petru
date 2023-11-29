@@ -20,84 +20,87 @@
 </head>
 
 <body>
+    <nav th:replace="/fragments/navbar.html :: nav"></nav>
+
     <main style="position: relative;">
 
-    <div class=" container rounded-3 border border-2 border-dark my-5 bg-white" style="height:auto;">
-        <div>
-            <h1 class=" h1">Lista de Proyectos</h1>
 
-        </div>
-        
-        <p></p>
-       
-        <hr>
-        <div class="row rounded bg-white">
-            <div class=" col-14">
-                <ul class=" list-group" id="list"></ul>
+        <div class=" container rounded-3 border border-2 border-dark my-5 bg-white" style="height:auto;">
+            <div>
+                <h1 class=" h1">Lista de Proyectos</h1>
+
             </div>
-            <div class="table-responsive">
-            <table class="table table-borderless">
-                <thead>
-                    <tr>
-                        
-                        <th> Proyecto</th>
-                        <th> Cliente</th>
-                        <th> Agente</th>
-                        <th>Estado</th>
-                        <th>Fecha límite</th>
-                        <th>Notas</th>
-                        <th>Ver Proyecto</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Desarrollo web ZZZ</td>
-                        <td>Pepito Honguito</td>
-                        <td>Enzo Pérez</td>
-                        <th>Listo!</th>
-                        <th>25/11/2023</th>
-                        <th>link a notas </th>
-                        <th> <button class=" mt-1 btn btn-outline-dark btn-sm"> Ver proyecto </button></th>
-                    </tr>
-                    <tr>
-                        <td>Base de datos XXX</td>
-                        <td>Pepito Honguito</td>
-                        <td>Enzo Pérez</td>
-                        <th>En proceso</th>
-                        <th>05/12/2023</th>
-                        <th>link a notas </th>
-                        <th> <button class=" mt-1 btn btn-outline-dark btn-sm"> Ver proyecto </button></th>
-                    </tr>
-                    <tr>
-                        <td>App WWW</td>
-                        <td>Pepito Honguito</td>
-                        <td>Enzo Pérez</td>
-                        <th>Pendiente</th>
-                        <th>15/12/2023</th>
-                        <th>link a notas </th>
-                        <th> <button class=" mt-1 btn btn-outline-dark btn-sm"> Ver proyecto </button></th>
-                    </tr>
-                    <tr>
-                        <td>Redes XXX </td>
-                        <td>Pepito Honguito</td>
-                        <td>Sarah Connor</td>
-                        <th>Pendiente</th>
-                        <th>25/12/2023</th>
-                        <th>link a notas </th>
-                        <th> <button class=" mt-1 btn btn-outline-dark btn-sm"> Ver proyecto </button></th>
-                    </tr>
 
-                    <th> <button class=" mt-1 btn btn-dark btn-sm"> Volver </button></th>
-                </tbody>
-            </table>
+            <p></p>
+
+            <hr>
+            <div class="row rounded bg-white">
+                <div class=" col-14">
+                    <ul class=" list-group" id="list"></ul>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped" th:action="@{/lista_proyectos}" method="POST">
+                        <thead>
+                            <tr>
+
+                                <th> Proyecto</th>
+                                <th> Cliente</th>
+                                <th> Agente</th>
+                                <th>Estado</th>
+                                <th>Fecha límite</th>
+                                <th>Notas</th>
+                                <th>Ver Proyecto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Desarrollo web ZZZ</td>
+                                <td>Pepito Honguito</td>
+                                <td>Enzo Pérez</td>
+                                <th>Listo!</th>
+                                <th>25/11/2023</th>
+                                <th>link a notas </th>
+                                <th> <button class=" mt-1 btn btn-outline-dark btn-sm"> Ver proyecto </button></th>
+                            </tr>
+                            <tr>
+                                <td>Base de datos XXX</td>
+                                <td>Pepito Honguito</td>
+                                <td>Enzo Pérez</td>
+                                <th>En proceso</th>
+                                <th>05/12/2023</th>
+                                <th>link a notas </th>
+                                <th> <button class=" mt-1 btn btn-outline-dark btn-sm"> Ver proyecto </button></th>
+                            </tr>
+                            <tr>
+                                <td>App WWW</td>
+                                <td>Pepito Honguito</td>
+                                <td>Enzo Pérez</td>
+                                <th>Pendiente</th>
+                                <th>15/12/2023</th>
+                                <th>link a notas </th>
+                                <th> <button class=" mt-1 btn btn-outline-dark btn-sm"> Ver proyecto </button></th>
+                            </tr>
+                            <tr>
+                                <td>Redes XXX </td>
+                                <td>Pepito Honguito</td>
+                                <td>Sarah Connor</td>
+                                <th>Pendiente</th>
+                                <th>25/12/2023</th>
+                                <th>link a notas </th>
+                                <th> <button class=" mt-1 btn btn-outline-dark btn-sm"> Ver proyecto </button></th>
+                            </tr>
+
+                            <th> <button class=" mt-1 btn btn-dark btn-sm"> Volver </button></th>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+
+
         </div>
-            
-
-        </div>
-     
-
-    </div>
-</main>
+    </main>
 
 </body>
 
