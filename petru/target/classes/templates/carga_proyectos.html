@@ -46,9 +46,8 @@
                             <div class="d-grid gap-2 d-md-block">
                                 <select class="form-select form-select-sm">
                                     <option selected>Seleccionar cliente</option>
-                                    <option value="1">Cliente A</option>
-                                    <option value="2">Cliente B</option>
-                                    <option value="3">Cliente C</option>
+                            
+                                    <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.nombre}" />
                                 </select>
                             </div>
                             <p>
@@ -56,9 +55,7 @@
                             <div class="d-grid gap-2 d-md-block">
                                 <select class="form-select form-select-sm">
                                     <option selected>Seleccionar Agente</option>
-                                    <option value="1">Pedro García</option>
-                                    <option value="2">Enzo Pérez</option>
-                                    <option value="3">Sarah Connor</option>
+                                    <option th:each="agente : ${agentes}" th:value="${agente.id}" th:text="${agente.nombre}" />
                                 </select>
                             </div>
                             <p>
@@ -66,17 +63,15 @@
                             <div class="d-grid gap-2 d-md-block">
                                 <select class="form-select form-select-sm">
                                     <option selected>Seleccionar Estado</option>
-                                    <option value="1">Pendiente</option>
-                                    <option value="2">En Proceso</option>
-                                    <option value="3">Listo!</option>
+                                    <option th:each="v : ${visibilidad}" th:value="${v}" th:text="${v}" />
                                 </select>
                             </div>
                             <p>
                             </p>
                             <div class="d-grid gap-2 d-md-block">
                                 <label for="username">Fecha límite del proyecto</label><br>
-                                <input type="date" class="form-control" >
-
+                                <input type="date" class="form-control">
+                            
                             </div>
                             <p>
                             </p>
@@ -94,10 +89,10 @@
                             </div>
                             <p>
                             </p>
-                        </div>
-
-
-                    </div>
+                            </div>
+                            
+                            
+                            </div>
 
                 </table>
 

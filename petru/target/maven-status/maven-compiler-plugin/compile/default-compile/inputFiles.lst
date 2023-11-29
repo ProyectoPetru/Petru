@@ -6,6 +6,8 @@ C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\ser
 C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\entidades\Comentario.java
 C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\PetruApplication.java
 C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\repositorios\ArchivoRepositorio.java
+C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\servicios\EventoServicio.java
+C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\controladores\ComentarioControlador.java
 C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\servicios\EmailServicio.java
 C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\entidades\Usuario.java
 C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\repositorios\UsuarioRepositorio.java
@@ -23,12 +25,15 @@ C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\exc
 C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\entidades\Imagen.java
 C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\repositorios\EventoRepositorio.java
 C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\entidades\Proyecto.java
+C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\repositorios\ComentarioRepositorio.java
 C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\controladores\TareaControlador.java
 C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\entidades\Evento.java
 C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\repositorios\TareaRepositorio.java
+C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\servicios\ComentarioServicio.java
 C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\servicios\ImagenServicio.java
 C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\enumeraciones\Visibilidad.java
 C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\servicios\UsuarioServicio.java
 C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\repositorios\ImagenRepositorio.java
 C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\servicios\ArchivoServicio.java
 C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\controladores\ErrorControlador.java
+C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\controladores\EtiquetaControlador.java

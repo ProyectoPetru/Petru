@@ -83,7 +83,8 @@ public class ProyectoControlador {
     }
 
     @PostMapping("/registro")
-    public String proyectoRegistro(@RequestParam String nombre, @RequestParam(required = false) MultipartFile archivo, ModelMap modelo,
+    public String proyectoRegistro(@RequestParam String nombre, @RequestParam(required = false) MultipartFile archivo, 
+            @RequestParam String idCliente, @RequestParam String idAgente, ModelMap modelo,
             HttpSession session) {
         Usuario logueado = (Usuario) session.getAttribute("usuariosession");
 
@@ -91,7 +92,7 @@ public class ProyectoControlador {
 
         try {
             proyectoServicio.guardar(archivo, nombre, Visibilidad.PUBLICO, "s",
-                    Arrays.asList(new Usuario[] { logueado }));
+                    idCliente, idAgente);
         } catch (MiException e) {
             modelo.put("error", e);
 
