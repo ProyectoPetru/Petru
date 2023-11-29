@@ -417,12 +417,13 @@ path {
         display: flex;
         flex-direction: column;
         align-items: center;
+        width: 100%;
         margin: 0;
     }
 
     #proyecto .calendario {
         margin: 2rem 0 2rem 0;
-        width: 15rem;
+        width: 80%;
     }
 
     #proyecto .contenedor {
@@ -430,7 +431,7 @@ path {
         margin: 0;
         flex-direction: column;
         align-items: center;
-        width: 15rem;
+        width: 80%;
     }
 
     #proyecto .contenedor>div {
