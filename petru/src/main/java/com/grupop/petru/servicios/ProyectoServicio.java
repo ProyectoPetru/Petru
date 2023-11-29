@@ -48,6 +48,20 @@ public class ProyectoServicio {
         proyectoRepositorio.save(proyecto);
     }
     
+    @Transactional
+    public void guardar(MultipartFile archivo, String nombre, Visibilidad visibilidad, 
+            String notas, List<Usuario> usuarios) throws MiException {
+        validar(nombre, visibilidad);
+        Proyecto proyecto = new Proyecto();
+        proyecto.setNombre(nombre);
+        proyecto.setVisibilidad(visibilidad);
+        proyecto.setUsuarios(usuarios);
+        proyecto.setNotas(notas);
+        // proyecto.setArchivo(archivo);
+        proyecto.setBaja(Boolean.FALSE);
+        proyectoRepositorio.save(proyecto);
+    }
+    
     
     // ALTA Y BAJA DEL PROYECTO
     
@@ -67,6 +81,15 @@ public class ProyectoServicio {
     }
 
     // VALIDACIONES
+
+    private void validar(String nombre, Visibilidad visibilidad) throws MiException {
+        if (nombre.isEmpty() || nombre == null) {
+            throw new MiException("el nombre no puede ser nulo o estar vacío");
+        }
+        if (visibilidad == null) {
+            throw new MiException("La visibilidad no puede ser nulo o estar vacio");
+        }
+    }
 
     private void validar(String nombre, Visibilidad visibilidad, String idUsuario, String idCliente) throws MiException {
         if (nombre.isEmpty() || nombre == null) {

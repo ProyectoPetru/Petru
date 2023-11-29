@@ -38,18 +38,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
-@RequestMapping("/proyecto") //localhost:8080/proyecto
+@RequestMapping("/proyecto") // localhost:8080/proyecto
 public class ProyectoControlador {
-    
+
     @Autowired
     private ProyectoServicio proyectoServicio;
     @Autowired
     private TareaServicio tareaServicio;
     @Autowired
     private UsuarioServicio usuarioServicio;
-     
+
     @GetMapping("/{id}")
-    public String proyecto(@PathVariable String id, @RequestParam(required = false) String error, HttpSession session, ModelMap modelo) {
+    public String proyecto(@PathVariable String id, @RequestParam(required = false) String error, HttpSession session,
+            ModelMap modelo) {
         Usuario logueado = (Usuario) session.getAttribute("usuariosession");
 
         modelo.addAttribute("usuariosession", logueado);
@@ -63,7 +64,7 @@ public class ProyectoControlador {
 
         return "proyecto.html";
     }
-    
+
     @GetMapping("/registrar")
     public String carga_proyecto(@RequestParam(required = false) String error, HttpSession session, ModelMap modelo) {
         Usuario logueado = (Usuario) session.getAttribute("usuariosession");
@@ -71,7 +72,7 @@ public class ProyectoControlador {
         List<Usuario> clientes = usuarioServicio.listarClientes();
         List<Usuario> agentes = usuarioServicio.listarColaboradores();
         List<String> visibilidad = new ArrayList();
-        for(Visibilidad v: Visibilidad.values()){
+        for (Visibilidad v : Visibilidad.values()) {
             visibilidad.add(v.toString());
         }
         modelo.addAttribute("clientes", clientes);
@@ -83,16 +84,22 @@ public class ProyectoControlador {
     }
 
     @PostMapping("/registro")
-    public String proyectoRegistro(@RequestParam String nombre, @RequestParam(required = false) MultipartFile archivo, 
-            @RequestParam String idCliente, @RequestParam String idAgente, ModelMap modelo,
+    public String proyectoRegistro(@RequestParam String nombre, @RequestParam(required = false) MultipartFile archivo,
+            @RequestParam(required = false) String idCliente, @RequestParam(required = false) String idAgente,
+            ModelMap modelo,
             HttpSession session) {
         Usuario logueado = (Usuario) session.getAttribute("usuariosession");
 
         modelo.addAttribute("usuariosession", logueado);
 
         try {
-            proyectoServicio.guardar(archivo, nombre, Visibilidad.PUBLICO, "s",
-                    idCliente, idAgente);
+            if (idCliente == null && idAgente == null) {
+                proyectoServicio.guardar(archivo, nombre, Visibilidad.PUBLICO, "s",
+                        Arrays.asList(new Usuario[] { logueado }));
+            } else {
+                proyectoServicio.guardar(archivo, nombre, Visibilidad.PUBLICO, "s",
+                        idCliente, idAgente);
+            }
         } catch (MiException e) {
             modelo.put("error", e);
 
