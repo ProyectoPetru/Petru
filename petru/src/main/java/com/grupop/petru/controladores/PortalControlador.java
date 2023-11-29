@@ -164,9 +164,10 @@ public class PortalControlador {
             return "perfil.html";
         }
     }
+
     @PostMapping("/contacto")
-    public String contactar(@RequestParam String nombre, @RequestParam String email, @RequestParam String titulo, @RequestParam String cuerpo) {
-        cuerpo = "<div><h1 style='margin: 0 0 1rem 0'>" + nombre + "</h1>\n<h2 style='margin: 0 0 1rem 0'>" + email + "</h2>\n<h4 style='margin: 0 1rem 0 1rem; font-weight: normal'>" + cuerpo + "</h4><div>";
+    public String contactar(@RequestParam String nombre, @RequestParam String email, @RequestParam String titulo, @RequestParam String cuerpo, @RequestParam Long numero) {
+        cuerpo = "<div><h1 style='margin: 0 0 1rem 0'>" + nombre + "</h1>\n<h2 style='margin: 0 0 1rem 0'>" + email + "</h2>\n<h2 style='margin: 0 0 1rem 0'>" + numero + "</h2>\n<h4 style='margin: 0 1rem 0 1rem; font-weight: normal'>" + cuerpo + "</h4><div>";
 
         emailServicio.sendEmail(titulo, cuerpo);
 
