@@ -50,7 +50,7 @@
                     </div>
                 </div>
                 <div class="haciendo">
-                    <span class="tipo">Haciendo</span>
+                    <span class="tipo">En Curso</span>
                     <div class="tarea" th:each="tarea : ${tareas}" th:if="${tarea.tipoTarea.name() == 'DOING'}"
                         th:tarea="${tarea.id}" draggable="true" ondragstart="dragStart(event)">
                         <div>
