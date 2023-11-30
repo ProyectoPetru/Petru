@@ -15,5 +15,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProyectoRepositorio extends JpaRepository<Proyecto, String>{
+    
+    @Query("select p from proyecto p inner join proyecto_usuarios pu where pu.usuarios_id = :idUsuario")
+    public Usuario buscarPorUsuario(@Param("idUsuario")String idUsuario);
+
 
 }

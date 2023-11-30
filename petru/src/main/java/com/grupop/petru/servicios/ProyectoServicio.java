@@ -115,4 +115,11 @@ public class ProyectoServicio {
     public List<Proyecto> listarTodos() {
         return proyectoRepositorio.findAll();
     }     
+
+    @Transactional(readOnly = true)
+    public List<Proyecto> listarPorUsuario(String idUsuario) {
+        return proyectoRepositorio.buscarPorUsuario(idUsuario);
+    }     
+}
+
 }
