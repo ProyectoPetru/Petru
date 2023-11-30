@@ -14,15 +14,38 @@ function ventanaExit() {
 }
 
 Array.from(document.querySelector("#proyecto").querySelector(".contenedor").querySelectorAll(".tarea")).map((e) => {
-    e.addEventListener("mouseenter", (e) => {
-        const svg = e.target.querySelector("svg").classList.remove("hidden")
-    })
-})
+    if (/Android|Iphone/i.test(navigator.userAgent)) {
+        e.querySelector("svg").classList.remove("hidden")
+        e.draggable = false
+        if (e.closest(".pendientes")) {
+            e.innerHTML += `<svg class="dw-arrow" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><path fill="currentColor" d="m205.66 149.66l-72 72a8 8 0 0 1-11.32 0l-72-72a8 8 0 0 1 11.32-11.32L120 196.69V40a8 8 0 0 1 16 0v156.69l58.34-58.35a8 8 0 0 1 11.32 11.32Z"/></svg>`
+            e.querySelector(".dw-arrow").addEventListener("click", () => {
+                document.location = `/tarea/modificar-rol/${e.getAttribute("tarea")}?tipoTarea=DOING`
+            })
+        } else if (e.closest(".haciendo")) {
+            e.innerHTML += `<svg class="dw-arrow" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><path fill="currentColor" d="m205.66 149.66l-72 72a8 8 0 0 1-11.32 0l-72-72a8 8 0 0 1 11.32-11.32L120 196.69V40a8 8 0 0 1 16 0v156.69l58.34-58.35a8 8 0 0 1 11.32 11.32Z"/></svg>`
+            e.innerHTML += `<svg class="up-arrow" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><path fill="currentColor" d="M205.66 117.66a8 8 0 0 1-11.32 0L136 59.31V216a8 8 0 0 1-16 0V59.31l-58.34 58.35a8 8 0 0 1-11.32-11.32l72-72a8 8 0 0 1 11.32 0l72 72a8 8 0 0 1 0 11.32Z"/></svg>`
+            e.querySelector(".dw-arrow").addEventListener("click", () => {
+                document.location = `/tarea/modificar-rol/${e.getAttribute("tarea")}?tipoTarea=DONE`
+            })
+            e.querySelector(".up-arrow").addEventListener("click", () => {
+                document.location = `/tarea/modificar-rol/${e.getAttribute("tarea")}?tipoTarea=TODO`
+            })
+        } else if (e.closest(".hechas")) {
+            e.innerHTML += `<svg class="up-arrow" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><path fill="currentColor" d="M205.66 117.66a8 8 0 0 1-11.32 0L136 59.31V216a8 8 0 0 1-16 0V59.31l-58.34 58.35a8 8 0 0 1-11.32-11.32l72-72a8 8 0 0 1 11.32 0l72 72a8 8 0 0 1 0 11.32Z"/></svg>`
+            e.querySelector(".up-arrow").addEventListener("click", () => {
+                document.location = `/tarea/modificar-rol/${e.getAttribute("tarea")}?tipoTarea=DOING`
+            })
+        }
+    } else {
+        e.addEventListener("mouseenter", () => {
+            e.querySelector("svg").classList.remove("hidden")
+        })
 
-Array.from(document.querySelector("#proyecto").querySelector(".contenedor").querySelectorAll(".tarea")).map((e) => {
-    e.addEventListener("mouseleave", (e) => {
-        const svg = e.target.querySelector("svg").classList.add("hidden")
-    })
+        e.addEventListener("mouseleave", () => {
+            e.querySelector("svg").classList.add("hidden")
+        })
+    }
 })
 
 Array.from(document.querySelector("#proyecto").querySelector(".contenedor").querySelectorAll(".tarea")).map((e) => {
