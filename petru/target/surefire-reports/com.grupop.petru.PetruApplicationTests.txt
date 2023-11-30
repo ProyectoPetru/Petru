@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.grupop.petru.PetruApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 17.041 s - in com.grupop.petru.PetruApplicationTests

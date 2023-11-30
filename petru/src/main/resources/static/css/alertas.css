@@ -23,6 +23,7 @@
 }
 
 #alertas .exito {
+    z-index: 999;
     position: fixed;
 
     right: 2rem;
@@ -71,6 +72,7 @@
 }
 
 #alertas .error {
+    z-index: 999;
     position: fixed;
 
     right: 2rem;

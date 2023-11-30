@@ -22,6 +22,7 @@ com\grupop\petru\controladores\ErrorControlador.class
 com\grupop\petru\entidades\Imagen.class
 com\grupop\petru\servicios\ComentarioServicio.class
 com\grupop\petru\servicios\UsuarioServicio.class
+com\grupop\petru\controladores\ProyectoControlador.class
 com\grupop\petru\repositorios\ComentarioRepositorio.class
 com\grupop\petru\servicios\ProyectoServicio.class
 com\grupop\petru\entidades\Archivo.class
@@ -30,9 +31,11 @@ com\grupop\petru\enumeraciones\TipoTarea.class
 com\grupop\petru\controladores\ImagenControlador.class
 com\grupop\petru\repositorios\ProyectoRepositorio.class
 com\grupop\petru\entidades\Proyecto.class
+com\grupop\petru\repositorios\TokenRepositorio.class
 com\grupop\petru\controladores\EtiquetaControlador.class
 com\grupop\petru\entidades\Etiqueta.class
 com\grupop\petru\entidades\Usuario.class
+com\grupop\petru\entidades\Token.class
 com\grupop\petru\controladores\PortalControlador.class
 com\grupop\petru\controladores\AdminControlador.class
 com\grupop\petru\servicios\TareaServicio.class
