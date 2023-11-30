@@ -62,7 +62,7 @@ public class PortalControlador {
 
         modelo.addAttribute("usuariosession", logueado);
 
-        modelo.addAttribute("proyectos", proyectoServicio.listarTodos());
+        modelo.addAttribute("proyectos", proyectoServicio.listarPorUsuario(logueado.getId()));
 
         return "inicio.html";
     }

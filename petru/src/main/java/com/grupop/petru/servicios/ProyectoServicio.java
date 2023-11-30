@@ -121,5 +121,3 @@ public class ProyectoServicio {
         return proyectoRepositorio.buscarPorUsuario(idUsuario);
     }     
 }
-
-}

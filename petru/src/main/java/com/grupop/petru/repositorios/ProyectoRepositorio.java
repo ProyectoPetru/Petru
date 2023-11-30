@@ -10,14 +10,19 @@ package com.grupop.petru.repositorios;
  */
 
 import com.grupop.petru.entidades.Proyecto;
+
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProyectoRepositorio extends JpaRepository<Proyecto, String>{
     
-    @Query("select p from proyecto p inner join proyecto_usuarios pu where pu.usuarios_id = :idUsuario")
-    public Usuario buscarPorUsuario(@Param("idUsuario")String idUsuario);
+    @Query("SELECT p FROM Proyecto p JOIN p.usuarios u WHERE u.id = :id")
+    public List<Proyecto> buscarPorUsuario(@Param("id")String id);
 
 
 }
