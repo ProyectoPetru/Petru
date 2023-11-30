@@ -1,4 +1,4 @@
-function ventanaExit() {
+function ventanaProExit() {
     const ventana = document.querySelector("#proyecto").querySelector(".ventana")
     const fondo = document.querySelector("#proyecto").querySelector(".fondo")
     ventana.classList.add("ventana-hide")
@@ -66,7 +66,7 @@ document.addEventListener("click", (element) => {
         return
     }
     if (element.target.closest(".ventana") == null && element.target.closest(".tarea") == null) {
-        ventanaExit()
+        ventanaProExit()
     }
 
     if (element.target.closest(".agregar") == null) {

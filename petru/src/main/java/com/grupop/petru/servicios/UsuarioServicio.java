@@ -52,7 +52,7 @@ public class UsuarioServicio implements UserDetailsService {
 
     @Transactional
     public void registrarUsuario(MultipartFile archivo, String nombre, String email, String clave, String clave2,
-            Long telefono, String descripcion) throws MiException {       
+            Long telefono, String descripcion) throws MiException {
 
         validar(nombre, email, clave, clave2, telefono);
         validarYaRegistrado(email);
@@ -76,10 +76,11 @@ public class UsuarioServicio implements UserDetailsService {
 
         tokenRepositorio.save(token);
 
-        emailServicio.sendEmail(email, "Verificacion de usuario " + nombre, "<div><h1 style='margin: 0 0 1rem 0'>" + nombre + "</h1>\n<h2 style='margin: 0 0 1rem 0'>" + email + "</h2>\n<h4 style='margin: 0 1rem 0 1rem; font-weight: normal'>Entra a <a href='http://localhost:8080/usuario/autenticar/" + token.getId() + "'>este link</a> para auntenticarte</h4><div>");
+        emailServicio.sendEmail(email, "Verificacion de usuario " + nombre, "<div><h1 style='margin: 0 0 1rem 0'>"
+                + nombre + "</h1>\n<h2 style='margin: 0 0 1rem 0'>" + email
+                + "</h2>\n<h4 style='margin: 0 1rem 0 1rem; font-weight: normal'>Entra a <a href='http://localhost:8080/usuario/autenticar/"
+                + token.getId() + "'>este link</a> para auntenticarte</h4><div>");
     }
-
-
 
     // MODIFICAR USUARIO
     // El rol y la baja se levantan al encontrar el usuario y se dejan igual en este
@@ -90,71 +91,93 @@ public class UsuarioServicio implements UserDetailsService {
             Long telefono, String descripcion) throws MiException {
         validar(nombre, email, clave, clave2, telefono);
         try {
-        Optional<Usuario> respuesta = usuarioRepositorio.findById(idUsuario);
-        if (respuesta.isPresent()) {
-            Usuario usuario = respuesta.get();
-            usuario.setNombre(nombre);
-            usuario.setEmail(email);
-            usuario.setClave(new BCryptPasswordEncoder().encode(clave));
-            Imagen imagen = imagenServicio.guardar(archivo);
-            usuario.setImagen(imagen);
-            usuario.setTelefono(telefono);
-            usuario.setDescripcion(descripcion);
-            usuarioRepositorio.save(usuario);
-        }        
+            Optional<Usuario> respuesta = usuarioRepositorio.findById(idUsuario);
+            if (respuesta.isPresent()) {
+                Usuario usuario = respuesta.get();
+                usuario.setNombre(nombre);
+                usuario.setEmail(email);
+                usuario.setClave(new BCryptPasswordEncoder().encode(clave));
+                Imagen imagen = imagenServicio.guardar(archivo);
+                usuario.setImagen(imagen);
+                usuario.setTelefono(telefono);
+                usuario.setDescripcion(descripcion);
+                usuarioRepositorio.save(usuario);
+            }
         } catch (Exception e) {
-                System.err.println(e.getMessage());
+            System.err.println(e.getMessage());
         }
     }
 
+    @Transactional
+    public Usuario modificarUsuario(String id, MultipartFile archivo, String nombre, Long telefono, String descripcion)
+            throws MiException {
+        validar(nombre, telefono);
+        try {
+            Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
+            if (respuesta.isPresent()) {
+                Usuario usuario = respuesta.get();
 
+                usuario.setNombre(nombre);
+
+                if (!archivo.getContentType().equals("application/octet-stream")) {
+                    Imagen imagen = imagenServicio.guardar(archivo);
+                    usuario.setImagen(imagen);
+                }
+                usuario.setTelefono(telefono);
+                usuario.setDescripcion(descripcion);
+
+                return usuarioRepositorio.save(usuario);
+            }
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+        return null;
+    }
 
     // ALTA Y BAJA DE USUARIO
     @Transactional
     public void altaDeUsuario(String idUsuario) throws MiException {
-        try{
-        Optional<Usuario> respuesta = usuarioRepositorio.findById(idUsuario);
-        if (respuesta.isPresent()) {
-            Usuario usuario = respuesta.get();
-            usuario.setBaja(false);
-            usuarioRepositorio.save(usuario);            
-        }
+        try {
+            Optional<Usuario> respuesta = usuarioRepositorio.findById(idUsuario);
+            if (respuesta.isPresent()) {
+                Usuario usuario = respuesta.get();
+                usuario.setBaja(false);
+                usuarioRepositorio.save(usuario);
+            }
         } catch (Exception e) {
-                System.err.println(e.getMessage());
+            System.err.println(e.getMessage());
         }
 
     }
 
     @Transactional
     public void bajaDeUsuario(String idUsuario) throws MiException {
-        try{
-        Optional<Usuario> respuesta = usuarioRepositorio.findById(idUsuario);
-        if (respuesta.isPresent()) {
-            Usuario usuario = respuesta.get();
-            usuario.setBaja(true);
-            usuarioRepositorio.save(usuario);
-        }
+        try {
+            Optional<Usuario> respuesta = usuarioRepositorio.findById(idUsuario);
+            if (respuesta.isPresent()) {
+                Usuario usuario = respuesta.get();
+                usuario.setBaja(true);
+                usuarioRepositorio.save(usuario);
+            }
         } catch (Exception e) {
-                System.err.println(e.getMessage());
+            System.err.println(e.getMessage());
         }
 
     }
-
-
 
     // MODIFICAR ROL
 
     @Transactional
     public void modificarRolUsuario(String idUsuario, Rol rol) {
-        try{
-        Optional<Usuario> respuesta = usuarioRepositorio.findById(idUsuario);
-        if (respuesta.isPresent()) {
-            Usuario usuario = respuesta.get();
-            usuario.setRol(rol);
-            usuarioRepositorio.save(usuario);
-        }
+        try {
+            Optional<Usuario> respuesta = usuarioRepositorio.findById(idUsuario);
+            if (respuesta.isPresent()) {
+                Usuario usuario = respuesta.get();
+                usuario.setRol(rol);
+                usuarioRepositorio.save(usuario);
+            }
         } catch (Exception e) {
-                System.err.println(e.getMessage());
+            System.err.println(e.getMessage());
         }
     }
 
@@ -164,14 +187,14 @@ public class UsuarioServicio implements UserDetailsService {
         usuarios = usuarioRepositorio.findAll();
         return usuarios;
     }
-    
+
     @Transactional(readOnly = true)
     public List<Usuario> listarClientes() {
         List<Usuario> usuarios = new ArrayList();
         usuarios = usuarioRepositorio.buscarClientes();
         return usuarios;
     }
-    
+
     @Transactional(readOnly = true)
     public List<Usuario> listarColaboradores() {
         List<Usuario> usuarios = new ArrayList();
@@ -202,13 +225,21 @@ public class UsuarioServicio implements UserDetailsService {
         }
     }
 
-public void validarYaRegistrado(String email) throws MiException{
-    Usuario usuario = usuarioRepositorio.buscarPorEmail(email);
-    if (usuario != null) {
-        throw new MiException("Ya existe un usuario registrado con ese email");        
+    private void validar(String nombre, Long telefono) throws MiException {
+        if (nombre.length() > 14) {
+            throw new MiException("el nombre no puede contener mas de 12 caracteres");
+        }
+        if (telefono == null) {
+            throw new MiException("el numero de telefono no puede ser nulo o estar vacio");
+        }
     }
-}
 
+    public void validarYaRegistrado(String email) throws MiException {
+        Usuario usuario = usuarioRepositorio.buscarPorEmail(email);
+        if (usuario != null) {
+            throw new MiException("Ya existe un usuario registrado con ese email");
+        }
+    }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -226,14 +257,14 @@ public void validarYaRegistrado(String email) throws MiException{
         }
     }
 
-    public Boolean esCliente(String idCliente){
+    public Boolean esCliente(String idCliente) {
         Usuario usuario = getOne(idCliente);
         if (!usuario.getRol().toString().equals("CLIENTE") || usuario.getBaja() == true)
             return false;
         return true;
     }
 
-    public Boolean esColaborador(String idUsuario){
+    public Boolean esColaborador(String idUsuario) {
         Usuario usuario = getOne(idUsuario);
         if (!usuario.getRol().toString().equals("COLABORADOR") || usuario.getBaja() == true)
             return false;

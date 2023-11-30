@@ -166,6 +166,25 @@ public class PortalControlador {
         }
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_COLABORADOR', 'ROLE_ADMIN')")
+    @PostMapping("/perfil/modificar")
+    public String modificar(@RequestParam(required = false) MultipartFile archivo, @RequestParam String nombre, @RequestParam Long telefono, @RequestParam String descripcion, ModelMap modelo, HttpSession session) throws MiException {
+
+        try {
+            Usuario usuario = (Usuario) session.getAttribute("usuariosession");
+
+            session.setAttribute("usuariosession", usuarioServicio.modificarUsuario(usuario.getId() ,archivo, nombre, telefono, descripcion));
+
+            modelo.put("exito", "Tu usuario se actualizo correctamente!");
+
+            return "inicio.html";
+        } catch (MiException ex) {
+            modelo.put("error", ex.getMessage());
+
+            return "perfil.html";
+        }
+    }
+
     @PostMapping("/contacto")
     public String contactar(@RequestParam String nombre, @RequestParam String email, @RequestParam String titulo,
             @RequestParam String cuerpo, @RequestParam Long numero) {
