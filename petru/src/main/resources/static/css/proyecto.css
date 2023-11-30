@@ -20,7 +20,7 @@ main>h1 {
     filter: contrast(90%);
     background: var(--background);
     width: 100%;
-    height: 40rem;
+    height: 35rem;
     overflow: auto;
     display: flex;
     justify-content: space-around;
@@ -186,9 +186,71 @@ path {
     padding: .15rem .1rem .15rem .1rem;
 }
 
+@keyframes fondo-in {
+    from {
+        backdrop-filter: blur(0);
+        background: rgba(0, 0, 0, 0);
+    }
+
+    to {
+        backdrop-filter: blur(8px);
+        background: rgba(0, 0, 0, 0.3);
+    }
+}
+
+@keyframes fondo-out {
+    from {
+        backdrop-filter: blur(8px);
+        background: rgba(0, 0, 0, 0.3);
+    }
+
+    to {
+        backdrop-filter: blur(0);
+        background: rgba(0, 0, 0, 0);
+    }
+}
+
+#proyecto .fondo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 998;
+    background: rgba(0, 0, 0, 0.3);
+    animation: fondo-in .3s ease-in-out 0s 1 normal forwards;
+}
+
+#proyecto .fondo-hide {
+    animation: fondo-out .3s ease-in-out 0s 1 normal forwards;
+}
+
+#proyecto .fondo[hidden] {
+    display: none;
+}
+
+@keyframes ventana-in {
+    from {
+        transform: scale(0%);
+    }
+
+    to {
+        transform: scale(100%);
+    }
+}
+
+@keyframes ventana-out {
+    from {
+        transform: scale(100%);
+    }
+
+    to {
+        transform: scale(0%);
+    }
+}
+
 #proyecto .ventana {
     position: fixed;
-    opacity: 90%;
     display: flex;
     justify-self: center;
     align-self: center;
@@ -197,10 +259,15 @@ path {
     height: 23rem;
     padding: 2rem;
     background: var(--secondary);
+    animation: ventana-in .3s ease-in-out 0s 1 normal forwards;
 }
 
 #proyecto .ventana[hidden] {
     display: none;
+}
+
+#proyecto .ventana-hide {
+    animation: ventana-out .3s ease-in-out 0s 1 normal forwards;
 }
 
 #proyecto .ventana .tarea-ventana {
@@ -218,9 +285,20 @@ path {
     color: var(--text);
     width: 20rem;
     height: 2.5rem;
-    border: .1rem solid var(--background);
+    border: .1rem solid var(--secondary);
     padding: .2rem .5rem;
     border-radius: .3rem;
+    transition: border .4s;
+}
+
+#proyecto .ventana .cambiar-nombre input:hover {
+    border: .1rem solid var(--text);
+}
+
+#proyecto .ventana .cambiar-nombre input:focus {
+    border: .1rem solid var(--text);
+    box-shadow: none;
+    outline: none;
 }
 
 #proyecto .ventana .cambiar-nombre>form>button[type=submit] {
@@ -243,10 +321,11 @@ path {
 }
 
 #proyecto .ventana .comentarios {
-    background: var(--secondary);
+    border: .1rem solid var(--text);
+    border-radius: .2rem;
     filter: contrast(80%);
     width: 20rem;
-    height: 20rem;
+    height: 19rem;
     margin: 1rem 2rem 1rem 2rem;
     overflow: auto;
 }
@@ -299,27 +378,26 @@ path {
 
 /* Modifico el estilo de la barra vertical */
 /* Ancho de toda la barra */
-#proyecto .ventana .comentarios .agregar-comentario .contenido ::-webkit-scrollbar {
+#proyecto .ventana ::-webkit-scrollbar {
     width: 4px;
 }
 
 /* El espacio en el que esta la barra */
-#proyecto .ventana .comentarios .agregar-comentario .contenido ::-webkit-scrollbar-track {
+#proyecto .ventana ::-webkit-scrollbar-track {
     background: var(--secondary);
 }
 
 /* La barra */
-#proyecto .ventana .comentarios .agregar-comentario .contenido ::-webkit-scrollbar-thumb {
+#proyecto .ventana ::-webkit-scrollbar-thumb {
     background: var(--accent);
     width: 2px;
     border-radius: 5px;
 }
 
 /* Cuando paso por encima de la barra */
-#proyecto .ventana .comentarios .agregar-comentario .contenido ::-webkit-scrollbar-thumb:hover {
+#proyecto .ventana ::-webkit-scrollbar-thumb:hover {
     background: var(--text);
 }
-
 
 #proyecto .ventana .comentarios .agregar-comentario .contenido button[type=submit] {
     color: var(--text);
@@ -429,6 +507,7 @@ path {
     #proyecto .contenedor {
         display: flex;
         margin: 0;
+        height: 50rem;
         flex-direction: column;
         align-items: center;
         width: 80%;

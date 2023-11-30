@@ -16,7 +16,7 @@
 <body>
     <nav th:replace="/fragments/navbar.html :: nav"></nav>
 
-    <main style="position: relative;">
+    <main style="position: relative">
         <h1 th:text="${proyecto.nombre}" style="text-align: center;"></h1>
         <div id="proyecto" th:proyecto="${proyecto.id}">
             <div class="calendario">
@@ -27,7 +27,7 @@
                 <div class="pendientes">
                     <span class="tipo">Pendientes</span>
                     <div class="tarea" th:each="tarea : ${tareas}" th:if="${tarea.tipoTarea.name() == 'TODO'}"
-                        th:id="${tarea.id}" draggable="true" ondragstart="dragStart(event)">
+                        th:tarea="${tarea.id}" draggable="true" ondragstart="dragStart(event)">
                         <div>
                             <div style="display: flex;">
                                 <div class="etiqueta" th:each="etiqueta : ${tarea.etiquetas}"
@@ -52,7 +52,7 @@
                 <div class="haciendo">
                     <span class="tipo">Haciendo</span>
                     <div class="tarea" th:each="tarea : ${tareas}" th:if="${tarea.tipoTarea.name() == 'DOING'}"
-                        th:id="${tarea.id}" draggable="true" ondragstart="dragStart(event)">
+                        th:tarea="${tarea.id}" draggable="true" ondragstart="dragStart(event)">
                         <div>
                             <div style="display: flex;">
                                 <div class="etiqueta" th:each="etiqueta : ${tarea.etiquetas}"
@@ -72,7 +72,7 @@
                 <div class="hechas">
                     <span class="tipo">Hechas</span>
                     <div class="tarea" th:each="tarea : ${tareas}" th:if="${tarea.tipoTarea.name() == 'DONE'}"
-                        th:id="${tarea.id}" draggable="true" ondragstart="dragStart(event)">
+                        th:tarea="${tarea.id}" draggable="true" ondragstart="dragStart(event)">
                         <div>
                             <div style="display: flex;">
                                 <div class="etiqueta" th:each="etiqueta : ${tarea.etiquetas}"
@@ -91,6 +91,7 @@
                 </div>
             </div>
 
+            <div hidden class="fondo"></div>
             <div hidden class="ventana">
                 <div class="tarea-ventana" hidden th:each="tarea : ${tareas}" th:id="${tarea.id}">
                     <div class="cambiar-nombre">
@@ -125,7 +126,8 @@
                                     <span th:text="${comentario.contenido}"></span>
                                 </div>
                             </div>
-                            <div class="comentario" style="text-align: center; padding: 1rem 0 1rem 0;" th:if="${tarea.comentarios == null}">
+                            <div class="comentario" style="text-align: center; padding: 1rem 0 1rem 0;"
+                                th:if="${tarea.comentarios == null}">
                                 No hay comentarios
                             </div>
                         </div>
@@ -144,7 +146,7 @@
                         </div>
                     </div>
                     <svg class="salir"
-                        onclick="document.querySelector('#proyecto').querySelector('.ventana').hidden = true"
+                        onclick="ventanaExit()"
                         xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 15 15">
                         <path fill="currentColor" fill-rule="evenodd"
                             d="M11.782 4.032a.575.575 0 1 0-.813-.814L7.5 6.687L4.032 3.218a.575.575 0 0 0-.814.814L6.687 7.5l-3.469 3.468a.575.575 0 0 0 .814.814L7.5 8.313l3.469 3.469a.575.575 0 0 0 .813-.814L8.313 7.5l3.469-3.468Z"

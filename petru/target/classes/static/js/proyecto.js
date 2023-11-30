@@ -1,3 +1,18 @@
+function ventanaExit() {
+    const ventana = document.querySelector("#proyecto").querySelector(".ventana")
+    const fondo = document.querySelector("#proyecto").querySelector(".fondo")
+    ventana.classList.add("ventana-hide")
+    fondo.classList.add("fondo-hide")
+    setTimeout(() => {
+        if (ventana.classList.contains("ventana-hide")) {
+            ventana.classList.remove("ventana-hide")
+            fondo.classList.remove("fondo-hide")
+            ventana.hidden = true
+            fondo.hidden = true
+        }
+    }, 300)
+}
+
 Array.from(document.querySelector("#proyecto").querySelector(".contenedor").querySelectorAll(".tarea")).map((e) => {
     e.addEventListener("mouseenter", (e) => {
         const svg = e.target.querySelector("svg").classList.remove("hidden")
@@ -13,7 +28,8 @@ Array.from(document.querySelector("#proyecto").querySelector(".contenedor").quer
 Array.from(document.querySelector("#proyecto").querySelector(".contenedor").querySelectorAll(".tarea")).map((e) => {
     e.querySelector("svg").addEventListener("click", () => {
         Array.from(document.querySelector("#proyecto").querySelector(".ventana").querySelectorAll(".ventana>div")).map((e) => e.hidden = true)
-        document.querySelector("#proyecto").querySelector(".ventana").querySelector(`#${e.id}`).hidden = false
+        document.getElementById(`${e.getAttribute("tarea")}`).hidden = false
+        document.querySelector("#proyecto").querySelector(".fondo").hidden = false
         document.querySelector("#proyecto").querySelector(".ventana").hidden = false
     })
 })
@@ -27,7 +43,7 @@ document.addEventListener("click", (element) => {
         return
     }
     if (element.target.closest(".ventana") == null && element.target.closest(".tarea") == null) {
-        document.querySelector("#proyecto").querySelector(".ventana").hidden = true
+        ventanaExit()
     }
 
     if (element.target.closest(".agregar") == null) {
@@ -157,7 +173,7 @@ function dragStart(e) {
         if (selected != null) {
             if (selected.closest(".pendientes") == null) {
                 document.querySelector("#proyecto").querySelector(".contenedor").querySelector(".pendientes").appendChild(selected)
-                document.location = `/tarea/modificar-rol/${selected.id}?tipoTarea=TODO`
+                document.location = `/tarea/modificar-rol/${selected.getAttribute("tarea")}?tipoTarea=TODO`
             }
             selected = null
         }
@@ -170,7 +186,7 @@ function dragStart(e) {
         if (selected != null) {
             if (selected.closest(".haciendo") == null) {
                 document.querySelector("#proyecto").querySelector(".contenedor").querySelector(".haciendo").appendChild(selected)
-                document.location = `/tarea/modificar-rol/${selected.id}?tipoTarea=DOING`
+                document.location = `/tarea/modificar-rol/${selected.getAttribute("tarea")}?tipoTarea=DOING`
             }
             selected = null
         }
@@ -183,7 +199,7 @@ function dragStart(e) {
         if (selected != null) {
             if (selected.closest(".hechas") == null) {
                 document.querySelector("#proyecto").querySelector(".contenedor").querySelector(".hechas").appendChild(selected)
-                document.location = `/tarea/modificar-rol/${selected.id}?tipoTarea=DONE`
+                document.location = `/tarea/modificar-rol/${selected.getAttribute("tarea")}?tipoTarea=DONE`
             }
             selected = null
         }
