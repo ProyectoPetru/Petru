@@ -44,4 +44,7 @@ public class Proyecto {
    private String notas;
    private Boolean baja;
 
+   public void addUsuario(Usuario usuario) {
+      this.usuarios.add(usuario);
+   }
 }

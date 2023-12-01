@@ -26,6 +26,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -63,6 +64,24 @@ public class ProyectoControlador {
         modelo.addAttribute("tareas", tareas);
 
         return "proyecto.html";
+    }
+
+    @PostMapping("/{id}/invitar")
+    public String invitar(@PathVariable String id, @RequestParam String email, HttpSession session, ModelMap modelo, HttpServletRequest request) {
+        Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+
+        modelo.addAttribute("usuariosession", logueado);
+
+        try {
+            proyectoServicio.invitar(id, email);
+        } catch (MiException e) {
+            modelo.put("error", e.getMessage());
+
+            return "proyecto.html";
+        }
+
+        String referer = request.getHeader("Referer");
+        return "redirect:" + referer;
     }
 
     @GetMapping("/registrar")

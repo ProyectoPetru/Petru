@@ -7,14 +7,13 @@ function ventanaProExit() {
         if (ventana.classList.contains("ventana-hide")) {
             ventana.classList.remove("ventana-hide")
             fondo.classList.remove("fondo-hide")
-            ventana.hidden = true
             fondo.hidden = true
         }
     }, 300)
 }
 
 Array.from(document.querySelector("#proyecto").querySelector(".contenedor").querySelectorAll(".tarea")).map((e) => {
-    if (/Android|Iphone/i.test(navigator.userAgent)) {
+    if (/Android|Iphone/i.test(navigator.userAgent) && (document.querySelector("#proyecto").getAttribute("rol") == "ADMIN" || document.querySelector("#proyecto").getAttribute("rol") == "COLABORADOR")) {
         e.querySelector("svg").classList.remove("hidden")
         e.draggable = false
         if (e.closest(".pendientes")) {
@@ -53,22 +52,28 @@ Array.from(document.querySelector("#proyecto").querySelector(".contenedor").quer
         Array.from(document.querySelector("#proyecto").querySelector(".ventana").querySelectorAll(".ventana>div")).map((e) => e.hidden = true)
         document.getElementById(`${e.getAttribute("tarea")}`).hidden = false
         document.querySelector("#proyecto").querySelector(".fondo").hidden = false
-        document.querySelector("#proyecto").querySelector(".ventana").hidden = false
     })
 })
 
 document.addEventListener("click", (element) => {
-    if (document.querySelector("#proyecto").querySelector(".ventana").hidden
+    if (document.querySelector("#proyecto").querySelector(".fondo").hidden
         &&
         document.querySelector("#proyecto").querySelector(".contenedor").querySelector(".agregar-input") == null
         &&
-        document.querySelector("#proyecto").querySelector(".ventana").querySelector(".agregar-input") == null) {
+        document.querySelector("#proyecto").querySelector(".ventana").querySelector(".agregar-input") == null
+        &&
+        document.querySelector("#agregar-usuario").querySelector("form") == null) {
         return
     }
     if (element.target.closest(".ventana") == null && element.target.closest(".tarea") == null) {
         ventanaProExit()
     }
-
+    if (element.target.closest("#agregar-usuario") == null) {
+        document.querySelector("#agregar-usuario").querySelector("form").hidden = true
+        document.querySelector("#agregar-usuario").style.width = "24px"
+        document.querySelector("#agregar-usuario").style.borderRadius = "50%"
+        document.querySelector("#agregar-usuario").querySelector("svg").classList.remove("hidden")
+    }
     if (element.target.closest(".agregar") == null) {
         if (element.target.closest(".ventana") != null) {
             Array.from(document.querySelector("#proyecto").querySelector(".ventana").querySelectorAll(".agregar")).filter((e) => e.classList.contains("agregar-input")).map((e) => {
@@ -228,3 +233,19 @@ function dragStart(e) {
         }
     })
 }
+
+document.querySelector("#agregar-usuario").addEventListener("click", (e) => {
+    console.log(e.target);
+    if (e.target.tagName == "FORM" || e.target.tagName == "BUTTON" || e.target.tagName == "INPUT") {
+        return
+    }
+    if (e.target.querySelector("form").hidden == false) {
+        return
+    }
+
+    e.target.style.width = "10rem"
+    e.target.style.borderRadius = ".2rem"
+    e.target.querySelector("svg").classList.add("hidden")
+    e.target.querySelector("form").hidden = false
+    e.target.querySelector("form").querySelector("input").focus()
+})

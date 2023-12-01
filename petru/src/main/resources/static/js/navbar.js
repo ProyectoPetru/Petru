@@ -172,7 +172,7 @@ if (document.querySelector("#navbar").querySelector(".agregar-proyecto") != null
 
         e.target.innerHTML = ""
         const form = document.createElement("form")
-        form.action = "/proyecto/perfil"
+        form.action = "/proyecto/registro"
         form.method = "POST"
         form.enctype = "multipart/form-data"
         const input = document.createElement("input")

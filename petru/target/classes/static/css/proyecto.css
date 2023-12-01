@@ -1,8 +1,107 @@
-main>h1 {
+main>:nth-child(1) {
     background: var(--secondary);
     border-top: 1px solid var(--background);
-    padding: 1rem 0 1rem 0;
+    padding: 1.5rem 0 1.5rem 0;
     margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main>:nth-child(1) h1 {
+    padding: 0 0 0 0;
+    margin: 0;
+}
+
+main>:nth-child(1) .usuarios {
+    position: absolute;
+    left: 0;
+    margin: 0 0 0 1rem;
+    display: flex;
+    align-items: center;
+}
+
+main>:nth-child(1) .usuarios>:nth-child(1) {
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 1rem;
+    max-width: 22rem;
+}
+
+main>:nth-child(1) .usuarios>:nth-child(1) img {
+    margin: .2rem .3rem .2rem .3rem;
+    width: 16px;
+    height: 16px;
+    border: 1px solid var(--text);
+    background: var(--primary);
+    border-radius: 50%;
+}
+
+main>:nth-child(1) .usuarios>:nth-child(2) {
+    width: 24px;
+    height: 24px;
+    border: 1px solid var(--text);
+    background: green;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 .5rem 0 .5rem;
+}
+
+main>:nth-child(1) .usuarios>:nth-child(2){
+    cursor: pointer;
+}
+
+main>:nth-child(1) .usuarios div svg {
+    color: black;
+    pointer-events: none;
+}
+
+main>:nth-child(1) .usuarios div .hidden {
+    display: none;
+}
+
+main>:nth-child(1) .usuarios form {
+    display: flex;
+    align-items: center;
+}
+
+main>:nth-child(1) .usuarios form[hidden] {
+    display: none;
+}
+
+main>:nth-child(1) .usuarios form input {
+    width: 6.5rem;
+    background: none;
+    color: var(--text);
+    border: none;
+    padding: .5rem 1.5rem .5rem 0;
+}
+
+main>:nth-child(1) .usuarios form input:focus {
+    outline: 0;
+}
+
+main>:nth-child(1) .usuarios form button {
+    position: absolute;
+    right: 0;
+    margin: 0 1rem 0 0;
+    background: none;
+    border: none;
+    color: var(--text);
+    border-radius: .2rem;
+    transition: color .4s;
+}
+
+main>:nth-child(1) .usuarios form button:hover {
+    cursor: pointer;
+    color: var(--current);
+}
+
+main>:nth-child(1) .usuarios form input::placeholder {
+    filter: contrast(50%);
+    color: var(--text);
 }
 
 #proyecto {
@@ -65,11 +164,8 @@ main>h1 {
     transition: box-shadow .4s;
 }
 
-#proyecto .contenedor>div .tarea:hover {
+#proyecto .contenedor>div .tarea[draggable=true]:hover {
     cursor: grab;
-}
-
-#proyecto .contenedor>div .tarea:hover {
     box-shadow: .05rem .05rem .2rem .1rem var(--contrast);
 }
 
@@ -103,6 +199,19 @@ main>h1 {
     cursor: pointer;
     color: var(--accent);
     transform: rotate(-45deg);
+}
+
+#proyecto .contenedor>div .tarea .list {
+    position: absolute;
+    display: flex;
+    margin: -.1rem 0 0 9rem;
+    color: var(--text);
+    transition: color .4s, opacity .4s;
+}
+
+#proyecto .contenedor>div .tarea .list:hover {
+    cursor: pointer;
+    color: var(--accent);
 }
 
 @keyframes arrow-move {
@@ -260,6 +369,9 @@ path {
     position: fixed;
     top: 0;
     left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 100%;
     z-index: 998;
@@ -296,10 +408,6 @@ path {
 }
 
 #proyecto .ventana {
-    position: fixed;
-    display: flex;
-    justify-self: center;
-    align-self: center;
     z-index: 999;
     width: 40rem;
     height: 23rem;
@@ -335,10 +443,6 @@ path {
     padding: .2rem .5rem;
     border-radius: .3rem;
     transition: border .4s;
-}
-
-#proyecto .ventana .cambiar-nombre input:hover {
-    border: .1rem solid var(--text);
 }
 
 #proyecto .ventana .cambiar-nombre input:focus {
@@ -537,6 +641,17 @@ path {
 }
 
 @media(max-width: 1200px) {
+    main>:nth-child(1) {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+
+    main>:nth-child(1) .usuarios {
+        margin: 1rem 0 1rem 0;
+        position: relative;
+    }
+
     #proyecto {
         display: flex;
         flex-direction: column;
@@ -590,6 +705,11 @@ path {
         width: 15rem;
     }
 
+    #proyecto .ventana .comentarios .agregar-comentario .usuario .nombre {
+        width: 6rem;
+        font-size: 1rem;
+    }
+
     #proyecto .ventana .comentarios .agregar-comentario .contenido textarea {
         min-width: 10rem;
         max-width: 10rem;
@@ -599,6 +719,11 @@ path {
         width: 15rem;
     }
 
+    #proyecto .ventana .comentarios .comentario .usuario .nombre {
+        width: 6rem;
+        font-size: 1rem;
+    }
+
     #proyecto .ventana .comentarios .comentario .usuario .fecha {
         position: absolute;
         right: 0;
@@ -606,6 +731,6 @@ path {
     }
 
     #proyecto .ventana .etiquetas {
-        margin: 0 0 0 0;
+        margin: 2rem 0 0 0;
     }
 }

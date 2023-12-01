@@ -293,4 +293,9 @@ public class UsuarioServicio implements UserDetailsService {
 
         tokenRepositorio.save(token);
     }
+
+    @Transactional(readOnly = true)
+    public Usuario getByEmail(String email) {
+        return usuarioRepositorio.buscarPorEmail(email);
+    }
 }

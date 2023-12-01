@@ -25,14 +25,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class ProyectoServicio {
-    
+
     @Autowired
     private ProyectoRepositorio proyectoRepositorio;
     @Autowired
     private UsuarioServicio usuarioServicio;
-    
+
     @Transactional
-    public void guardar(MultipartFile archivo, String nombre, Visibilidad visibilidad, 
+    public void guardar(MultipartFile archivo, String nombre, Visibilidad visibilidad,
             String notas, String idUsuario, String idCliente) throws MiException {
         validar(nombre, visibilidad, idUsuario, idCliente);
         Proyecto proyecto = new Proyecto();
@@ -47,9 +47,9 @@ public class ProyectoServicio {
         proyecto.setBaja(Boolean.FALSE);
         proyectoRepositorio.save(proyecto);
     }
-    
+
     @Transactional
-    public void guardar(MultipartFile archivo, String nombre, Visibilidad visibilidad, 
+    public void guardar(MultipartFile archivo, String nombre, Visibilidad visibilidad,
             String notas, List<Usuario> usuarios) throws MiException {
         validar(nombre, visibilidad);
         Proyecto proyecto = new Proyecto();
@@ -61,21 +61,20 @@ public class ProyectoServicio {
         proyecto.setBaja(Boolean.FALSE);
         proyectoRepositorio.save(proyecto);
     }
-    
-    
+
     // ALTA Y BAJA DEL PROYECTO
-    
+
     @Transactional
     public void altaBaja(String id) throws MiException {
-        try{
-        Optional<Proyecto> respuesta = proyectoRepositorio.findById(id);
-        if (respuesta.isPresent()) {
-            Proyecto proyecto = respuesta.get();
-            proyecto.setBaja(!proyecto.getBaja());
-            proyectoRepositorio.save(proyecto);            
-        }
+        try {
+            Optional<Proyecto> respuesta = proyectoRepositorio.findById(id);
+            if (respuesta.isPresent()) {
+                Proyecto proyecto = respuesta.get();
+                proyecto.setBaja(!proyecto.getBaja());
+                proyectoRepositorio.save(proyecto);
+            }
         } catch (Exception e) {
-                System.err.println(e.getMessage());
+            System.err.println(e.getMessage());
         }
 
     }
@@ -91,33 +90,51 @@ public class ProyectoServicio {
         }
     }
 
-    private void validar(String nombre, Visibilidad visibilidad, String idUsuario, String idCliente) throws MiException {
+    private void validar(String nombre, Visibilidad visibilidad, String idUsuario, String idCliente)
+            throws MiException {
         if (nombre.isEmpty() || nombre == null) {
             throw new MiException("el nombre no puede ser nulo o estar vacío");
         }
         if (visibilidad == null) {
             throw new MiException("La visibilidad no puede ser nulo o estar vacio");
         }
-        if (!usuarioServicio.esCliente(idCliente)){
+        if (!usuarioServicio.esCliente(idCliente)) {
             throw new MiException("El Cliente no es Válido");
         }
-        if (!usuarioServicio.esColaborador(idUsuario)){
+        if (!usuarioServicio.esColaborador(idUsuario)) {
             throw new MiException("El Colaborador no es Válido");
         }
     }
-    
+
     @Transactional(readOnly = true)
     public Proyecto getOne(String id) {
         return proyectoRepositorio.getOne(id);
     }
-    
+
     @Transactional(readOnly = true)
     public List<Proyecto> listarTodos() {
         return proyectoRepositorio.findAll();
-    }     
+    }
 
     @Transactional(readOnly = true)
     public List<Proyecto> listarPorUsuario(String idUsuario) {
         return proyectoRepositorio.buscarPorUsuario(idUsuario);
-    }     
+    }
+
+    public Proyecto invitar(String id, String email) throws MiException {
+        Proyecto proyecto = proyectoRepositorio.getById(id);
+
+        if (proyecto != null) {
+            Usuario usuario = usuarioServicio.getByEmail(email);
+
+            if (usuario != null) {
+                proyecto.addUsuario(usuario);
+
+                return proyectoRepositorio.save(proyecto);
+            }
+
+            throw new MiException("Email no encontrado");
+        }
+        throw new MiException("Proyecto no encontrado");
+    }
 }
