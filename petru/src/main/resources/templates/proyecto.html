@@ -20,8 +20,7 @@
         <h1 th:text="${proyecto.nombre}" style="text-align: center;"></h1>
         <div id="proyecto" th:proyecto="${proyecto.id}">
             <div class="calendario">
-                1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
-                18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
+                <img src="/img/calendario.jpg" width="300rem" alt="calendario">
             </div>
             <div class="contenedor">
                 <div class="pendientes">
@@ -50,7 +49,7 @@
                     </div>
                 </div>
                 <div class="haciendo">
-                    <span class="tipo">En Curso</span>
+                    <span class="tipo">En Proceso</span>
                     <div class="tarea" th:each="tarea : ${tareas}" th:if="${tarea.tipoTarea.name() == 'DOING'}"
                         th:tarea="${tarea.id}" draggable="true" ondragstart="dragStart(event)">
                         <div>
@@ -70,7 +69,7 @@
                     </div>
                 </div>
                 <div class="hechas">
-                    <span class="tipo">Hechas</span>
+                    <span class="tipo">Finalizados</span>
                     <div class="tarea" th:each="tarea : ${tareas}" th:if="${tarea.tipoTarea.name() == 'DONE'}"
                         th:tarea="${tarea.id}" draggable="true" ondragstart="dragStart(event)">
                         <div>

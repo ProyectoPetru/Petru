@@ -14,9 +14,17 @@ main>h1 {
 #proyecto .calendario {
     width: 20rem;
     height: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     filter: contrast(80%);
     background: var(--background);
     margin: 2rem 2rem 0 2rem;
+}
+
+#proyecto .calendario img {
+    border: 1px solid var(--background);
+    border-radius: .5rem;
 }
 
 #proyecto .contenedor {
@@ -528,7 +536,7 @@ path {
     color: rgb(219, 62, 62);
 }
 
-@media(max-width: 1000px) {
+@media(max-width: 1200px) {
     #proyecto {
         display: flex;
         flex-direction: column;
