@@ -1,5 +1,5 @@
 /* Cambio el src de la imagen cuando se establece una via el input file */
-const cambiarFoto = () => {
+const cambiarReFoto = () => {
     let file = document.querySelector("#imagen").files[0]
     let reader = new FileReader()
 
@@ -26,9 +26,9 @@ const cambiarFoto = () => {
 }
 
 /* Llamo por primera vez para poner la foto por defecto */
-cambiarFoto()
+cambiarReFoto()
 
 /* Borro la foto cuando se usa el boton "limpiar" */
-const manejoReset = () => {
+const manejoReReset = () => {
     document.querySelector("#registro-logo").src = "/img/user.png"
 }

@@ -16,7 +16,6 @@ public class Token {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
-    private Boolean usado = false;
 
     @ManyToOne
     private Usuario usuario;

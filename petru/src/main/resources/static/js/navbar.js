@@ -35,7 +35,7 @@ const cambiarTema = () => {
 }
 
 /* Cambio el src de la imagen cuando se establece una via el input file */
-const cambiarFoto = () => {
+const cambiarNavFoto = () => {
     let file = document.querySelector("#imagen").files[0]
     let reader = new FileReader()
 
@@ -62,7 +62,7 @@ const cambiarFoto = () => {
 }
 
 /* Llamo por primera vez para poner la foto por defecto */
-cambiarFoto()
+cambiarNavFoto()
 
 /* Muestra tooltips en la navbar si la pantalla es mayor a WIDTH_TOOLTIP*/
 if (document.documentElement.clientWidth > WIDTH_TOOLTIP) {

@@ -282,16 +282,20 @@ public class UsuarioServicio implements UserDetailsService {
     }
 
     @Transactional(readOnly = true)
-    public Token getToken(String id) {
-        return tokenRepositorio.getOne(id);
+    public Token getToken(String id) throws MiException {
+        Optional<Token> tokenRes = tokenRepositorio.findById(id);
+
+        if (tokenRes.isPresent()) {
+            return tokenRes.get();
+        }
+
+        throw new MiException("Token invalido o no encontrado");
     }
 
     public void inhabilitarToken(String id) {
         Token token = tokenRepositorio.getOne(id);
 
-        token.setUsado(true);
-
-        tokenRepositorio.save(token);
+        tokenRepositorio.delete(token);
     }
 
     @Transactional(readOnly = true)
