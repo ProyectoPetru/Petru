@@ -131,7 +131,7 @@ public class PortalControlador {
         return "contacto.html";
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_COLABORADOR', 'ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_VISITA','ROLE_CLIENTE', 'ROLE_COLABORADOR', 'ROLE_ADMIN')")
     @GetMapping("/perfil")
     public String perfil(ModelMap modelo, HttpSession session) {
 

@@ -24,7 +24,7 @@
     </div>
 
     <!-- Elementos en el medio de la navbar -->
-    <div class="medio">
+    <div class="medio" sec:authorize="${hasAnyRole('CLIENTE', 'ADMIN', 'COLABORADOR')}">
         <div class="item" th:if="${usuariosession != null}">
             <a class="icono">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
@@ -140,6 +140,10 @@
             </a>
             <span hidden class="tooltip left">Ingresar</span>
         </div>
+    </div>
+
+    <div style="position: absolute; margin: 3rem 0 0 0; background: var(--primary); width: 100%; padding: .5rem 0; text-align: center; color: white; z-index: -999;" sec:authorize="${hasAnyRole('VISITA')}">
+        Verifica tu correo para poder acceder a todas las herramientas
     </div>
 
     <div hidden class="fondo" th:if="${usuariosession != null}">

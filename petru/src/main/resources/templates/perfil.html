@@ -35,27 +35,27 @@
                     </div>
 
                     <div>
-                        <input type="text" class="form-control" name="nombre"  th:value="${usuariosession.nombre}">
+                        <input type="text" class="form-control" name="nombre"  th:value="${usuariosession.nombre}" placeholder="Ingrese su nombre">
                     </div>
 
                     <div>
-                        <input type="email" class="form-control" name="email"  th:value="${usuariosession.email}">
+                        <input type="email" class="form-control" name="email"  th:value="${usuariosession.email}" placeholder="Ingrese un email">
                     </div>
 
                     <div>
-                        <input type="number" class="form-control" name="telefono"  th:value="${usuariosession.telefono}">
+                        <input type="number" class="form-control" name="telefono"  th:value="${usuariosession.telefono}" placeholder="Ingrese numero de telefono">
                     </div>
 
                     <div>
-                        <textarea th:text="${usuariosession.descripcion}"></textarea>
+                        <textarea th:text="${usuariosession.descripcion}" placeholder="Ingrese una descripcion"></textarea>
                     </div>
 
                     <div>
-                        <input type="password" class="form-control" name="clave" placeholder="Clave">
+                        <input type="password" class="form-control" name="clave" placeholder="Ingrese una clave">
                     </div>
 
                     <div>
-                        <input type="password" class="form-control" name="clave2" placeholder="Repetir Clave">
+                        <input type="password" class="form-control" name="clave2" placeholder="Repita la clave">
                     </div> 
                     
                     <button type="submit"class="btn btn-primary mt-3 botones">Actualizar</button>

@@ -1,6 +1,5 @@
 #navbar {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
     background-color: var(--secondary);
     width: 100%;
     height: 3rem;
@@ -135,6 +134,7 @@
     max-height: 11.4rem;
     overflow-x: none;
     overflow-y: auto;
+    box-shadow: 1px 1px 1px 1px black;
     animation: dropdown-in .2s ease-out 0s 1 normal forwards;
 }
 
@@ -436,6 +436,7 @@
 }
 
 #navbar .perfil-container .perfil-camara {
+    pointer-events: none;
     z-index: 100;
     border: none;
     position: absolute;
