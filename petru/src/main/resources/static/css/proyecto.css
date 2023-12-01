@@ -33,7 +33,7 @@ main>:nth-child(1) .usuarios>:nth-child(1) img {
     width: 16px;
     height: 16px;
     border: 1px solid var(--text);
-    background: var(--primary);
+    background: rgb(225, 225, 225);
     border-radius: 50%;
 }
 
