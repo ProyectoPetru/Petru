@@ -9,17 +9,19 @@ const ventanaNavOpen = () => {
 }
 
 const ventanaNavExit = () => {
-    const fondo = document.querySelector("#navbar").querySelector(".fondo")
-    const ventana = fondo.querySelector(".ventana")
-    ventana.classList.add("ventana-hide")
-    fondo.classList.add("fondo-hide")
-    setTimeout(() => {
-        if (ventana.classList.contains("ventana-hide")) {
-            ventana.classList.remove("ventana-hide")
-            fondo.classList.remove("fondo-hide")
-            fondo.hidden = true
-        }
-    }, 300)
+    if (document.querySelector("#navbar").querySelector(".fondo") != null) {
+        const fondo = document.querySelector("#navbar").querySelector(".fondo")
+        const ventana = fondo.querySelector(".ventana")
+        ventana.classList.add("ventana-hide")
+        fondo.classList.add("fondo-hide")
+        setTimeout(() => {
+            if (ventana.classList.contains("ventana-hide")) {
+                ventana.classList.remove("ventana-hide")
+                fondo.classList.remove("fondo-hide")
+                fondo.hidden = true
+            }
+        }, 300)
+    }
 }
 
 /* Cambia el tema con el boton en el perfil de la navbar */
@@ -36,28 +38,30 @@ const cambiarTema = () => {
 
 /* Cambio el src de la imagen cuando se establece una via el input file */
 const cambiarNavFoto = () => {
-    let file = document.querySelector("#imagen").files[0]
-    let reader = new FileReader()
+    if (document.querySelector("#imagen") != null) {
+        let file = document.querySelector("#imagen").files[0]
+        let reader = new FileReader()
 
-    if (file == null) {
-        document.querySelector("#perfil-logo").src = document.querySelector("#navbar").querySelector(".ventana").querySelector(".perfil-foto").getAttribute("defecto")
-        document.querySelector("#perfil-logo").parentNode.style.display = "block"
-        return
-    }
-
-    if (file.size < 600000) {
-        reader.onload = function (e) {
-            const image = document.querySelector("#perfil-logo")
-
-            image.src = e.target.result
+        if (file == null) {
+            document.querySelector("#perfil-logo").src = document.querySelector("#navbar").querySelector(".ventana").querySelector(".perfil-foto").getAttribute("defecto")
+            document.querySelector("#perfil-logo").parentNode.style.display = "block"
+            return
         }
 
-        reader.readAsDataURL(file)
-    } else {
-        document.querySelector("#imagen").value = ""
-        document.querySelector("#perfil-logo").src = document.querySelector("#navbar").querySelector(".ventana").querySelector(".perfil-foto").getAttribute("defecto")
-        document.querySelector("#alertas").querySelector(".error").querySelector(".informacion").innerHTML = "La imagen no puede pesar mas de 600kb"
-        document.querySelector("#alertas").querySelector(".error").hidden = false
+        if (file.size < 600000) {
+            reader.onload = function (e) {
+                const image = document.querySelector("#perfil-logo")
+
+                image.src = e.target.result
+            }
+
+            reader.readAsDataURL(file)
+        } else {
+            document.querySelector("#imagen").value = ""
+            document.querySelector("#perfil-logo").src = document.querySelector("#navbar").querySelector(".ventana").querySelector(".perfil-foto").getAttribute("defecto")
+            document.querySelector("#alertas").querySelector(".error").querySelector(".informacion").innerHTML = "La imagen no puede pesar mas de 600kb"
+            document.querySelector("#alertas").querySelector(".error").hidden = false
+        }
     }
 }
 
@@ -88,7 +92,7 @@ if (document.documentElement.clientWidth > WIDTH_TOOLTIP) {
 document.addEventListener("click", (element) => {
     if (Array.from(document.querySelector("#navbar").querySelectorAll(".dropdown")).filter((e) => !e.hidden).length < 1
         &&
-        document.querySelector("#navbar").querySelector(".agregar-proyecto").querySelector("svg") != null
+        document.querySelector("#navbar").querySelector(".agregar-proyecto")?.querySelector("svg") != null
         &&
         document.querySelector("#navbar").querySelector(".fondo").hidden) {
         return
@@ -96,8 +100,10 @@ document.addEventListener("click", (element) => {
     if (element.target.closest(".ventana") == null && element.target.closest(".dropdown") == null) {
         ventanaNavExit()
     }
-    if (element.target.closest(".agregar-proyecto") == null) {
-        document.querySelector("#navbar").querySelector(".agregar-proyecto").innerHTML = "<svg style='pointer-events: none' xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path fill='currentColor' d='M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z' /></svg>"
+    if (!document.querySelector("#navbar").querySelector(".agregar-proyecto") == null) {
+        if (element.target.closest(".agregar-proyecto") == null) {
+            document.querySelector("#navbar").querySelector(".agregar-proyecto").innerHTML = "<svg style='pointer-events: none' xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path fill='currentColor' d='M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z' /></svg>"
+        }
     }
 
     if (element.target.closest(".item") == null || element.target.closest(".item").querySelector(".dropdown") == null) {

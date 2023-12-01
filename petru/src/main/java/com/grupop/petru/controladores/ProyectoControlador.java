@@ -77,7 +77,7 @@ public class ProyectoControlador {
         } catch (MiException e) {
             modelo.put("error", e.getMessage());
 
-            return "proyecto.html";
+            return "inicio.html";
         }
 
         String referer = request.getHeader("Referer");

@@ -166,7 +166,7 @@ public class PortalControlador {
         }
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_COLABORADOR', 'ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_VISITA', 'ROLE_CLIENTE', 'ROLE_COLABORADOR', 'ROLE_ADMIN')")
     @PostMapping("/perfil/modificar")
     public String modificar(@RequestParam(required = false) MultipartFile archivo, @RequestParam String nombre,
             @RequestParam Long telefono, @RequestParam String descripcion, ModelMap modelo, HttpSession session)
@@ -178,9 +178,7 @@ public class PortalControlador {
             session.setAttribute("usuariosession",
                     usuarioServicio.modificarUsuario(usuario.getId(), archivo, nombre, telefono, descripcion));
 
-            modelo.put("exito", "Tu usuario se actualizo correctamente!");
-
-            return "inicio.html";
+            return "redirect:/inicio";
         } catch (MiException ex) {
             modelo.put("error", ex.getMessage());
 
