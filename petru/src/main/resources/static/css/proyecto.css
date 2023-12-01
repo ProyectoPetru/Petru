@@ -564,8 +564,9 @@ path {
     }
 
     #proyecto .ventana {
-        width: 20rem;
+        width: 18rem;
         height: 35rem;
+        top: 1rem;
     }
 
     #proyecto .ventana .tarea-ventana {
@@ -576,14 +577,35 @@ path {
 
     #proyecto .ventana .cambiar-nombre input {
         margin: 0 0 0 .2rem;
-        width: 15rem;
+        width: 13rem;
     }
 
     #proyecto .ventana .comentarios {
         margin: .5rem 0 .5rem 0;
+        height: 15rem;
+        width: 16rem;
+    }
+
+    #proyecto .ventana .comentarios .agregar-comentario {
+        width: 15rem;
+    }
+
+    #proyecto .ventana .comentarios .agregar-comentario .contenido textarea {
+        min-width: 10rem;
+        max-width: 10rem;
+    }
+
+    #proyecto .ventana .comentarios .comentario {
+        width: 15rem;
+    }
+
+    #proyecto .ventana .comentarios .comentario .usuario .fecha {
+        position: absolute;
+        right: 0;
+        margin: 0 1rem 0 0;
     }
 
     #proyecto .ventana .etiquetas {
-        margin: auto 0 0 0;
+        margin: 0 0 0 0;
     }
 }
