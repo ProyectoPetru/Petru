@@ -48,11 +48,13 @@ Array.from(document.querySelector("#proyecto").querySelector(".contenedor").quer
 })
 
 Array.from(document.querySelector("#proyecto").querySelector(".contenedor").querySelectorAll(".tarea")).map((e) => {
-    e.querySelector("svg").addEventListener("click", () => {
-        Array.from(document.querySelector("#proyecto").querySelector(".ventana").querySelectorAll(".ventana>div")).map((e) => e.hidden = true)
-        document.getElementById(`${e.getAttribute("tarea")}`).hidden = false
-        document.querySelector("#proyecto").querySelector(".fondo").hidden = false
-    })
+    if (e.querySelector("svg") != null) {
+        e.querySelector("svg").addEventListener("click", () => {
+            Array.from(document.querySelector("#proyecto").querySelector(".ventana").querySelectorAll(".ventana>div")).map((e) => e.hidden = true)
+            document.getElementById(`${e.getAttribute("tarea")}`).hidden = false
+            document.querySelector("#proyecto").querySelector(".fondo").hidden = false
+        })
+    }
 })
 
 document.addEventListener("click", (element) => {
