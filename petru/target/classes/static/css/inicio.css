@@ -91,6 +91,7 @@ main {
     border: none;
     margin: 10rem 0;
     border-radius: 5rem 0 0 5rem;
+    text-shadow: 0 0 1px var(--background);
     transition: background .4s ease-in-out;
 }
 
@@ -133,5 +134,25 @@ main {
 #inicio .carousel .carousel-item .info p {
     margin: 0 1rem;
     font-size: 1.5rem;
-    line-height:2.5rem;
+    line-height: 2.5rem;
+}
+
+@media(max-width: 800px) {
+
+    #inicio .carousel .carousel-item {
+        flex-direction: column;
+        height: auto;
+    }
+
+    #inicio .carousel .carousel-item img {
+        min-width: 100%;
+    }
+
+    #inicio .carousel .carousel-navigation>.left {
+        margin: 20rem 0;
+    }
+
+    #inicio .carousel .carousel-navigation>.right {
+        margin: 20rem 0;
+    }
 }

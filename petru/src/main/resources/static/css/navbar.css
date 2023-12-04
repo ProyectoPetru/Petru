@@ -1,458 +1,68 @@
 #navbar {
+    top: 0;
+    z-index: 1;
+    height: 4rem;
     display: flex;
-    background-color: var(--secondary);
-    width: 100%;
-    height: 3rem;
-    transition: background .4s;
+    margin: 0 4rem;
+    position: fixed;
+    padding: 0 2rem;
+    width: calc(100% - 12rem);
+    backdrop-filter: blur(8px);
+    border-radius: 0 0 1rem 1rem;
+    background-color: rgba(213, 188, 245, 0.8);
 }
 
-#navbar .inicio,
-.medio,
-.fin {
-    align-items: center;
-    user-select: none;
+#navbar .home-list {
     display: flex;
-}
-
-#navbar .inicio {
     margin: 0 auto 0 0;
 }
 
-#navbar .medio {
-    margin: 0 auto 0 auto;
+#navbar .home-list .home {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 3rem;
+    margin: 1rem 0;
+    transition: width .8s;
 }
 
-#navbar .fin {
-    margin: 0 0 0 auto;
-}
-
-#navbar .item {
+#navbar .home-list .home>.box {
+    position: absolute;
+    background: var(--primary);
+    color: var(--current);
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 1rem 0 1rem;
-}
-
-#navbar .item a {
-    cursor: pointer;
-    transition: filter .4s;
-    color: var(--text);
-}
-
-#navbar .item a:hover {
-    filter: opacity(60%);
-}
-
-#navbar .item .icono img {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    border: 1px solid var(--text);
-}
-
-#navbar .item .icono .little-cfg {
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    display: flex;
-    margin: -1rem 0 0 1.5rem;
-}
-
-@keyframes tooltip-in {
-    from {
-        opacity: 0%;
-    }
-
-    to {
-        opacity: 100%;
-    }
-}
-
-@keyframes tooltip-out {
-    from {
-        opacity: 100%;
-    }
-
-    to {
-        opacity: 0%;
-    }
-}
-
-#navbar .tooltip {
-    position: absolute;
-    font-size: .9rem;
-    color: var(--contrast);
-    filter: opacity(60%);
-    animation: tooltip-in .4s ease-in 0s 1 normal forwards;
-}
-
-#navbar .tooltip.down {
-    margin-top: 3rem;
-}
-
-#navbar .tooltip.right {
-    margin-left: 5rem;
-}
-
-#navbar .tooltip.left {
-    margin-left: -6rem;
-}
-
-#navbar .tooltip-hide {
-    animation: tooltip-out .4s ease-in 0s 1 normal forwards;
-}
-
-@keyframes dropdown-in {
-    from {
-        top: -10rem;
-    }
-
-    to {
-        top: 3rem;
-    }
-}
-
-@keyframes dropdown-out {
-    from {
-        top: 3rem;
-    }
-
-    to {
-        top: -10rem;
-    }
-}
-
-#navbar .dropdown {
-    position: absolute;
-    z-index: -1;
-    background: var(--secondary);
-    padding: .2rem .4rem;
-    border-radius: .2rem;
-    min-width: 8rem;
-    max-width: 14rem;
-    min-height: 0;
-    max-height: 11.4rem;
-    overflow-x: none;
-    overflow-y: auto;
-    box-shadow: 1px 1px 1px 1px black;
-    animation: dropdown-in .2s ease-out 0s 1 normal forwards;
-}
-
-/* Modifico el estilo de la barra vertical */
-/* Ancho de toda la barra */
-#navbar ::-webkit-scrollbar {
-    width: 4px;
-}
-
-/* El espacio en el que esta la barra */
-#navbar ::-webkit-scrollbar-track {
-    background: var(--secondary);
-}
-
-/* La barra */
-#navbar ::-webkit-scrollbar-thumb {
-    background: var(--accent);
-    width: 2px;
-    border-radius: 5px;
-}
-
-/* Cuando paso por encima de la barra */
-#navbar ::-webkit-scrollbar-thumb:hover {
-    background: var(--text);
-}
-
-#navbar .dropdown .list {
-    cursor: pointer;
-    display: flex;
-    background: var(--secondary);
-    height: 2rem;
-    padding: .1rem .4rem;
-    border-radius: .4rem;
-    align-items: center;
-}
-
-#navbar .dropdown .list:hover {
-    filter: brightness(80%);
-}
-
-#navbar .dropdown .list a {
-    text-decoration: none;
-    color: var(--contrast);
-}
-
-#navbar .dropdown .list:hover a {
-    filter: brightness(300%);
-}
-
-#navbar .dropdown .list img {
-    width: 24px;
-    height: 24px;
-    border: 1px solid var(--text);
-    border-radius: 50%;
-    margin: 0 .5rem 0 0;
-}
-
-#navbar .dropdown .list.agregar-proyecto {
-    display: flex;
-    justify-content: center;
-    transition: color .4s;
-}
-
-#navbar .dropdown .list.agregar-proyecto form {
-    display: flex;
-    align-items: center;
-}
-
-#navbar .dropdown .list.agregar-proyecto form input {
-    height: 1.5rem;
-    background: none;
-    color: var(--text);
-    width: 7rem;
-    border: 1px solid var(--text);
-    padding: 0 3rem 0 .5rem;
-}
-
-#navbar .dropdown .list.agregar-proyecto form button {
-    position: absolute;
-    margin: 0 0 0 8.5rem;
-    color: var(--text);
-    border: 1px solid var(--text);
-    border-radius: .2rem;
-    background: none;
-    transition: color .4s, border .4s;
-}
-
-#navbar .dropdown .list.agregar-proyecto form button:hover {
-    cursor: pointer;
-    color: green;
-    border-color: green;
-}
-
-#navbar .dropdown .list.agregar-proyecto:hover {
-    color: green;
-}
-
-#navbar .dropdown-hide {
-    animation: dropdown-out .2s ease-out 0s 1 normal forwards;
-}
-
-
-
-@keyframes fondo-in {
-    from {
-        backdrop-filter: blur(0);
-        background: rgba(0, 0, 0, 0);
-    }
-
-    to {
-        backdrop-filter: blur(8px);
-        background: rgba(0, 0, 0, 0.3);
-    }
-}
-
-@keyframes fondo-out {
-    from {
-        backdrop-filter: blur(8px);
-        background: rgba(0, 0, 0, 0.3);
-    }
-
-    to {
-        backdrop-filter: blur(0);
-        background: rgba(0, 0, 0, 0);
-    }
-}
-
-#navbar .fondo {
-    position: fixed;
-    top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 998;
-    background: rgba(0, 0, 0, 0.3);
-    animation: fondo-in .3s ease-in-out 0s 1 normal forwards;
+    width: 2rem;
+    height: 2rem;
+    transition: left .8s;
+    user-select: none;
 }
 
-#navbar .fondo-hide {
-    animation: fondo-out .3s ease-in-out 0s 1 normal forwards;
+#navbar .home-list .home>:nth-child(1) {
+    z-index: 1;
 }
 
-#navbar .fondo[hidden] {
-    display: none;
-}
-
-@keyframes ventana-in {
-    from {
-        transform: scale(0%);
+@media(min-width: 800px) {
+    #navbar .home-list .home:hover {
+        width: 12rem;
+        cursor: pointer;
     }
-
-    to {
-        transform: scale(100%);
+    
+    #navbar .home-list .home:hover>:nth-child(2) {
+        left: 2.2rem;
     }
-}
-
-@keyframes ventana-out {
-    from {
-        transform: scale(100%);
+    
+    #navbar .home-list .home:hover>:nth-child(3) {
+        left: 4.4rem;
     }
-
-    to {
-        transform: scale(0%);
+    
+    #navbar .home-list .home:hover>:nth-child(4) {
+        left: 6.6rem;
     }
-}
-
-#navbar .ventana {
-    display: flex;
-    z-index: 999;
-    width: 40rem;
-    height: 23rem;
-    padding: 2rem;
-    background: var(--secondary);
-    animation: ventana-in .3s ease-in-out 0s 1 normal forwards;
-}
-
-#navbar .ventana[hidden] {
-    display: none;
-}
-
-#navbar .ventana-hide {
-    animation: ventana-out .3s ease-in-out 0s 1 normal forwards;
-}
-
-#navbar .ventana .salir {
-    position: absolute;
-    right: 0;
-    top: 0;
-    margin: .5rem;
-    transition: color .4s;
-}
-
-#navbar .ventana .salir:hover {
-    cursor: pointer;
-    color: rgb(219, 62, 62);
-}
-
-#navbar .ventana .perfil-container {
-    border-radius: 2%;
-    display: flex;
-    width: 100%;
-}
-
-#navbar .ventana .perfil-container>:nth-child(1) {
-    margin: 6rem 2rem 2rem 2rem;
-}
-
-#navbar .ventana .perfil-container>:nth-child(2) {
-    margin: 2rem 2rem 2rem 2rem;
-}
-
-#navbar .perfil-container>div>div {
-    margin: .5rem 0;
-}
-
-#navbar .perfil-container input {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: .85rem;
-    background: var(--secondary);
-    border: 1px solid var(--secondary);
-    color: var(--text);
-    height: 2.2rem;
-    width: 20rem;
-}
-
-#navbar .perfil-container span {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: .85rem;
-    padding-block: 1px;
-    padding-inline: 2px;
-    background: var(--secondary);
-    border: 1px solid var(--secondary);
-    color: var(--text);
-    width: 20rem;
-}
-
-#navbar .perfil-container span:hover {
-    cursor: pointer;
-}
-
-#navbar .perfil-container textarea {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: .85rem;
-    background: var(--secondary);
-    border: 1px solid var(--secondary);
-    color: var(--text);
-    min-width: 20rem;
-    max-width: 20rem;
-    height: 2.2rem;
-    min-height: 2.2rem;
-    max-height: 4rem;
-}
-
-#navbar .perfil-container button[type=submit] {
-    --button-hover-color: rgb(75, 255, 75);
-    margin: .3rem 0 .3rem 0;
-    background: var(--primary);
-    color: black;
-    border: .1rem solid gray;
-    border-radius: .4rem;
-    height: 2.5rem;
-    width: 100%;
-    border: none;
-    transition: box-shadow 1s, background 1s;
-}
-
-#navbar .perfil-container button[type=button] {
-    --button-hover-color: var(--accent);
-    margin: .3rem 0 .3rem 0;
-    background: var(--primary);
-    color: black;
-    border: .1rem solid gray;
-    border-radius: .4rem;
-    height: 2.5rem;
-    width: 100%;
-    border: none;
-    transition: box-shadow 1s, background 1s;
-}
-
-#navbar .perfil-container button:hover {
-    cursor: pointer;
-    background: var(--button-hover-color);
-    box-shadow: 0 0 .3rem .1rem var(--button-hover-color);
-}
-
-#navbar .perfil-container label[for=imagen] {
-    display: none;
-}
-
-#navbar .perfil-container .perfil-foto {
-    border: .1rem solid black;
-    height: 200px;
-    width: 200px;
-    border-radius: 50%;
-    transition: opacity 0.5s;
-}
-
-#navbar .perfil-container .perfil-camara {
-    pointer-events: none;
-    z-index: 100;
-    border: none;
-    position: absolute;
-    margin: 4.6rem 0 0 4.6rem;
-    opacity: 0%;
-    height: 50px;
-    width: 50px;
-    transition: opacity 0.5s;
-}
-
-#navbar .perfil-container label:hover .perfil-foto {
-    opacity: 50%;
-    cursor: pointer;
-    transition: opacity 0.5s;
-}
-
-#navbar .perfil-container label:hover .perfil-camara {
-    opacity: 100%;
+    
+    #navbar .home-list .home:hover>:nth-child(5) {
+        left: 8.8rem;
+    }
 }
