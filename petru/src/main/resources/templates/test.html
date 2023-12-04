@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .carousel-container {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .carousel-wrapper {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-item {
+      min-width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* Optional: Add styling for navigation buttons */
+    .carousel-navigation {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+
+    .carousel-navigation button {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 10px;
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="carousel-container">
+  <div class="carousel-wrapper" id="carousel">
+    <div class="carousel-item" style="background-color: #3498db;"></div>
+    <div class="carousel-item" style="background-color: #2ecc71;"></div>
+    <div class="carousel-item" style="background-color: #e74c3c;"></div>
+    <!-- Add more items as needed -->
+  </div>
+
+  <!-- Optional: Add navigation buttons -->
+  <div class="carousel-navigation">
+    <button onclick="prevSlide()">&#10094;</button>
+    <button onclick="nextSlide()">&#10095;</button>
+  </div>
+</div>
+
+<script>
+  let currentIndex = 0;
+  const carousel = document.getElementById('carousel');
+  const totalSlides = document.querySelectorAll('.carousel-item').length;
+
+  function showSlide(index) {
+    if (index < 0) {
+      currentIndex = totalSlides - 1;
+    } else if (index >= totalSlides) {
+      currentIndex = 0;
+    } else {
+      currentIndex = index;
+    }
+
+    const translateValue = -currentIndex * 100 + '%';
+    carousel.style.transform = 'translateX(' + translateValue + ')';
+  }
+
+  function nextSlide() {
+    showSlide(currentIndex + 1);
+  }
+
+  function prevSlide() {
+    showSlide(currentIndex - 1);
+  }
+
+  // Optional: Add automatic slide change
+  setInterval(() => {
+    nextSlide();
+  }, 3000);
+</script>
+
+</body>
+</html>

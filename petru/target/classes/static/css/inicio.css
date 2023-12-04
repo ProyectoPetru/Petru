@@ -5,234 +5,133 @@ main {
     z-index: 0;
 }
 
-main .inicio {
-    padding: 4rem 0 4rem 0;
+#inicio .hero {
+    height: 600px;
+    width: 100%;
     display: flex;
-    justify-content: space-evenly;
-    align-items: start;
-}
-
-main .inicio .acronimo {
-    display: flex;
-    user-select: none;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
 }
 
-main .inicio .acronimo div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-main .inicio .acronimo div .letra {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: var(--secondary);
-    font-size: 3rem;
-    width: 4rem;
-    height: 4rem;
-    margin: .1rem .2rem .1rem .2rem;
-}
-
-main .inicio .acronimo div .palabra {
-    text-align: start;
-    width: 20rem;
-    font-size: 2rem;
-    overflow-x: hidden;
+#inicio .hero .img {
+    position: absolute;
     z-index: -1;
-    animation: palabra-in .5s ease-out 0s 1 normal forwards;
+    height: 600px;
+    width: 100%;
+    background-image: url("/img/hero.jpeg");
+    background-color: rgb(255, 255, 255, 0.5);
+    background-attachment: fixed;
+    background-position: center;
 }
 
-@keyframes palabra-in {
-    from {
-        opacity: 0;
-        transform: translateX(-10rem);
-    }
-
-    30% {
-        opacity: 0;
-    }
-
-    40% {
-        opacity: 1;
-    }
-
-    70% {
-        transform: translateX(.8rem);
-    }
-
-    to {
-        transform: translateX(0);
-    }
-}
-
-main .inicio .detalles {
-    padding: 1rem;
-    border-radius: .2rem;
-    background: var(--secondary);
-    width: 50rem;
-    font-size: 1.3rem;
-    user-select: none;
+#inicio .hero .info {
+    width: 60%;
+    height: 300px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    border-radius: .5rem;
+    display: flex;
     text-align: center;
+    flex-direction: column;
+    color: whitesmoke;
 }
 
-main .inicio .detalles p {
+#inicio .hero .info h3 {
+    font-size: 6rem;
     margin: 0;
 }
 
-main .inicio .detalles .divider {
-    height: 1px;
-    margin: 1rem 1rem 1rem 1rem;
-    background: var(--text);
+#inicio .hero .info span {
+    font-size: 2rem;
 }
 
-main .inicio .detalles .cajas {
-    padding: .5rem;
-    text-align: start;
+#inicio .hero .info div:has(a) {
+    margin: 2rem;
 }
 
-main .inicio .detalles .caja .nombre {
+#inicio .hero .info div:has(a)>* {
+    background: whitesmoke;
     display: inline-block;
-    text-align: start;
-    background: linear-gradient(currentColor 0 0) bottom left/ var(--underline-width, 0%) 0.1em no-repeat;
-    color: var(--text);
-    padding: 0 .5em 0.2em;
+    width: 6rem;
+    padding: 1rem 2rem;
+    margin: 0 .5rem 0 .5rem;
+    border-radius: .5rem;
+    color: black;
     text-decoration: none;
-    transition: background-size 0.5s;
+    transition: background .4s, box-shadow .4s;
 }
 
-main .inicio .detalles .caja .nombre:hover {
-    cursor: pointer;
-    text-shadow: 0 0 1px var(--accent);
-    --underline-width: 100%;
+#inicio .hero .info div:has(a)>*:hover {
+    background: white;
+    box-shadow: 0px 0px 5px 2px black;
 }
 
-main .inicio .detalles .caja .informacion {
+#inicio .carousel {
+    position: relative;
+    overflow: hidden;
+    border-radius: .5rem;
+    margin: 2rem auto 0 auto;
+    width: 80%;
+}
+
+#inicio .carousel .carousel-navigation {
+    position: absolute;
+    width: calc(100% - 2rem);
     display: flex;
-    color: var(--accent);
-    animation: info-in .4s ease 0s 1 normal forwards;
+    justify-content: space-between;
+    margin: auto 1rem;
+    top: 0;
+    height: 100%;
 }
 
-main .inicio .detalles .caja .informacion span {
-    text-align: start;
-    width: 30rem;
+#inicio .carousel .carousel-navigation>.left {
+    font-size: 2rem;
+    background: none;
+    border: none;
+    margin: 10rem 0;
+    border-radius: 5rem 0 0 5rem;
+    transition: background .4s ease-in-out;
 }
 
-main .inicio .detalles .caja .informacion img {
-    align-self: center;
-    margin: 0 2rem 0 auto;
+#inicio .carousel .carousel-navigation>.right {
+    font-size: 2rem;
+    background: none;
+    border: none;
+    margin: 10rem 0;
+    border-radius: 0 5rem 5rem 0;
+    transition: background .4s ease-in-out;
 }
 
-main .inicio .detalles .caja .informacion[hidden] {
-    display: none;
+#inicio .carousel .carousel-navigation>*:hover {
+    cursor: pointer;
+    background: var(--background);
 }
 
-main .inicio .detalles .caja .informacion-hide {
-    animation: info-out .4s ease 0s 1 normal forwards;
+#inicio .carousel .carousel-wrapper {
+    display: flex;
+    transition: transform .4s ease-in-out;
 }
 
-@keyframes info-in {
-    0% {
-        max-height: 0;
-        padding: 0;
-        opacity: 0%;
-    }
-
-    50% {
-        opacity: 0%;
-    }
-
-    100% {
-        max-height: 40rem;
-        padding: 1rem 0 1rem 2rem;
-        opacity: 100%;
-    }
+#inicio .carousel .carousel-item {
+    display: flex;
+    min-width: 100%;
+    height: 500px;
+    background: var(--background);
+    filter: brightness(90%);
 }
 
-@keyframes info-out {
-    0% {
-        max-height: 40rem;
-        padding: 1rem 0 1rem 2rem;
-        opacity: 100%;
-    }
-
-    50% {
-        opacity: 0%;
-    }
-
-    100% {
-        max-height: 0;
-        padding: 0;
-        opacity: 0%;
-    }
+#inicio .carousel .carousel-item .info {
+    margin: 2rem 5rem;
 }
 
-@media (max-width: 1200px) {
-    main .inicio {
-        display: block;
-    }
+#inicio .carousel .carousel-item .info h3 {
+    font-size: 4rem;
+    margin: 1rem 0;
+}
 
-    main .inicio .acronimo div .palabra {
-        position: absolute;
-        text-align: start;
-        margin-left: 12.4rem;
-        width: 8rem;
-        font-size: 1.3rem;
-        overflow-x: hidden;
-    }
-
-    main .inicio .detalles {
-        margin: 2rem 1rem 0 1rem;
-        width: auto;
-    }
-
-    main .inicio .detalles .cajas {
-        text-align: start;
-    }
-
-    main .inicio .detalles .caja .informacion {
-        flex-wrap: wrap-reverse;
-        justify-content: center;
-    }
-
-    main .inicio .detalles .caja .informacion img {
-        margin: 0;
-    }
-
-    @keyframes info-in {
-        0% {
-            max-height: 0;
-            padding: 0;
-            opacity: 0%;
-        }
-
-        50% {
-            opacity: 0%;
-        }
-
-        100% {
-            max-height: 40rem;
-            padding: .5rem 0 .5rem .2rem;
-            opacity: 100%;
-        }
-    }
-
-    @keyframes info-out {
-        0% {
-            max-height: 40rem;
-            padding: .5rem 0 .5rem .2rem;
-            opacity: 100%;
-        }
-
-        30% {
-            opacity: 0%;
-        }
-
-        100% {
-            max-height: 0;
-            padding: 0;
-            opacity: 0%;
-        }
-    }
+#inicio .carousel .carousel-item .info p {
+    margin: 0 1rem;
+    font-size: 1.5rem;
+    line-height:2.5rem;
 }
