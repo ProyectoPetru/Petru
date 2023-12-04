@@ -1,4 +1,5 @@
 #navbar {
+    user-select: none;
     top: 0;
     z-index: 1;
     height: 4rem;
@@ -9,7 +10,15 @@
     width: calc(100% - 12rem);
     backdrop-filter: blur(8px);
     border-radius: 0 0 1rem 1rem;
+    transition: background .4s;
+}
+
+:root[data-theme="light"] #navbar {
     background-color: rgba(213, 188, 245, 0.8);
+}
+
+:root[data-theme="dark"] #navbar {
+    background-color: rgba(34, 10, 67, 0.8);
 }
 
 #navbar .home-list {
@@ -29,7 +38,7 @@
 #navbar .home-list .home>.box {
     position: absolute;
     background: var(--primary);
-    color: var(--current);
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -37,11 +46,141 @@
     width: 2rem;
     height: 2rem;
     transition: left .8s;
-    user-select: none;
 }
 
 #navbar .home-list .home>:nth-child(1) {
     z-index: 1;
+}
+
+#navbar .end-list {
+    display: flex;
+    align-items: center;
+    margin: 0 0 0 auto;
+}
+
+#navbar .item {
+    position: relative;
+}
+
+#navbar .item.tema {
+    background: var(--primary);
+    width: 2.8rem;
+    height: 1.5rem;
+    border-radius: 2rem;
+    border: 2px solid var(--current);
+    margin: 0 0 0 1rem;
+    display: flex;
+    align-items: center;
+    transition: filter .4s, background .4s, border .4s;
+}
+
+#navbar .item.tema:hover {
+    filter: opacity(80%);
+    cursor: pointer;
+}
+
+#navbar .item.tema .circle {
+    background: var(--current);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: left .4s, right .4s;
+    margin: auto 0;
+    width: 1.3rem;
+    height: 85%;
+    margin: 0 .1rem 0 .1rem;
+    border-radius: 50%;
+}
+
+#navbar .item.tema .circle svg {
+    width: 16px;
+    height: 16px;
+}
+
+:root[data-theme="light"] #navbar .item.tema {
+    background: white;
+}
+
+:root[data-theme="light"] #navbar .item.tema .circle {
+    left: 0;
+}
+
+:root[data-theme="light"] #navbar .item.tema .circle .moon {
+    color: black;
+    display: none;
+}
+
+:root[data-theme="dark"] #navbar .item.tema {
+    background: black;
+}
+
+:root[data-theme="dark"] #navbar .item.tema .circle {
+    left: 1.3rem;
+}
+
+:root[data-theme="dark"] #navbar .item.tema .circle .sun {
+    color: white;
+    display: none;
+}
+
+#navbar .icono {
+    transition: filter .4s;
+}
+
+#navbar .icono:hover {
+    cursor: pointer;
+    filter: opacity(70%);
+}
+
+#navbar .item img {
+    width: 44px;
+    height: 44px;
+    border: 2px solid var(--current);
+    border-radius: 50%;
+    transition: border .4s;
+}
+
+#navbar .item .little-cfg {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    display: flex;
+    color: var(--current);
+    margin: -1.2rem 0 0 2.3rem;
+    transition: color .4s;
+}
+
+#navbar .item .dropdown {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    min-width: 2rem;
+    max-width: 10rem;
+    margin-top: 4rem;
+    border: 1px solid var(--secondary);
+    border-radius: .5rem;
+    background: var(--secondary);
+}
+
+#navbar .item .dropdown>:nth-child(1) {
+    border-radius: .5rem .5rem 0 0;
+}
+
+#navbar .item .dropdown>:last-child {
+    border-radius: 0 0 .5rem .5rem;
+}
+
+#navbar .item .dropdown .list {
+    background: var(--secondary);
+    padding: .5rem 1rem;
+    transition: filter .4s;
+}
+
+#navbar .item .dropdown .list:hover {
+    cursor: pointer;
+    filter: brightness(80%);
 }
 
 @media(min-width: 800px) {
@@ -49,19 +188,19 @@
         width: 12rem;
         cursor: pointer;
     }
-    
+
     #navbar .home-list .home:hover>:nth-child(2) {
         left: 2.2rem;
     }
-    
+
     #navbar .home-list .home:hover>:nth-child(3) {
         left: 4.4rem;
     }
-    
+
     #navbar .home-list .home:hover>:nth-child(4) {
         left: 6.6rem;
     }
-    
+
     #navbar .home-list .home:hover>:nth-child(5) {
         left: 8.8rem;
     }

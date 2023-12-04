@@ -70,9 +70,8 @@ main {
 #inicio .carousel {
     position: relative;
     overflow: hidden;
-    border-radius: .5rem;
     margin: 2rem auto 0 auto;
-    width: 80%;
+    width: 100%;
 }
 
 #inicio .carousel .carousel-navigation {
@@ -88,25 +87,27 @@ main {
 #inicio .carousel .carousel-navigation>.left {
     font-size: 2rem;
     background: none;
-    border: none;
+    color: var(--contrast);
+    border: 2px solid var(--contrast);
     margin: 10rem 0;
     border-radius: 5rem 0 0 5rem;
-    text-shadow: 0 0 1px var(--background);
-    transition: background .4s ease-in-out;
+    transition: background .4s ease-in-out, color .4s;
 }
 
 #inicio .carousel .carousel-navigation>.right {
     font-size: 2rem;
     background: none;
-    border: none;
+    color: var(--contrast);
+    border: 2px solid var(--contrast);
     margin: 10rem 0;
     border-radius: 0 5rem 5rem 0;
-    transition: background .4s ease-in-out;
+    transition: background .4s ease-in-out, color .4s;
 }
 
 #inicio .carousel .carousel-navigation>*:hover {
     cursor: pointer;
-    background: var(--background);
+    color: var(--primary);
+    background: var(--contrast);
 }
 
 #inicio .carousel .carousel-wrapper {
@@ -146,13 +147,28 @@ main {
 
     #inicio .carousel .carousel-item img {
         min-width: 100%;
+        height: 300px;
+    }
+
+    #inicio .carousel .carousel-item .info {
+        margin: 2rem .2rem;
+    }
+
+    #inicio .carousel .carousel-item .info h3 {
+        font-size: 180%;
+        text-align: center;
+    }
+
+    #inicio .carousel .carousel-item .info p {
+        font-size: 120%;
+        line-height: 1.5rem;
     }
 
     #inicio .carousel .carousel-navigation>.left {
-        margin: 20rem 0;
+        margin: 15rem 0;
     }
 
     #inicio .carousel .carousel-navigation>.right {
-        margin: 20rem 0;
+        margin: 15rem 0;
     }
 }
