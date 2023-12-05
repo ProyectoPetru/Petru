@@ -82,6 +82,29 @@
                     </div>
                 </div>
             </div>
+            <div class="form">
+                <div class="login">
+                    <h3>Ingresar</h3>
+                    <form th:action="@{/logincheck}" method="POST">
+                        <input type="email" name="email" placeholder="Ingrese su email">
+                        <input type="password" name="clave" placeholder="Ingrese su clave">
+                        <button type="submit">Iniciar Sesion</button>
+                    </form>
+                </div>
+                <div class="divider"></div>
+                <div class="registro">
+                    <h3>Registrarse</h3>
+                    <form th:action="@{/registro}" method="POST">
+                        <input type="text" name="nombre" placeholder="Ingrese su nombre">
+                        <input type="email" name="email" placeholder="Ingrese su email">
+                        <input type="number" name="telefono" placeholder="Ingrese su telefono">
+                        <input type="password" name="clave" placeholder="Ingrese su clave">
+                        <input type="password" name="clave2" placeholder="Repita la clave">
+                        <input hidden type="file" name="archivo">
+                        <button type="submit">Registrar</button>
+                    </form>
+                </div>
+            </div>
         </section>
     </main>
 

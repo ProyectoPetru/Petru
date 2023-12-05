@@ -205,3 +205,11 @@
         left: 8.8rem;
     }
 }
+
+@media(max-width: 800px) {
+    #navbar {
+        margin: 0 5%;
+        width: 90%;
+        box-sizing: border-box;
+    }
+}
