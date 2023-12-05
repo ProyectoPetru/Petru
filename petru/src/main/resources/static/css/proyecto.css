@@ -1,11 +1,11 @@
 main>:nth-child(1) {
     background: var(--secondary);
-    border-top: 1px solid var(--background);
-    padding: 1.5rem 0 1.5rem 0;
+    padding: 5rem 0 1.5rem 0;
     margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background .4s;
 }
 
 main>:nth-child(1) h1 {
@@ -26,12 +26,37 @@ main>:nth-child(1) .usuarios>:nth-child(1) {
     flex-wrap: wrap;
     min-width: 1rem;
     max-width: 22rem;
+    overflow-y: auto;
+    height: 4rem;
+}
+
+/* Modifico el estilo de la barra vertical */
+/* Ancho de toda la barra */
+main>:nth-child(1) .usuarios ::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* El espacio en el que esta la barra */
+main>:nth-child(1) .usuarios ::-webkit-scrollbar-track {
+    background: var(--secondary);
+}
+
+/* La barra */
+main>:nth-child(1) .usuarios ::-webkit-scrollbar-thumb {
+    background: var(--text);
+    width: 6px;
+    border-radius: 5px;
+}
+
+/* Cuando paso por encima de la barra */
+main>:nth-child(1) .usuarios ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
 }
 
 main>:nth-child(1) .usuarios>:nth-child(1) img {
     margin: .2rem .3rem .2rem .3rem;
-    width: 16px;
-    height: 16px;
+    width: 24px;
+    height: 24px;
     border: 1px solid var(--text);
     background: rgb(225, 225, 225);
     border-radius: 50%;
@@ -41,20 +66,22 @@ main>:nth-child(1) .usuarios>:nth-child(2) {
     width: 24px;
     height: 24px;
     border: 1px solid var(--text);
-    background: green;
+    background: var(--secondary);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 .5rem 0 .5rem;
+    margin: 0 1rem 0 1rem;
+    transition: filter .4s;
 }
 
-main>:nth-child(1) .usuarios>:nth-child(2){
+main>:nth-child(1) .usuarios>:nth-child(2):hover {
+    filter: opacity(80%);
     cursor: pointer;
 }
 
 main>:nth-child(1) .usuarios div svg {
-    color: black;
+    color: var(--text);
     pointer-events: none;
 }
 
@@ -65,6 +92,7 @@ main>:nth-child(1) .usuarios div .hidden {
 main>:nth-child(1) .usuarios form {
     display: flex;
     align-items: center;
+    justify-content: end;
 }
 
 main>:nth-child(1) .usuarios form[hidden] {
@@ -76,7 +104,7 @@ main>:nth-child(1) .usuarios form input {
     background: none;
     color: var(--text);
     border: none;
-    padding: .5rem 1.5rem .5rem 0;
+    padding: .5rem .5rem .5rem 0;
 }
 
 main>:nth-child(1) .usuarios form input:focus {
@@ -85,8 +113,7 @@ main>:nth-child(1) .usuarios form input:focus {
 
 main>:nth-child(1) .usuarios form button {
     position: absolute;
-    right: 0;
-    margin: 0 1rem 0 0;
+    margin: 0 -1rem 0 0;
     background: none;
     border: none;
     color: var(--text);
@@ -231,7 +258,7 @@ main>:nth-child(1) .usuarios form input::placeholder {
 #proyecto .contenedor>div .tarea .dw-arrow {
     position: absolute;
     display: flex;
-    margin-left: -4rem;
+    margin-left: -3rem;
     width: 24px;
     height: 24px;
     color: var(--text);
@@ -241,7 +268,7 @@ main>:nth-child(1) .usuarios form input::placeholder {
 #proyecto .contenedor>div .tarea .up-arrow {
     position: absolute;
     display: flex;
-    margin-left: 12.5rem;
+    margin-left: 11.5rem;
     width: 24px;
     height: 24px;
     color: var(--text);

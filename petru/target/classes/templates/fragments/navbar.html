@@ -1,6 +1,7 @@
 <nav id="navbar">
     <!-- CSS de la navbar -->
     <link rel="stylesheet" href="/css/navbar.css">
+    <div class="window"></div>
 
     <div class="home-list">
         <div class="home" th:redirect="${usuariosession != null}?@{'/inicio'} : @{'/'}">
@@ -20,13 +21,41 @@
                 U
             </div>
         </div>
+        <div class="item group-handler">
+            <a class="icono">
+                <span>Proyectos</span>
+            </a>
+
+            <div hidden class="group">
+                <div class="window"></div>
+                <div class="list" th:each="proyecto : ${proyectos}" th:redirect="@{/proyecto/__${proyecto.id}__}">
+                    <a th:text="${proyecto.nombre}"></a>
+                </div>
+                <div class="list">
+                    <a>Hola</a>
+                </div>
+                <div class="list">
+                    <a>Hola</a>
+                </div>
+                <div class="list agregar-proyecto" onclick="navProyectoHandler(event)">
+                    <a><svg style="pointer-events: none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24">
+                            <path fill="green" d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z" />
+                        </svg></a>
+                    <form hidden th:action="@{/proyecto/registro}" method="POST" autocomplete="off">
+                        <input type="text" name="nombre">
+                        <button type="submit">✔</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="middle-list">
     </div>
 
     <div class="end-list">
-        <div class="item" th:if="${usuariosession != null}" sec:authorize="${hasRole('ADMIN')}">
+        <div class="item dropdown-handler" th:if="${usuariosession != null}" sec:authorize="${hasRole('ADMIN')}">
             <a class="icono">
                 <img th:src="@{/imagen/__${usuariosession.imagen.id}__}" width="48px" height="48px" alt="usuario">
                 <svg class="little-cfg" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
@@ -56,10 +85,11 @@
             </div>
         </div>
 
-        <div class="item" th:if="${usuariosession != null}" sec:authorize="!hasRole('ADMIN')">
+        <div class="item dropdown-handler" th:if="${usuariosession != null}" sec:authorize="!hasRole('ADMIN')">
             <a class="icono">
                 <img th:src="@{/imagen/__${usuariosession.imagen.id}__}" width="48px" height="48px" alt="usuario">
             </a>
+
             <div hidden class="dropdown">
                 <div class="list" onclick="ventanaNavOpen()">
                     <a>Perfil</a>
@@ -72,8 +102,7 @@
 
         <div class="item tema" onclick="cambiarTema()">
             <div class="circle">
-                <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="512" height="512"
-                    viewBox="0 0 512 512">
+                <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
                     <g transform="rotate(-90 256 256)">
                         <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                             stroke-width="32"
