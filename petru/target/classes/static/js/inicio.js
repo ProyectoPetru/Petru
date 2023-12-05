@@ -1,5 +1,6 @@
 const carousel = document.querySelector("#inicio").querySelector(".servicios").querySelector(".carousel")
 const totalSlides = carousel.querySelectorAll(".carousel-item").length
+const inicioRedirects = Array.from(document.querySelector("#inicio").querySelectorAll("[redirect]"))
 let currentIndex = 0
 
 const inicioHandleSlide = (index) => {
@@ -34,3 +35,9 @@ const inicioPrevSlide = () => {
 let interval = setInterval(() => {
     inicioNextSlide()
 }, 10000)
+
+inicioRedirects.map(redirect => {
+    redirect.addEventListener("click", () => {
+        document.location = redirect.getAttribute("redirect")
+    })
+})

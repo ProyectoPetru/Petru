@@ -49,12 +49,24 @@ public class ProyectoControlador {
     @Autowired
     private UsuarioServicio usuarioServicio;
 
+    private Usuario cargarModelo(ModelMap modelo, HttpSession session) {
+        Usuario usuario = (Usuario) session.getAttribute("usuariosession");
+        String error = (String) session.getAttribute("error");
+        String exito = (String) session.getAttribute("exito");
+        session.removeAttribute("error");
+        session.removeAttribute("exito");
+
+        modelo.addAttribute("usuariosession", usuario);
+        modelo.put("error", error);
+        modelo.put("exito", exito);
+
+        return usuario;
+    }
+
     @GetMapping("/{id}")
     public String proyecto(@PathVariable String id, @RequestParam(required = false) String error, HttpSession session,
             ModelMap modelo) {
-        Usuario logueado = (Usuario) session.getAttribute("usuariosession");
-
-        modelo.addAttribute("usuariosession", logueado);
+        cargarModelo(modelo, session);
 
         Proyecto proyecto = proyectoServicio.getOne(id);
 
@@ -67,26 +79,26 @@ public class ProyectoControlador {
     }
 
     @PostMapping("/{id}/invitar")
-    public String invitar(@PathVariable String id, @RequestParam String email, HttpSession session, ModelMap modelo, HttpServletRequest request) {
-        Usuario logueado = (Usuario) session.getAttribute("usuariosession");
-
-        modelo.addAttribute("usuariosession", logueado);
-
+    public String invitar(@PathVariable String id, @RequestParam String email, HttpSession session, ModelMap modelo,
+            HttpServletRequest request) {
         try {
             proyectoServicio.invitar(id, email);
+
+            session.setAttribute("exito", "Usuario invitado con exito");
+
+            String referer = request.getHeader("Referer");
+            return "redirect:" + referer;
         } catch (MiException e) {
-            modelo.put("error", e.getMessage());
+            session.setAttribute("error", e.getMessage());
 
-            return "inicio.html";
+            String referer = request.getHeader("Referer");
+            return "redirect:" + referer;
         }
-
-        String referer = request.getHeader("Referer");
-        return "redirect:" + referer;
     }
 
     @GetMapping("/registrar")
     public String carga_proyecto(@RequestParam(required = false) String error, HttpSession session, ModelMap modelo) {
-        Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+        cargarModelo(modelo, session);
 
         List<Usuario> clientes = usuarioServicio.listarClientes();
         List<Usuario> agentes = usuarioServicio.listarColaboradores();
@@ -97,7 +109,6 @@ public class ProyectoControlador {
         modelo.addAttribute("clientes", clientes);
         modelo.addAttribute("agentes", agentes);
         modelo.addAttribute("visibilidad", visibilidad);
-        modelo.addAttribute("usuariosession", logueado);
 
         return "carga_proyectos.html";
     }
@@ -105,26 +116,26 @@ public class ProyectoControlador {
     @PostMapping("/registro")
     public String proyectoRegistro(@RequestParam String nombre, @RequestParam(required = false) MultipartFile archivo,
             @RequestParam(required = false) String idCliente, @RequestParam(required = false) String idAgente,
-            ModelMap modelo,
-            HttpSession session) {
-        Usuario logueado = (Usuario) session.getAttribute("usuariosession");
-
-        modelo.addAttribute("usuariosession", logueado);
+            ModelMap modelo, HttpSession session, HttpServletRequest request) {
+        Usuario logueado = cargarModelo(modelo, session);
 
         try {
             if (idCliente == null && idAgente == null) {
-                proyectoServicio.guardar(archivo, nombre, Visibilidad.PUBLICO, "s",
+                proyectoServicio.guardar(archivo, nombre, Visibilidad.GRUPO, "s",
                         Arrays.asList(new Usuario[] { logueado }));
             } else {
-                proyectoServicio.guardar(archivo, nombre, Visibilidad.PUBLICO, "s",
+                proyectoServicio.guardar(archivo, nombre, Visibilidad.GRUPO, "s",
                         idCliente, idAgente);
             }
         } catch (MiException e) {
-            modelo.put("error", e);
+            session.setAttribute("error", e.getMessage());
 
-            return "inicio.html";
+            String referer = request.getHeader("Referer");
+            return "redirect:" + referer;
         }
+        session.setAttribute("exito", "Proyecto registrado con exito!");
 
-        return "redirect:/inicio";
+        String referer = request.getHeader("Referer");
+        return "redirect:" + referer;
     }
 }

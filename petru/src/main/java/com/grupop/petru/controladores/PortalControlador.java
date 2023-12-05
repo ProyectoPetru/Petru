@@ -18,6 +18,7 @@ import com.grupop.petru.servicios.EmailServicio;
 import com.grupop.petru.servicios.ProyectoServicio;
 import com.grupop.petru.servicios.UsuarioServicio;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -41,26 +42,41 @@ public class PortalControlador {
     @Autowired
     private EmailServicio emailServicio;
 
+    private Usuario cargarModelo(ModelMap modelo, HttpSession session) {
+        Usuario usuario = (Usuario) session.getAttribute("usuariosession");
+        String error = (String) session.getAttribute("error");
+        String exito = (String) session.getAttribute("exito");
+        session.removeAttribute("error");
+        session.removeAttribute("exito");
+
+        modelo.addAttribute("usuariosession", usuario);
+        modelo.put("error", error);
+        modelo.put("exito", exito);
+
+        return usuario;
+    }
+
     // a futuro se podria ver si agregamos esto
     // @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping("/")
     public String index(HttpSession session, ModelMap modelo) {
         Usuario logueado = (Usuario) session.getAttribute("usuariosession");
-        if (logueado == null) {
-            return "inicio.html";
+        if (logueado != null) {
+            if (logueado.getRol().toString().equals("CLIENTE") || logueado.getRol().toString().equals("VISITA")
+                    || logueado.getRol().toString().equals("COLABORADOR")) {
+                return "redirect:/inicio";
+            } else if (logueado.getRol().toString().equals("ADMIN")) {
+                return "redirect:/admin/dashboard";
+            }
         }
-        if (logueado.getRol().toString().equals("ADMIN")) {
-            return "redirect:/admin/dashboard";
-        }
+        cargarModelo(modelo, session);
 
-        return "redirect:/inicio";
+        return "inicio.html";
     }
 
     @GetMapping("/inicio")
     public String inicio(HttpSession session, ModelMap modelo) {
-        Usuario logueado = (Usuario) session.getAttribute("usuariosession");
-
-        modelo.addAttribute("usuariosession", logueado);
+        Usuario logueado = cargarModelo(modelo, session);
 
         modelo.addAttribute("proyectos", proyectoServicio.listarPorUsuario(logueado.getId()));
 
@@ -69,64 +85,71 @@ public class PortalControlador {
 
     @GetMapping("/registrar")
     public String registrar(HttpSession session, ModelMap modelo) {
-        Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+        cargarModelo(modelo, session);
 
-        modelo.addAttribute("usuariosession", logueado);
+        String nombre = (String) session.getAttribute("nombre");
+        String email = (String) session.getAttribute("email");
+        Long telefono = (Long) session.getAttribute("telefono");
+        String descripcion = (String) session.getAttribute("descripcion");
+        session.removeAttribute("nombre");
+        session.removeAttribute("email");
+        session.removeAttribute("telefono");
+        session.removeAttribute("descripcion");
+
+        modelo.put("nombre", nombre);
+        modelo.put("email", email);
+        modelo.put("telefono", telefono);
+        modelo.put("descripcion", descripcion);
 
         return "registro.html";
     }
 
     @PostMapping("/registro")
     public String registro(@RequestParam String nombre, @RequestParam String email, @RequestParam String clave,
-            @RequestParam String clave2, @RequestParam MultipartFile archivo, @RequestParam Long telefono,
-            String descripcion,
-            ModelMap modelo) {
+            @RequestParam String clave2, @RequestParam MultipartFile archivo,
+            @RequestParam(required = false) Long telefono, @RequestParam String descripcion,
+            ModelMap modelo, HttpSession session) {
         try {
             usuarioServicio.registrarUsuario(archivo, nombre, email, clave, clave2, telefono, descripcion);
-            modelo.put("exito", "Usuario registrado correctamente!");
-            return "inicio.html";
+
+            session.setAttribute("exito", "Usuario registrado correctamente!");
+
+            return "redirect:/";
         } catch (MiException ex) {
-            modelo.put("error", ex.getMessage());
-            modelo.put("nombre", nombre);
-            modelo.put("email", email);
-            modelo.put("telefono", telefono);
-            modelo.put("descripcion", descripcion);
-            return "registro.html";
+            session.setAttribute("error", ex.getMessage());
+            session.setAttribute("nombre", nombre);
+            session.setAttribute("email", email);
+            session.setAttribute("telefono", telefono);
+            session.setAttribute("descripcion", descripcion);
+
+            return "redirect:/registrar";
         }
     }
 
     @GetMapping("/login")
     public String login(@RequestParam(required = false) String error, ModelMap modelo, HttpSession session) {
-        if (error != null) {
-            modelo.put("error", "Usuario o Contraseña invalidos!");
-        }
+        cargarModelo(modelo, session);
 
         return "login.html";
     }
 
     @GetMapping("/carga_tareas")
     public String carga_tareas(@RequestParam(required = false) String error, HttpSession session, ModelMap modelo) {
-        Usuario logueado = (Usuario) session.getAttribute("usuariosession");
-
-        modelo.addAttribute("usuariosession", logueado);
+        cargarModelo(modelo, session);
 
         return "carga_tareas.html";
     }
 
     @GetMapping("/carga_proyecto")
     public String carga_proyecto(@RequestParam(required = false) String error, HttpSession session, ModelMap modelo) {
-        Usuario logueado = (Usuario) session.getAttribute("usuariosession");
-
-        modelo.addAttribute("usuariosession", logueado);
+        cargarModelo(modelo, session);
 
         return "carga_proyectos.html";
     }
 
     @GetMapping("/contacto")
     public String contacto(@RequestParam(required = false) String error, HttpSession session, ModelMap modelo) {
-        Usuario logueado = (Usuario) session.getAttribute("usuariosession");
-
-        modelo.addAttribute("usuariosession", logueado);
+        cargarModelo(modelo, session);
 
         return "contacto.html";
     }
@@ -134,10 +157,7 @@ public class PortalControlador {
     @PreAuthorize("hasAnyRole('ROLE_VISITA','ROLE_CLIENTE', 'ROLE_COLABORADOR', 'ROLE_ADMIN')")
     @GetMapping("/perfil")
     public String perfil(ModelMap modelo, HttpSession session) {
-
-        Usuario usuario = (Usuario) session.getAttribute("usuariosession");
-
-        modelo.put("usuariosession", usuario);
+        cargarModelo(modelo, session);
 
         return "perfil.html";
     }
@@ -145,72 +165,69 @@ public class PortalControlador {
     @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_COLABORADOR', 'ROLE_ADMIN')")
     @PostMapping("/perfil/{id}")
     public String actualizar(MultipartFile archivo, String idUsuario, String nombre, String email, String clave,
-            String clave2, Long telefono, String descripcion, ModelMap modelo) throws MiException {
-
+            String clave2, Long telefono, String descripcion, ModelMap modelo, HttpSession session) throws MiException {
         try {
 
             usuarioServicio.modificarUsuario(archivo, idUsuario, nombre, email, clave, clave2, telefono, descripcion);
 
-            modelo.put("exito", "Tu usuario se actualizo correctamente!");
+            session.setAttribute("exito", "Tu usuario se actualizo correctamente!");
 
-            return "inicio.html";
+            return "redirect:/inicio";
         } catch (MiException ex) {
 
-            modelo.put("error", ex.getMessage());
+            session.setAttribute("error", ex.getMessage());
 
-            modelo.put("nombre", nombre);
-
-            modelo.put("email", email);
-
-            return "perfil.html";
+            return "redirect:/perfil";
         }
     }
 
     @PreAuthorize("hasAnyRole('ROLE_VISITA', 'ROLE_CLIENTE', 'ROLE_COLABORADOR', 'ROLE_ADMIN')")
     @PostMapping("/perfil/modificar")
     public String modificar(@RequestParam(required = false) MultipartFile archivo, @RequestParam String nombre,
-            @RequestParam Long telefono, @RequestParam String descripcion, ModelMap modelo, HttpSession session)
+            @RequestParam Long telefono, @RequestParam String descripcion, ModelMap modelo, HttpSession session,
+            HttpServletRequest request)
             throws MiException {
-
         try {
             Usuario usuario = (Usuario) session.getAttribute("usuariosession");
 
             session.setAttribute("usuariosession",
                     usuarioServicio.modificarUsuario(usuario.getId(), archivo, nombre, telefono, descripcion));
 
-            return "redirect:/inicio";
+            session.setAttribute("exito", "Usuario actualizado con exito");
         } catch (MiException ex) {
-            modelo.put("error", ex.getMessage());
-
-            return "perfil.html";
+            session.setAttribute("error", ex.getMessage());
         }
+        String referer = request.getHeader("Referer");
+        return "redirect:" + referer;
     }
 
     @PostMapping("/contacto")
     public String contactar(@RequestParam String nombre, @RequestParam String email, @RequestParam String titulo,
-            @RequestParam String cuerpo, @RequestParam Long numero) {
+            @RequestParam String cuerpo, @RequestParam Long numero, HttpSession session) {
         cuerpo = "<div><h1 style='margin: 0 0 1rem 0'>" + nombre + "</h1>\n<h2 style='margin: 0 0 1rem 0'>" + email
                 + "</h2>\n<h2 style='margin: 0 0 1rem 0'>" + numero
                 + "</h2>\n<h4 style='margin: 0 1rem 0 1rem; font-weight: normal'>" + cuerpo + "</h4><div>";
 
         emailServicio.sendEmail(titulo, cuerpo);
 
-        return "redirect:/";
+        session.setAttribute("exito", "Email enviado con exito");
+
+        return "redirect:/contacto";
     }
 
     @GetMapping("/usuario/autenticar/{id}")
-    public String autenticar(@PathVariable String id, ModelMap modelo) {
+    public String autenticar(@PathVariable String id, ModelMap modelo, HttpSession session) {
         try {
-            Token token = usuarioServicio.getToken(id);
-
             Usuario usuario = usuarioServicio.getByToken(id);
 
             usuarioServicio.modificarRolUsuario(usuario.getId(), Rol.CLIENTE);
             usuarioServicio.inhabilitarToken(id);
-        } catch (MiException e) {
-            modelo.put("error", e.getMessage());
 
-            return "inicio.html";
+            session.setAttribute("exito", "Usuario autenticado con exito!");
+        } catch (MiException e) {
+            session.setAttribute("error", e.getMessage());
+
+            return "redirect:/";
         }
 
         return "redirect:/login";

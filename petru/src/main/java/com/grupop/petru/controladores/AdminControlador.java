@@ -12,6 +12,7 @@ package com.grupop.petru.controladores;
 import com.grupop.petru.entidades.Usuario;
 import com.grupop.petru.entidades.Usuario;
 import com.grupop.petru.enumeraciones.Rol;
+import com.grupop.petru.excepciones.MiException;
 import com.grupop.petru.servicios.UsuarioServicio;
 import java.util.List;
 import javax.servlet.http.HttpSession;
@@ -30,28 +31,46 @@ public class AdminControlador {
     @Autowired
     private UsuarioServicio usuarioServicio;
 
+    private Usuario cargarModelo(ModelMap modelo, HttpSession session) {
+        Usuario usuario = (Usuario) session.getAttribute("usuariosession");
+        String error = (String) session.getAttribute("error");
+        String exito = (String) session.getAttribute("exito");
+        session.removeAttribute("error");
+        session.removeAttribute("exito");
+
+        modelo.addAttribute("usuariosession", usuario);
+        modelo.put("error", error);
+        modelo.put("exito", exito);
+
+        return usuario;
+    }
+
     @GetMapping("/dashboard")
     public String panelAdmin(HttpSession session, ModelMap modelo) {
-        Usuario logueado = (Usuario) session.getAttribute("usuariosession");
-
-        modelo.addAttribute("usuariosession", logueado);
+        cargarModelo(modelo, session);
 
         return "dashboard.html";
     }
     
     @GetMapping("/usuarios")
     public String listar(ModelMap modelo, HttpSession session) {
-        Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+        cargarModelo(modelo, session);
 
-        modelo.addAttribute("usuariosession", logueado);
         List<Usuario> usuarios = usuarioServicio.listarUsuarios();
         modelo.addAttribute("usuarios", usuarios);
+
         return "/usuarios/listar.html";
     }
 
     @GetMapping("/modificarRol/{id}")
-    public String cambiarRol(@PathVariable String id, @RequestParam Rol rol) {
-        usuarioServicio.modificarRolUsuario(id, rol);
+    public String cambiarRol(@PathVariable String id, @RequestParam Rol rol, HttpSession session) {
+        try {
+            usuarioServicio.modificarRolUsuario(id, rol);
+            
+            session.setAttribute("exito", "Rol modificado con exito");
+        } catch (MiException e) {
+            session.setAttribute("error", e.getMessage());
+        }
         return "redirect:/admin/usuarios";
     }
     

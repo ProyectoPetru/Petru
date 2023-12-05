@@ -25,20 +25,40 @@ main {
     background-position: center;
 }
 
+@keyframes hero-info-in {
+    0% {
+        transform: scale(0%);
+    }
+
+    100% {
+        transform: scale(100%);
+    }
+}
+
 #inicio .hero .info {
     width: 60%;
-    height: 300px;
-    background: rgba(0, 0, 0, 0.6);
+    height: 350px;
     backdrop-filter: blur(8px);
     border-radius: .5rem;
     display: flex;
     text-align: center;
     flex-direction: column;
-    color: whitesmoke;
+    color: var(--text);
+    animation: hero-info-in .8s ease-in-out 0s 1 normal forwards;
+}
+
+:root[data-theme="light"] #inicio .hero .info {
+    background-color: rgba(213, 188, 245, 0.8);
+}
+
+:root[data-theme="dark"] #inicio .hero .info {
+    background-color: rgba(34, 10, 67, 0.8);
 }
 
 #inicio .hero .info h3 {
+    font-family: 'Fugaz One', sans-serif;
     font-size: 6rem;
+    text-shadow: 1px 1px 2px var(--current);
     margin: 0;
 }
 
@@ -51,20 +71,20 @@ main {
 }
 
 #inicio .hero .info>:nth-child(3)>* {
-    background: whitesmoke;
+    background: var(--primary);
     display: inline-block;
     width: 6rem;
     padding: 1rem 2rem;
     margin: 0 .5rem 0 .5rem;
     border-radius: .5rem;
-    color: black;
+    color: var(--text);
     text-decoration: none;
     transition: background .4s, box-shadow .4s;
 }
 
 #inicio .hero .info>:nth-child(3)>*:hover {
-    background: white;
-    box-shadow: 0px 0px 5px 2px black;
+    background: var(--current);
+    box-shadow: 0px 0px 5px 2px var(--current);
 }
 
 #inicio .carousel {
@@ -173,12 +193,14 @@ main {
 
 #inicio .form .login form input {
     width: 75%;
+    border: 1px solid black;
+    border-radius: .5rem;
     padding: .5rem 1rem;
 }
 
 #inicio .form .login form button {
     width: 75%;
-    border: none;
+    border: 1px solid black;
     border-radius: .5rem;
     color: var(--contrast);
     background: var(--current);
@@ -228,12 +250,14 @@ main {
 
 #inicio .form .registro form input {
     width: 75%;
+    border: 1px solid black;
+    border-radius: .5rem;
     padding: .5rem 1rem;
 }
 
 #inicio .form .registro form button {
     width: 75%;
-    border: none;
+    border: 1px solid black;
     border-radius: .5rem;
     color: var(--contrast);
     background: var(--current);
@@ -247,7 +271,96 @@ main {
     background: green;
 }
 
+#inicio .nosotros {
+    background: var(--background);
+    filter: brightness(90%);
+    padding: 0 0 4rem 0;
+}
+
+#inicio .nosotros .titulo {
+    margin: 0 2rem;
+    display: flex;
+    align-items: center;
+}
+
+#inicio .nosotros .titulo h3 {
+    font-size: 3rem;
+    white-space: nowrap;
+    padding: 0 1rem;
+    width: 28rem;
+}
+
+#inicio .nosotros .titulo .divider {
+    background: var(--text);
+    height: 3px;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: .5rem;
+}
+
+#inicio .nosotros .info {
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+    font-size: 1.4rem;
+    margin: 0 5rem;
+}
+
+#inicio .nosotros .info p {
+    width: 80%;
+}
+
+#inicio .nosotros .info>:nth-child(1)>.personas {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 80%;
+}
+
+#inicio .nosotros .info>:nth-child(1)>.personas>.persona {
+    width: 6rem;
+    margin: 1rem .5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: filter .4s;
+}
+
+#inicio .nosotros .info>:nth-child(1)>.personas>.persona:hover {
+    cursor: pointer;
+    filter: opacity(70%);
+}
+
+#inicio .nosotros .info>:nth-child(1)>.personas>.persona>img {
+    width: 5rem;
+    height: 5rem;
+    border-radius: .5rem .5rem 0 0;
+    border: 2px solid var(--primary);
+}
+
+#inicio .nosotros .info>:nth-child(1)>.personas>.persona>span {
+    width: 5rem;
+    overflow: hidden;
+    font-size: 1.1rem;
+    border-radius: 0 0 .5rem .5rem;
+    border: 2px solid var(--primary);
+    background-color: var(--primary);
+}
+
+#inicio .nosotros .info>:nth-child(2)>img {
+    width: 80%;
+    height: 30rem;
+    border-radius: .5rem;
+}
+
 @media(max-width: 800px) {
+    #inicio .hero .info>:nth-child(3) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     #inicio .hero .info h3 {
         font-size: 4rem;
     }
@@ -299,7 +412,7 @@ main {
     }
 
     #inicio .form .login {
-        width: 80%;
+        width: 70%;
         margin: .5rem 0;
     }
 
@@ -312,7 +425,29 @@ main {
     }
 
     #inicio .form .registro {
-        width: 80%;
+        width: 70%;
         margin: .5rem 0;
+    }
+
+    #inicio .nosotros {
+        width: 100%;
+    }
+
+    #inicio .nosotros .titulo h3 {
+        font-size: 1.5rem;
+    }
+
+    #inicio .nosotros>.info {
+        margin: 0 .5rem;
+    }
+
+    #inicio .nosotros>.info>:nth-child(1) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #inicio .nosotros .info>:nth-child(2)>img {
+        display: none;
     }
 }

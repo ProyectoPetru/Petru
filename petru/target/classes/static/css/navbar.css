@@ -43,13 +43,14 @@
     justify-content: center;
     align-items: center;
     left: 0;
-    width: 2rem;
-    height: 2rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.5rem;
     transition: left .8s;
 }
 
 #navbar .home-list .home>:nth-child(1) {
-    z-index: 1;
+    z-index: 5;
 }
 
 #navbar .end-list {
@@ -185,24 +186,24 @@
 
 @media(min-width: 800px) {
     #navbar .home-list .home:hover {
-        width: 12rem;
+        width: 14rem;
         cursor: pointer;
     }
 
     #navbar .home-list .home:hover>:nth-child(2) {
-        left: 2.2rem;
+        left: 2.8rem;
     }
 
     #navbar .home-list .home:hover>:nth-child(3) {
-        left: 4.4rem;
+        left: 5.6rem;
     }
 
     #navbar .home-list .home:hover>:nth-child(4) {
-        left: 6.6rem;
+        left: 8.4rem;
     }
 
     #navbar .home-list .home:hover>:nth-child(5) {
-        left: 8.8rem;
+        left: 11.2rem;
     }
 }
 

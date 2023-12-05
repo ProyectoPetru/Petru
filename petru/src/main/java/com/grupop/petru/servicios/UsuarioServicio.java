@@ -168,16 +168,14 @@ public class UsuarioServicio implements UserDetailsService {
     // MODIFICAR ROL
 
     @Transactional
-    public void modificarRolUsuario(String idUsuario, Rol rol) {
-        try {
-            Optional<Usuario> respuesta = usuarioRepositorio.findById(idUsuario);
-            if (respuesta.isPresent()) {
-                Usuario usuario = respuesta.get();
-                usuario.setRol(rol);
-                usuarioRepositorio.save(usuario);
-            }
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
+    public void modificarRolUsuario(String idUsuario, Rol rol) throws MiException {
+        Optional<Usuario> respuesta = usuarioRepositorio.findById(idUsuario);
+        if (respuesta.isPresent()) {
+            Usuario usuario = respuesta.get();
+            usuario.setRol(rol);
+            usuarioRepositorio.save(usuario);
+        } else {
+            throw new MiException("Usuario no encontrado");
         }
     }
 
@@ -248,9 +246,6 @@ public class UsuarioServicio implements UserDetailsService {
             List<GrantedAuthority> permisos = new ArrayList<>();
             GrantedAuthority p = new SimpleGrantedAuthority("ROLE_" + usuario.getRol().toString());
             permisos.add(p);
-            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-            HttpSession session = attr.getRequest().getSession(true);
-            session.setAttribute("usuariosession", usuario);
             return new User(usuario.getEmail(), usuario.getClave(), permisos);
         } else {
             return null;
@@ -277,8 +272,14 @@ public class UsuarioServicio implements UserDetailsService {
     }
 
     @Transactional(readOnly = true)
-    public Usuario getByToken(String id) {
-        return tokenRepositorio.getByToken(id);
+    public Usuario getByToken(String id) throws MiException {
+        Usuario usuario = tokenRepositorio.getByToken(id);
+
+        if (usuario == null) {
+            throw new MiException("Token invalido o no encontrado");
+        }
+
+        return usuario;
     }
 
     @Transactional(readOnly = true)
@@ -292,8 +293,12 @@ public class UsuarioServicio implements UserDetailsService {
         throw new MiException("Token invalido o no encontrado");
     }
 
-    public void inhabilitarToken(String id) {
+    public void inhabilitarToken(String id) throws MiException {
         Token token = tokenRepositorio.getOne(id);
+
+        if (token == null) {
+            throw new MiException("Token invalido o no encontrado");
+        }
 
         tokenRepositorio.delete(token);
     }

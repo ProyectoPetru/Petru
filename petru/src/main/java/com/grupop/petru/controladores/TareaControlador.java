@@ -75,7 +75,7 @@ public class TareaControlador {
 
     @GetMapping("/modificar-rol/{id}")
     public String modificarRolTarea(@PathVariable String id, @RequestParam String tipoTarea, ModelMap modelo,
-            HttpServletRequest request) {
+            HttpServletRequest request, HttpSession session) {
         Tarea tarea = tareaServicio.getOne(id);
 
         switch (tipoTarea) {
@@ -92,8 +92,10 @@ public class TareaControlador {
 
         try {
             tareaServicio.modificarTarea(tarea.getId(), tarea.getNombre(), tarea.getProyecto().getId(), tarea.getTipoTarea(), tarea.getEtiquetas());
+
+            session.setAttribute("exito", "Tarea modificada con exito");
         } catch (MiException e) {
-            modelo.put("error", e.getMessage());
+            session.setAttribute("error", e.getMessage());
         }
 
         String referer = request.getHeader("Referer");
