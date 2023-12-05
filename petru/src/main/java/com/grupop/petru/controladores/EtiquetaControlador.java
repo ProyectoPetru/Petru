@@ -2,6 +2,7 @@
 package com.grupop.petru.controladores;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,11 +31,13 @@ public class EtiquetaControlador {
 
     @PostMapping("/registro")
     public String registro(@RequestParam String idTarea, @RequestParam String nombre, @RequestParam String color, ModelMap modelo,
-            HttpServletRequest request) {
+            HttpServletRequest request, HttpSession session) {
         try {
             etiquetaServicio.crearEtiqueta(idTarea, nombre, color);
+            
+            session.setAttribute("exito", "Etiqueta creada con exito!");
         } catch (MiException e) {
-            modelo.put("error", e.getMessage());
+            session.setAttribute("error", e.getMessage());
         }
 
         String referer = request.getHeader("Referer");

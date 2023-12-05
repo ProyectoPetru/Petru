@@ -2,6 +2,7 @@
 package com.grupop.petru.controladores;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,11 +32,13 @@ public class ComentarioControlador {
 
     @PostMapping("/registro")
     public String registro(@RequestParam String idTarea, @RequestParam String idUsuario, @RequestParam String contenido, ModelMap modelo,
-            HttpServletRequest request) {
+            HttpServletRequest request, HttpSession session) {
         try {
             comentarioServicio.crearComentario(idTarea, idUsuario, contenido);
+
+            session.setAttribute("exito", "Comentario agregado con exito!");
         } catch (MiException e) {
-            modelo.put("error", e.getMessage());
+            session.setAttribute("error", e.getMessage());
         }
 
         String referer = request.getHeader("Referer");
