@@ -92,8 +92,6 @@ public class TareaControlador {
 
         try {
             tareaServicio.modificarTarea(tarea.getId(), tarea.getNombre(), tarea.getProyecto().getId(), tarea.getTipoTarea(), tarea.getEtiquetas());
-
-            session.setAttribute("exito", "Tarea modificada con exito");
         } catch (MiException e) {
             session.setAttribute("error", e.getMessage());
         }

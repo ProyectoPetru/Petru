@@ -21,7 +21,7 @@
                 U
             </div>
         </div>
-        <div class="item group-handler">
+        <div class="item group-handler" sec:authorize="hasAnyRole('CLIENTE', 'COLABORADOR', 'ADMIN')">
             <a class="icono">
                 <span>Proyectos</span>
             </a>
@@ -30,12 +30,6 @@
                 <div class="window"></div>
                 <div class="list" th:each="proyecto : ${proyectos}" th:redirect="@{/proyecto/__${proyecto.id}__}">
                     <a th:text="${proyecto.nombre}"></a>
-                </div>
-                <div class="list">
-                    <a>Hola</a>
-                </div>
-                <div class="list">
-                    <a>Hola</a>
                 </div>
                 <div class="list agregar-proyecto" onclick="navProyectoHandler(event)">
                     <a><svg style="pointer-events: none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
