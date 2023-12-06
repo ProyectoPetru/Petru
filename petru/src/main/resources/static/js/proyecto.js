@@ -4,8 +4,13 @@ function borrarComentario(id) {
 
 Array.from(document.querySelector(".usuarios").querySelectorAll("img")).map((img) => {
     img.addEventListener("click", () => {
-        let cuerpo = prompt("Ingrese el cuerpo")
-        document.location = `/mensaje?cuerpo=${cuerpo}&destinatario=${img.getAttribute("email")}`
+        if (img.getAttribute("email") == null) {
+            document.querySelector("#alertas").querySelector(".error").querySelector(".informacion").innerHTML = "No te puedes mandar mensajes"
+            document.querySelector("#alertas").querySelector(".error").hidden = false
+        } else {
+            let cuerpo = prompt(`Ingrese el cuerpo del mensaje que se enviara a ${img.getAttribute("email")}:`)
+            document.location = `/mensaje?cuerpo=${cuerpo}&destinatario=${img.getAttribute("email")}`
+        }
     })
 })
 

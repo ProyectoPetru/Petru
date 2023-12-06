@@ -60,6 +60,12 @@ main>:nth-child(1) .usuarios>:nth-child(1) img {
     border: 1px solid var(--text);
     background: rgb(225, 225, 225);
     border-radius: 50%;
+    transition: filter .4s;
+}
+
+main>:nth-child(1) .usuarios>:nth-child(1) img:hover {
+    cursor: pointer;
+    filter: opacity(80%);
 }
 
 main>:nth-child(1) .usuarios>:nth-child(2) {

@@ -21,7 +21,7 @@
             <h1 th:text="${proyecto.nombre}" style="text-align: center;"></h1>
             <div class="usuarios">
                 <div>
-                    <img th:each="usuario : ${proyecto.usuarios}" th:src="@{/imagen/__${usuario.imagen.id}__}" th:email="${usuario.email}"></img>
+                    <img th:each="usuario : ${proyecto.usuarios}" th:src="@{/imagen/__${usuario.imagen.id}__}" th:email="${usuario.id != usuariosession.id ? usuario.email : null}"></img>
                 </div>
                 <div id="agregar-usuario" sec:authorize="${hasAnyRole('ADMIN', 'COLABORADOR', 'CLIENTE')}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">

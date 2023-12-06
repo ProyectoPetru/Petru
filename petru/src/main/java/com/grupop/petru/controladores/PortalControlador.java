@@ -243,6 +243,7 @@ public class PortalControlador {
 
             return "redirect:/";
         }
+        
         String titulo = usuario.getNombre() + " te mando un mensaje";
 
         cuerpo = "<h4 style='margin: 0 1rem 0 1rem; font-weight: normal'>" + cuerpo + "</h4><div>";
