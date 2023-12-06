@@ -26,10 +26,13 @@ public class Evento {
    @GeneratedValue(generator = "uuid")
    @GenericGenerator(name = "uuid", strategy = "uuid2")
    private String id;
-   private String nombre;
+   private String titulo;
+   private String descripcion;
    @Temporal(TemporalType.TIMESTAMP)
-   private Date fecha;
-   private String link;
+   private Date fecha_inicio;
+   @Temporal(TemporalType.TIMESTAMP)
+   private Date fecha_fin;
+
    @ManyToOne
    private Proyecto proyecto;
 
