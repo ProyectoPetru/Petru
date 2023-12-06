@@ -42,7 +42,9 @@
                 <div class="pendientes">
                     <span class="tipo">Pendientes</span>
                     <div class="tarea" th:each="tarea : ${tareas}" th:if="${tarea.tipoTarea.name() == 'TODO'}"
-                        th:tarea="${tarea.id}" th:draggable="${usuariosession.rol.name() != 'CLIENTE' && usuariosession.rol.name() != 'VISITA'}" ondragstart="dragStart(event)">
+                        th:tarea="${tarea.id}"
+                        th:draggable="${usuariosession.rol.name() != 'CLIENTE' && usuariosession.rol.name() != 'VISITA'}"
+                        ondragstart="dragStart(event)">
                         <div>
                             <div style="display: flex;">
                                 <div class="etiqueta" th:each="etiqueta : ${tarea.etiquetas}"
@@ -73,7 +75,9 @@
                 <div class="haciendo">
                     <span class="tipo">En Proceso</span>
                     <div class="tarea" th:each="tarea : ${tareas}" th:if="${tarea.tipoTarea.name() == 'DOING'}"
-                        th:tarea="${tarea.id}" th:draggable="${usuariosession.rol.name() != 'CLIENTE' && usuariosession.rol.name() != 'VISITA'}" ondragstart="dragStart(event)">
+                        th:tarea="${tarea.id}"
+                        th:draggable="${usuariosession.rol.name() != 'CLIENTE' && usuariosession.rol.name() != 'VISITA'}"
+                        ondragstart="dragStart(event)">
                         <div>
                             <div style="display: flex;">
                                 <div class="etiqueta" th:each="etiqueta : ${tarea.etiquetas}"
@@ -98,7 +102,9 @@
                 <div class="hechas">
                     <span class="tipo">Finalizados</span>
                     <div class="tarea" th:each="tarea : ${tareas}" th:if="${tarea.tipoTarea.name() == 'DONE'}"
-                        th:tarea="${tarea.id}" th:draggable="${usuariosession.rol.name() != 'CLIENTE' && usuariosession.rol.name() != 'VISITA'}" ondragstart="dragStart(event)">
+                        th:tarea="${tarea.id}"
+                        th:draggable="${usuariosession.rol.name() != 'CLIENTE' && usuariosession.rol.name() != 'VISITA'}"
+                        ondragstart="dragStart(event)">
                         <div>
                             <div style="display: flex;">
                                 <div class="etiqueta" th:each="etiqueta : ${tarea.etiquetas}"
@@ -127,14 +133,17 @@
                     <div class="tarea-ventana" hidden th:each="tarea : ${tareas}" th:id="${tarea.id}">
                         <div class="cambiar-nombre">
                             <form th:action="@{/tarea/modificar-nombre/__${tarea.id}__}" method="POST">
-                                <input sec:authorize="${hasAnyRole('ADMIN', 'COLABORADOR')}" type="text" name="nombre" th:value="${tarea.nombre}" autocomplete="off">
-                                <input sec:authorize="${hasAnyRole('CLIENTE')}" disabled type="text" name="nombre" th:value="${tarea.nombre}" autocomplete="off">
+                                <input sec:authorize="${hasAnyRole('ADMIN', 'COLABORADOR')}" type="text" name="nombre"
+                                    th:value="${tarea.nombre}" autocomplete="off">
+                                <input sec:authorize="${hasAnyRole('CLIENTE')}" disabled type="text" name="nombre"
+                                    th:value="${tarea.nombre}" autocomplete="off">
                                 <button sec:authorize="${hasAnyRole('ADMIN', 'COLABORADOR')}" type="submit">✔</button>
                             </form>
                             <div class="comentarios">
                                 <div class="agregar-comentario" th:if="${usuariosession != null}">
                                     <div class="usuario">
-                                        <img src="/img/user.png" width="24px" height="24px" alt="">
+                                        <img th:src="@{/imagen/__${usuariosession.imagen.id}__}" width="24px"
+                                            height="24px" alt="">
                                         <span class="nombre" th:text="${usuariosession.nombre}"></span>
                                     </div>
                                     <div class="contenido">
@@ -149,10 +158,17 @@
                                 <div class="divider" th:if="${usuariosession != null}"></div>
                                 <div class="comentario" th:each="comentario : ${tarea.comentarios}">
                                     <div class="usuario">
-                                        <img src="/img/user.png" width="24px" height="24px" alt="">
-                                        <span class="nombre" th:text="${comentario.usuario.nombre}"></span>
+                                        <img th:src="@{/imagen/__${comentario.usuario.imagen.id}__}" width="24px"
+                                            height="24px" alt="">
+                                        <input disabled type="text" class="nombre" th:value="${comentario.usuario.nombre}"></input>
                                         <span class="fecha"
                                             th:text="${comentario.fecha.date + '/' + (comentario.fecha.month + 1) + '/' + (comentario.fecha.year + 1900)}"></span>
+                                        <svg th:if="${usuariosession.id == comentario.usuario.id || usuariosession.rol.name() == 'ADMIN'}" th:comentario="${comentario.id}" class="borrar"
+                                            xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 256 256">
+                                            <path fill="currentColor"
+                                                d="M216 48h-40v-8a24 24 0 0 0-24-24h-48a24 24 0 0 0-24 24v8H40a8 8 0 0 0 0 16h8v144a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16V64h8a8 8 0 0 0 0-16ZM96 40a8 8 0 0 1 8-8h48a8 8 0 0 1 8 8v8H96Zm96 168H64V64h128Zm-80-104v64a8 8 0 0 1-16 0v-64a8 8 0 0 1 16 0Zm48 0v64a8 8 0 0 1-16 0v-64a8 8 0 0 1 16 0Z" />
+                                        </svg>
                                     </div>
                                     <div class="contenido">
                                         <span th:text="${comentario.contenido}"></span>
@@ -170,8 +186,8 @@
                                 th:style="${'background:' + etiqueta.color}">
                                 <span th:text="${etiqueta.nombre}"></span>
                             </div>
-                            <div class="agregar" sec:authorize="${hasAnyRole('ADMIN', 'COLABORADOR')}" th:tarea="${tarea.id}"
-                                th:if="${tarea.etiquetas == null || tarea.etiquetas.size() < 3}">
+                            <div class="agregar" sec:authorize="${hasAnyRole('ADMIN', 'COLABORADOR')}"
+                                th:tarea="${tarea.id}" th:if="${tarea.etiquetas == null || tarea.etiquetas.size() < 3}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                     <path fill="currentColor" d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z" />
                                 </svg>

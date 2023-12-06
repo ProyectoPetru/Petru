@@ -25,6 +25,6 @@ public class Comentario {
     private String contenido;
     @ManyToOne
     private Usuario usuario;
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;
 }

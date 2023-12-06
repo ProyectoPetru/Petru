@@ -1,3 +1,7 @@
+function borrarComentario(id) {
+    if (confirm("Quiere eliminar este comentario?")) document.location = `/comentario/eliminar/${id}`
+}
+
 function ventanaProExit() {
     const ventana = document.querySelector("#proyecto").querySelector(".ventana")
     const fondo = document.querySelector("#proyecto").querySelector(".fondo")
@@ -11,6 +15,10 @@ function ventanaProExit() {
         }
     }, 300)
 }
+
+Array.from(document.querySelector("#proyecto").querySelectorAll('[comentario]')).map((click) => {
+    click.addEventListener("click", () => { borrarComentario(click.getAttribute("comentario")) })
+})
 
 Array.from(document.querySelector("#proyecto").querySelector(".contenedor").querySelectorAll(".tarea")).map((e) => {
     if (/Android|Iphone/i.test(navigator.userAgent) && (document.querySelector("#proyecto").getAttribute("rol") == "ADMIN" || document.querySelector("#proyecto").getAttribute("rol") == "COLABORADOR")) {

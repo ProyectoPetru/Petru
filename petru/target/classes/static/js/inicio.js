@@ -38,6 +38,6 @@ let interval = setInterval(() => {
 
 inicioRedirects.map(redirect => {
     redirect.addEventListener("click", () => {
-        document.location = redirect.getAttribute("redirect")
+        open(redirect.getAttribute("redirect"))
     })
 })

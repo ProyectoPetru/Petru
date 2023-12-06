@@ -77,6 +77,8 @@ public class ProyectoControlador {
         modelo.addAttribute("proyecto", proyecto);
         modelo.addAttribute("tareas", tareas);
 
+        tareas.forEach(tarea -> tarea.ordernarComentarios());
+
         return "proyecto.html";
     }
 

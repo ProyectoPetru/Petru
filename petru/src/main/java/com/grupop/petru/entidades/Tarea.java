@@ -10,6 +10,9 @@ package com.grupop.petru.entidades;
  */
 
 import com.grupop.petru.enumeraciones.TipoTarea;
+
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.persistence.Basic;
@@ -49,5 +52,14 @@ public class Tarea {
 
    public void addComentario(Comentario comentario) {
       comentarios.add(comentario);
+   }
+
+   public void ordernarComentarios() {
+      Collections.sort(comentarios, new Comparator<Comentario>() {
+         @Override 
+         public int compare(final Comentario c1, Comentario c2) {
+            return c2.getFecha().compareTo(c1.getFecha());
+         }
+      });
    }
 }

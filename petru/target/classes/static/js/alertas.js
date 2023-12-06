@@ -4,6 +4,5 @@ document.querySelector("#alertas").querySelector(".error").querySelector(".salir
     setTimeout(() => {
         error.classList.remove("error-hide")
         error.hidden = true
-        console.log("hola");
     }, 800)
 })
