@@ -19,7 +19,7 @@ document.addEventListener("click", (e) => {
         groups.map(group => group.hidden = true)
     }
     if (e.target.closest(".agregar-proyecto") == null) {
-        agregarProyecto.querySelector("a").hidden = false
+        agregarProyecto.querySelector("svg").classList.remove("hidden")
         agregarProyecto.querySelector("form").hidden = true
     }
 })
@@ -47,7 +47,7 @@ groups.map(group => {
 
 const navProyectoHandler = (e) => {
     if (e.target.tagName == "INPUT" || e.target.tagName == "BUTTON") return
-    e.target.querySelector("a").hidden = true
+    e.target.querySelector("svg").classList.add("hidden")
     e.target.querySelector("form").hidden = false
 }
 

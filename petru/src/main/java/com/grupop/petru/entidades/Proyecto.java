@@ -11,6 +11,7 @@ package com.grupop.petru.entidades;
 
 
 import com.grupop.petru.enumeraciones.Visibilidad;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -21,6 +22,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -43,7 +46,11 @@ public class Proyecto {
    @Basic(optional = true)
    private String notas;
    private Boolean baja;
-
+   @Temporal(TemporalType.DATE)
+   private Date fecha;
+   @Temporal(TemporalType.DATE)
+   private Date fechaLimite;
+   
    public void addUsuario(Usuario usuario) {
       this.usuarios.add(usuario);
    }

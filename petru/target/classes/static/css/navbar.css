@@ -127,8 +127,12 @@
     animation: group-list-in 0.4s ease-in-out 0s 1 normal forwards;
 }
 
-#navbar .group-handler .group .agregar-proyecto>a {
+#navbar .group-handler .group .agregar-proyecto>svg {
     pointer-events: none;
+}
+
+#navbar .group-handler .group .agregar-proyecto>svg.hidden {
+    display: none;
 }
 
 #navbar .group-handler .group .agregar-proyecto form {

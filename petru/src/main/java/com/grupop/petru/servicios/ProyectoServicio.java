@@ -9,6 +9,7 @@ package com.grupop.petru.servicios;
  *           Salvador Caldarella - Sebastián A. Petrini
  */
 
+import com.grupop.petru.entidades.Archivo;
 import com.grupop.petru.entidades.Imagen;
 import com.grupop.petru.entidades.Proyecto;
 import com.grupop.petru.entidades.Usuario;
@@ -16,6 +17,7 @@ import com.grupop.petru.enumeraciones.Visibilidad;
 import com.grupop.petru.excepciones.MiException;
 import com.grupop.petru.repositorios.ProyectoRepositorio;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,12 +32,15 @@ public class ProyectoServicio {
     private ProyectoRepositorio proyectoRepositorio;
     @Autowired
     private UsuarioServicio usuarioServicio;
+    @Autowired
+    private ArchivoServicio archivoServicio;
 
     @Transactional
     public void guardar(MultipartFile archivo, String nombre, Visibilidad visibilidad,
-            String notas, String idUsuario, String idCliente) throws MiException {
+            String notas, String idCliente, String idUsuario, Date fechaLimite) throws MiException {
         validar(nombre, visibilidad, idUsuario, idCliente);
         Proyecto proyecto = new Proyecto();
+        Archivo arch = archivoServicio.guardar(archivo);
         List<Usuario> usuarios = new ArrayList();
         usuarios.add(usuarioServicio.getOne(idUsuario));
         usuarios.add(usuarioServicio.getOne(idCliente));
@@ -43,7 +48,9 @@ public class ProyectoServicio {
         proyecto.setVisibilidad(visibilidad);
         proyecto.setUsuarios(usuarios);
         proyecto.setNotas(notas);
-        // proyecto.setArchivo(archivo);
+        proyecto.setFechaLimite(fechaLimite);
+        proyecto.setFecha(new Date());
+        proyecto.setArchivo(arch);
         proyecto.setBaja(Boolean.FALSE);
         proyectoRepositorio.save(proyecto);
     }
