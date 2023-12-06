@@ -24,7 +24,7 @@
                 <div class="info">
                     <h3>Petru</h3>
                     <span>Publicidades En Tiempo Real Unicas</span>
-                    <div sec:authorize="!hasAnyRole('ADMIN', 'COLABORADOR', 'CLIENTE')">
+                    <div th:if="${usuariosession == null}">
                         <a href="/login">Ingresar</a>
                         <a href="/registrar">Registrarse</a>
                     </div>
@@ -84,7 +84,7 @@
                     </div>
                 </div>
             </div>
-            <div class="form" sec:authorize="!hasAnyRole('ADMIN', 'COLABORADOR', 'CLIENTE')">
+            <div class="form" th:if="${usuariosession == null}">
                 <div class="login">
                     <h3>Ingresar</h3>
                     <form th:action="@{/logincheck}" method="POST">
@@ -94,7 +94,7 @@
                     </form>
                 </div>
                 <div class="divider"></div>
-                <div class="registro" sec:authorize="!hasAnyRole('ADMIN', 'COLABORADOR', 'CLIENTE')">
+                <div class="registro">
                     <h3>Registrarse</h3>
                     <form th:action="@{/registro}" method="POST">
                         <input type="text" name="nombre" placeholder="Ingrese su nombre">
