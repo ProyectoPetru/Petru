@@ -609,7 +609,7 @@ path {
 
 #proyecto .ventana .comentarios .comentario .usuario {
     display: grid;
-    grid-template-columns: 1fr 1fr 10fr;
+    grid-template-columns: 1fr 1fr 10fr 1fr;
     align-items: center;
     margin: .5rem;
 }
@@ -621,8 +621,15 @@ path {
 }
 
 #proyecto .ventana .comentarios .comentario .usuario .nombre {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    height: 1rem;
+    padding: 0;
     font-size: 1rem;
-    width: 10rem;
+    outline: 0;
+    background: none;
+    border: none;
+    width: 6rem;
     white-space: nowrap;
     overflow: hidden;
 }
@@ -630,6 +637,21 @@ path {
 #proyecto .ventana .comentarios .comentario .usuario .fecha {
     font-size: 1rem;
     margin: 0 .5rem 0 auto;
+}
+
+#proyecto .ventana .comentarios .comentario .usuario .borrar {
+    font-size: 1rem;
+    margin: 0;
+    transition: color .4s;
+}
+
+#proyecto .ventana .comentarios .comentario .usuario .borrar:hover {
+    cursor: pointer;
+    color: red;
+}
+
+#proyecto .ventana .comentarios .comentario .usuario .borrar * {
+    pointer-events: none;
 }
 
 #proyecto .ventana .comentarios .comentario .contenido {

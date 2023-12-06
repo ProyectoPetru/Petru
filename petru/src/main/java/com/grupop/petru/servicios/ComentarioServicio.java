@@ -52,4 +52,28 @@ public class ComentarioServicio {
 
         tareaRepositorio.save(tarea);
     }
+
+    @Transactional
+    public void borrarComentario(String id) {
+        Comentario comentario = comentarioRepositorio.getOne(id);
+
+        Tarea tarea = comentarioRepositorio.getTareaComentario(id);
+
+        tarea.getComentarios().remove(comentario);
+
+        tareaRepositorio.save(tarea);
+
+        comentarioRepositorio.deleteById(id);
+    }
+
+    @Transactional(readOnly = true)
+    public Comentario listarPorId(String id) throws MiException {
+        Optional<Comentario> comentarioRes = comentarioRepositorio.findById(id);
+
+        if (comentarioRes.isPresent()) {
+            return comentarioRes.get();
+        }
+        
+        throw new MiException("Comentario no encontrado");
+    }
 }

@@ -34,6 +34,20 @@ public class TareaControlador {
     @Autowired
     private TareaServicio tareaServicio;
 
+    private Usuario cargarModelo(ModelMap modelo, HttpSession session) {
+        Usuario usuario = (Usuario) session.getAttribute("usuariosession");
+        String error = (String) session.getAttribute("error");
+        String exito = (String) session.getAttribute("exito");
+        session.removeAttribute("error");
+        session.removeAttribute("exito");
+
+        modelo.addAttribute("usuariosession", usuario);
+        modelo.put("error", error);
+        modelo.put("exito", exito);
+
+        return usuario;
+    }
+
     @GetMapping("/registrar")
     public String carga_tareas(@RequestParam(required = false) String error, HttpSession session, ModelMap modelo) {
         Usuario logueado = (Usuario) session.getAttribute("usuariosession");
