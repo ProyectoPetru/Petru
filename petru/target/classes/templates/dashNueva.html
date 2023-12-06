@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="es" data-theme="light" xlmns:th="https://thymeleaf.org/"
+    xlmns:sec="https://thymeleaf.org/extras/spring-security">
 
 <head>
     <title>dashNueva</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
     <!-- Estilos Salvador -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -303,6 +305,7 @@
 </head>
 
 <body>
+    <nav th:replace="/fragments/navbar.html :: nav"></nav>
 
     <!-- Note -->
     <div style="background:white;padding:5px">
@@ -322,7 +325,7 @@
         <p>todo <b>flexible</b> y responsive </p>
     </div>
 
-    
+
 
 
     <!-- Contenido de las cards -->
@@ -341,16 +344,17 @@
                         </div>
 
                         <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" height="46" width="40"
-                                viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
-                                <path opacity="1" fill="#1E3050"
-                                    d="M112 48a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm40 304V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V256.9L59.4 304.5c-9.1 15.1-28.8 20-43.9 10.9s-20-28.8-10.9-43.9l58.3-97c17.4-28.9 48.6-46.6 82.3-46.6h29.7c33.7 0 64.9 17.7 82.3 46.6l58.3 97c9.1 15.1 4.2 34.8-10.9 43.9s-34.8 4.2-43.9-10.9L232 256.9V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V352H152z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" height="46" width="40"
-                                viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
-                                <path opacity="1" fill="#1E3050"
-                                    d="M112 48a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm40 304V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V256.9L59.4 304.5c-9.1 15.1-28.8 20-43.9 10.9s-20-28.8-10.9-43.9l58.3-97c17.4-28.9 48.6-46.6 82.3-46.6h29.7c33.7 0 64.9 17.7 82.3 46.6l58.3 97c9.1 15.1 4.2 34.8-10.9 43.9s-34.8 4.2-43.9-10.9L232 256.9V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V352H152z" />
-                            </svg>
+                            <span class="opacity-7 text-muted">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="blue" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-user-plus">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="8.5" cy="7" r="4"></circle>
+                                    <line x1="20" y1="8" x2="20" y2="14"></line>
+                                    <line x1="23" y1="11" x2="17" y2="11"></line>
+                                </svg>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -410,16 +414,16 @@
         <!-- Contenido de los gráficos -->
         <div class="main">
             <!-- Calendario Salvador -->
-    
-    <!-- Nuevo HTML para el ícono del tacho de basura -->
-    <div id="deleteIcon" class="delete-icon">
-        <i class="fas fa-trash-alt"></i>
-    </div>
 
-    <!-- Contenedor principal del calendario -->
-    <div class="container mt-5">
-        <div id="calendar"></div>
-    </div>
+            <!-- Nuevo HTML para el ícono del tacho de basura -->
+            <div id="deleteIcon" class="delete-icon">
+                <i class="fas fa-trash-alt"></i>
+            </div>
+
+            <!-- Contenedor principal del calendario -->
+            <div class="container mt-5">
+                <div id="calendar"></div>
+            </div>
 
             <h2>Informes en tiempo real </h2>
             <h5></h5>
