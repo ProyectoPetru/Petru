@@ -313,6 +313,225 @@
     filter: brightness(80%);
 }
 
+@keyframes fondo-in {
+    from {
+        backdrop-filter: blur(0);
+        background: rgba(0, 0, 0, 0);
+    }
+
+    to {
+        backdrop-filter: blur(8px);
+        background: rgba(0, 0, 0, 0.3);
+    }
+}
+
+@keyframes fondo-out {
+    from {
+        backdrop-filter: blur(8px);
+        background: rgba(0, 0, 0, 0.3);
+    }
+
+    to {
+        backdrop-filter: blur(0);
+        background: rgba(0, 0, 0, 0);
+    }
+}
+
+#navbar .fondo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 998;
+    background: rgba(0, 0, 0, 0.3);
+    animation: fondo-in .3s ease-in-out 0s 1 normal forwards;
+}
+
+#navbar .fondo-hide {
+    animation: fondo-out .3s ease-in-out 0s 1 normal forwards;
+}
+
+#navbar .fondo[hidden] {
+    display: none;
+}
+
+@keyframes ventana-in {
+    from {
+        transform: scale(0%);
+    }
+
+    to {
+        transform: scale(100%);
+    }
+}
+
+@keyframes ventana-out {
+    from {
+        transform: scale(100%);
+    }
+
+    to {
+        transform: scale(0%);
+    }
+}
+
+#navbar .ventana {
+    display: flex;
+    z-index: 999;
+    width: 40rem;
+    height: 23rem;
+    padding: 2rem;
+    background: var(--secondary);
+    animation: ventana-in .3s ease-in-out 0s 1 normal forwards;
+}
+
+#navbar .ventana[hidden] {
+    display: none;
+}
+
+#navbar .ventana-hide {
+    animation: ventana-out .3s ease-in-out 0s 1 normal forwards;
+}
+
+#navbar .ventana .salir {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: .5rem;
+    transition: color .4s;
+}
+
+#navbar .ventana .salir:hover {
+    cursor: pointer;
+    color: rgb(219, 62, 62);
+}
+
+#navbar .ventana .perfil-container {
+    border-radius: 2%;
+    display: flex;
+    width: 100%;
+}
+
+#navbar .ventana .perfil-container>:nth-child(1) {
+    margin: 6rem 2rem 2rem 2rem;
+}
+
+#navbar .ventana .perfil-container>:nth-child(2) {
+    margin: 2rem 2rem 2rem 2rem;
+}
+
+#navbar .perfil-container>div>div {
+    margin: .5rem 0;
+}
+
+#navbar .perfil-container input {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: .85rem;
+    background: var(--secondary);
+    border: 1px solid var(--secondary);
+    color: var(--text);
+    height: 2.2rem;
+    width: 20rem;
+}
+
+#navbar .perfil-container span {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: .85rem;
+    padding-block: 1px;
+    padding-inline: 2px;
+    background: var(--secondary);
+    border: 1px solid var(--secondary);
+    color: var(--text);
+    width: 20rem;
+}
+
+#navbar .perfil-container span:hover {
+    cursor: pointer;
+}
+
+#navbar .perfil-container textarea {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: .85rem;
+    background: var(--secondary);
+    border: 1px solid var(--secondary);
+    color: var(--text);
+    min-width: 20rem;
+    max-width: 20rem;
+    height: 2.2rem;
+    min-height: 2.2rem;
+    max-height: 4rem;
+}
+
+#navbar .perfil-container button[type=submit] {
+    --button-hover-color: rgb(75, 255, 75);
+    margin: .3rem 0 .3rem 0;
+    background: var(--primary);
+    color: black;
+    border: .1rem solid gray;
+    border-radius: .4rem;
+    height: 2.5rem;
+    width: 100%;
+    border: none;
+    transition: box-shadow 1s, background 1s;
+}
+
+#navbar .perfil-container button[type=button] {
+    --button-hover-color: var(--accent);
+    margin: .3rem 0 .3rem 0;
+    background: var(--primary);
+    color: black;
+    border: .1rem solid gray;
+    border-radius: .4rem;
+    height: 2.5rem;
+    width: 100%;
+    border: none;
+    transition: box-shadow 1s, background 1s;
+}
+
+#navbar .perfil-container button:hover {
+    cursor: pointer;
+    background: var(--button-hover-color);
+    box-shadow: 0 0 .3rem .1rem var(--button-hover-color);
+}
+
+#navbar .perfil-container label[for=imagen] {
+    display: none;
+}
+
+#navbar .perfil-container .perfil-foto {
+    border: .1rem solid black;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    transition: opacity 0.5s;
+}
+
+#navbar .perfil-container .perfil-camara {
+    pointer-events: none;
+    z-index: 100;
+    border: none;
+    position: absolute;
+    margin: 4.6rem 0 0 4.6rem;
+    opacity: 0%;
+    height: 50px;
+    width: 50px;
+    transition: opacity 0.5s;
+}
+
+#navbar .perfil-container label:hover .perfil-foto {
+    opacity: 50%;
+    cursor: pointer;
+    transition: opacity 0.5s;
+}
+
+#navbar .perfil-container label:hover .perfil-camara {
+    opacity: 100%;
+}
+
 @media(min-width: 800px) {
 
     #navbar .home-list .home:hover {
@@ -355,5 +574,52 @@
         border-radius: 0 0 .5rem .5rem;
         backdrop-filter: brightness(50%) blur(8px);
         width: calc(100% - 10rem);
+    }
+
+    #navbar .fondo .ventana {
+        height: auto;
+        width: 80%;
+        height: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #navbar .fondo .ventana .perfil>:nth-child(1) {
+        display: none;
+    }
+
+    #navbar .fondo .ventana .perfil-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #navbar .fondo .ventana .perfil-container>div {
+        margin: 1rem 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #navbar .perfil-container input {
+        width: 15rem;
+    }
+    
+    #navbar .perfil-container span {
+        display: flex;
+        width: 15rem;
+    }
+    
+    #navbar .perfil-container textarea {
+        min-width: 15rem;
+        max-width: 15rem;
+    }
+    
+    #navbar .perfil-container button[type=submit] {
+        width: 15rem;
+    }
+    
+    #navbar .perfil-container button[type=button] {
+        width: 15rem;
     }
 }

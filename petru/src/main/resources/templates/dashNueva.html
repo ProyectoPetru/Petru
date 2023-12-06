@@ -8,23 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
     <link rel="stylesheet" href="/css/style.css">
-    <!-- Estilos Salvador -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/blur.js/1.0.2/blur.min.css">
-
-
+    <link rel="stylesheet" href="/css/dashboard.css">
     <style>
         * {
             box-sizing: border-box;
         }
 
+
         /* Style the body */
         body {
             font-family: Arial;
             margin: 0;
+            flex-wrap: wrap;
         }
 
         /* Header/Título */
@@ -33,6 +28,17 @@
             text-align: center;
             background: rgb(89, 20, 118);
             color: white;
+            flex: wrap;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-start;
+            height: 150px;
+            /* Ajusta la altura según sea necesario */
+            border: 1px solid #ccc;
+            /* Solo para visualización */
+            padding: 10px;
 
         }
 
@@ -52,7 +58,7 @@
         /* Style del navbar */
         .navbar {
             display: flex;
-            background-color: #333;
+            background-color: peru;
         }
 
         /* Style de los links */
@@ -178,7 +184,7 @@
 
         /* Main column */
         .main {
-            flex: 70%;
+            flex: 80%;
             background-color: white;
             padding: 20px;
         }
@@ -284,9 +290,16 @@
         /* Tres columnas iguales flotantes */
         .column {
             float: left;
+            width: 25%;
+            padding: 15px;
+        }
+
+        .column1 {
+            float: left;
             width: 50%;
             padding: 15px;
         }
+
 
         /* Limpia los flotantes después de las columnas */
         .row::after {
@@ -301,37 +314,30 @@
                 width: 100%;
             }
         }
+
+        @media screen and (max-width:600px) {
+            .column1 {
+                width: 100%;
+            }
+        }
     </style>
+
 </head>
 
 <body>
     <nav th:replace="/fragments/navbar.html :: nav"></nav>
-
-    <!-- Note -->
-    <div style="background:white;padding:5px">
-        <h4 style="text-align:center">Acá le dejo lugar para Manu </h4>
-    </div>
-    <!-- Navigation Bar -->
-    <div class="navbar">
-        <a href="#">Link</a>
-        <a href="#">Link</a>
-        <a href="#">Link</a>
-        <a href="#">Link</a>
-    </div>
-
     <!-- Header -->
     <div class="header">
-        <h1>Nuestro nuevo Dashboard</h1>
-        <p>todo <b>flexible</b> y responsive </p>
+
+        <p>Perfil: administrador </p>
     </div>
 
 
-
-
-    <!-- Contenido de las cards -->
     <div class="row">
+
+        <!-- Contenido de las cards -->
         <div class="side">
-            <h2>Estadísticas en tiempo real </h2>
+            <h2 style="color: purple;">Estadísticas </h2>
             <div class="container">
                 <div class="card border-navy">
                     <div class="card-body d-flex justify-content-between align-items-center">
@@ -345,9 +351,8 @@
 
                         <div>
                             <span class="opacity-7 text-muted">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="blue" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round"
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="blue" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" class="feather feather-user-plus">
                                     <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                                     <circle cx="8.5" cy="7" r="4"></circle>
@@ -413,19 +418,7 @@
 
         <!-- Contenido de los gráficos -->
         <div class="main">
-            <!-- Calendario Salvador -->
-
-            <!-- Nuevo HTML para el ícono del tacho de basura -->
-            <div id="deleteIcon" class="delete-icon">
-                <i class="fas fa-trash-alt"></i>
-            </div>
-
-            <!-- Contenedor principal del calendario -->
-            <div class="container mt-5">
-                <div id="calendar"></div>
-            </div>
-
-            <h2>Informes en tiempo real </h2>
+            <h1 style="color: purple;">Informes</h1>
             <h5></h5>
             <div class="row">
                 <div class="column">
@@ -454,57 +447,60 @@
                         <canvas id="myChart4" width="350" height="300"></canvas>
                     </div>
                 </div>
+            </div>
 
+            <!-- Eventos: acá va el Calendario -->
+            <div class="column1">
+                <br>
+                <h1 style="color: purple;">Organización de Eventos</h1>
 
-                <div class="column">
-                    <h2>Proyectos en proceso</h2>
-                    <div class="card1">
+                <div class="card-body1">
+                    <div th:replace="/fragments/calendario.html :: div"></div>
+                </div>
+            </div>
+
+            <div class="column1">
+                <div class="card1">
+                    <div class="card-body1">
                         <div class="card-body1">
-                            <div class="card-body1">
-                                <div class="card-title1"></div>
-                                <div class="table-responsive">
-                                    <table class="table align-items-center mb-0">
-                                        <thead>
-                                            <tr>
-                                                <th>Cliente</th>
-                                                <th class="ps-2">Agente</th>
 
-                                                <th class="text-center">% de Avance</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-
-                                            <!-- los proyectos que están en estado de "en proceso o haciendo"-->
-                                            <tr>
-                                                <th>Pepe Honguito</th>
-                                                <th class="ps-2">Agente 86</th>
-
-                                                <th class="text-center"> 58 % </th>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
                         </div>
                     </div>
+                </div>
+
+                <br>
+                <div class="card-title1"></div>
+                <div class="table-responsive">
+                    <table class="table align-items-center mb-0">
+                        <h1 style="color: purple;">Proyectos en proceso </h1>
+                        <thead>
+                            <tr>
+                                <th>Cliente</th>
+                                <th class="ps-2">Agente</th>
+
+                                <th class="text-center">% de Avance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <!-- los proyectos que están en estado de "en proceso o haciendo"-->
+                            <tr>
+                                <th>Pepe Honguito</th>
+                                <th class="ps-2">Agente 86</th>
+
+                                <th class="text-center"> 58 % </th>
+                            </tr>
+                        </tbody>
+                    </table>
 
                 </div>
             </div>
-            <br>
-            <h2>Calendario</h2>
-            <h5>Este lugar es de Salvador 5/12/2023</h5>
-            <div class="fakeimg" style="height:200px;">Image</div>
-            <p>Lugar para escribir algo......</p>
-
         </div>
     </div>
 
 
 
-    <!-- Footer -->
-    <div class="footer">
-        <h2>Footer</h2>
-    </div>
+   <footer th:replace="/fragments/footer.html :: footer"></footer>
 
     <!-- Scripts de los gráficos -->
     <script>
@@ -601,16 +597,7 @@
         });
     </script>
 
-    <!-- Scripts de bibliotecas externas -->
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script>
 
-    <!-- Script personalizado para el calendario -->
-    <script src="../../static/js/calendario.js"></script>
 </body>
 
 </html>

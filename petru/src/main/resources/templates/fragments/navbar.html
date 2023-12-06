@@ -32,8 +32,7 @@
                     <a th:text="${proyecto.nombre}"></a>
                 </div>
                 <div class="list agregar-proyecto" onclick="navProyectoHandler(event)">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                         <path fill="green" d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z" />
                     </svg>
                     <form hidden th:action="@{/proyecto/registro}" method="POST" autocomplete="off">
@@ -70,7 +69,7 @@
                 <div class="list" redirect="/admin/dashboard">
                     <a>Admin</a>
                 </div>
-                <div class="list" redirect="/perfil">
+                <div class="list" onclick="ventanaNavOpen()">
                     <a>Perfil</a>
                 </div>
                 <div class="list" redirect="/logout">
@@ -85,7 +84,7 @@
             </a>
 
             <div hidden class="dropdown">
-                <div class="list" redirect="/perfil">
+                <div class="list" onclick="ventanaNavOpen()">
                     <a>Perfil</a>
                 </div>
                 <div class="list" redirect="/logout">
@@ -110,6 +109,61 @@
             </div>
         </div>
     </div>
+
+    <div hidden class="fondo">
+        <div class="ventana">
+            <div class="perfil" th:if="${usuariosession != null}">
+                <div style="font-size: 4rem; position: absolute;">Perfil</div>
+                <form th:action="@{/perfil/modificar}" method="POST" enctype="multipart/form-data" autocomplete="off">
+                    <div class="perfil-container">
+                        <div>
+                            <label for="imagen">
+                                <img class="perfil-camara" src="/img/camera.png" alt="Seleccionar foto"> </span>
+                                <img class="perfil-foto" th:src="@{/imagen/__${usuariosession.imagen.id}__}"
+                                    th:defecto="@{/imagen/__${usuariosession.imagen.id}__}" id="perfil-logo"
+                                    alt="imagen">
+                            </label>
+                        </div>
+                        <div>
+                            <div>
+                                <input type="text" name="nombre" id="nombre" th:value="${usuariosession.nombre}"
+                                    placeholder="Ingrese su nuevo nombre">
+                            </div>
+                            <div>
+                                <span th:text="${usuariosession.email}"
+                                    onclick="if (confirm('Esta seguro de que quiere cambiar el email?')) document.location = '/perfil/email-cambio'"></span>
+                            </div>
+                            <div>
+                                <input type="number" name="telefono" id="telefono" th:value="${usuariosession.telefono}"
+                                    placeholder="Ingrese su nuevo telefono">
+                            </div>
+                            <div>
+                                <textarea name="descripcion" id="descripcion" th:text="${usuariosession.descripcion}"
+                                    placeholder="Ingrese una nueva descripcion"></textarea>
+                            </div>
+                            <div>
+                                <input hidden type="file" accept=".jpg, .jpeg, .png" name="archivo" id="imagen"
+                                    placeholder="Ingrese una foto" onchange="cambiarNavFoto()">
+                            </div>
+                            <div>
+                                <button type="button">Cambiar clave</button>
+                            </div>
+                            <div>
+                                <button type="submit">Actualizar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <svg class="salir" onclick="ventanaNavExit()" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                    viewBox="0 0 15 15">
+                    <path fill="currentColor" fill-rule="evenodd"
+                        d="M11.782 4.032a.575.575 0 1 0-.813-.814L7.5 6.687L4.032 3.218a.575.575 0 0 0-.814.814L6.687 7.5l-3.469 3.468a.575.575 0 0 0 .814.814L7.5 8.313l3.469 3.469a.575.575 0 0 0 .813-.814L8.313 7.5l3.469-3.468Z"
+                        clip-rule="evenodd" />
+                </svg>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Script de la navbar -->
     <script src="/js/navbar.js"></script>

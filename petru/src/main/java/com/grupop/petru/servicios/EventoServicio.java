@@ -24,9 +24,10 @@ public class EventoServicio {
     private ProyectoRepositorio proyectoRepositorio;
 
     @Transactional
-    public void crearEvento(String id, String nombre, Date fecha, String link, String idProyecto) throws MiException {
+    public void crearEvento(String titulo, Date fecha_inicio, Date fecha_fin, String descripcion, String idProyecto)
+            throws MiException {
 
-        validar(id, nombre, fecha, link, idProyecto);
+        validar(titulo, fecha_inicio, fecha_fin, descripcion, idProyecto);
 
         Optional<Proyecto> respuestaProyecto = proyectoRepositorio.findById(idProyecto);
 
@@ -36,19 +37,22 @@ public class EventoServicio {
             proyecto = respuestaProyecto.get();
         }
         Evento evento = new Evento();
-        evento.setId(id);
-        evento.setNombre(nombre);
-        evento.setLink(link);
-        evento.setFecha(fecha);
+
+        evento.setTitulo(titulo);
+        evento.setDescripcion(descripcion);
+        evento.setFecha_inicio(fecha_inicio);
+        evento.setFecha_fin(fecha_fin);
+
         evento.setProyecto(proyecto);
         eventoRepositorio.save(evento);
 
     }
 
     @Transactional
-    public void modificarEvento(String id, String nombre, Date fecha, String link, String idProyecto) throws MiException {
+    public void modificarEvento(String id, String titulo, Date fecha_inicio, Date fecha_fin, String descripcion,
+            String idProyecto) throws MiException {
 
-        validar(id, nombre, fecha, link, idProyecto);
+        validar(id, titulo, fecha_inicio, fecha_fin, descripcion, idProyecto);
 
         Optional<Evento> respuestaEvento = eventoRepositorio.findById(id);
 
@@ -62,10 +66,13 @@ public class EventoServicio {
 
         if (respuestaEvento.isPresent()) {
             Evento evento = respuestaEvento.get();
-            evento.setNombre(nombre);
-            evento.setFecha(fecha);
-            evento.setLink(link);
+
+            evento.setTitulo(titulo);
+            evento.setDescripcion(descripcion);
+            evento.setFecha_inicio(fecha_inicio);
+            evento.setFecha_fin(fecha_fin);
             evento.setProyecto(proyecto);
+
             eventoRepositorio.save(evento);
         }
     }
@@ -78,9 +85,9 @@ public class EventoServicio {
 
         return eventos;
     }
-    
-    public Evento getOne(String id){
-       return eventoRepositorio.getOne(id);
+
+    public Evento getOne(String id) {
+        return eventoRepositorio.getOne(id);
     }
 
     @Transactional
@@ -93,17 +100,36 @@ public class EventoServicio {
 
     }
 
-    private void validar(String id, String nombre, Date fecha, String link, String idProyecto) throws MiException {
-        if (id == null) {
-            throw new MiException("Id no puede ser nulo");
-        }
-        if (nombre.isEmpty() || nombre == null) {
+    private void validar(String titulo, Date fecha_inicio, Date fecha_fin, String descripcion, String idProyecto)
+            throws MiException {
+
+        if (titulo.isEmpty() || titulo == null) {
             throw new MiException("nombre no puede ser nulo");
         }
-        if (fecha == null) {
+        if (fecha_inicio == null) {
             throw new MiException("fecha no puede ser nula");
         }
-        if (link.isEmpty() || link == null) {
+        if (descripcion.isEmpty() || descripcion == null) {
+            throw new MiException("link no puede ser nulo");
+        }
+        if (idProyecto.isEmpty() || idProyecto == null) {
+            throw new MiException("Id proyecto es nulo");
+        }
+    }
+
+    private void validar(String id, String titulo, Date fecha_inicio, Date fecha_fin, String descripcion,
+            String idProyecto) throws MiException {
+
+        if (id == null) {
+            throw new MiException("el id no puede ser nulo");
+        }
+        if (titulo.isEmpty() || titulo == null) {
+            throw new MiException("nombre no puede ser nulo");
+        }
+        if (fecha_inicio == null) {
+            throw new MiException("fecha no puede ser nula");
+        }
+        if (descripcion.isEmpty() || descripcion == null) {
             throw new MiException("link no puede ser nulo");
         }
         if (idProyecto.isEmpty() || idProyecto == null) {
