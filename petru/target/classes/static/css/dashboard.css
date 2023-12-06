@@ -10,7 +10,7 @@ body {
 
 /* Header/Título */
 .header {
-    padding: 15px;
+    padding: 10px;
     text-align: center;
     background: rgb(89, 20, 118);
     color: white;
@@ -167,7 +167,7 @@ body {
 /* Fake image, lugar para poner una imagen de ejemplo si necesitamos */
 .fakeimg {
     background-color: rgb(213, 179, 213);
-    width: 100%;
+    width: 75%;
     padding: 20px;
 }
 
@@ -268,6 +268,11 @@ td {
     width: 50%;
     padding: 15px;
 }
+.column1 {
+    float: left;
+    width: 50%;
+    padding: 15px;
+}
 
 /* Limpia los flotantes después de las columnas */
 .row::after {
@@ -279,6 +284,11 @@ td {
 /* Responsive: hace que las tres columnas se apilen una encima de la otra en lugar de una al lado de la otra */
 @media screen and (max-width:600px) {
     .column {
+        width: 100%;
+    }
+}
+@media screen and (max-width:600px) {
+    .column1 {
         width: 100%;
     }
 }
