@@ -448,51 +448,52 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Eventos: acá va el Calendario -->
+            <div class="column1">               
+                <h1 style="color: purple;">Eventos</h1>
 
-
-            <div class="column1">
-                <h1 style="color: purple;">Proyectos en proceso</h1>
-                <div class="card1">
-                    <div class="card-body1">
-                        <div class="card-body1">
-                            <div class="card-title1"></div>
-                            <div class="table-responsive">
-                                <table class="table align-items-center mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th>Cliente</th>
-                                            <th class="ps-2">Agente</th>
-
-                                            <th class="text-center">% de Avance</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                        <!-- los proyectos que están en estado de "en proceso o haciendo"-->
-                                        <tr>
-                                            <th>Pepe Honguito</th>
-                                            <th class="ps-2">Agente 86</th>
-
-                                            <th class="text-center"> 58 % </th>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <h1 style="color: purple;">Calendario</h1>
-            <h5>Este lugar es de Salvador 5/12/2023</h5>
-            <div class="card1">
                 <div class="card-body1">
-                    <p>En este div debería verse el calendario pero no se vé!!!</p>
                     <div th:replace="/fragments/calendario.html :: div"></div>
                 </div>
             </div>
 
             <br>
+            <h1 style="color: purple;">Tareas por prioridad</h1>
+            <br>
+            <div class="card1">
+                <div class="card-body1">
+                    <div class="card-body1">
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <br>
+            <div class="card-title1"></div>
+                        <div class="table-responsive">
+                            <table class="table align-items-center mb-0">
+                                <h2>Proyectos en proceso </h2>
+                                <thead>
+                                    <tr>
+                                        <th>Cliente</th>
+                                        <th class="ps-2">Agente</th>
+
+                                        <th class="text-center">% de Avance</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <!-- los proyectos que están en estado de "en proceso o haciendo"-->
+                                    <tr>
+                                        <th>Pepe Honguito</th>
+                                        <th class="ps-2">Agente 86</th>
+
+                                        <th class="text-center"> 58 % </th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
 
         </div>
