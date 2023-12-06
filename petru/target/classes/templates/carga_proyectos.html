@@ -24,36 +24,29 @@
     <main style="position: relative;">
         <div class="table-responsive">
             <div class="container mt-6">
-                <table class="table table-striped" th:action="@{/carga_proyectos}" method="POST">
+                <form class="formulario" th:action="@{/proyecto/registro}" method="POST" enctype="multipart/form-data">
                     <div class=" container rounded-3 border border-2 border-dark my-5 bg-white" style="height:auto;">
-
-
                         <div>
                             <h1 class=" h1">Nuevo proyecto</h1>
-
                         </div>
-
                         <div class="row">
                             <div class="d-grid gap-2 d-md-block">
-                                <input class=" py-3 form-control shadow" placeholder="Ingrese el nombre del proyecto "
-                                    type="text" id="inputText">
+                                <input class=" py-3 form-control shadow" name="nombre" placeholder="Ingrese el nombre del proyecto"
+                                       type="text" id="inputText">
                             </div>
-
                         </div>
                         <br>
-
                         <div class="row">
                             <div class="d-grid gap-2 d-md-block">
-                                <select class="form-select form-select-sm">
-                                    <option selected>Seleccionar cliente</option>
-                            
+                                <select class="form-select form-select-sm" name="idCliente">
+                                    <option selected>Seleccionar cliente</option>                        
                                     <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.nombre}" />
                                 </select>
                             </div>
                             <p>
                             </p>
                             <div class="d-grid gap-2 d-md-block">
-                                <select class="form-select form-select-sm">
+                                <select class="form-select form-select-sm" name="idAgente">
                                     <option selected>Seleccionar Agente</option>
                                     <option th:each="agente : ${agentes}" th:value="${agente.id}" th:text="${agente.nombre}" />
                                 </select>
@@ -61,17 +54,19 @@
                             <p>
                             </p>
                             <div class="d-grid gap-2 d-md-block">
-                                <select class="form-select form-select-sm">
+                                <select class="form-select form-select-sm" name = "visibilidad">
                                     <option selected>Seleccionar Estado</option>
                                     <option th:each="v : ${visibilidad}" th:value="${v}" th:text="${v}" />
                                 </select>
                             </div>
                             <p>
                             </p>
+                            <div class="form-group my-3">
+                                <input type="file" class="form-control" name="archivo">
+                            </div>
                             <div class="d-grid gap-2 d-md-block">
                                 <label for="username">Fecha límite del proyecto</label><br>
-                                <input type="date" class="form-control">
-                            
+                                <input type="date" class="form-control" name="fechaLimite">
                             </div>
                             <p>
                             </p>
@@ -83,23 +78,14 @@
                             <p>
                             </p>
                             <div class="d-grid gap-2 d-md-block">
-                                <button class="btn btn-outline-dark" value="Input">
-                                    Cargar proyecto
-                                </button>
+                                <button type="submit" class="btn btn-outline-dark">Cargar proyecto</button>
                             </div>
                             <p>
                             </p>
-                            </div>
-                            
-                            
-                            </div>
-
-                </table>
-
-
+                        </div>
+                    </div>
+                </form>
             </div>
-
-
         </div>
     </main>
 

@@ -20,6 +20,8 @@ import com.grupop.petru.excepciones.MiException;
 import com.grupop.petru.servicios.ProyectoServicio;
 import com.grupop.petru.servicios.TareaServicio;
 import com.grupop.petru.servicios.UsuarioServicio;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import java.util.Arrays;
@@ -116,16 +118,22 @@ public class ProyectoControlador {
     @PostMapping("/registro")
     public String proyectoRegistro(@RequestParam String nombre, @RequestParam(required = false) MultipartFile archivo,
             @RequestParam(required = false) String idCliente, @RequestParam(required = false) String idAgente,
-            ModelMap modelo, HttpSession session, HttpServletRequest request) {
-        Usuario logueado = cargarModelo(modelo, session);
+            String fechaLimite, Visibilidad visibilidad, ModelMap modelo,
+            HttpSession session) throws ParseException {
+        Usuario logueado = (Usuario) session.getAttribute("usuariosession");
 
+        modelo.addAttribute("usuariosession", logueado);
+        
         try {
             if (idCliente == null && idAgente == null) {
                 proyectoServicio.guardar(archivo, nombre, Visibilidad.GRUPO, "s",
                         Arrays.asList(new Usuario[] { logueado }));
             } else {
-                proyectoServicio.guardar(archivo, nombre, Visibilidad.GRUPO, "s",
-                        idCliente, idAgente);
+                SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd"); 
+                Date fecha = formato.parse(fechaLimite);
+                proyectoServicio.guardar(archivo, nombre, visibilidad, "s",
+                        idCliente, idAgente, fecha);
+                modelo.put("exito", "El Proyecto se cargó correctamente!");
             }
         } catch (MiException e) {
             session.setAttribute("error", e.getMessage());
