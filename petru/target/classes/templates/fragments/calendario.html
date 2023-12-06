@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light" xlmns:th="https://thymeleaf.org/"
+    xlmns:sec="https://thymeleaf.org/extras/spring-security">
+
 
 <head>
     <!-- Configuración del documento -->
@@ -23,7 +25,7 @@
 </div>
 
 <!-- Contenedor principal del calendario -->
-<div class="container mt-5">
+<div class="container mt-5" th:fragment="calendario">
     <div id="calendar"></div>
 </div>
 
