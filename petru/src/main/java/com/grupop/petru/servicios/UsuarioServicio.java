@@ -89,15 +89,24 @@ public class UsuarioServicio implements UserDetailsService {
     public void modificarUsuario(MultipartFile archivo, String idUsuario, String nombre, String email, String clave,
             String clave2,
             Long telefono, String descripcion) throws MiException {
+
         validar(nombre, email, clave, clave2, telefono);
         try {
+
             Optional<Usuario> respuesta = usuarioRepositorio.findById(idUsuario);
             if (respuesta.isPresent()) {
                 Usuario usuario = respuesta.get();
                 usuario.setNombre(nombre);
                 usuario.setEmail(email);
                 usuario.setClave(new BCryptPasswordEncoder().encode(clave));
-                Imagen imagen = imagenServicio.guardar(archivo);
+
+                String idImagen = null;
+
+                if (usuario.getImagen() != null) {
+                    idImagen = usuario.getImagen().getId();
+                }
+
+                Imagen imagen = imagenServicio.actualizar(archivo, idImagen);
                 usuario.setImagen(imagen);
                 usuario.setTelefono(telefono);
                 usuario.setDescripcion(descripcion);
@@ -119,10 +128,23 @@ public class UsuarioServicio implements UserDetailsService {
 
                 usuario.setNombre(nombre);
 
-                if (!archivo.getContentType().equals("application/octet-stream")) {
-                    Imagen imagen = imagenServicio.guardar(archivo);
-                    usuario.setImagen(imagen);
+                /*
+                 * //le manda el id del usuario, no de la imagen
+                 * if (!archivo.getContentType().equals("application/octet-stream")) {
+                 * Imagen imagen = imagenServicio.actualizar(archivo,id);
+                 * usuario.setImagen(imagen);
+                 * }
+                 */
+
+                String idImagen = null;
+
+                if (usuario.getImagen() != null) {
+                    idImagen = usuario.getImagen().getId();
                 }
+
+                Imagen imagen = imagenServicio.actualizar(archivo, idImagen);
+
+                usuario.setImagen(imagen);
                 usuario.setTelefono(telefono);
                 usuario.setDescripcion(descripcion);
 

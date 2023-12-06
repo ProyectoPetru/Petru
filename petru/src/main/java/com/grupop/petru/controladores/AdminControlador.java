@@ -49,7 +49,7 @@ public class AdminControlador {
     public String panelAdmin(HttpSession session, ModelMap modelo) {
         cargarModelo(modelo, session);
 
-        return "dashboard.html";
+        return "dashNueva.html";
     }
     
     @GetMapping("/usuarios")

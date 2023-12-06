@@ -8,14 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
     <link rel="stylesheet" href="/css/style.css">
-    <!-- Estilos Salvador -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/blur.js/1.0.2/blur.min.css">
-
-
+    <link rel="stylesheet" href="/css/dashboard.css">
     <style>
         * {
             box-sizing: border-box;
@@ -24,7 +17,7 @@
         /* Style the body */
         body {
             font-family: Arial;
-            margin: 0;
+            margin: 2px;
         }
 
         /* Header/Título */
@@ -52,7 +45,7 @@
         /* Style del navbar */
         .navbar {
             display: flex;
-            background-color: #333;
+            background-color: peru;
         }
 
         /* Style de los links */
@@ -302,15 +295,12 @@
             }
         }
     </style>
+
 </head>
 
 <body>
     <nav th:replace="/fragments/navbar.html :: nav"></nav>
 
-    <!-- Note -->
-    <div style="background:white;padding:5px">
-        <h4 style="text-align:center">Acá le dejo lugar para Manu </h4>
-    </div>
     <!-- Navigation Bar -->
     <div class="navbar">
         <a href="#">Link</a>
@@ -324,8 +314,6 @@
         <h1>Nuestro nuevo Dashboard</h1>
         <p>todo <b>flexible</b> y responsive </p>
     </div>
-
-
 
 
     <!-- Contenido de las cards -->
@@ -345,9 +333,8 @@
 
                         <div>
                             <span class="opacity-7 text-muted">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="blue" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round"
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="blue" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" class="feather feather-user-plus">
                                     <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                                     <circle cx="8.5" cy="7" r="4"></circle>
@@ -413,6 +400,8 @@
 
         <!-- Contenido de los gráficos -->
         <div class="main">
+
+
             <!-- Calendario Salvador -->
 
             <!-- Nuevo HTML para el ícono del tacho de basura -->
@@ -422,7 +411,13 @@
 
             <!-- Contenedor principal del calendario -->
             <div class="container mt-5">
-                <div id="calendar"></div>
+                <div id="calendar">
+                    <a href="/templates/calendario.html">Ver Calendario</a>
+                </div>
+
+                <div th:replace="fragments/calendario.html :: calendario">
+
+                </div>
             </div>
 
             <h2>Informes en tiempo real </h2>
@@ -601,16 +596,7 @@
         });
     </script>
 
-    <!-- Scripts de bibliotecas externas -->
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script>
 
-    <!-- Script personalizado para el calendario -->
-    <script src="../../static/js/calendario.js"></script>
 </body>
 
 </html>

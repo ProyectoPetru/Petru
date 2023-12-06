@@ -18,7 +18,7 @@
     <main>
         <div class="table-responsive">
             <div class="container-perfil">
-                <form th:action="@{/perfil/__${usuariosession.id}__}" method="POST" enctype="multipart/form-data">
+                <form th:action="@{/perfil/modificar}" method="POST" enctype="multipart/form-data">
 
                     <input hidden th:value="${usuariosession.baja}" name="baja">
 
@@ -30,8 +30,8 @@
                         <a><img th:if="${usuariosession.imagen != null}" class="logo" th:src="@{/imagen/__${usuariosession.imagen.id}__}" ></a>
                     </div>
                     <div>
-                        <input hidden type="file" accept=".jpg, .jpeg, .png" name="archivo" id="imagen"
-                        placeholder="Ingrese una foto" onchange="cambiarFoto()">
+                        <input type="file" accept=".jpg, .jpeg, .png" name="archivo" id="imagen"
+                        placeholder="Ingrese una foto">
                     </div>
 
                     <div>
@@ -47,7 +47,7 @@
                     </div>
 
                     <div>
-                        <textarea th:text="${usuariosession.descripcion}" placeholder="Ingrese una descripcion"></textarea>
+                        <textarea th:text="${usuariosession.descripcion}" name="descripcion" placeholder="Ingrese una descripcion"></textarea>
                     </div>
 
                     <div>

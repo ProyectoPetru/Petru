@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light" xlmns:th="https://thymeleaf.org/"
+    xlmns:sec="https://thymeleaf.org/extras/spring-security">
+
 
 <head>
     <!-- Configuración del documento -->
@@ -13,6 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/blur.js/1.0.2/blur.min.css">
+    
 
 </head>
 
@@ -23,7 +26,7 @@
 </div>
 
 <!-- Contenedor principal del calendario -->
-<div class="container mt-5">
+<div class="container mt-5" th:fragment="calendario">
     <div id="calendar"></div>
 </div>
 
