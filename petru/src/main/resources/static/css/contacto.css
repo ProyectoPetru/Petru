@@ -2,6 +2,37 @@
     margin: 5rem 2rem 5rem 2rem;
     display: flex;
     justify-content: space-around;
+    
+}
+
+.formulario-container form {
+    animation: fadeIn-form 0.4s ease;
+}
+
+@keyframes fadeIn-form {
+    0% {
+        opacity: 0;
+        transform: translateY(10rem);
+
+    }
+
+    25% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: translateY(0.8rem);
+    }
+
+    75% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translatey(0rem);
+    }
 }
 
 @media(max-width: 1000px) {
@@ -17,8 +48,75 @@
     }
 }
 
+.indice-contacto {
+    padding-top: 15px;
+    padding-left: 42%;
+    margin-top: 35px;
+    margin-bottom: 0px;
+    animation: fadeIn-index 0.4s ease;
+    display: flex;
+}
+@keyframes fadeIn-index{
+    0% {
+        opacity: 0;
+        transform: translateY(-10rem);
+    }
+    25% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateY(0.8rem);
+    }
+    75% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+        transform: translatey(0rem);
+    }
+}
+
+
 .formulario-container .info-form {
     width: 30rem;
+    animation: fadeIn-Info 0.4s ease;
+}
+
+@keyframes fadeIn-Info {
+    0% {
+        opacity: 0;
+        transform: translateX(10rem);
+    }
+
+    25% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: translateX(-0.8);
+    }
+
+    75% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.formulario-container .info-form img {
+    max-width: 20px;
+    max-height: 20px;
+    min-width: 10px;
+    min-height: 10px;
+}
+
+.formulario-container .info-form p {
+    margin-bottom: 2px;
 }
 
 .formulario-container h2 {
@@ -89,4 +187,118 @@
 .formulario-container button[type=submit]:hover {
     cursor: pointer;
     background-color: green;
+}
+.info-form satelital{
+    padding-left: 30%;
+    max-width: 50px;
+    min-width: none;
+    max-height: 50px;
+    min-height: none;
+}
+.info-form p{
+    display: flex;
+    align-items: center;
+}
+.info-form mapa{
+    animation: fadeIn-Mapa 2s;
+}
+@keyframes fadeIn-Mapa{
+    0%{
+        transform: translateX(-10rem);
+    }
+    50%{
+        transform: translateX(2rem);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+.indice-preguntas-frecuentes{
+    display: flex;
+    justify-content: space-around;
+    animation: fadeIn-index 3s ease;
+}
+.preguntas-frecuentes{
+    display: flex;
+    justify-content: center;
+}
+.preguntas-frecuentes a:hover{
+    position: relative;
+  animation: shine 0.4s forwards;
+}
+@keyframes shine{
+    to{
+        background-color: darkorange;
+        background-size: 200% 100%;
+        background-position: -100% 0;
+    }
+}
+.preguntas-frecuentes h1{
+    margin-top: 10px;
+}
+.preguntas-frecuentes .barra1{
+    text-align: center;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    margin-right: 10%;
+    animation: fadeIn-Barras 4s ease;
+}
+.preguntas-frecuentes .barra2{
+    text-align: center;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    margin-left: 10%;
+    animation: fadeIn-Barras 4s ease;
+}
+@keyframes fadeIn-Barras{
+    0% {
+        opacity: 0;
+        }
+    25% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    75% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.barra1 h2{
+    margin-top: 8px;
+
+    
+}
+.barra2 h2{
+    margin-top: 8px;
+
+}
+.barra1 h3{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+.barra2 h3{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+.barra1 p{
+    width: 400px;
+    text-align: center;
+    margin-top: 1px;
+    margin: 2px;
+}
+.barra2 p{
+    width: 400px;
+    text-align: center;
+    margin-top: 1px;
+    margin: 5px;
 }

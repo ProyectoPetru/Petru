@@ -14,31 +14,96 @@
 </head>
 
 <body>
-
     <nav th:replace="/fragments/navbar.html :: nav"></nav>
 
     <main style="position: relative;">
+        <div class="indice-contacto">
+            <h1>siempre a tu disposicion</h1>
+        </div>
         <div class="formulario-container">
             <div class="info-form">
                 <h2> Contactanos </h2>
                 <p>nuestros servicios de atencion estan disponibles de 8 a 19hs, responderemos tu email o consulta lo
                     antes posible</p>
-                <a href="#"> 123-456-789 </a>
+                <p><svg class="telefono" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M9.366 10.682a10.556 10.556 0 0 0 3.952 3.952l.884-1.238a1 1 0 0 1 1.294-.296a11.421 11.421 0 0 0 4.583 1.364a1 1 0 0 1 .921.997v4.462a1 1 0 0 1-.898.995A15.51 15.51 0 0 1 18.5 21C9.94 21 3 14.06 3 5.5c0-.538.027-1.072.082-1.602A1 1 0 0 1 4.077 3h4.462a1 1 0 0 1 .997.921A11.421 11.421 0 0 0 10.9 8.504a1 1 0 0 1-.296 1.294l-1.238.884Zm-2.522-.657l1.9-1.357A13.41 13.41 0 0 1 7.647 5H5.01c-.006.166-.009.333-.009.5C5 12.956 11.044 19 18.5 19c.167 0 .334-.003.5-.01v-2.637a13.41 13.41 0 0 1-3.668-1.097l-1.357 1.9a12.45 12.45 0 0 1-1.588-.75l-.058-.033a12.556 12.556 0 0 1-4.702-4.702l-.033-.058a12.441 12.441 0 0 1-.75-1.588Z" />
+                    </svg><span>351-4739927</span></p>
+                <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                        <path fill="currentColor" fill-rule="evenodd"
+                            d="m7.172 11.334l2.83 1.935l2.728-1.882l6.115 6.033c-.161.052-.333.08-.512.08H1.667c-.22 0-.43-.043-.623-.12l6.128-6.046ZM20 6.376v9.457c0 .247-.054.481-.15.692l-5.994-5.914L20 6.376ZM0 6.429l6.042 4.132l-5.936 5.858A1.663 1.663 0 0 1 0 15.833V6.43ZM18.333 2.5c.92 0 1.667.746 1.667 1.667v.586L9.998 11.648L0 4.81v-.643C0 3.247.746 2.5 1.667 2.5h16.666Z" />
+                    </svg><span>proyectopetru@gmail.com</span></p>
+                <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M12 2c-4.4 0-8 3.6-8 8c0 5.4 7 11.5 7.3 11.8c.2.1.5.2.7.2c.2 0 .5-.1.7-.2c.3-.3 7.3-6.4 7.3-11.8c0-4.4-3.6-8-8-8zm0 17.7c-2.1-2-6-6.3-6-9.7c0-3.3 2.7-6 6-6s6 2.7 6 6s-3.9 7.7-6 9.7zM12 6c-2.2 0-4 1.8-4 4s1.8 4 4 4s4-1.8 4-4s-1.8-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2s2 .9 2 2s-.9 2-2 2z" />
+                    </svg><a href="https://maps.app.goo.gl/2MNJiYUaRYchC5eEA"><span>181 Av. Figueroa Alcorta </a></span>
+                </p>
+                <div class="mapa">
+                    <button type="menu" onclick="">
+
+                    </button>
+                    <span><iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13620.39572750165!2d-64.19146970950854!3d-31.41140023411569!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9432987f02a2c81d%3A0xb485b4c890a9521e!2sCordoba%20Office%20Center!5e0!3m2!1ses-419!2sar!4v1701389463002!5m2!1ses-419!2sar"
+                            width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe></span>
+
+                </div>
             </div>
             <form action="/contacto" method="POST" autocomplete="off">
                 <input type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre y apellido" class="campo">
                 <input type="email" name="email" placeholder="Ingrese su correo electronico">
                 <input type="number" name="numero" placeholder="Ingrese su numero de telefono">
                 <input type="text" name="titulo" placeholder="Ingrese su titulo">
-                <textarea name="cuerpo" placeholder="Ingrese un cuerpo"></textarea>
+                <textarea name="cuerpo" placeholder="¡Escribenos!"></textarea>
                 <button type="submit">Enviar</button>
             </form>
         </div>
+        <div class="indice-preguntas-frecuentes">
+            <h1><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="1.5" d="m12 20l6-6m-6 6l-6-6m6 6V9.5M12 4v2.5" />
+                </svg><span>Area de Preguntas Frecuentes</span><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                    height="24" viewBox="0 0 24 24">
+                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="1.5" d="m12 20l6-6m-6 6l-6-6m6 6V9.5M12 4v2.5" />
+                </svg></h1>
+        </div>
+        <div class="preguntas-frecuentes">
+            <div class="barra1">
+                <h2>usuarios</h2>
+                <h3>¿como creo un usuario?</h3>
+                <p>dirigete a la seccion de <a href="/registrar">registro</a> en nuestra</p>
+                <p>pagina principal, ahi deberas introducir tus datos</p>
+                <p>y tu cuenta sera creada con exito</p>
+                <h3>¿como edito mi perfil?</h3>
+                <p>puedes editar tu perfil rapidamente desde la seccion <a href="/perfil">perfil</a></p>
+            </div>
+            <div class="barra2">
+                <h2>servicios</h2>
+                <h3>¿puedo contratar el servicio por paquetes?</h3>
+                <p>lamentablemente no contamos con paquetes,</p>
+                <p>se da libre acceso a todos nuestros servicios</p>
+                <p>al efectuar el respectivo pago</p>
+                <h3>¿como encuentro colaboradores?</h3>
+                <p>pregunta correcta en el lugar correcto,
+                    en PETRU nos encargamos de conectar a
+                    colaboradores y corporativos con la idea
+                    de generar un progreso en su empresa,
+                    al contratar nuestros servicios
+                    pondremos a tu disposicion nuestra cartera
+                    de colaboradores, al tener confirmacion de las
+                    dos partes, se inicia la gestion</p>
+            </div>
+        </div>
     </main>
+    <!--
+    <script>
+        window.addEventListener('load', function() {window.scrollTo(0, 0);});
+    </script>
+    -->
+    
 
     <footer th:replace="/fragments/footer.html :: footer"></footer>
-
-
     <script src="/js/index.js"></script>
 </body>
 
