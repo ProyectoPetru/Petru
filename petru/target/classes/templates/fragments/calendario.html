@@ -15,6 +15,294 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/blur.js/1.0.2/blur.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Style the body */
+        body {
+            font-family: Arial;
+            margin: 2px;
+        }
+
+        /* Header/Título */
+        .header {
+            padding: 15px;
+            text-align: center;
+            background: rgb(89, 20, 118);
+            color: white;
+
+        }
+
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        [class*="col-"] {
+            float: left;
+            padding: 15px;
+        }
+
+
+
+        /* Style del navbar */
+        .navbar {
+            display: flex;
+            background-color: peru;
+        }
+
+        /* Style de los links */
+        .navbar a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        /* Color hover */
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* Column container */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        /* Crea dos columnas desiguales que se encuentran una al lado de la otra */
+        /* Barra lateral/columna izquierda */
+        .side {
+            flex: 20%;
+            background-color: #f1f1f1;
+            padding: 20px;
+        }
+
+        /* Estilos específicos para las cards */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            width: 250px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-body {
+            display: flex;
+            align-items: center;
+        }
+
+        .icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .text-dark {
+            color: #333;
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .text-muted {
+            color: #888;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        /* Paleta de colores personalizada */
+        .border-navy {
+            border-color: purple;
+        }
+
+        .border-purple {
+            border-color: #FFA33C;
+        }
+
+        .border-orange {
+            border-color: magenta;
+        }
+
+        .border-yellow {
+            border-color: rgb(82, 120, 83);
+        }
+
+        /* Resto de estilos permanecen igual */
+        .badge {
+            background-color: #f2f2f2;
+            color: #777;
+            padding: 5px 8px;
+            font-size: 12px;
+            border-radius: 10px;
+        }
+
+        .badge-primary {
+            background-color: purple;
+            color: white;
+        }
+
+        .badge-warning {
+            background-color: #FFA33C;
+            color: white;
+        }
+
+        .badge-danger {
+            background-color: rgb(209, 92, 168);
+            color: white;
+        }
+
+        .badge-verde {
+            background-color: rgb(82, 120, 83);
+            color: white;
+        }
+
+        /* Main column */
+        .main {
+            flex: 70%;
+            background-color: white;
+            padding: 20px;
+        }
+
+        /* Fake image, lugar para poner una imagen de ejemplo si necesitamos */
+        .fakeimg {
+            background-color: rgb(213, 179, 213);
+            width: 100%;
+            padding: 20px;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 20px;
+            text-align: center;
+            background: #ddd;
+        }
+
+        /* Diseño responsivo: cuando la pantalla tiene menos de 700 píxeles de ancho, hace*/
+        /* que las dos columnas se apilen una encima de la otra en lugar de una al lado de la otra */
+        @media screen and (max-width: 700px) {
+
+            .row,
+            .navbar {
+                flex-direction: column;
+            }
+        }
+
+        /*Styles de la tabla de proyectos */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 10px 0;
+            border-bottom: 1px solid #181717;
+        }
+
+        th {
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: rgb(118, 16, 118);
+        }
+
+        td {
+            font-size: 14px;
+        }
+
+
+        .progress-wrapper {
+            width: 75%;
+            margin: 10px auto;
+        }
+
+        .progress {
+            height: 12px;
+            background-color: #eee;
+            border-radius: 6px;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 6px;
+        }
+
+        .badge {
+            font-size: 12px;
+            border-radius: 20px;
+            padding: 5px 10px;
+        }
+
+        /* Specific colors for badges */
+        .bg-primary {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .bg-gradient-info {
+            background: linear-gradient(to right, #007bff, #2b88d9);
+            color: #fff;
+        }
+
+        .bg-gradient-success {
+            background: linear-gradient(to right, #28a745, #3f9f37);
+            color: #fff;
+        }
+
+        /* Specific styles for progress bar */
+        .progress-bar.bg-gradient-info {
+            width: 60%;
+        }
+
+        .progress-bar.bg-gradient-success {
+            width: 100%;
+        }
+
+        /* Tres columnas iguales flotantes */
+        .column {
+            float: left;
+            width: 50%;
+            padding: 15px;
+        }
+
+        /* Limpia los flotantes después de las columnas */
+        .row::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Responsive: hace que las tres columnas se apilen una encima de la otra en lugar de una al lado de la otra */
+        @media screen and (max-width:600px) {
+            .column {
+                width: 100%;
+            }
+        }
+    </style>
+
+    </style>
 
 </head>
 
