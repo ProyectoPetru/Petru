@@ -70,3 +70,34 @@ main .container-perfil button:hover {
     background: var(--button-hover-color);
     box-shadow: 0 0 .3rem .1rem var(--button-hover-color);
 }
+
+main .container-perfil .perfil-foto {
+    border: .1rem solid black;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    transition: opacity 0.5s;
+}
+
+main .container-perfil .perfil-camara {
+    pointer-events: none;
+    z-index: 100;
+    border: none;
+    position: absolute;
+    margin: 4.6rem 0 0 4.6rem;
+    opacity: 0%;
+    height: 50px;
+    width: 50px;
+    border-radius: 0;
+    transition: opacity 0.5s;
+}
+
+main .container-perfil label:hover .perfil-foto {
+    opacity: 50%;
+    cursor: pointer;
+    transition: opacity 0.5s;
+}
+
+main .container-perfil label:hover .perfil-camara {
+    opacity: 100%;
+}

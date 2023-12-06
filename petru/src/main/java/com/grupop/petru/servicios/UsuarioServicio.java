@@ -136,15 +136,18 @@ public class UsuarioServicio implements UserDetailsService {
                  * }
                  */
 
-                String idImagen = null;
+                if (!archivo.getContentType().equals("application/octet-stream")) {
+                    String idImagen = null;
 
-                if (usuario.getImagen() != null) {
-                    idImagen = usuario.getImagen().getId();
+                    if (usuario.getImagen() != null) {
+                        idImagen = usuario.getImagen().getId();
+                    }
+
+                    Imagen imagen = imagenServicio.actualizar(archivo, idImagen);
+
+                    usuario.setImagen(imagen);
                 }
 
-                Imagen imagen = imagenServicio.actualizar(archivo, idImagen);
-
-                usuario.setImagen(imagen);
                 usuario.setTelefono(telefono);
                 usuario.setDescripcion(descripcion);
 
