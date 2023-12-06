@@ -121,7 +121,7 @@ public class ProyectoControlador {
     public String proyectoRegistro(@RequestParam String nombre, @RequestParam(required = false) MultipartFile archivo,
             @RequestParam(required = false) String idCliente, @RequestParam(required = false) String idAgente,
             String fechaLimite, Visibilidad visibilidad, ModelMap modelo,
-            HttpSession session) throws ParseException {
+            HttpSession session, HttpServletRequest request) throws ParseException {
         Usuario logueado = (Usuario) session.getAttribute("usuariosession");
 
         modelo.addAttribute("usuariosession", logueado);
