@@ -328,7 +328,7 @@
     <nav th:replace="/fragments/navbar.html :: nav"></nav>
     <!-- Header -->
     <div class="header">
-        
+
         <p>Perfil: administrador </p>
     </div>
 
@@ -418,22 +418,6 @@
 
         <!-- Contenido de los gráficos -->
         <div class="main">
-
-
-            <!-- Calendario Salvador -->
-
-            <!-- Nuevo HTML para el ícono del tacho de basura -->
-            <div id="deleteIcon" class="delete-icon">
-                <i class="fas fa-trash-alt"></i>
-            </div>
-
-            <!-- Contenedor principal del calendario -->
-            <div class="container mt-5">
-                <div id="calendar">
-                    <a href="/templates/calendario.html">Ver Calendario</a>
-                </div>
-            </div>
-
             <h1 style="color: purple;">Informes</h1>
             <h5></h5>
             <div class="row">
@@ -504,9 +488,7 @@
             <div class="card1">
                 <div class="card-body1">
                     <p>En este div debería verse el calendario pero no se vé!!!</p>
-                    <div th:replace="fragments/calendario.html :: calendario">
-                    </div>
-
+                    <div th:replace="/fragments/calendario.html :: div"></div>
                 </div>
             </div>
 

@@ -15,3 +15,7 @@
 .delete-icon i {
     color: #fff; /* Color del ícono de basura */
 }
+
+.container.mt-5 {
+    width: 50%;
+}

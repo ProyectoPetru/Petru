@@ -1,45 +1,30 @@
-<!DOCTYPE html>
-<html lang="es" data-theme="light" xlmns:th="https://thymeleaf.org/"
-    xlmns:sec="https://thymeleaf.org/extras/spring-security">
-
-
-<head>
-    <!-- Configuración del documento -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Calendario</title>
-
+<div>
     <!-- Estilos -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/blur.js/1.0.2/blur.min.css">
-    
+    <link rel="stylesheet" href="/css/calendario.css">
 
-</head>
+    <!-- Nuevo HTML para el ícono del tacho de basura -->
+    <div id="deleteIcon" class="delete-icon">
+        <i class="fas fa-trash-alt"></i>
+    </div>
 
-<body>
-<!-- Nuevo HTML para el ícono del tacho de basura -->
-<div id="deleteIcon" class="delete-icon">
-    <i class="fas fa-trash-alt"></i>
+    <!-- Contenedor principal del calendario -->
+    <div class="container mt-5">
+        <div id="calendar"></div>
+    </div>
+
+    <!-- Scripts de bibliotecas externas -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script>
+
+    <!-- Script personalizado para el calendario -->
+    <script src="/js/calendario.js"></script>
 </div>
-
-<!-- Contenedor principal del calendario -->
-<div class="container mt-5" th:fragment="calendario">
-    <div id="calendar"></div>
-</div>
-
-<!-- Scripts de bibliotecas externas -->
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script>
-
-<!-- Script personalizado para el calendario -->
-<script src="../../static/js/calendario.js"></script>
-</body>
-
-</html>
