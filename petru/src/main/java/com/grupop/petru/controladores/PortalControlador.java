@@ -162,13 +162,13 @@ public class PortalControlador {
         return "perfil.html";
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_COLABORADOR', 'ROLE_ADMIN')")
+     @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_COLABORADOR', 'ROLE_ADMIN')")
     @PostMapping("/perfil/{id}")
-    public String actualizar(MultipartFile archivo, String idUsuario, String nombre, String email, String clave,
-            String clave2, Long telefono, String descripcion, ModelMap modelo, HttpSession session) throws MiException {
+    public String actualizar(MultipartFile archivo, @PathVariable String id, String nombre, String email, String clave,
+             String clave2,  Long telefono, String descripcion, HttpSession session, ModelMap modelo) throws MiException {
         try {
 
-            usuarioServicio.modificarUsuario(archivo, idUsuario, nombre, email, clave, clave2, telefono, descripcion);
+            usuarioServicio.modificarUsuario(archivo, id, nombre, email, clave, clave2, telefono, descripcion);
 
             session.setAttribute("exito", "Tu usuario se actualizo correctamente!");
 
@@ -180,8 +180,12 @@ public class PortalControlador {
             return "redirect:/perfil";
         }
     }
+    
 
-    @PreAuthorize("hasAnyRole('ROLE_VISITA', 'ROLE_CLIENTE', 'ROLE_COLABORADOR', 'ROLE_ADMIN')")
+
+    
+ 
+  @PreAuthorize("hasAnyRole('ROLE_VISITA', 'ROLE_CLIENTE', 'ROLE_COLABORADOR', 'ROLE_ADMIN')")
     @PostMapping("/perfil/modificar")
     public String modificar(@RequestParam(required = false) MultipartFile archivo, @RequestParam String nombre,
             @RequestParam Long telefono, @RequestParam String descripcion, ModelMap modelo, HttpSession session,
@@ -200,6 +204,8 @@ public class PortalControlador {
         String referer = request.getHeader("Referer");
         return "redirect:" + referer;
     }
+    
+
 
     @PostMapping("/contacto")
     public String contactar(@RequestParam String nombre, @RequestParam String email, @RequestParam String titulo,
