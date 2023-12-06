@@ -2,6 +2,13 @@ function borrarComentario(id) {
     if (confirm("Quiere eliminar este comentario?")) document.location = `/comentario/eliminar/${id}`
 }
 
+Array.from(document.querySelector(".usuarios").querySelectorAll("img")).map((img) => {
+    img.addEventListener("click", () => {
+        let cuerpo = prompt("Ingrese el cuerpo")
+        document.location = `/mensaje?cuerpo=${cuerpo}&destinatario=${img.getAttribute("email")}`
+    })
+})
+
 function ventanaProExit() {
     const ventana = document.querySelector("#proyecto").querySelector(".ventana")
     const fondo = document.querySelector("#proyecto").querySelector(".fondo")

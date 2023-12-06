@@ -53,7 +53,6 @@
 }
 
 #alertas .exito .titulo {
-    color: var(--text);
     font-size: 1.3rem;
     margin: 0 5% 0 8%;
     user-select: none;
@@ -63,11 +62,10 @@
     height: 1px;
     margin: .3rem 5% .3rem 5%;
     width: 90%;
-    background: var(--text);
+    background: white;
 }
 
 #alertas .exito .informacion {
-    color: var(--text);
     width: 80%;
     margin: .2rem 10% 1rem 10%;
 }
@@ -109,7 +107,6 @@
 }
 
 #alertas .error .titulo {
-    color: var(--text);
     font-size: 1.3rem;
     margin: 0 5% 0 8%;
     user-select: none;
@@ -119,11 +116,10 @@
     height: 1px;
     margin: .3rem 5% .3rem 5%;
     width: 90%;
-    background: var(--text);
+    background: white;
 }
 
 #alertas .error .informacion {
-    color: var(--text);
     width: 80%;
     margin: .2rem 10% 1rem 10%;
 }
@@ -135,7 +131,6 @@
 }
 
 #alertas .error .salir {
-    color: var(--text);
     position: absolute;
     right: 0;
     margin: 0 .8rem 0 .8rem;

@@ -313,51 +313,6 @@
     filter: brightness(80%);
 }
 
-@media(min-width: 800px) {
-
-    #navbar .home-list .home:hover {
-        width: 14rem;
-        cursor: pointer;
-    }
-
-    #navbar .home-list .home:hover>:nth-child(2) {
-        left: 2.8rem;
-    }
-
-    #navbar .home-list .home:hover>:nth-child(3) {
-        left: 5.6rem;
-    }
-
-    #navbar .home-list .home:hover>:nth-child(4) {
-        left: 8.4rem;
-    }
-
-    #navbar .home-list .home:hover>:nth-child(5) {
-        left: 11.2rem;
-    }
-}
-
-@media(max-width: 800px) {
-    #navbar {
-        margin: 0 5%;
-        width: 90%;
-        box-sizing: border-box;
-    }
-
-    #navbar .group-handler .group {
-        position: fixed;
-        left: 0;
-        top: 4rem;
-        display: flex;
-        flex-wrap: wrap;
-        margin: 0 4rem;
-        padding: .5rem 1rem;
-        border-radius: 0 0 .5rem .5rem;
-        backdrop-filter: brightness(50%) blur(8px);
-        width: calc(100% - 10rem);
-    }
-}
-
 @keyframes fondo-in {
     from {
         backdrop-filter: blur(0);
@@ -575,4 +530,96 @@
 
 #navbar .perfil-container label:hover .perfil-camara {
     opacity: 100%;
+}
+
+@media(min-width: 800px) {
+
+    #navbar .home-list .home:hover {
+        width: 14rem;
+        cursor: pointer;
+    }
+
+    #navbar .home-list .home:hover>:nth-child(2) {
+        left: 2.8rem;
+    }
+
+    #navbar .home-list .home:hover>:nth-child(3) {
+        left: 5.6rem;
+    }
+
+    #navbar .home-list .home:hover>:nth-child(4) {
+        left: 8.4rem;
+    }
+
+    #navbar .home-list .home:hover>:nth-child(5) {
+        left: 11.2rem;
+    }
+}
+
+@media(max-width: 800px) {
+    #navbar {
+        margin: 0 5%;
+        width: 90%;
+        box-sizing: border-box;
+    }
+
+    #navbar .group-handler .group {
+        position: fixed;
+        left: 0;
+        top: 4rem;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 4rem;
+        padding: .5rem 1rem;
+        border-radius: 0 0 .5rem .5rem;
+        backdrop-filter: brightness(50%) blur(8px);
+        width: calc(100% - 10rem);
+    }
+
+    #navbar .fondo .ventana {
+        height: auto;
+        width: 80%;
+        height: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #navbar .fondo .ventana .perfil>:nth-child(1) {
+        display: none;
+    }
+
+    #navbar .fondo .ventana .perfil-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #navbar .fondo .ventana .perfil-container>div {
+        margin: 1rem 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #navbar .perfil-container input {
+        width: 15rem;
+    }
+    
+    #navbar .perfil-container span {
+        display: flex;
+        width: 15rem;
+    }
+    
+    #navbar .perfil-container textarea {
+        min-width: 15rem;
+        max-width: 15rem;
+    }
+    
+    #navbar .perfil-container button[type=submit] {
+        width: 15rem;
+    }
+    
+    #navbar .perfil-container button[type=button] {
+        width: 15rem;
+    }
 }

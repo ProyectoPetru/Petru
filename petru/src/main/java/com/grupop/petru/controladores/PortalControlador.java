@@ -162,10 +162,10 @@ public class PortalControlador {
         return "perfil.html";
     }
 
-     @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_COLABORADOR', 'ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_COLABORADOR', 'ROLE_ADMIN')")
     @PostMapping("/perfil/{id}")
     public String actualizar(MultipartFile archivo, @PathVariable String id, String nombre, String email, String clave,
-             String clave2,  Long telefono, String descripcion, HttpSession session, ModelMap modelo) throws MiException {
+            String clave2, Long telefono, String descripcion, HttpSession session, ModelMap modelo) throws MiException {
         try {
 
             usuarioServicio.modificarUsuario(archivo, id, nombre, email, clave, clave2, telefono, descripcion);
@@ -180,12 +180,8 @@ public class PortalControlador {
             return "redirect:/perfil";
         }
     }
-    
 
-
-    
- 
-  @PreAuthorize("hasAnyRole('ROLE_VISITA', 'ROLE_CLIENTE', 'ROLE_COLABORADOR', 'ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_VISITA', 'ROLE_CLIENTE', 'ROLE_COLABORADOR', 'ROLE_ADMIN')")
     @PostMapping("/perfil/modificar")
     public String modificar(@RequestParam(required = false) MultipartFile archivo, @RequestParam String nombre,
             @RequestParam Long telefono, @RequestParam String descripcion, ModelMap modelo, HttpSession session,
@@ -204,8 +200,6 @@ public class PortalControlador {
         String referer = request.getHeader("Referer");
         return "redirect:" + referer;
     }
-    
-
 
     @PostMapping("/contacto")
     public String contactar(@RequestParam String nombre, @RequestParam String email, @RequestParam String titulo,
@@ -238,4 +232,27 @@ public class PortalControlador {
 
         return "redirect:/login";
     }
+
+    @GetMapping("/mensaje")
+    public String getMethodName(@RequestParam String cuerpo,
+            @RequestParam String destinatario, HttpSession session, ModelMap modelo, HttpServletRequest request) {
+        Usuario usuario = cargarModelo(modelo, session);
+
+        if (usuario == null) {
+            session.setAttribute("error", "Tiene que estar logueado para mandar mensajes");
+
+            return "redirect:/";
+        }
+        String titulo = usuario.getNombre() + " te mando un mensaje";
+
+        cuerpo = "<h4 style='margin: 0 1rem 0 1rem; font-weight: normal'>" + cuerpo + "</h4><div>";
+
+        emailServicio.sendEmail(destinatario, titulo, cuerpo);
+
+        session.setAttribute("exito", "Email enviado con exito");
+
+        String referer = request.getHeader("Referer");
+        return "redirect:" + referer;
+    }
+
 }
