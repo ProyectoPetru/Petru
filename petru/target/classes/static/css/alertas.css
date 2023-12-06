@@ -26,13 +26,12 @@
     z-index: 999;
     position: fixed;
 
-    right: 2rem;
+    right: 1%;
     bottom: 1rem;
 
-    min-width: 15rem;
+    min-width: 10rem;
     max-width: 30rem;
     min-height: 3rem;
-    max-height: 6rem;
 
     background: rgb(20, 165, 20);
     color: white;
@@ -69,6 +68,7 @@
 
 #alertas .exito .informacion {
     color: var(--text);
+    width: 80%;
     margin: .2rem 10% 1rem 10%;
 }
 
@@ -76,13 +76,12 @@
     z-index: 999;
     position: fixed;
 
-    right: 2rem;
+    right: 1%;
     bottom: 1rem;
 
-    min-width: 9rem;
+    min-width: 10rem;
     max-width: 30rem;
     min-height: 3rem;
-    max-height: 6rem;
 
     background: rgb(255, 42, 42);
     color: white;
@@ -105,6 +104,7 @@
 
 #alertas .error .detalles {
     display: flex;
+    width: calc(100% - 40px);
     flex-direction: column;
 }
 
@@ -124,12 +124,22 @@
 
 #alertas .error .informacion {
     color: var(--text);
+    width: 80%;
     margin: .2rem 10% 1rem 10%;
+}
+
+#alertas .error>:nth-child(2) {
+    display: flex;
+    width: 40px;
+    align-items: center;
 }
 
 #alertas .error .salir {
     color: var(--text);
+    position: absolute;
+    right: 0;
     margin: 0 .8rem 0 .8rem;
+    transition: filter .4s;
 }
 
 #alertas .error .salir:hover {
