@@ -138,19 +138,14 @@ public class UsuarioServicio implements UserDetailsService {
 
                 if (!archivo.getContentType().equals("application/octet-stream")) {
                     String idImagen = null;
-
                     if (usuario.getImagen() != null) {
                         idImagen = usuario.getImagen().getId();
                     }
-
                     Imagen imagen = imagenServicio.actualizar(archivo, idImagen);
-
                     usuario.setImagen(imagen);
                 }
-
                 usuario.setTelefono(telefono);
                 usuario.setDescripcion(descripcion);
-
                 return usuarioRepositorio.save(usuario);
             }
         } catch (Exception e) {
@@ -187,9 +182,7 @@ public class UsuarioServicio implements UserDetailsService {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-
-    }
-    
+    }    
 
     @Transactional
     public void modificarBajaUsuario(String idUsuario) throws MiException {
