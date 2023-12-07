@@ -189,9 +189,46 @@ public class UsuarioServicio implements UserDetailsService {
         }
 
     }
+    
+
+    @Transactional
+    public void modificarBajaUsuario(String idUsuario) throws MiException {
+        Optional<Usuario> respuesta = usuarioRepositorio.findById(idUsuario);
+        if (respuesta.isPresent()) {
+            Usuario usuario = respuesta.get();            
+            if (usuario.getBaja().equals(true)) {
+                usuario.setBaja(false);
+            } else if (usuario.getBaja().equals(false)) {
+                usuario.setBaja(true);
+            }
+            usuarioRepositorio.save(usuario);          
+        } else {
+            throw new MiException("Usuario no encontrado");
+        }
+    }
 
     // MODIFICAR ROL
 
+    @Transactional
+    public void modificarRolUsuario(String idUsuario) throws MiException {
+        Optional<Usuario> respuesta = usuarioRepositorio.findById(idUsuario);
+        if (respuesta.isPresent()) {
+            Usuario usuario = respuesta.get();            
+            if (usuario.getRol().equals(Rol.VISITA)) {
+                usuario.setRol(Rol.CLIENTE);
+            } else if (usuario.getRol().equals(Rol.CLIENTE)) {
+                usuario.setRol(Rol.COLABORADOR);           
+            } else if (usuario.getRol().equals(Rol.COLABORADOR)) {
+                usuario.setRol(Rol.ADMIN);
+            }else if (usuario.getRol().equals(Rol.ADMIN)) {
+                usuario.setRol(Rol.VISITA);
+            }            
+            usuarioRepositorio.save(usuario);          
+        } else {
+            throw new MiException("Usuario no encontrado");
+        }
+    }
+    
     @Transactional
     public void modificarRolUsuario(String idUsuario, Rol rol) throws MiException {
         Optional<Usuario> respuesta = usuarioRepositorio.findById(idUsuario);

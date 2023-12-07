@@ -35,7 +35,9 @@
                                 <th scope="col">Imágen de perfil</th>
                                 <th scope="col">Descripción</th>
                                 <th scope="col">Rol</th>
+                                <th scope="col">Cambiar Rol</th>
                                 <th scope="col">Baja</th>
+                                <th scope="col">Cambiar Estado</th>
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
@@ -48,7 +50,13 @@
                                 <td><img th:src="@{/imagen/__${usuario.imagen.id}__}" width="64px" height="64px" alt=""></td>
                                 <td th:text="${usuario.descripcion}"></td>
                                 <td th:text="${usuario.rol}"></td>
+                                <td>
+                                    <a th:href= "@{/admin/modificarRol/__${usuario.id}__}"><i class="fas fa-feather-alt"></i>Cambiar</a>
+                                </td>
                                 <td th:text="${usuario.baja}"></td>
+                                <td>
+                                    <a th:href= "@{/admin/modificarBaja/__${usuario.id}__}"><i class="fas fa-feather-alt"></i>Cambiar</a>
+                                </td>
                                 <td>
                                     <a th:href="@{/usuario/modificar/__${usuario.id}__}">
                                        <i class="fas fa-feather-alt"></i> Modificar
