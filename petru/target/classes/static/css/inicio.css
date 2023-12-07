@@ -21,6 +21,7 @@ main {
     width: 100%;
     background-image: url("/img/hero.jpeg");
     background-color: rgb(255, 255, 255, 0.5);
+    background-size: cover;
     background-attachment: fixed;
     background-position: center;
 }

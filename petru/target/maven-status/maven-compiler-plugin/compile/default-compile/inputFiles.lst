@@ -1,42 +1,42 @@
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\entidades\Archivo.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\enumeraciones\TipoTarea.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\controladores\ImagenControlador.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\entidades\Tarea.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\servicios\EtiquetaServicio.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\entidades\Comentario.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\eventListeners\AuthenticationEvents.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\PetruApplication.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\repositorios\ArchivoRepositorio.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\servicios\EventoServicio.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\controladores\ComentarioControlador.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\servicios\EmailServicio.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\entidades\Usuario.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\repositorios\UsuarioRepositorio.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\SeguridadWeb.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\entidades\Token.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\controladores\AdminControlador.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\servicios\ProyectoServicio.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\controladores\ProyectoControlador.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\entidades\Etiqueta.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\servicios\TareaServicio.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\enumeraciones\Rol.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\repositorios\ProyectoRepositorio.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\repositorios\EtiquetaRepositorio.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\controladores\PortalControlador.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\excepciones\MiException.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\entidades\Imagen.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\repositorios\EventoRepositorio.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\entidades\Proyecto.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\repositorios\ComentarioRepositorio.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\controladores\TareaControlador.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\entidades\Evento.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\repositorios\TareaRepositorio.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\servicios\ComentarioServicio.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\servicios\ImagenServicio.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\enumeraciones\Visibilidad.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\servicios\UsuarioServicio.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\repositorios\ImagenRepositorio.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\servicios\ArchivoServicio.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\controladores\ErrorControlador.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\controladores\EtiquetaControlador.java
-C:\Users\soporte\Desktop\GitPetru\Petru\petru\src\main\java\com\grupop\petru\repositorios\TokenRepositorio.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\entidades\Etiqueta.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\enumeraciones\TipoTarea.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\controladores\ImagenControlador.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\servicios\EtiquetaServicio.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\controladores\AdminControlador.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\repositorios\ArchivoRepositorio.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\servicios\EventoServicio.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\repositorios\EventoRepositorio.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\servicios\ProyectoServicio.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\servicios\ImagenServicio.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\entidades\Proyecto.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\repositorios\ProyectoRepositorio.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\repositorios\TokenRepositorio.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\eventListeners\AuthenticationEvents.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\entidades\Usuario.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\servicios\ComentarioServicio.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\controladores\ProyectoControlador.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\entidades\Comentario.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\controladores\ComentarioControlador.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\servicios\TareaServicio.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\entidades\Evento.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\repositorios\ComentarioRepositorio.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\SeguridadWeb.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\excepciones\MiException.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\repositorios\TareaRepositorio.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\controladores\ErrorControlador.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\repositorios\EtiquetaRepositorio.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\repositorios\UsuarioRepositorio.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\entidades\Imagen.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\enumeraciones\Visibilidad.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\controladores\PortalControlador.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\servicios\EmailServicio.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\servicios\UsuarioServicio.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\controladores\TareaControlador.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\entidades\Tarea.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\entidades\Token.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\controladores\EtiquetaControlador.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\entidades\Archivo.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\PetruApplication.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\servicios\ArchivoServicio.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\enumeraciones\Rol.java
+D:\Documents\Visual Studio\Petru\petru\src\main\java\com\grupop\petru\repositorios\ImagenRepositorio.java

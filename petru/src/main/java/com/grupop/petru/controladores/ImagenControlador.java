@@ -1,6 +1,5 @@
 package com.grupop.petru.controladores;
 
-import org.omg.CORBA.UserException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
