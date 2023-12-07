@@ -19,6 +19,30 @@
         header {
             height: 20px;
         }
+
+        h1 {
+            color: purple !important;
+        }
+
+        .table-primary {
+            --bs-table-color: #000;
+            --bs-table-bg: rgb(232, 227, 250);
+            --bs-table-border-color: #a6b5cc;
+            --bs-table-striped-bg: #c5d7f2;
+            --bs-table-striped-color: #000;
+            --bs-table-active-bg: #bacbe6;
+            --bs-table-active-color: #000;
+            --bs-table-hover-bg: #bfd1ec;
+            --bs-table-hover-color: #000;
+            color: var(--bs-table-color);
+            border-color: var(--bs-table-border-color);
+            
+        }
+
+        .border-dark {
+            --bs-border-opacity: 1;
+            border-color: purple !important;
+        }
     </style>
 
 </head>
@@ -53,19 +77,22 @@
                                 <td th:text="${usuario.nombre}"></td>
                                 <td th:text="${usuario.email}"></td>
                                 <td th:text="${usuario.telefono}"></td>
-                                <td><img th:src="@{/imagen/__${usuario.imagen.id}__}" width="64px" height="64px" alt=""></td>
+                                <td><img th:src="@{/imagen/__${usuario.imagen.id}__}" width="64px" height="64px" alt="">
+                                </td>
                                 <td th:text="${usuario.descripcion}"></td>
                                 <td th:text="${usuario.rol}"></td>
                                 <td>
-                                    <a th:href= "@{/admin/modificarRol/__${usuario.id}__}"><i class="fas fa-feather-alt"></i>Cambiar</a>
+                                    <a th:href="@{/admin/modificarRol/__${usuario.id}__}"><i
+                                            class="fas fa-feather-alt"></i>Cambiar</a>
                                 </td>
                                 <td th:text="${usuario.baja}"></td>
                                 <td>
-                                    <a th:href= "@{/admin/modificarBaja/__${usuario.id}__}"><i class="fas fa-feather-alt"></i>Cambiar</a>
+                                    <a th:href="@{/admin/modificarBaja/__${usuario.id}__}"><i
+                                            class="fas fa-feather-alt"></i>Cambiar</a>
                                 </td>
                                 <td>
                                     <a th:href="@{/perfil/__${usuario.id}__}">
-                                       <i class="fas fa-feather-alt"></i> Modificar
+                                        <i class="fas fa-feather-alt"></i> Modificar
                                     </a>
                                 </td>
                             </tr>
