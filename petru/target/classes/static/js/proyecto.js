@@ -4,8 +4,15 @@ function borrarComentario(id) {
 
 Array.from(document.querySelector(".usuarios").querySelectorAll("img")).map((img) => {
     img.addEventListener("click", () => {
-        let cuerpo = prompt("Ingrese el cuerpo")
-        document.location = `/mensaje?cuerpo=${cuerpo}&destinatario=${img.getAttribute("email")}`
+        if (img.getAttribute("email") == null) {
+            document.querySelector("#alertas").querySelector(".error").querySelector(".informacion").innerHTML = "No te puedes mandar mensajes"
+            document.querySelector("#alertas").querySelector(".error").hidden = false
+        } else {
+            let cuerpo = prompt(`Ingrese el cuerpo del mensaje que se enviara a ${img.getAttribute("email")}:`)
+            if (cuerpo != null) {
+                document.location = `/mensaje?cuerpo=${cuerpo}&destinatario=${img.getAttribute("email")}`
+            }
+        }
     })
 })
 
@@ -79,7 +86,7 @@ document.addEventListener("click", (element) => {
         &&
         document.querySelector("#proyecto").querySelector(".ventana").querySelector(".agregar-input") == null
         &&
-        document.querySelector("#agregar-usuario").querySelector("form") == null) {
+        document.querySelector("#agregar-usuario").querySelector("form").hidden) {
         return
     }
     if (element.target.closest(".ventana") == null && element.target.closest(".tarea") == null) {
@@ -87,7 +94,7 @@ document.addEventListener("click", (element) => {
     }
     if (element.target.closest("#agregar-usuario") == null) {
         document.querySelector("#agregar-usuario").querySelector("form").hidden = true
-        document.querySelector("#agregar-usuario").style.width = "24px"
+        document.querySelector("#agregar-usuario").style.width = "32px"
         document.querySelector("#agregar-usuario").style.borderRadius = "50%"
         document.querySelector("#agregar-usuario").querySelector("svg").classList.remove("hidden")
     }

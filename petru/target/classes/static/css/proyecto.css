@@ -25,7 +25,7 @@ main>:nth-child(1) .usuarios>:nth-child(1) {
     display: flex;
     flex-wrap: wrap;
     min-width: 1rem;
-    max-width: 22rem;
+    max-width: 20rem;
     overflow-y: auto;
     height: 4rem;
 }
@@ -33,7 +33,7 @@ main>:nth-child(1) .usuarios>:nth-child(1) {
 /* Modifico el estilo de la barra vertical */
 /* Ancho de toda la barra */
 main>:nth-child(1) .usuarios ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
 }
 
 /* El espacio en el que esta la barra */
@@ -44,7 +44,7 @@ main>:nth-child(1) .usuarios ::-webkit-scrollbar-track {
 /* La barra */
 main>:nth-child(1) .usuarios ::-webkit-scrollbar-thumb {
     background: var(--text);
-    width: 6px;
+    width: 4px;
     border-radius: 5px;
 }
 
@@ -53,18 +53,40 @@ main>:nth-child(1) .usuarios ::-webkit-scrollbar-thumb:hover {
     background: var(--accent);
 }
 
-main>:nth-child(1) .usuarios>:nth-child(1) img {
-    margin: .2rem .3rem .2rem .3rem;
-    width: 24px;
-    height: 24px;
+main>:nth-child(1) .usuarios>:nth-child(1) .image {
+    position: relative;
+    margin: .2rem .5rem .2rem .5rem;
+    width: 32px;
+    height: 32px;
     border: 1px solid var(--text);
     background: rgb(225, 225, 225);
     border-radius: 50%;
+    transition: filter .4s;
+}
+
+main>:nth-child(1) .usuarios>:nth-child(1) .image img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+main>:nth-child(1) .usuarios>:nth-child(1) .image svg {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 14px;
+    height: 14px;
+    margin: 0 -.5rem -.4rem 0;
+}
+
+main>:nth-child(1) .usuarios>:nth-child(1) .image:hover {
+    cursor: pointer;
+    filter: opacity(80%);
 }
 
 main>:nth-child(1) .usuarios>:nth-child(2) {
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     border: 1px solid var(--text);
     background: var(--secondary);
     border-radius: 50%;
@@ -699,6 +721,10 @@ path {
     main>:nth-child(1) .usuarios {
         margin: 1rem 0 1rem 0;
         position: relative;
+    }
+
+    main>:nth-child(1) .usuarios>:nth-child(1) {
+        width: 10rem;
     }
 
     #proyecto {

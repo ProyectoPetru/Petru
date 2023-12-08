@@ -63,9 +63,9 @@ public class AdminControlador {
     }
 
     @GetMapping("/modificarRol/{id}")
-    public String cambiarRol(@PathVariable String id, @RequestParam Rol rol, HttpSession session) {
+    public String cambiarRol(@PathVariable String id, HttpSession session) {
         try {
-            usuarioServicio.modificarRolUsuario(id, rol);
+            usuarioServicio.modificarRolUsuario(id);
             
             session.setAttribute("exito", "Rol modificado con exito");
         } catch (MiException e) {
@@ -73,6 +73,19 @@ public class AdminControlador {
         }
         return "redirect:/admin/usuarios";
     }
+    
+    @GetMapping("/modificarBaja/{id}")
+    public String cambiarBaja(@PathVariable String id, HttpSession session) {
+        try {
+            usuarioServicio.modificarBajaUsuario(id);            
+            session.setAttribute("exito", "Estado modificado con exito");
+        } catch (MiException e) {
+            session.setAttribute("error", e.getMessage());
+        }
+        return "redirect:/admin/usuarios";
+    }
+    
+    
     
 
 }

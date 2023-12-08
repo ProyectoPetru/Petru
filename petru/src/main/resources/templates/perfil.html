@@ -18,7 +18,7 @@
     <main>
         <div class="table-responsive">
             <div class="container-perfil">
-                <form th:action="@{/perfil/modificar}" method="POST" enctype="multipart/form-data">
+                <form th:action="@{/perfil/__${usuariosession.id}__}" method="POST" enctype="multipart/form-data">
 
                     <input hidden th:value="${usuariosession.baja}" name="baja">
 

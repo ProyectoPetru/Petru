@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" xlmns:th="https://thymeleaf.org/"
+    xlmns:sec="https://thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/img/logo.png" type="image/x-icon">
+    <title>Ingresar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Montserrat&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/perfil.css">
+</head>
+
+<body>
+    <nav th:replace="/fragments/navbar.html :: nav"></nav>
+    <main>
+        <div class="table-responsive">
+            <div class="container-perfil">
+                <form th:action="@{/perfil/__${usuario.id}__}" method="POST" enctype="multipart/form-data">
+
+                    <input hidden th:value="${usuario.baja}" name="baja">
+
+                    <div>
+                        <h3 class="card-title">Editar Usuario</h3>
+                    </div>
+
+                    <div>
+                        <label for="perfil-imagen">
+                            <img class="perfil-camara" src="/img/camera.png" alt="Seleccionar foto"> </span>
+                            <img class="perfil-foto"
+                                th:defecto="@{/imagen/__${usuario.imagen.id}__}" id="perfil-photo" alt="imagen">
+                        </label>
+                    </div>
+                    <div>
+                        <input hidden type="file" accept=".jpg, .jpeg, .png" name="archivo" id="perfil-imagen"
+                            placeholder="Ingrese una foto" onchange="cambiarPeFoto()">
+                    </div>
+
+                    <div>
+                        <input type="text" class="form-control" name="nombre" th:value="${usuario.nombre}"
+                            placeholder="Ingrese su nombre">
+                    </div>
+
+                    <div>
+                        <input type="email" class="form-control" name="email" th:value="${usuario.email}"
+                            placeholder="Ingrese un email">
+                    </div>
+
+                    <div>
+                        <input type="number" class="form-control" name="telefono" th:value="${usuario.telefono}"
+                            placeholder="Ingrese numero de telefono">
+                    </div>
+
+                    <div>
+                        <textarea th:text="${usuario.descripcion}" name="descripcion"
+                            placeholder="Ingrese una descripcion"></textarea>
+                    </div>
+
+                    <div>
+                        <input type="password" class="form-control" name="clave" placeholder="Ingrese una clave">
+                    </div>
+
+                    <div>
+                        <input type="password" class="form-control" name="clave2" placeholder="Repita la clave">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mt-3 botones">Actualizar</button>
+
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+
+    <alert th:replace="/fragments/alertas.html"></alert>
+    <footer th:replace="/fragments/footer.html :: footer"></footer>
+
+    <script src="/js/perfil.js"></script>
+    <script src="/js/index.js"></script>
+</body>

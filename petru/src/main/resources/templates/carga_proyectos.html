@@ -16,11 +16,105 @@
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
     </script>
+    <style>
+        h1.h1 {
+            color: purple;
+        }
+
+        h3.h1 {
+            color: purple;
+        }
+
+        button.btn.btn-dark {
+            background-color: purple;
+        }
+
+
+
+        select.form-select.form-select-sm {
+            color: peru;
+        }
+
+        label {
+            color: peru;
+        }
+
+        label.form-check-label {
+            color: purple;
+        }
+
+        .form-control {
+            color: peru;
+        }
+
+        input {
+            color: purple !important;
+        }
+
+        input.form-control {
+            color: peru !important;
+        }
+
+        .form-check-input {
+            --bs-form-check-bg: purple;
+            border: purple;
+        }
+
+        .border-dark {
+            border-color: purple !important;
+        }
+
+        .btn-outline-primary {
+            --bs-btn-color: purple;
+            --bs-btn-border-color: purple;
+            --bs-btn-hover-color: #fff;
+            --bs-btn-hover-bg: purple;
+            --bs-btn-hover-border-color: purple;
+            --bs-btn-focus-shadow-rgb: 13, 110, 253;
+            --bs-btn-active-color: #fff;
+            --bs-btn-active-bg: purple;
+            --bs-btn-active-border-color: purple;
+            --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+            --bs-btn-disabled-color: purple;
+            --bs-btn-disabled-bg: transparent;
+            --bs-btn-disabled-border-color: purple;
+            --bs-gradient: none;
+        }
+
+        .btn-outline-danger {
+            --bs-btn-color: peru;
+            --bs-btn-border-color: peru;
+            --bs-btn-hover-color: #fff;
+            --bs-btn-hover-bg: peru;
+            --bs-btn-hover-border-color: peru;
+            --bs-btn-focus-shadow-rgb: 220, 53, 69;
+            --bs-btn-active-color: #fff;
+            --bs-btn-active-bg: peru;
+            --bs-btn-active-border-color: peru;
+            --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+            --bs-btn-disabled-color: peru;
+            --bs-btn-disabled-bg: transparent;
+            --bs-btn-disabled-border-color: peru;
+            --bs-gradient: none;
+        }
+
+        header {
+            height: 15px;
+        }
+
+        div.container.rounded-3.border.border-2.border-dark.my-5.bg-white {
+            width: 600px;
+            /* Ancho del div */
+            height: 150px;
+            /* Alto del div */
+            transform: scale(0.85); /* Reduce la escala del div al 80% de su tamaño original */
+        }
+    </style>
 </head>
 
 <body>
     <nav th:replace="/fragments/navbar.html :: nav"></nav>
-
+    <header> </header>
     <main style="position: relative;">
         <div class="table-responsive">
             <div class="container mt-6">
@@ -70,15 +164,9 @@
                             </div>
                             <p>
                             </p>
+                            
                             <div class="d-grid gap-2 d-md-block">
-                                <button class="btn btn-outline-primary" value="Input">
-                                    Cargar tarea al proyecto
-                                </button>
-                            </div>
-                            <p>
-                            </p>
-                            <div class="d-grid gap-2 d-md-block">
-                                <button type="submit" class="btn btn-outline-dark">Cargar proyecto</button>
+                                <button type="submit" class="btn btn-outline-primary">Cargar proyecto</button>
                             </div>
                             <p>
                             </p>

@@ -162,6 +162,15 @@ public class PortalControlador {
         return "perfil.html";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+    @GetMapping("/perfil/{id}")
+    public String perfilID(ModelMap modelo, @PathVariable String id) {
+        
+        modelo.put("usuario", usuarioServicio.getOne(id));
+
+        return "perfil2.html";
+    }
+
     @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_COLABORADOR', 'ROLE_ADMIN')")
     @PostMapping("/perfil/{id}")
     public String actualizar(MultipartFile archivo, @PathVariable String id, String nombre, String email, String clave,
@@ -243,6 +252,7 @@ public class PortalControlador {
 
             return "redirect:/";
         }
+        
         String titulo = usuario.getNombre() + " te mando un mensaje";
 
         cuerpo = "<h4 style='margin: 0 1rem 0 1rem; font-weight: normal'>" + cuerpo + "</h4><div>";

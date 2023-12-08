@@ -21,7 +21,23 @@
             <h1 th:text="${proyecto.nombre}" style="text-align: center;"></h1>
             <div class="usuarios">
                 <div>
-                    <img th:each="usuario : ${proyecto.usuarios}" th:src="@{/imagen/__${usuario.imagen.id}__}" th:email="${usuario.email}"></img>
+                    <div class="image" th:each="usuario : ${proyecto.usuarios}">
+                        <img th:src="@{/imagen/__${usuario.imagen.id}__}"
+                            th:email="${usuario.id != usuariosession.id ? usuario.email : null}">
+                        <svg th:if="${usuario.rol.name() == 'COLABORADOR'}" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M12 15c-4.42 0-8 1.79-8 4v2h16v-2c0-2.21-3.58-4-8-4M8 9a4 4 0 0 0 4 4a4 4 0 0 0 4-4m-4.5-7c-.3 0-.5.21-.5.5v3h-1V3s-2.25.86-2.25 3.75c0 0-.75.14-.75 1.25h10c-.05-1.11-.75-1.25-.75-1.25C16.25 3.86 14 3 14 3v2.5h-1v-3c0-.29-.19-.5-.5-.5h-1Z" />
+                        </svg>
+                        <svg th:if="${usuario.rol.name() == 'VISITA' || usuario.rol.name() == 'CLIENTE'}" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M12 4a4 4 0 0 1 4 4a4 4 0 0 1-4 4a4 4 0 0 1-4-4a4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4Z" />
+                        </svg>
+                        <svg th:if="${usuario.rol.name() == 'ADMIN'}" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12c5.16-1.26 9-6.45 9-12V5Zm0 3.9a3 3 0 1 1-3 3a3 3 0 0 1 3-3Zm0 7.9c2 0 6 1.09 6 3.08a7.2 7.2 0 0 1-12 0c0-1.99 4-3.08 6-3.08Z" />
+                        </svg>
+                    </div>
                 </div>
                 <div id="agregar-usuario" sec:authorize="${hasAnyRole('ADMIN', 'COLABORADOR', 'CLIENTE')}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -160,10 +176,12 @@
                                     <div class="usuario">
                                         <img th:src="@{/imagen/__${comentario.usuario.imagen.id}__}" width="24px"
                                             height="24px" alt="">
-                                        <input disabled type="text" class="nombre" th:value="${comentario.usuario.nombre}"></input>
+                                        <input disabled type="text" class="nombre"
+                                            th:value="${comentario.usuario.nombre}"></input>
                                         <span class="fecha"
                                             th:text="${comentario.fecha.date + '/' + (comentario.fecha.month + 1) + '/' + (comentario.fecha.year + 1900)}"></span>
-                                        <svg th:if="${usuariosession.id == comentario.usuario.id || usuariosession.rol.name() == 'ADMIN'}" th:comentario="${comentario.id}" class="borrar"
+                                        <svg th:if="${usuariosession.id == comentario.usuario.id || usuariosession.rol.name() == 'ADMIN'}"
+                                            th:comentario="${comentario.id}" class="borrar"
                                             xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                             viewBox="0 0 256 256">
                                             <path fill="currentColor"
