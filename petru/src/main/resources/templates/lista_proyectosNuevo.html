@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" xlmns:th="https://thymeleaf.org/"
+    xlmns:sec="https://thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Proyectos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        /*Styules w3.CSS */
+        .w3-table,
+        .w3-table-all {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            display: table;
+            margin-block-end: 10px;
+        }
+
+        .w3-panel {
+            margin-top: 16px;
+            margin-bottom: 16px;
+            background: rgb(61, 48, 162);
+
+            .w3-purple,
+            .w3-hover-purple:hover {
+                color: #fff !important;
+                background-color: rgb(61, 48, 162) !important;
+            }
+
+           /* .w3-black,
+            .w3-hover-black:hover {
+                color: #fff !important;
+                background-color: peru !important;
+            }*/
+
+            .w3-teal,
+            .w3-hover-teal:hover {
+                color: #fff !important;
+                background-color: purple !important;
+            }
+        }
+    </style>
+</head>
+
+<body style="background-color: rgb(208, 167, 231);">
+    <nav th:replace="/fragments/navbar.html :: nav"></nav>
+
+    <main>
+        <div class="w3-row-padding" style="width: 10%;">
+            <div class="w3-display-topmiddle w3-padding-64">
+
+                <!--Panel de proyectos  -->
+                <div class="w3-row">
+                    <div class="w3-panel w3-border w3-round-xlarge">
+                        <h1 style="color: gainsboro;">Proyectos</h1>
+
+                        <!-- Tabla de proyectos  -->
+                        <table class="w3-table w3-purple" th:action="@{/lista_proyectos}" method="POST">
+
+                            <div class="search-container">
+
+                                <!-- Modal para cargar nuevos proyectos -->
+
+                                <div class="w3-container">
+
+                                    <button onclick="document.getElementById('id01').style.display='block'"
+                                    class="w3-button w3-round-xxlarge w3-hover-black"
+                                        style="color: black; background-color: orange;">Cargar nuevo proyecto</button>
+
+                                    <div id="id01" class="w3-modal-content w3-animate-zoom w3-round-large w3-border w3-round-large">
+                                        <div class="w3-modal-content w3-card-4 w3-border w3-round-large ">
+                                            <header class="w3-container w3-teal w3-border w3-round-large">
+                                                <span onclick="document.getElementById('id01').style.display='none'"
+                                                    class="w3-button w3-large w3-display-topright w3-border-purple  w3-round-large w3-hover-purple">&times;</span>
+                                                <h2>Nuevo Proyecto</h2>
+                                            </header>
+
+                                             <!-- Formulario de carga de proyectos  -->
+                                            <div class="w3-container">
+                                                <div class="w3-container">
+                                                    <form class="w3-table-all w3-margin-top"
+                                                        th:action="@{/proyecto/registro}" method="POST"
+                                                        enctype="multipart/form-data">
+
+                                                        <div class="d-grid gap-2 d-md-block">
+                                                            <input class="w3-input  w3-border" name="nombre"
+                                                                placeholder="Ingrese el nombre del proyecto" type="text"
+                                                                id="inputText">
+                                                        </div>
+
+                                                        <br>
+
+                                                        <div class="d-grid gap-2 d-md-block">
+                                                            <select class="w3-select" name="idCliente">
+                                                                <option selected>Seleccionar cliente</option>
+                                                                <option th:each="cliente : ${clientes}"
+                                                                    th:value="${cliente.id}"
+                                                                    th:text="${cliente.nombre}" />
+                                                            </select>
+                                                        </div>
+                                                        <p>
+                                                        </p>
+                                                        <div class="d-grid gap-2 d-md-block">
+                                                            <select class="w3-select" name="idAgente">
+                                                                <option selected>Seleccionar Agente</option>
+                                                                <option th:each="agente : ${agentes}"
+                                                                    th:value="${agente.id}"
+                                                                    th:text="${agente.nombre}" />
+                                                            </select>
+                                                        </div>
+                                                        <p>
+                                                        </p>
+                                                        <div class="d-grid gap-2 d-md-block">
+                                                            <select class="w3-select" name="visibilidad">
+                                                                <option selected>Seleccionar Estado</option>
+                                                                <option th:each="v : ${visibilidad}" th:value="${v}"
+                                                                    th:text="${v}" />
+                                                            </select>
+                                                        </div>
+                                                        <p>
+                                                        </p>
+                                                        <div class="form-group my-3">
+                                                            <input type="file" class="w3-button w3-round-large w3-teal "
+                                                                name="archivo">
+                                                        </div>
+                                                        <div class="d-grid gap-2 d-md-block">
+                                                            <label for="username">Fecha límite del proyecto</label><br>
+                                                            <input type="date" class="w3-button w3-round-large w3-khaki"
+                                                                name="fechaLimite">
+                                                        </div>
+                                                        <p>
+                                                        </p>
+
+                                                        <div class="d-grid gap-2 d-md-block">
+                                                            <button type="submit"
+                                                                class="w3-button w3-round-large w3-teal">Cargar
+                                                                proyecto</button>
+                                                        </div>
+                                                        <p>
+                                                        </p>
+                                                    </form>
+                                                </div>
+                                            </div>
+
+                                            <footer class="w3-container w3-teal">
+                                                <!-- Footer por si queremos agregarle algo al final del modal -->
+                                            </footer>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <h1 style="color: gainsboro;">Lista de proyectos </h1>
+
+                                <!-- Buscador de proyectos por nombre -->
+
+                                <input type="search" class="w3-button w3-round-large w3-hover-khaki w3-white w3-border"
+                                    id="mySearch" name="q" placeholder=" nombre del proyecto" required size="30"
+                                    minlength="1" maxlength="20" />
+                                <button class="w3-button w3-round-large w3-hover-black w3-green">buscar</button>
+                            </div>
+                            <!-- El listado de los proyectos  -->
+                            <tr>
+                                <th>
+                                    <h4 style="color: rgb(252, 239, 119);">Proyecto</h4>
+                                </th>
+                                <th>
+                                    <h4 style="color: rgb(252, 107, 220);">Cliente</h4>
+                                </th>
+                                <th>
+                                    <h4 style="color: rgb(140, 233, 240);">Agente</h4>
+                                </th>
+                                <th>
+                                    <h4 style="color: rgb(153, 240, 140);">Estado</h4>
+                                </th>
+                                <th>
+                                    <h4 style="color: rgb(246, 55, 110);">Fecha límite</h4>
+                                </th>
+                                <th>
+                                    <h4 style="color: rgb(124, 229, 248);">Ver Notas</h4>
+                                </th>
+                                <th>
+                                    <h4 style="color: rgb(250, 243, 39);">Ver Proyectos</h4>
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <td>Desarrollo web ZZZ</td>
+                                <td>Pepito Honguito</td>
+                                <td>Enzo Pérez</td>
+                                <th>Listo!</th>
+                                <th>25/11/2023</th>
+                                <th>link a notas </th>
+                                <th> <button class="w3-button w3-round-xxlarge w3-khaki"> ir al proyecto </button></th>
+                            </tr>
+                            <tr>
+                                <td>Base de datos XXX</td>
+                                <td>Pepito Honguito</td>
+                                <td>Enzo Pérez</td>
+                                <th>En proceso</th>
+                                <th>05/12/2023</th>
+                                <th>link a notas </th>
+                                <th> <button class="w3-button w3-round-xxlarge w3-khaki"> Ver proyecto </button></th>
+                            </tr>
+                            <tr>
+                                <td>App WWW</td>
+                                <td>Pepito Honguito</td>
+                                <td>Enzo Pérez</td>
+                                <th>Pendiente</th>
+                                <th>15/12/2023</th>
+                                <th>link a notas </th>
+                                <th> <button class="w3-button w3-round-xxlarge w3-khaki"> Ver proyecto </button></th>
+                            </tr>
+                            <th>
+                        </table>
+                        <button class="w3-btn w3-teal w3-hover-black w3-round-xxlarge"> Volver </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <alert th:replace="/fragments/alertas.html"></alert>
+    <footer th:replace="/fragments/footer.html :: footer"></footer>
+    <script src="/js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" xlmns:th="https://thymeleaf.org/"
+    xlmns:sec="https://thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tareas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        /*Styules w3.CSS */
+        .w3-table,
+        .w3-table-all {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            display: table;
+            margin-block-end: 10px;
+        }
+
+        .w3-panel {
+            margin-top: 16px;
+            margin-bottom: 16px;
+            background: rgb(61, 48, 162);
+
+            /* .w3-purple,
+            .w3-hover-purple:hover {
+                color: #fff !important;
+                background-color: rgb(61, 48, 162) !important;
+            }
+
+            .w3-black,
+            .w3-hover-black:hover {
+                color: #fff !important;
+                background-color: peru !important;
+            }
+
+            .w3-teal,
+            .w3-hover-teal:hover {
+                color: #fff !important;
+                background-color: purple !important;
+            }*/
+        }
+
+        .w3-table td,
+        .w3-table th,
+        .w3-table-all td,
+        .w3-table-all th {
+            color: gainsboro;
+        }
+    </style>
+</head>
+
+<body style="background-color: rgb(216, 164, 246);">
+    <nav th:replace="/fragments/navbar.html :: nav"></nav>
+
+    <main>
+        <div class="w3-row-padding" style="width: 10%;">
+            <div class="w3-display-topmiddle w3-padding-64">
+
+                <!--Panel de Tareas  -->
+                <div class="w3-row">
+                    <div class="w3-panel w3-border w3-round-xlarge">
+                        <h1 style="color: gainsboro;">Tareas</h1>
+
+                        <!-- Tabla de tareas  -->
+                        <table class="w3-table" th:action="@{tarea/listar_tarea}" method="POST">
+
+                            <!-- Modal carga de nuevas tareas  -->
+
+                            <div class="search-container">
+
+                                <!-- Modal para cargar nuevos proyectos -->
+
+                                <div class="w3-container">
+
+                                    <button onclick="document.getElementById('id01').style.display='block'"
+                                    class="w3-button w3-round-xxlarge w3-hover-black"
+                                        style="color: black; background-color: orange;">Cargar nueva tarea</button>
+
+                                    <div id="id01" class="w3-modal-content w3-animate-zoom w3-round-large w3-border w3-round-large">
+                                        <div class="w3-modal-content w3-card-4 w3-border w3-round-large ">
+                                            <header class="w3-container w3-purple w3-border w3-round-large">
+                                                <span onclick="document.getElementById('id01').style.display='none'"
+                                                    class="w3-button w3-large w3-display-topright w3-border-purple  w3-round-large w3-hover-purple">&times;</span>
+                                                <h2>Nueva Tarea</h2>
+                                            </header>
+
+                                             <!-- Formulario de carga de proyectos  -->
+                                            <div class="w3-container">
+                                                <div class="w3-container">
+                                                    <form class="w3-table-all w3-margin-top"
+                                                        th:action="@{tarea/listar_tarea}" method="POST"
+                                                        enctype="multipart/form-data">
+
+                                                        <div class="d-grid gap-2 d-md-block">
+                                                            <select class="w3-select" name="idCliente">
+                                                                <option selected>Buscar proyecto asociado</option>
+                                                                <option th:each="cliente : ${clientes}"
+                                                                    th:value="${cliente.id}"
+                                                                    th:text="${cliente.nombre}" />
+                                                            </select>
+                                                        </div>
+                                                        <br>
+
+                                                        <div class="d-grid gap-2 d-md-block">
+                                                            <label></label>
+                                                            <input class="w3-input  w3-border" name="nombre"
+                                                                placeholder="Escriba una breve descripción de la tarea" type="text"
+                                                                id="inputText">
+                                                        </div>
+
+                                                        <br>
+
+                                                        
+                                                        <p>
+                                                        </p>
+                                                        <div class="d-grid gap-2 d-md-block">
+                                                            <select class="w3-select" name="idAgente">
+                                                                <option selected>Seleccionar Agente</option>
+                                                                <option th:each="agente : ${agentes}"
+                                                                    th:value="${agente.id}"
+                                                                    th:text="${agente.nombre}" />
+                                                            </select>
+                                                        </div>
+                                                        <p>
+                                                        </p>
+                                                        <div class="d-grid gap-2 d-md-block">
+                                                            <select class="w3-select" name="visibilidad">
+                                                                <option selected>Seleccionar Estado</option>
+                                                                <option th:each="v : ${visibilidad}" th:value="${v}"
+                                                                    th:text="${v}" />
+                                                            </select>
+                                                        </div>
+                                                        <p>
+                                                        </p>
+                                                        <div class="form-group my-3">
+                                                            <input type="file" class="w3-button w3-round-large w3-purple "
+                                                                name="archivo">
+                                                        </div>
+                                                        <div class="d-grid gap-2 d-md-block">
+                                                            <label for="username">Fecha límite de la tarea</label><br>
+                                                            <input type="date" class="w3-button w3-round-large w3-khaki" name="fechaLimite">
+                                                        </div>
+                                                        <p>
+                                                        </p>
+
+                                                        <div class="d-grid gap-2 d-md-block">
+                                                            <button type="submit"
+                                                                class="w3-button w3-round-large w3-purple" >Cargar
+                                                                tarea</button>
+                                                        </div>
+                                                        <p>
+                                                        </p>
+                                                    </form>
+                                                </div>
+                                            </div>
+
+                                            <footer class="w3-container w3-teal">
+                                                <!-- Footer por si queremos agregarle algo al final del modal -->
+                                            </footer>
+                                        </div>
+                                    </div>
+                                </div>
+
+                              
+                            <br>
+                            <h1 style="color: gainsboro;">Lista de Tareas</h1>
+
+
+
+                            <!-- Buscador de tareas por nombre de agente o buscar tareas por meses -->
+
+                            <thead class="" style="color: gainsboro;">
+
+                                <div class="w3-container" style="color: gainsboro;">
+                                    <label;" for="mySearch">Buscar Tareas por </label>
+                                        <input type="search"
+                                            class="w3-button w3-round-large w3-hover-khaki w3-white w3-border"
+                                            id="mySearch" name="q" placeholder="nombre del agente" required size="30"
+                                            minlength="4" maxlength="8" />
+                                        <button
+                                            class="w3-button w3-round-large w3-green w3-hover-black">buscar</button>
+                                        <br>
+                                        <br>
+                                        <span class="validity"></span>
+
+                                        <label for="bday-month">Buscar tareas por mes</label>
+                                        <input id="bday-month" type="month"
+                                            class="w3-button w3-round-large w3-hover-magenta"
+                                            style=" color:gray; background-color: white;" name="bday-month"
+                                            value="2001-06" />
+                                        <button
+                                        class="w3-button w3-round-large w3-green w3-hover-black">buscar</button>
+                                </div>
+
+
+
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>
+                                        <h4 style="color: rgb(252, 107, 220);">Tarea</h4>
+                                    </th>
+                                    <th>
+                                        <h4 style="color: rgb(140, 233, 240);">Agente</h4>
+                                    </th>
+                                    <th>
+                                        <h4 style="color: rgb(153, 240, 140);">Estado</h4>
+                                    </th>
+                                    <th>
+                                        <h4 style="color: rgb(246, 55, 110);">Fecha límite</h4>
+                                    </th>
+                                    <th>
+                                        <h4 style="color: rgb(124, 229, 248);">Ver Notas</h4>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>Diagramar UML</td>
+                                    <td>Enzo Pérez</td>
+                                    <th>Listo!</th>
+                                    <th>25/11/2023</th>
+                                    <th>link a notas </th>
+                                </tr>
+                                <tr>
+                                    <td>Entidades y Servicios</td>
+                                    <td>Enzo Pérez</td>
+                                    <th>En proceso</th>
+                                    <th>05/12/2023</th>
+                                    <th>link a notas </th>
+                                </tr>
+                                <tr>
+                                    <td>Controladores</td>
+                                    <td>Enzo Pérez</td>
+                                    <th>Pendiente</th>
+                                    <th>15/12/2023</th>
+                                    <th>link a notas </th>
+                                </tr>
+                                <tr>
+                                    <td>Seguridad</td>
+                                    <td>Sarah Connor</td>
+                                    <th>Pendiente</th>
+                                    <th>25/12/2023</th>
+                                    <th>link a notas </th>
+                                </tr>
+                                <tr></tr>
+                            </tbody>
+                        </table>
+                        <button class="w3-btn w3-purple w3-hover-black w3-round-xxlarge"> Volver </button>
+
+
+
+                    </div>
+
+                   
+                    <br>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+
+
+</body>
+
+</html>
