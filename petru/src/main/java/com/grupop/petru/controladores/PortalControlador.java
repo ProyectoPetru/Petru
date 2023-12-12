@@ -154,14 +154,6 @@ public class PortalControlador {
         return "contacto.html";
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_VISITA','ROLE_CLIENTE', 'ROLE_COLABORADOR', 'ROLE_ADMIN')")
-    @GetMapping("/perfil")
-    public String perfil(ModelMap modelo, HttpSession session) {
-        cargarModelo(modelo, session);
-
-        return "perfil.html";
-    }
-
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/perfil/{id}")
     public String perfilID(ModelMap modelo, @PathVariable String id) {
@@ -169,45 +161,6 @@ public class PortalControlador {
         modelo.put("usuario", usuarioServicio.getOne(id));
 
         return "perfil2.html";
-    }
-
-    @PreAuthorize("hasAnyRole('ROLE_CLIENTE', 'ROLE_COLABORADOR', 'ROLE_ADMIN')")
-    @PostMapping("/perfil/{id}")
-    public String actualizar(MultipartFile archivo, @PathVariable String id, String nombre, String email, String clave,
-            String clave2, Long telefono, String descripcion, HttpSession session, ModelMap modelo) throws MiException {
-        try {
-
-            usuarioServicio.modificarUsuario(archivo, id, nombre, email, clave, clave2, telefono, descripcion);
-
-            session.setAttribute("exito", "Tu usuario se actualizo correctamente!");
-
-            return "redirect:/inicio";
-        } catch (MiException ex) {
-
-            session.setAttribute("error", ex.getMessage());
-
-            return "redirect:/perfil";
-        }
-    }
-
-    @PreAuthorize("hasAnyRole('ROLE_VISITA', 'ROLE_CLIENTE', 'ROLE_COLABORADOR', 'ROLE_ADMIN')")
-    @PostMapping("/perfil/modificar")
-    public String modificar(@RequestParam(required = false) MultipartFile archivo, @RequestParam String nombre,
-            @RequestParam Long telefono, @RequestParam String descripcion, ModelMap modelo, HttpSession session,
-            HttpServletRequest request)
-            throws MiException {
-        try {
-            Usuario usuario = (Usuario) session.getAttribute("usuariosession");
-
-            session.setAttribute("usuariosession",
-                    usuarioServicio.modificarUsuario(usuario.getId(), archivo, nombre, telefono, descripcion));
-
-            session.setAttribute("exito", "Usuario actualizado con exito");
-        } catch (MiException ex) {
-            session.setAttribute("error", ex.getMessage());
-        }
-        String referer = request.getHeader("Referer");
-        return "redirect:" + referer;
     }
 
     @PostMapping("/contacto")
@@ -280,13 +233,100 @@ public class PortalControlador {
 
         String titulo = "Solicitud de modificacion de usuario";
         String cuerpo = "<h4 style='margin: 0 1rem 0 1rem; font-weight: normal'>" +
-        "Si has solicitado una modificacion de sus datos, por favor clickee el siguiente " +
-        "<a href='/modificar/" + token.getId() + "'>link</a>.<br>Si no ha solicitado esta modificacion ignore el mensaje." +
-        "</h4>";
+                "Si has solicitado una modificacion de sus datos, por favor clickee el siguiente " +
+                "<a href='http://localhost:8080/perfil/modificar/" + token.getId()
+                + "'>link</a>.<br>Si no ha solicitado esta modificacion ignore el mensaje.</h4>";
 
         emailServicio.sendEmail(usuario.getEmail(), titulo, cuerpo);
 
+        session.setAttribute("exito", "Se ha enviado un email para verificar que es usted.");
+
         String referer = request.getHeader("Referer");
         return "redirect:" + referer;
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_VISITA', 'ROLE_CLIENTE', 'ROLE_COLABORADOR', 'ROLE_ADMIN')")
+    @PostMapping("/perfil/modificar")
+    public String actualizar(@RequestParam(required = false) MultipartFile archivo, @RequestParam String nombre,
+            @RequestParam Long telefono, @RequestParam String descripcion, HttpSession session, ModelMap modelo, HttpServletRequest request)
+            throws MiException {
+        Usuario usuario = cargarModelo(modelo, session);
+
+        if (usuario == null) {
+            throw new MiException("Tienes que estar logueado");
+        }
+
+        try {
+
+            session.setAttribute("usuariosession",
+                    usuarioServicio.modificarUsuario(usuario.getId(), archivo, nombre, telefono, descripcion));
+
+            session.setAttribute("exito", "Tu usuario se actualizo correctamente!");
+
+            String referer = request.getHeader("Referer");
+            return "redirect:" + referer;
+        } catch (MiException ex) {
+
+            session.setAttribute("error", ex.getMessage());
+
+            String referer = request.getHeader("Referer");
+            return "redirect:" + referer;
+        }
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_VISITA', 'ROLE_CLIENTE', 'ROLE_COLABORADOR', 'ROLE_ADMIN')")
+    @GetMapping("/perfil/modificar/{idToken}")
+    public String validar(ModelMap modelo, HttpSession session, HttpServletRequest request,
+            @PathVariable String idToken) {
+        Usuario usuario = cargarModelo(modelo, session);
+
+        if (usuario == null) {
+            session.setAttribute("error", "No estas logueado!");
+
+            String referer = request.getHeader("Referer");
+            return "redirect:" + referer;
+        }
+
+        try {
+            usuarioServicio.getToken(idToken);
+            modelo.put("token", idToken);
+
+            return "perfil.html";
+        } catch (MiException e) {
+            session.setAttribute("error", e.getMessage());
+        }
+
+        return "redirect:/";
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_VISITA', 'ROLE_CLIENTE', 'ROLE_COLABORADOR', 'ROLE_ADMIN')")
+    @PostMapping("/perfil/modificar/{idToken}")
+    public String modificar(ModelMap modelo, HttpSession session, HttpServletRequest request,
+            @PathVariable String idToken, @RequestParam(required = false) MultipartFile archivo,
+            @RequestParam String nombre, @RequestParam Long telefono, @RequestParam String email, @RequestParam String clave, @RequestParam String clave2, @RequestParam String descripcion) {
+        Usuario usuario = cargarModelo(modelo, session);
+
+        if (usuario == null) {
+            session.setAttribute("error", "No estas logueado!");
+
+            String referer = request.getHeader("Referer");
+            return "redirect:" + referer;
+        }
+
+        try {
+            usuarioServicio.getToken(idToken);
+            usuarioServicio.inhabilitarToken(idToken);
+
+            session.setAttribute("usuariosession",
+                    usuarioServicio.modificarUsuario(archivo, usuario.getId(), nombre, email, clave, clave2, telefono, descripcion));
+
+            session.setAttribute("exito", "Usuario actualizado con exito");
+
+            return "redirect:/";
+        } catch (MiException e) {
+            session.setAttribute("error", e.getMessage());
+
+            return "redirect:/";
+        }
     }
 }

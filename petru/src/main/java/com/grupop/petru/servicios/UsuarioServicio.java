@@ -86,34 +86,31 @@ public class UsuarioServicio implements UserDetailsService {
     // El rol y la baja se levantan al encontrar el usuario y se dejan igual en este
     // método
     @Transactional
-    public void modificarUsuario(MultipartFile archivo, String idUsuario, String nombre, String email, String clave,
+    public Usuario modificarUsuario(MultipartFile archivo, String idUsuario, String nombre, String email, String clave,
             String clave2,
             Long telefono, String descripcion) throws MiException {
-
         validar(nombre, email, clave, clave2, telefono);
-        try {
+        
+        Optional<Usuario> respuesta = usuarioRepositorio.findById(idUsuario);
+        if (respuesta.isPresent()) {
+            Usuario usuario = respuesta.get();
+            usuario.setNombre(nombre);
+            usuario.setEmail(email);
+            usuario.setClave(new BCryptPasswordEncoder().encode(clave));
 
-            Optional<Usuario> respuesta = usuarioRepositorio.findById(idUsuario);
-            if (respuesta.isPresent()) {
-                Usuario usuario = respuesta.get();
-                usuario.setNombre(nombre);
-                usuario.setEmail(email);
-                usuario.setClave(new BCryptPasswordEncoder().encode(clave));
-
+            if (!archivo.getContentType().equals("application/octet-stream")) {
                 String idImagen = null;
-
                 if (usuario.getImagen() != null) {
                     idImagen = usuario.getImagen().getId();
                 }
-
                 Imagen imagen = imagenServicio.actualizar(archivo, idImagen);
                 usuario.setImagen(imagen);
-                usuario.setTelefono(telefono);
-                usuario.setDescripcion(descripcion);
-                usuarioRepositorio.save(usuario);
             }
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
+            usuario.setTelefono(telefono);
+            usuario.setDescripcion(descripcion);
+            return usuarioRepositorio.save(usuario);
+        } else {
+            throw new MiException("Usuario no encontrado");
         }
     }
 
