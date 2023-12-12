@@ -51,54 +51,54 @@
     <main>
         <div class="w3-row-padding" style="width: 10%;">
             <div class="w3-display-topmiddle w3-padding-64">
-
+    
                 <!--Panel de proyectos  -->
                 <div class="w3-row">
                     <div class="w3-panel w3-border w3-round-xlarge">
                         <h1 style="color: gainsboro;">Proyectos</h1>
-
+    
                         <!-- Tabla de proyectos  -->
                         <table class="w3-table w3-purple" th:action="@{/lista_proyectos}" method="POST">
-
+    
                             <div class="search-container">
-
+    
                                 <!-- Modal para cargar nuevos proyectos -->
-
+    
                                 <div class="w3-container">
-
+    
                                     <button onclick="document.getElementById('id01').style.display='block'"
-                                    class="w3-button w3-round-xxlarge w3-hover-black"
+                                        class="w3-button w3-round-xxlarge w3-hover-black"
                                         style="color: black; background-color: orange;">Cargar nuevo proyecto</button>
-
-                                    <div id="id01" class="w3-modal-content w3-animate-zoom w3-round-large w3-border w3-round-large">
+    
+                                    <div id="id01"
+                                        class="w3-modal-content w3-animate-zoom w3-round-large w3-border w3-round-large">
                                         <div class="w3-modal-content w3-card-4 w3-border w3-round-large ">
                                             <header class="w3-container w3-teal w3-border w3-round-large">
                                                 <span onclick="document.getElementById('id01').style.display='none'"
                                                     class="w3-button w3-large w3-display-topright w3-border-purple  w3-round-large w3-hover-purple">&times;</span>
                                                 <h2>Nuevo Proyecto</h2>
                                             </header>
-
-                                             <!-- Formulario de carga de proyectos  -->
+    
+                                            <!-- Formulario de carga de proyectos  -->
                                             <div class="w3-container">
                                                 <div class="w3-container">
                                                     <form class="w3-table-all w3-margin-top"
                                                         th:action="@{/proyecto/registro}" method="POST"
                                                         enctype="multipart/form-data">
-
+    
                                                         <div class="d-grid gap-2 d-md-block">
                                                             <input class="w3-input  w3-border" name="nombre"
                                                                 placeholder="Ingrese el nombre del proyecto" type="text"
                                                                 id="inputText">
                                                         </div>
-
+    
                                                         <br>
-
+    
                                                         <div class="d-grid gap-2 d-md-block">
                                                             <select class="w3-select" name="idCliente">
                                                                 <option selected>Seleccionar cliente</option>
                                                                 <option th:each="cliente : ${clientes}"
-                                                                    th:value="${cliente.id}"
-                                                                    th:text="${cliente.nombre}" />
+                                                                    th:value="${cliente.id}" th:text="${cliente.nombre}" />
                                                             </select>
                                                         </div>
                                                         <p>
@@ -107,8 +107,7 @@
                                                             <select class="w3-select" name="idAgente">
                                                                 <option selected>Seleccionar Agente</option>
                                                                 <option th:each="agente : ${agentes}"
-                                                                    th:value="${agente.id}"
-                                                                    th:text="${agente.nombre}" />
+                                                                    th:value="${agente.id}" th:text="${agente.nombre}" />
                                                             </select>
                                                         </div>
                                                         <p>
@@ -133,7 +132,7 @@
                                                         </div>
                                                         <p>
                                                         </p>
-
+    
                                                         <div class="d-grid gap-2 d-md-block">
                                                             <button type="submit"
                                                                 class="w3-button w3-round-large w3-teal">Cargar
@@ -144,19 +143,17 @@
                                                     </form>
                                                 </div>
                                             </div>
-
+    
                                             <footer class="w3-container w3-teal">
                                                 <!-- Footer por si queremos agregarle algo al final del modal -->
                                             </footer>
                                         </div>
                                     </div>
                                 </div>
-
-
                                 <h1 style="color: gainsboro;">Lista de proyectos </h1>
-
+    
                                 <!-- Buscador de proyectos por nombre -->
-
+    
                                 <input type="search" class="w3-button w3-round-large w3-hover-khaki w3-white w3-border"
                                     id="mySearch" name="q" placeholder=" nombre del proyecto" required size="30"
                                     minlength="1" maxlength="20" />
@@ -184,34 +181,34 @@
                                 </th>
                                 <th>
                                     <h4 style="color: rgb(250, 243, 39);">Ver Proyectos</h4>
-                                </th>
-
+                                </th> 
                             </tr>
                             <tbody th:each="proyecto : ${proyectos}">
-
                                 <tr>
                                     <td th:text="${proyecto.nombre}"> </td>
                                     <td>
                                         <p th:each="usuario : ${proyecto.usuarios}">
-                                            <span th:if="${#strings.equals(usuario.rol,'CLIENTE')}" th:text="${usuario.nombre}"></span>
+                                            <span th:if="${#strings.equals(usuario.rol,'CLIENTE')}"
+                                                th:text="${usuario.nombre}"></span>
                                         </p>
                                     </td>
-                                    
-                                    
                                     <td>
                                         <p th:each="usuario : ${proyecto.usuarios}">
-                                            <span th:if="${#strings.equals(usuario.rol,'COLABORADOR')}" th:text="${usuario.nombre}"></span>
+                                            <span th:if="${#strings.equals(usuario.rol,'COLABORADOR')}"
+                                                th:text="${usuario.nombre}"></span>
                                         </p>
                                     </td>
                                     <th>Listo!</th>
                                     <th th:text="${proyecto.fechaLimite}"></th>
                                     <th th:text="${proyecto.notas}"></th>
-                                    <th> <button class="w3-button w3-round-xxlarge w3-khaki"> ir al proyecto </button></th>
+                                    <th>            
+                                        <a th:href="@{/proyecto/__${proyecto.id}__}">
+                                            <i class="w3-button w3-round-xxlarge w3-khaki">ir al proyecto</i>
+                                        </a>                                           
+                                    </th>
                                 </tr>
-                                
-                            
                             </tbody>
-                            </table>
+                        </table>
                         <button class="w3-btn w3-teal w3-hover-black w3-round-xxlarge"> Volver </button>
                     </div>
                 </div>
