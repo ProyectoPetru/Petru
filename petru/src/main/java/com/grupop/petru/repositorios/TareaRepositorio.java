@@ -22,4 +22,7 @@ import org.springframework.stereotype.Repository;
 public interface TareaRepositorio extends JpaRepository<Tarea, String> {
     @Query("SELECT t FROM Tarea t WHERE t.proyecto.id = :id")
     public List<Tarea> getTareaByProyecto(@Param("id") String id);
+
+    @Query("SELECT t FROM Tarea t JOIN t.proyecto p JOIN p.usuarios u WHERE u.id = :id")
+    public List<Tarea> buscarPorUsuario(@Param("id")String id);
 }

@@ -18,8 +18,8 @@ import com.grupop.petru.repositorios.TareaRepositorio;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -69,7 +69,15 @@ public class TareaServicio {
         return tareas;
     }
    
- //-------------------------------------MODIFICAR-----------------------------------------------------//
+ //---------------------------------------LISTAR POR USUARIO -----------------------------------------------------//
+
+ @Transactional(readOnly = true)
+    public List<Tarea> listarPorUsuario(String idUsuario) {
+        return tareaRepositorio.buscarPorUsuario(idUsuario);
+    }
+ 
+    //-------------------------------------MODIFICAR-----------------------------------------------------//
+
     public void modificarTarea(String id, String nombre, String idProyecto, TipoTarea tipoTarea, List<Etiqueta> etiquetas) throws MiException{
     
        validar(id, nombre, idProyecto);

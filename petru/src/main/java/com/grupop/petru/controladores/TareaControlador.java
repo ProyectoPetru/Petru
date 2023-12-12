@@ -53,6 +53,7 @@ public class TareaControlador {
         Usuario logueado = (Usuario) session.getAttribute("usuariosession");
 
         modelo.addAttribute("usuariosession", logueado);
+        modelo.addAttribute("tareas", tareaServicio.listarPorUsuario(logueado.getId()));
 
         return "lista_tareasNueva.html";
     }
