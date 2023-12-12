@@ -114,7 +114,7 @@ public class ProyectoControlador {
         modelo.addAttribute("agentes", agentes);
         modelo.addAttribute("visibilidad", visibilidad);
 
-        return "carga_proyectos.html";
+        return "lista_proyectosNuevo.html";
     }
 
     @PostMapping("/registro")

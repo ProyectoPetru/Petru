@@ -54,7 +54,7 @@ public class TareaControlador {
 
         modelo.addAttribute("usuariosession", logueado);
 
-        return "carga_tareas.html";
+        return "lista_tareasNueva.html";
     }
 
     @PostMapping("/registro")
