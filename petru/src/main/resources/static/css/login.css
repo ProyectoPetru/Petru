@@ -72,3 +72,12 @@ main .login-container button:hover {
     background: var(--button-hover-color);
     box-shadow: 0 0 .3rem .1rem var(--button-hover-color);
 }
+
+main .login-container a {
+    color: rgb(88, 88, 255);
+    text-decoration: underline;
+}
+
+main .login-container a:hover {
+    cursor: pointer;
+}

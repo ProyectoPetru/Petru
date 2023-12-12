@@ -218,6 +218,93 @@ public class PortalControlador {
         return "redirect:" + referer;
     }
 
+    @GetMapping("/cambiar-clave/{email}")
+    public String enviarCambio(ModelMap modelo, HttpSession session, HttpServletRequest request,
+            @PathVariable String email) {
+        Usuario logueado = cargarModelo(modelo, session);
+
+        if (logueado != null) {
+            session.setAttribute("error", "Estas logueado!");
+
+            String referer = request.getHeader("Referer");
+            return "redirect:" + referer;
+        }
+
+        Usuario usuario = usuarioServicio.getByEmail(email);
+
+        if (usuario != null) {
+            Token token = usuarioServicio.asignarToken(usuario);
+
+            String titulo = "Solicitud de modificacion de clave";
+            String cuerpo = "<h4 style='margin: 0 1rem 0 1rem; font-weight: normal'>" +
+                    "Si ha solicitado la recuperacion de su clave, por favor clickee el siguiente " +
+                    "<a href='http://localhost:8080/perfil/cambiar-clave/" + token.getId()
+                    + "'>link</a>.<br>Si no ha solicitado esta modificacion ignore el mensaje.</h4>";
+
+            emailServicio.sendEmail(usuario.getEmail(), titulo, cuerpo);
+
+            session.setAttribute("exito", "Se ha enviado un email para verificar que es usted.");
+        } else {
+            session.setAttribute("error", "Email no encontrado");
+        }
+
+        String referer = request.getHeader("Referer");
+        return "redirect:" + referer;
+    }
+
+    @GetMapping("/perfil/cambiar-clave/{idToken}")
+    public String cambiarCla(ModelMap modelo, HttpSession session, HttpServletRequest request,
+            @PathVariable String idToken) {
+        Usuario logueado = cargarModelo(modelo, session);
+
+        if (logueado != null) {
+            session.setAttribute("error", "Estas logueado!");
+
+            String referer = request.getHeader("Referer");
+            return "redirect:" + referer;
+        }
+
+        try {
+            usuarioServicio.getToken(idToken);
+            modelo.put("token", idToken);
+
+            return "cambiar-clave.html";
+        } catch (MiException e) {
+            session.setAttribute("error", e.getMessage());
+        }
+
+        return "redirect:/";
+    }
+
+    @PostMapping("/perfil/cambiar-clave/{idToken}")
+    public String cambioClave(ModelMap modelo, HttpSession session, HttpServletRequest request,
+            @PathVariable String idToken, @RequestParam String clave, @RequestParam String clave2, @RequestParam MultipartFile archivo) {
+        Usuario logueado = cargarModelo(modelo, session);
+
+        if (logueado != null) {
+            session.setAttribute("error", "Estas logueado!");
+
+            String referer = request.getHeader("Referer");
+            return "redirect:" + referer;
+        }
+
+        try {
+            usuarioServicio.getToken(idToken);
+            Usuario usuario = usuarioServicio.getByToken(idToken);
+            usuarioServicio.inhabilitarToken(idToken);
+
+            usuarioServicio.modificarUsuario(archivo, usuario.getId(), usuario.getNombre(), usuario.getEmail(), clave, clave2, usuario.getTelefono(), usuario.getDescripcion());
+
+            session.setAttribute("exito", "Clave modificada con exito!");
+
+            return "redirect:/";
+        } catch (MiException e) {
+            session.setAttribute("error", e.getMessage());
+
+            return "redirect:/";
+        }
+    }
+
     @GetMapping("/enviar-validacion")
     public String enviarValidacion(ModelMap modelo, HttpSession session, HttpServletRequest request) {
         Usuario usuario = cargarModelo(modelo, session);
@@ -248,7 +335,8 @@ public class PortalControlador {
     @PreAuthorize("hasAnyRole('ROLE_VISITA', 'ROLE_CLIENTE', 'ROLE_COLABORADOR', 'ROLE_ADMIN')")
     @PostMapping("/perfil/modificar")
     public String actualizar(@RequestParam(required = false) MultipartFile archivo, @RequestParam String nombre,
-            @RequestParam Long telefono, @RequestParam String descripcion, HttpSession session, ModelMap modelo, HttpServletRequest request)
+            @RequestParam Long telefono, @RequestParam String descripcion, HttpSession session, ModelMap modelo,
+            HttpServletRequest request)
             throws MiException {
         Usuario usuario = cargarModelo(modelo, session);
 
@@ -303,7 +391,8 @@ public class PortalControlador {
     @PostMapping("/perfil/modificar/{idToken}")
     public String modificar(ModelMap modelo, HttpSession session, HttpServletRequest request,
             @PathVariable String idToken, @RequestParam(required = false) MultipartFile archivo,
-            @RequestParam String nombre, @RequestParam Long telefono, @RequestParam String email, @RequestParam String clave, @RequestParam String clave2, @RequestParam String descripcion) {
+            @RequestParam String nombre, @RequestParam Long telefono, @RequestParam String email,
+            @RequestParam String clave, @RequestParam String clave2, @RequestParam String descripcion) {
         Usuario usuario = cargarModelo(modelo, session);
 
         if (usuario == null) {
@@ -318,7 +407,8 @@ public class PortalControlador {
             usuarioServicio.inhabilitarToken(idToken);
 
             session.setAttribute("usuariosession",
-                    usuarioServicio.modificarUsuario(archivo, usuario.getId(), nombre, email, clave, clave2, telefono, descripcion));
+                    usuarioServicio.modificarUsuario(archivo, usuario.getId(), nombre, email, clave, clave2, telefono,
+                            descripcion));
 
             session.setAttribute("exito", "Usuario actualizado con exito");
 
