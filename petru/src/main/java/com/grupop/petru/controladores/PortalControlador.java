@@ -165,7 +165,7 @@ public class PortalControlador {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/perfil/{id}")
     public String perfilID(ModelMap modelo, @PathVariable String id) {
-        
+
         modelo.put("usuario", usuarioServicio.getOne(id));
 
         return "perfil2.html";
@@ -252,7 +252,7 @@ public class PortalControlador {
 
             return "redirect:/";
         }
-        
+
         String titulo = usuario.getNombre() + " te mando un mensaje";
 
         cuerpo = "<h4 style='margin: 0 1rem 0 1rem; font-weight: normal'>" + cuerpo + "</h4><div>";
@@ -265,4 +265,28 @@ public class PortalControlador {
         return "redirect:" + referer;
     }
 
+    @GetMapping("/enviar-validacion")
+    public String enviarValidacion(ModelMap modelo, HttpSession session, HttpServletRequest request) {
+        Usuario usuario = cargarModelo(modelo, session);
+
+        if (usuario == null) {
+            session.setAttribute("error", "No estas logueado!");
+
+            String referer = request.getHeader("Referer");
+            return "redirect:" + referer;
+        }
+
+        Token token = usuarioServicio.asignarToken(usuario);
+
+        String titulo = "Solicitud de modificacion de usuario";
+        String cuerpo = "<h4 style='margin: 0 1rem 0 1rem; font-weight: normal'>" +
+        "Si has solicitado una modificacion de sus datos, por favor clickee el siguiente " +
+        "<a href='/modificar/" + token.getId() + "'>link</a>.<br>Si no ha solicitado esta modificacion ignore el mensaje." +
+        "</h4>";
+
+        emailServicio.sendEmail(usuario.getEmail(), titulo, cuerpo);
+
+        String referer = request.getHeader("Referer");
+        return "redirect:" + referer;
+    }
 }

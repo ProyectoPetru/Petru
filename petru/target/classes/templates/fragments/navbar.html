@@ -159,8 +159,8 @@
                                     placeholder="Ingrese su nuevo nombre">
                             </div>
                             <div>
-                                <span th:text="${usuariosession.email}"
-                                    onclick="if (confirm('Esta seguro de que quiere cambiar el email?')) document.location = '/perfil/email-cambio'"></span>
+                                <input disabled type="text" id="email" th:value="${usuariosession.email}"
+                                    placeholder="Ingrese su nuevo nombre">
                             </div>
                             <div>
                                 <input type="number" name="telefono" id="telefono" th:value="${usuariosession.telefono}"
@@ -175,10 +175,10 @@
                                     placeholder="Ingrese una foto" onchange="cambiarNavFoto()">
                             </div>
                             <div>
-                                <button type="button">Cambiar clave</button>
+                                <button type="submit">Actualizar</button>
                             </div>
                             <div>
-                                <button type="submit">Actualizar</button>
+                                <button type="button" redirect="/enviar-validacion/">Modificar Datos</button>
                             </div>
                         </div>
                     </div>
