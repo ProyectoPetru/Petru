@@ -175,7 +175,7 @@
                             <thead class="" style="color: gainsboro;">
 
                                 <div class="w3-container" style="color: gainsboro;">
-                                    <label;" for="mySearch">Buscar Tareas por </label>
+                                    <label for="mySearch">Buscar Tareas por </label>
                                         <input type="search"
                                             class="w3-button w3-round-large w3-hover-khaki w3-white w3-border"
                                             id="mySearch" name="q" placeholder="nombre del agente" required size="30"
@@ -216,35 +216,16 @@
                                         <h4 style="color: rgb(124, 229, 248);">Ver Notas</h4>
                                     </th>
                                 </tr>
+                                <tbody th:each="tarea : ${tareas}">
                                 <tr>
-                                    <td>Diagramar UML</td>
-                                    <td>Enzo Pérez</td>
-                                    <th>Listo!</th>
+                                    <td th:text="${tarea.nombre}"></td>
+                                    <td th:text="${usuariosession.nombre}"></td>
+                                    <th th:text="${tarea.tipoTarea}"></th>
                                     <th>25/11/2023</th>
                                     <th>link a notas </th>
                                 </tr>
-                                <tr>
-                                    <td>Entidades y Servicios</td>
-                                    <td>Enzo Pérez</td>
-                                    <th>En proceso</th>
-                                    <th>05/12/2023</th>
-                                    <th>link a notas </th>
-                                </tr>
-                                <tr>
-                                    <td>Controladores</td>
-                                    <td>Enzo Pérez</td>
-                                    <th>Pendiente</th>
-                                    <th>15/12/2023</th>
-                                    <th>link a notas </th>
-                                </tr>
-                                <tr>
-                                    <td>Seguridad</td>
-                                    <td>Sarah Connor</td>
-                                    <th>Pendiente</th>
-                                    <th>25/12/2023</th>
-                                    <th>link a notas </th>
-                                </tr>
-                                <tr></tr>
+                            </tbody>
+                                
                             </tbody>
                         </table>
                         <button class="w3-btn w3-purple w3-hover-black w3-round-xxlarge"> Volver </button>
