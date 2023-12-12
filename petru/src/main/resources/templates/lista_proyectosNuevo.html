@@ -187,35 +187,31 @@
                                 </th>
 
                             </tr>
-                            <tr>
-                                <td>Desarrollo web ZZZ</td>
-                                <td>Pepito Honguito</td>
-                                <td>Enzo Pérez</td>
-                                <th>Listo!</th>
-                                <th>25/11/2023</th>
-                                <th>link a notas </th>
-                                <th> <button class="w3-button w3-round-xxlarge w3-khaki"> ir al proyecto </button></th>
-                            </tr>
-                            <tr>
-                                <td>Base de datos XXX</td>
-                                <td>Pepito Honguito</td>
-                                <td>Enzo Pérez</td>
-                                <th>En proceso</th>
-                                <th>05/12/2023</th>
-                                <th>link a notas </th>
-                                <th> <button class="w3-button w3-round-xxlarge w3-khaki"> Ver proyecto </button></th>
-                            </tr>
-                            <tr>
-                                <td>App WWW</td>
-                                <td>Pepito Honguito</td>
-                                <td>Enzo Pérez</td>
-                                <th>Pendiente</th>
-                                <th>15/12/2023</th>
-                                <th>link a notas </th>
-                                <th> <button class="w3-button w3-round-xxlarge w3-khaki"> Ver proyecto </button></th>
-                            </tr>
-                            <th>
-                        </table>
+                            <tbody th:each="proyecto : ${proyectos}">
+
+                                <tr>
+                                    <td th:text="${proyecto.nombre}"> </td>
+                                    <td>
+                                        <p th:each="usuario : ${proyecto.usuarios}">
+                                            <span th:if="${#strings.equals(usuario.rol,'CLIENTE')}" th:text="${usuario.nombre}"></span>
+                                        </p>
+                                    </td>
+                                    
+                                    
+                                    <td>
+                                        <p th:each="usuario : ${proyecto.usuarios}">
+                                            <span th:if="${#strings.equals(usuario.rol,'COLABORADOR')}" th:text="${usuario.nombre}"></span>
+                                        </p>
+                                    </td>
+                                    <th>Listo!</th>
+                                    <th th:text="${proyecto.fechaLimite}"></th>
+                                    <th th:text="${proyecto.notas}"></th>
+                                    <th> <button class="w3-button w3-round-xxlarge w3-khaki"> ir al proyecto </button></th>
+                                </tr>
+                                
+                            
+                            </tbody>
+                            </table>
                         <button class="w3-btn w3-teal w3-hover-black w3-round-xxlarge"> Volver </button>
                     </div>
                 </div>

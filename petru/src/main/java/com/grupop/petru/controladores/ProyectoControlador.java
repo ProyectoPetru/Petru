@@ -103,6 +103,7 @@ public class ProyectoControlador {
     @GetMapping("/registrar")
     public String carga_proyecto(@RequestParam(required = false) String error, HttpSession session, ModelMap modelo) {
         cargarModelo(modelo, session);
+        Usuario logueado = cargarModelo(modelo, session);
 
         List<Usuario> clientes = usuarioServicio.listarClientes();
         List<Usuario> agentes = usuarioServicio.listarColaboradores();
@@ -113,6 +114,7 @@ public class ProyectoControlador {
         modelo.addAttribute("clientes", clientes);
         modelo.addAttribute("agentes", agentes);
         modelo.addAttribute("visibilidad", visibilidad);
+        modelo.addAttribute("proyectos", proyectoServicio.listarPorUsuario(logueado.getId()));
 
         return "lista_proyectosNuevo.html";
     }
