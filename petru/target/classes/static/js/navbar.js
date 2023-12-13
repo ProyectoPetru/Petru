@@ -89,7 +89,7 @@ redirects.map(redirect => {
 })
 
 dropdowns.map(dropdown => {
-    dropdown.parentNode.querySelector(".icono").addEventListener("click", () => {
+    dropdown.parentNode.querySelector(":nth-child(1)").addEventListener("click", () => {
         dropdowns.map(dropdown => dropdown.hidden = true)
         dropdown.hidden = false
     })
@@ -119,3 +119,19 @@ const cambiarTema = () => {
         localStorage.setItem("data-theme", "dark")
     }
 }
+
+const resize = () => {
+    if (window.innerWidth < 800) {
+        document.querySelector("#navbar").querySelector(".home-list").querySelector(".home:nth-child(1)").hidden = true
+        document.querySelector("#navbar").querySelector(".home-list").querySelector(".home:nth-child(2)").hidden = false
+        Array.from(document.querySelector("#navbar").querySelector(".home-list").querySelectorAll(".item")).map(item => item.hidden = true)
+    } else {
+        document.querySelector("#navbar").querySelector(".home-list").querySelector(".home:nth-child(1)").hidden = false
+        document.querySelector("#navbar").querySelector(".home-list").querySelector(".home:nth-child(2)").hidden = true
+        Array.from(document.querySelector("#navbar").querySelector(".home-list").querySelectorAll(".item")).map(item => item.hidden = false)
+    }
+}
+
+window.addEventListener("resize", resize)
+
+resize()

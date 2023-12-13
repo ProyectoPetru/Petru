@@ -21,6 +21,55 @@
                 U
             </div>
         </div>
+        <div hidden class="home dropdown-handler">
+            <div class="box">
+                P
+            </div>
+
+            <div hidden class="dropdown" style="margin-top: 2rem;">
+                <div class="groups group-handler" sec:authorize="hasAnyRole('ADMIN')">
+                    <a class="icono">
+                        <span>Menu</span>
+                    </a>
+
+                    <div hidden class="group">
+                        <div class="window"></div>
+
+                        <div class="list" th:redirect="@{/proyecto/registrar}">
+                            <a>Nuevo Proyecto</a>
+                        </div>
+                        <div class="list" th:redirect="@{/tarea/registrar}">
+                            <a>Nueva Tarea</a>
+                        </div>
+                        <div class="list" th:redirect="@{/admin/usuarios}">
+                            <a>Lista Usuarios</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="groups group-handler" sec:authorize="hasAnyRole('CLIENTE', 'COLABORADOR', 'ADMIN')">
+                    <a class="icono">
+                        <span>Proyectos</span>
+                    </a>
+
+                    <div hidden class="group">
+                        <div class="window"></div>
+                        <div class="list" th:each="proyecto : ${proyectos}"
+                            th:redirect="@{/proyecto/__${proyecto.id}__}">
+                            <a th:text="${proyecto.nombre}"></a>
+                        </div>
+                        <div class="list agregar-proyecto" onclick="navProyectoHandler(event)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path fill="green" d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z" />
+                            </svg>
+                            <form hidden th:action="@{/proyecto/registro}" method="POST" autocomplete="off">
+                                <input type="text" name="nombre">
+                                <button type="submit">✔</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="item group-handler" sec:authorize="hasAnyRole('ADMIN')">
             <a class="icono">
                 <span>Menu</span>

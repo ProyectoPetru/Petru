@@ -39,6 +39,10 @@
     margin: 0 1rem 0 1rem;
 }
 
+#navbar .home-list>.home[hidden] {
+    display: none;
+}
+
 #navbar .home-list .home {
     position: relative;
     display: flex;
@@ -62,6 +66,10 @@
     transition: left .8s;
 }
 
+#navbar .home-list .home:hover {
+    cursor: pointer;
+}
+
 #navbar .home-list .home>:nth-child(1) {
     z-index: 5;
 }
@@ -76,7 +84,7 @@
     }
 }
 
-#navbar .group-handler .group {
+#navbar .group-handler .group{
     position: fixed;
     left: 0;
     top: 4rem;
@@ -281,7 +289,7 @@
     transition: color .4s;
 }
 
-#navbar .item .dropdown {
+#navbar .dropdown {
     position: absolute;
     top: 0;
     left: 0;
@@ -294,21 +302,29 @@
     background: var(--secondary);
 }
 
-#navbar .item .dropdown>:nth-child(1) {
+#navbar .dropdown>:nth-child(1) {
     border-radius: .5rem .5rem 0 0;
 }
 
-#navbar .item .dropdown>:last-child {
+#navbar .dropdown>:last-child {
     border-radius: 0 0 .5rem .5rem;
 }
 
-#navbar .item .dropdown .list {
+
+
+#navbar .dropdown .groups {
     background: var(--secondary);
     padding: .5rem 1rem;
     transition: filter .4s;
 }
 
-#navbar .item .dropdown .list:hover {
+#navbar .dropdown .list {
+    background: var(--secondary);
+    padding: .5rem 1rem;
+    transition: filter .4s;
+}
+
+#navbar .dropdown .list:hover {
     cursor: pointer;
     filter: brightness(80%);
 }
@@ -534,24 +550,23 @@
 
 @media(min-width: 800px) {
 
-    #navbar .home-list .home:hover {
+    #navbar .home-list>:nth-child(1):hover {
         width: 14rem;
-        cursor: pointer;
     }
 
-    #navbar .home-list .home:hover>:nth-child(2) {
+    #navbar .home-list>:nth-child(1):hover>:nth-child(2) {
         left: 2.8rem;
     }
 
-    #navbar .home-list .home:hover>:nth-child(3) {
+    #navbar .home-list>:nth-child(1):hover>:nth-child(3) {
         left: 5.6rem;
     }
 
-    #navbar .home-list .home:hover>:nth-child(4) {
+    #navbar .home-list>:nth-child(1):hover>:nth-child(4) {
         left: 8.4rem;
     }
 
-    #navbar .home-list .home:hover>:nth-child(5) {
+    #navbar .home-list>:nth-child(1):hover>:nth-child(5) {
         left: 11.2rem;
     }
 }

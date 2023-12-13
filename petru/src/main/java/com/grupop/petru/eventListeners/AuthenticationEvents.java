@@ -29,8 +29,6 @@ public class AuthenticationEvents {
         UserDetails userDetails = (UserDetails) event.getAuthentication().getPrincipal();
         String name = userDetails.getUsername();
 
-        System.out.println("hola");
-
         Usuario usuario = usuarioRepositorio.buscarPorEmail(name);
         session.setAttribute("usuariosession", usuario);
         session.setAttribute("exito", "Se inicio sesion con exito!");
