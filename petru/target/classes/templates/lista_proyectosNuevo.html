@@ -199,7 +199,7 @@
                                         </p>
                                     </td>
                                     <th>Listo!</th>
-                                    <th th:text="${proyecto.fechaLimite}"></th>
+                                    <th th:text="${#dates.format(proyecto.fechaLimite, 'dd/MM/YYYY')}"></th>
                                     <th th:text="${proyecto.notas}"></th>
                                     <th>            
                                         <a th:href="@{/proyecto/__${proyecto.id}__}">

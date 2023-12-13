@@ -445,8 +445,9 @@
     <footer th:replace="/fragments/footer.html :: footer"></footer>
 
     <!-- Scripts de los gráficos -->
-    <script>
-        const xValues1 = ["Agente1", "Agente2", "Agente3", "Agente4", "Agente5"];
+    <script th:inline="javascript">
+        var data = /*[[${usuariosession.nombre}]]*/ [];
+        const xValues1 = [data , "Agente2", "Agente3", "Agente4", "Agente5"];
         const yValues1 = [55, 49, 44, 24, 15];
         const barColors1 = ["#FFB84C", "#F266AB", "#A459D1", "#2CD3E1", "#219C90"];
 
