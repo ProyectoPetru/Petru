@@ -61,7 +61,27 @@ main>div>div td input[type=checkbox] {
     height: 20px;
 }
 
+main>div>div tbody td:last-child {
+    display: flex;
+}
+
+main>div>div td svg {
+    margin: 0 .5rem 0 .5rem;
+    transition: filter .4s;
+}
+
+main>div>div td svg:hover {
+    cursor: pointer;
+    filter: brightness(80%);
+}
+
+main>div>div td svg * {
+    pointer-events: none;
+}
+
 main>div>div td button {
+    width: 20px;
+    height: 20px;
     border: none;
     background: none;
     color: var(--text);

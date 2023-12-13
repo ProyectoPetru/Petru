@@ -21,6 +21,25 @@
                 U
             </div>
         </div>
+        <div class="item group-handler" sec:authorize="hasAnyRole('ADMIN')">
+            <a class="icono">
+                <span>Menu</span>
+            </a>
+
+            <div hidden class="group">
+                <div class="window"></div>
+
+                <div class="list" th:redirect="@{/proyecto/registrar}">
+                    <a>Nuevo Proyecto</a>
+                </div>
+                <div class="list" th:redirect="@{/tarea/registrar}">
+                    <a>Nueva Tarea</a>
+                </div>
+                <div class="list" th:redirect="@{/admin/usuarios}">
+                    <a>Lista Usuarios</a>
+                </div>
+            </div>
+        </div>
         <div class="item group-handler" sec:authorize="hasAnyRole('CLIENTE', 'COLABORADOR', 'ADMIN')">
             <a class="icono">
                 <span>Proyectos</span>
@@ -42,35 +61,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
-        <div class="item group-handler" sec:authorize="hasAnyRole('CLIENTE', 'COLABORADOR', 'ADMIN')">
-            <a class="icono">
-                <span>Menu</span>
-            </a>
-
-            <div hidden class="group">
-                <div class="window"></div>
-
-                <div class="list" th:redirect="@{/proyecto/registrar}">
-                    <a>Nuevo Proyecto</a>
-                </div>
-                <div class="list" th:redirect="@{/tarea/registrar}">
-                    <a>Nueva Tarea</a>
-                </div>
-                <div class="list" th:redirect="@{/admin/usuarios}">
-                    <a>Lista Usuarios</a>
-                </div>
-                
-            </div>
-        </div>
-
-
-
-
-
     </div>
 
     <div class="middle-list">
