@@ -21,12 +21,15 @@
                 U
             </div>
         </div>
-        <div hidden class="home dropdown-handler">
+        <div hidden th:class="${usuariosession != null} ? 'home dropdown-handler' : 'home'" th:redirect="${usuariosession == null} ? '/'">
             <div class="box">
                 P
             </div>
 
-            <div hidden class="dropdown" style="margin-top: 2rem;">
+            <div hidden class="dropdown" style="margin-top: 2rem;" sec:authorize="hasAnyRole('ADMIN', 'VISITA', 'CLIENTE', 'COLABORADOR')">
+                <div class="groups" th:redirect="${usuariosession != null}?@{'/inicio'} : @{'/'}">
+                    Inicio
+                </div>
                 <div class="groups group-handler" sec:authorize="hasAnyRole('ADMIN')">
                     <a class="icono">
                         <span>Menu</span>

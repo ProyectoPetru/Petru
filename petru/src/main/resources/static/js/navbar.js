@@ -62,7 +62,7 @@ document.addEventListener("click", (e) => {
         &&
         groups.filter(group => !group.hidden).length == 0
         &&
-        agregarProyecto.querySelector("form").hidden
+        agregarProyecto?.querySelector("form").hidden
         &&
         document.querySelector("#navbar").querySelector(".fondo").hidden) {
         return
@@ -76,7 +76,7 @@ document.addEventListener("click", (e) => {
     if (e.target.closest(".group-handler") == null) {
         groups.map(group => group.hidden = true)
     }
-    if (e.target.closest(".agregar-proyecto") == null) {
+    if (e.target.closest(".agregar-proyecto") == null && agregarProyecto != null) {
         agregarProyecto.querySelector("svg").classList.remove("hidden")
         agregarProyecto.querySelector("form").hidden = true
     }
@@ -89,7 +89,7 @@ redirects.map(redirect => {
 })
 
 dropdowns.map(dropdown => {
-    dropdown.parentNode.querySelector(":nth-child(1)").addEventListener("click", () => {
+    dropdown.parentNode.addEventListener("click", () => {
         dropdowns.map(dropdown => dropdown.hidden = true)
         dropdown.hidden = false
     })
