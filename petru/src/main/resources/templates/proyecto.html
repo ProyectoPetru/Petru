@@ -51,8 +51,8 @@
             </div>
         </div>
         <div id="proyecto" th:proyecto="${proyecto.id}" th:rol="${usuariosession.rol.name()}">
-            <div class="calendario">
-                <img src="/img/calendario.jpg" width="300rem" alt="calendario">
+            <div class="calendario" style="width: 80%; height: 80%; overflow-y: auto">
+                <div th:replace="/fragments/calendario.html :: div"></div>
             </div>
             <div class="contenedor">
                 <div class="pendientes">

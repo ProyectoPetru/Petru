@@ -155,7 +155,7 @@ main>:nth-child(1) .usuarios form input::placeholder {
 
 #proyecto {
     display: grid;
-    grid-template-columns: 2fr 10fr;
+    grid-template-columns: 4fr 8fr;
     margin: 0 0 0 0;
 }
 
