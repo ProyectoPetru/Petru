@@ -365,7 +365,7 @@
                 <h5></h5>
                 <div class="row">
                     <div class="column">
-                        <h4> Volumen de clientes por Agente</h4>
+                        <h4> Volumen de Proyectos por Agente</h4>
                         <div style="margin: 20px;">
                             <canvas id="myChart1" width="350" height="300"></canvas>
                         </div>
@@ -446,9 +446,17 @@
 
     <!-- Scripts de los gráficos -->
     <script th:inline="javascript">
-        var data = /*[[${usuariosession.nombre}]]*/ [];
-        const xValues1 = [data , "Agente2", "Agente3", "Agente4", "Agente5"];
-        const yValues1 = [55, 49, 44, 24, 15];
+        var xValues1 =  [];
+        var yValues1 = [];
+        var temp = /*[[${usuariosProyecto}]]*/ [];
+        for (var i = 0; i < temp.length; i++) {
+            xValues1.push(temp[i].nombre);
+            yValues1.push(temp[i].dato);
+        }
+
+        /*[[${usuariosProyecto}]]*/
+        /*const xValues1 = ["Agente1", "Agente2", "Agente3", "Agente4", "Agente5"]  */
+        /*const yValues1 = [55, 49, 44, 24, 15];*/
         const barColors1 = ["#FFB84C", "#F266AB", "#A459D1", "#2CD3E1", "#219C90"];
 
         new Chart("myChart1", {

@@ -9,11 +9,13 @@ package com.grupop.petru.controladores;
  *           Salvador Caldarella - Sebastián A. Petrini
  */
 
+import com.grupop.petru.entidades.ListasDashboard;
 import com.grupop.petru.entidades.Usuario;
 import com.grupop.petru.entidades.Usuario;
 import com.grupop.petru.enumeraciones.Rol;
 import com.grupop.petru.excepciones.MiException;
 import com.grupop.petru.servicios.UsuarioServicio;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +50,12 @@ public class AdminControlador {
     @GetMapping("/dashboard")
     public String panelAdmin(HttpSession session, ModelMap modelo) {
         cargarModelo(modelo, session);
+        
+        List<ListasDashboard> usuariosProyecto = usuarioServicio.listarUsuariosProyecto();
+        for(ListasDashboard lista : usuariosProyecto){
+            System.out.println(lista.getNombre() + " " + lista.getDato());
+        }
+        modelo.addAttribute("usuariosProyecto", usuariosProyecto);
 
         return "dashNueva.html";
     }

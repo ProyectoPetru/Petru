@@ -10,6 +10,7 @@ package com.grupop.petru.servicios;
  */
 
 import com.grupop.petru.entidades.Imagen;
+import com.grupop.petru.entidades.ListasDashboard;
 import com.grupop.petru.entidades.Token;
 import com.grupop.petru.entidades.Usuario;
 import com.grupop.petru.enumeraciones.Rol;
@@ -270,6 +271,25 @@ public class UsuarioServicio implements UserDetailsService {
         List<Usuario> usuarios = new ArrayList();
         usuarios = usuarioRepositorio.findAll();
         return usuarios;
+    }
+
+    @Transactional(readOnly = true)
+    public List<String> listarUsuariosNombre() {
+        List<String> usuarios = new ArrayList();
+        usuarios = usuarioRepositorio.listaNombre();
+        return usuarios;
+    }
+    
+    @Transactional(readOnly = true)
+    public List<ListasDashboard> listarUsuariosProyecto() {
+        List<String> usuariosProyecto1 = usuarioRepositorio.listaUsuariosProyecto1();
+        List<Long> usuariosProyecto2 = usuarioRepositorio.listaUsuariosProyecto2();
+        List<ListasDashboard> lista = new ArrayList();
+        for (int i = 0; i < usuariosProyecto1.size(); i++) {
+            ListasDashboard obj = new ListasDashboard(usuariosProyecto1.get(i), usuariosProyecto2.get(i));
+            lista.add(obj);
+        }
+        return lista;
     }
 
     @Transactional(readOnly = true)
