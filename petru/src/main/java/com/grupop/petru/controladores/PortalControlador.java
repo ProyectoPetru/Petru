@@ -278,7 +278,8 @@ public class PortalControlador {
 
     @PostMapping("/perfil/cambiar-clave/{idToken}")
     public String cambioClave(ModelMap modelo, HttpSession session, HttpServletRequest request,
-            @PathVariable String idToken, @RequestParam String clave, @RequestParam String clave2, @RequestParam MultipartFile archivo) {
+            @PathVariable String idToken, @RequestParam String clave, @RequestParam String clave2,
+            @RequestParam MultipartFile archivo) {
         Usuario logueado = cargarModelo(modelo, session);
 
         if (logueado != null) {
@@ -293,7 +294,8 @@ public class PortalControlador {
             Usuario usuario = usuarioServicio.getByToken(idToken);
             usuarioServicio.inhabilitarToken(idToken);
 
-            usuarioServicio.modificarUsuario(archivo, usuario.getId(), usuario.getNombre(), usuario.getEmail(), clave, clave2, usuario.getTelefono(), usuario.getDescripcion());
+            usuarioServicio.modificarUsuario(archivo, usuario.getId(), usuario.getNombre(), usuario.getEmail(), clave,
+                    clave2, usuario.getTelefono(), usuario.getDescripcion());
 
             session.setAttribute("exito", "Clave modificada con exito!");
 
@@ -418,5 +420,26 @@ public class PortalControlador {
 
             return "redirect:/";
         }
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+    @PostMapping("/usuario/modificar")
+    public String usuarioModificar(ModelMap modelo, HttpSession session, HttpServletRequest request,
+            @RequestParam String id, @RequestParam String nombre, @RequestParam Long telefono,
+            @RequestParam String email, @RequestParam String rol, @RequestParam(required = false) Boolean baja) {
+        try {
+            if (baja == null) {
+                baja = false;
+            }
+
+            usuarioServicio.modificarUsuario(id, nombre, email, telefono, baja, rol);
+
+            session.setAttribute("exito", "Usuario actualizado con exito");
+        } catch (MiException e) {
+            session.setAttribute("error", e.getMessage());
+        }
+
+        String referer = request.getHeader("Referer");
+        return "redirect:" + referer;
     }
 }

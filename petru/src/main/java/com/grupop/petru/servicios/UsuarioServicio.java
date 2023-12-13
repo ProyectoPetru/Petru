@@ -90,7 +90,7 @@ public class UsuarioServicio implements UserDetailsService {
             String clave2,
             Long telefono, String descripcion) throws MiException {
         validar(nombre, email, clave, clave2, telefono);
-        
+
         Optional<Usuario> respuesta = usuarioRepositorio.findById(idUsuario);
         if (respuesta.isPresent()) {
             Usuario usuario = respuesta.get();
@@ -149,6 +149,31 @@ public class UsuarioServicio implements UserDetailsService {
             System.err.println(e.getMessage());
         }
         return null;
+    }
+
+    @Transactional
+    public Usuario modificarUsuario(String id, String nombre, String email, Long telefono, Boolean baja, String rol) throws MiException {
+        Usuario usuario = usuarioRepositorio.getOne(id);
+
+        if (usuario == null) {
+            throw new MiException("Usuario no encontrado");
+        }
+
+        usuario.setNombre(nombre);
+        usuario.setEmail(email);
+        usuario.setTelefono(telefono);
+        usuario.setBaja(baja);
+        if (rol.equals("ADMIN")) {
+            usuario.setRol(Rol.ADMIN);
+        } else if (rol.equals("COLABORADOR")) {
+            usuario.setRol(Rol.COLABORADOR);
+        } else if (rol.equals("CLIENTE")) {
+            usuario.setRol(Rol.CLIENTE);
+        } else if (rol.equals("VISITA")) {
+            usuario.setRol(Rol.VISITA);
+        }
+
+        return usuarioRepositorio.save(usuario);
     }
 
     // ALTA Y BAJA DE USUARIO

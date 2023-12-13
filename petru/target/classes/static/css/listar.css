@@ -1,0 +1,79 @@
+main>div {
+    margin: 5rem 5% 0 5%;
+    width: calc(100% - (5% + 5%));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main>div>div {
+    overflow: auto;
+    width: 100%;
+    min-height: 1rem;
+    max-height: 40rem;
+    text-align: center;
+}
+
+main>div>div>table {
+    margin: 0 auto;
+}
+
+main>div>div tr>th:nth-child(2) {
+    border-radius: .5rem 0 0 .5rem;
+}
+
+main>div>div tr>th:last-child  {
+    border-radius: 0 .5rem .5rem 0;
+}
+
+main>div>div tr>th {
+    background: var(--background);
+    filter: brightness(80%);
+}
+
+main>div>div td, th {
+    padding: .25rem .5rem .25rem .5rem;
+}
+
+main>div>div td input {
+    padding: .5rem 1rem .5rem 1rem;
+    font-size: 1rem;
+    border: none;
+    width: 12rem;
+    color: var(--text);
+    background: none;
+}
+
+main>div>div td select {
+    padding: .5rem 1rem .5rem 1rem;
+    font-size: 1rem;
+    border: none;
+    color: var(--text);
+    background: none;
+}
+
+main>div>div td select option {
+    background: var(--background);
+}
+
+main>div>div td input[type=checkbox] {
+    width: 20px;
+    height: 20px;
+}
+
+main>div>div td button {
+    border: none;
+    background: none;
+    color: var(--text);
+    transition: color .4s;
+}
+
+main>div>div td button:hover {
+    color: green;
+    cursor: pointer;
+}
+
+main>div>div tbody>:nth-child(even) {
+    background-color: var(--background);
+    filter: brightness(110%);
+}
