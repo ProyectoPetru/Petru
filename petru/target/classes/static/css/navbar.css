@@ -575,7 +575,7 @@
 @media(max-width: 800px) {
     #navbar {
         margin: 0 5%;
-        width: 90%;
+        width: calc(100% - 10%);
         box-sizing: border-box;
     }
 
