@@ -59,11 +59,76 @@ public class ProyectoControlador {
         session.removeAttribute("error");
         session.removeAttribute("exito");
 
+        if (usuario != null) {
+            modelo.addAttribute("proyectos", proyectoServicio.listarPorUsuario(usuario.getId()));
+        }
         modelo.addAttribute("usuariosession", usuario);
         modelo.put("error", error);
         modelo.put("exito", exito);
 
         return usuario;
+    }
+
+    @GetMapping("")
+    public String proyectos(@RequestParam(required = false) String error, HttpSession session,
+            ModelMap modelo) {
+        cargarModelo(modelo, session);
+
+        List<Proyecto> proyectos = proyectoServicio.listarTodos();
+
+        modelo.addAttribute("proyectos", proyectos);
+
+        return "proyecto/listar.html";
+    }
+
+    @GetMapping("/unirse/{id}")
+    public String unirse(@PathVariable String id, @RequestParam(required = false) String error, HttpSession session,
+            ModelMap modelo) {
+        Usuario usuario = cargarModelo(modelo, session);
+
+        try {        
+            proyectoServicio.invitar(id, usuario.getEmail());
+
+            session.setAttribute("exito", "Se ha unido con exito!");
+
+            return "redirect:/proyecto/" + id;
+        } catch (MiException e) {
+            session.setAttribute("error", e.getMessage());
+        }
+
+        return "redirect:/proyecto";
+    }
+
+    @PostMapping("/buscar")
+    public String buscarUsuario(@RequestParam String busca, @RequestParam String filtro, ModelMap modelo,
+            HttpSession session) {
+        cargarModelo(modelo, session);
+
+        List<Proyecto> proyectos = new ArrayList<Proyecto>();
+        if (filtro.equals("nombre")) {
+            proyectos = proyectoServicio.listarPorNombre(busca);
+        } else if (filtro.equals("notas")) {
+            proyectos = (proyectoServicio.listarPorNotas(busca));
+        }
+        modelo.addAttribute("proyectos", proyectos);
+
+        return "proyecto/listar.html";
+    }
+
+    @PostMapping("/modificar")
+    public String modificar(@RequestParam String id, @RequestParam String nombre, @RequestParam String notas, ModelMap modelo,
+            HttpSession session) {
+        cargarModelo(modelo, session);
+        
+        try {
+            proyectoServicio.modificar(id, nombre, notas);
+
+            session.setAttribute("exito", "Proyecto modificado con exito!");
+        } catch (MiException e) {
+            session.setAttribute("error", e.getMessage());
+        }
+
+        return "redirect:/proyecto";
     }
 
     @GetMapping("/{id}")

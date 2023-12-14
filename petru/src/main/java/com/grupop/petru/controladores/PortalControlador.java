@@ -52,6 +52,9 @@ public class PortalControlador {
         session.removeAttribute("error");
         session.removeAttribute("exito");
 
+        if (usuario != null) {
+            modelo.addAttribute("proyectos", proyectoServicio.listarPorUsuario(usuario.getId()));
+        }
         modelo.addAttribute("usuariosession", usuario);
         modelo.put("error", error);
         modelo.put("exito", exito);
@@ -79,9 +82,7 @@ public class PortalControlador {
 
     @GetMapping("/inicio")
     public String inicio(HttpSession session, ModelMap modelo) {
-        Usuario logueado = cargarModelo(modelo, session);
-
-        modelo.addAttribute("proyectos", proyectoServicio.listarPorUsuario(logueado.getId()));
+        cargarModelo(modelo, session);
 
         return "inicio.html";
     }

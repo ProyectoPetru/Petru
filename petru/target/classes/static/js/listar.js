@@ -5,3 +5,7 @@ const sendUsuList = (e) => {
         document.location = `/mensaje?cuerpo=${str}&destinatario=${email}`
     }
 }
+
+const joinPro = (e) => {
+    document.location = `/proyecto/unirse/${e.target.parentNode.parentNode.querySelector('input[name=id]').value}`
+}

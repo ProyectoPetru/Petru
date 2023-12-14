@@ -128,6 +128,28 @@ public class ProyectoServicio {
         return proyectoRepositorio.buscarPorUsuario(idUsuario);
     }
 
+    @Transactional(readOnly = true)
+    public List<Proyecto> listarPorNombre(String nombre) {
+        return proyectoRepositorio.buscarPorNombre(nombre);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Proyecto> listarPorNotas(String notas) {
+        return proyectoRepositorio.buscarPorNotas(notas);
+    }
+
+    @Transactional
+    public Proyecto modificar(String id, String nombre, String notas) throws MiException {
+        validar(nombre, Visibilidad.PUBLICO);
+
+        Proyecto proyecto = getOne(id);
+
+        proyecto.setNombre(nombre);
+        proyecto.setNotas(notas);
+
+        return proyectoRepositorio.save(proyecto);
+    }
+
     public Proyecto invitar(String id, String email) throws MiException {
         Proyecto proyecto = proyectoRepositorio.getById(id);
 
@@ -135,6 +157,10 @@ public class ProyectoServicio {
             Usuario usuario = usuarioServicio.getByEmail(email);
 
             if (usuario != null) {
+                if (proyecto.getUsuarios().contains(usuario)) {
+                    throw new MiException("Usuario ya agregado");
+                }
+
                 proyecto.addUsuario(usuario);
 
                 return proyectoRepositorio.save(proyecto);

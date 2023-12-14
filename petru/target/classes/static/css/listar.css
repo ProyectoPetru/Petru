@@ -7,10 +7,8 @@ main>div {
 }
 
 main>div>div {
-    overflow: auto;
+    overflow-x: auto;
     width: 100%;
-    min-height: 1rem;
-    max-height: 40rem;
     text-align: center;
 }
 
@@ -93,12 +91,22 @@ main>div>div td input[type=checkbox] {
     height: 20px;
 }
 
+main>div>div td textarea {
+    border: none;
+    min-height: 2rem;
+    max-height: 10rem;
+    min-width: 10rem;
+    max-width: 10rem;
+    color: var(--text);
+    background: none;
+}
+
 main>div>div tbody td:last-child {
     display: flex;
 }
 
 main>div>div td svg {
-    margin: 0 .5rem 0 .5rem;
+    margin: 0 auto;
     transition: filter .4s;
 }
 
@@ -118,6 +126,7 @@ main>div>div td button {
     background: none;
     color: var(--text);
     transition: color .4s;
+    margin: 0 auto;
 }
 
 main>div>div td button:hover {

@@ -14,6 +14,7 @@ import com.grupop.petru.entidades.Usuario;
 import com.grupop.petru.entidades.Usuario;
 import com.grupop.petru.enumeraciones.Rol;
 import com.grupop.petru.excepciones.MiException;
+import com.grupop.petru.servicios.ProyectoServicio;
 import com.grupop.petru.servicios.UsuarioServicio;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,8 @@ public class AdminControlador {
 
     @Autowired
     private UsuarioServicio usuarioServicio;
+    @Autowired
+    private ProyectoServicio proyectoServicio;
 
     private Usuario cargarModelo(ModelMap modelo, HttpSession session) {
         Usuario usuario = (Usuario) session.getAttribute("usuariosession");
@@ -41,6 +44,9 @@ public class AdminControlador {
         session.removeAttribute("error");
         session.removeAttribute("exito");
 
+        if (usuario != null) {
+            modelo.addAttribute("proyectos", proyectoServicio.listarPorUsuario(usuario.getId()));
+        }
         modelo.addAttribute("usuariosession", usuario);
         modelo.put("error", error);
         modelo.put("exito", exito);

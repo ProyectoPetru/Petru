@@ -17,6 +17,7 @@ import com.grupop.petru.entidades.Usuario;
 import com.grupop.petru.enumeraciones.Rol;
 import com.grupop.petru.excepciones.MiException;
 import com.grupop.petru.servicios.ComentarioServicio;
+import com.grupop.petru.servicios.ProyectoServicio;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,6 +35,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class ComentarioControlador {
     @Autowired
     private ComentarioServicio comentarioServicio;
+    @Autowired
+    private ProyectoServicio proyectoServicio;
 
     private Usuario cargarModelo(ModelMap modelo, HttpSession session) {
         Usuario usuario = (Usuario) session.getAttribute("usuariosession");
@@ -42,6 +45,9 @@ public class ComentarioControlador {
         session.removeAttribute("error");
         session.removeAttribute("exito");
 
+        if (usuario != null) {
+            modelo.addAttribute("proyectos", proyectoServicio.listarPorUsuario(usuario.getId()));
+        }
         modelo.addAttribute("usuariosession", usuario);
         modelo.put("error", error);
         modelo.put("exito", exito);

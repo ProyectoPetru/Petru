@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" xlmns:th="https://thymeleaf.org/"
+    xlmns:sec="https://thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/img/logo.png" type="image/x-icon">
+    <title>Proyectos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Montserrat&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/listar.css">
+</head>
+
+<body>
+    <nav th:replace="fragments/navbar.html :: nav"></nav>
+
+    <main>
+        <div>
+            <h1>Lista de Proyectos</h1>
+            <div>
+                <br>
+                <form th:action="@{/proyecto/buscar}" method="post">
+                    <input type="text" name="busca" placeholder="Busqueda">
+                    <select name="filtro">
+                        <option value="nombre">Nombre</option>
+                        <option value="notas">Notas</option>
+                    </select>
+                    <button type="submit">Buscar</button>
+                </form>
+                <table>
+                    <thead>
+                        <tr>
+                            <th hidden scope="col">id</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Notas</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="proyecto : ${proyectos}">
+                            <form action="/proyecto/modificar" method="post">
+                                <td hidden scope="row"><input type="text" th:value="${proyecto.id}" name="id"></td>
+                                <td><input th:disabled="${usuariosession.rol.name() != 'ADMIN'}" type="text" th:value="${proyecto.nombre}" name="nombre"></td>
+                                <td><textarea th:disabled="${usuariosession.rol.name() != 'ADMIN'}" th:text="${proyecto.notas}" name="notas"></textarea></td>
+                                <td><svg onclick="joinPro(event)" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                                        <path fill="currentColor"
+                                            d="M12 3.25a.75.75 0 0 0 0 1.5a7.25 7.25 0 1 1 0 14.5a.75.75 0 0 0 0 1.5a8.75 8.75 0 1 0 0-17.5" />
+                                        <path fill="currentColor"
+                                            d="M10.47 9.53a.75.75 0 0 1 1.06-1.06l3 3a.75.75 0 0 1 0 1.06l-3 3a.75.75 0 1 1-1.06-1.06l1.72-1.72H4a.75.75 0 0 1 0-1.5h8.19z" />
+                                    </svg><button sec:authorize="hasRole('ADMIN')" type="submit">✔</button></td>
+                            </form>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <alert th:replace="fragments/alertas.html"></alert>
+
+    <script src="/js/listar.js"></script>
+    <script src="/js/index.js"></script>
+</body>
+
+</html>

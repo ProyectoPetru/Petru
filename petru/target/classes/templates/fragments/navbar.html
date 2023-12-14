@@ -99,6 +99,9 @@
 
             <div hidden class="group">
                 <div class="window"></div>
+                <div class="list" th:redirect="@{/proyecto}">
+                    <a>Lista</a>
+                </div>
                 <div class="list" th:each="proyecto : ${proyectos}" th:redirect="@{/proyecto/__${proyecto.id}__}">
                     <a th:text="${proyecto.nombre}"></a>
                 </div>

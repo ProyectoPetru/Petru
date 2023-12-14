@@ -49,6 +49,9 @@ public class TareaControlador {
         session.removeAttribute("error");
         session.removeAttribute("exito");
 
+        if (usuario != null) {
+            modelo.addAttribute("proyectos", proyectoServicio.listarPorUsuario(usuario.getId()));
+        }
         modelo.addAttribute("usuariosession", usuario);
         modelo.put("error", error);
         modelo.put("exito", exito);

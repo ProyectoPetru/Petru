@@ -311,12 +311,11 @@
     border-radius: 0 0 .5rem .5rem;
 }
 
-
-
 #navbar .dropdown .groups {
     background: var(--secondary);
     padding: .5rem 1rem;
     transition: filter .4s;
+    border-radius: .5rem;
 }
 
 #navbar .dropdown .list {
