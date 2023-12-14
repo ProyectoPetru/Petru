@@ -30,67 +30,30 @@ las tareas que se encuentran sin realizar, visualizar en qué está trabajando c
 ● Diagrama UML de entidades
 
 ## Funcionalidades
-#### Para el perfil de VISITA:
-* Página de Inicio:Acceso a la página de inicio para obtener información sobre los servicios ofrecidos y la posibilidad de registrarse como usuario.
-#### Para el perfil de ADMIN:
-**Gestión de Proyectos:**
-* Agregar, editar y eliminar proyectos.
-* Cambiar el estado de los proyectos (en progreso, completado, etc.).
-* Asignar agentes a proyectos.
-#### Gestión de Agentes:
-* Crear cuentas de agentes.
-* Eliminar cuentas de agentes.
-#### Dashboard General:
-* Visualización del estado general de los proyectos.
-* Filtros por empresa o tipo de proyecto.
-* Acceso rápido a proyectos individuales desde el dashboard.
-### Para el perfil de AGENTE:
-#### Gestión de Perfil:
-* Acceso y modificación del perfil personal.
-* Gestión del bloque de notas y lista de tareas (to-do).
-#### Gestión de Proyectos:
-* Crear, editar y dar de baja proyectos.
-* Cargar reuniones a los proyectos.
-* Visualizar el avance de los proyectos asignados.
-* Aceptar proyectos sin agente asignado.
-#### Visualización de Proyectos:
-Ver todos los proyectos y su progreso.
-Restricciones para modificar o dar de baja proyectos no asignados.
-### Para el perfil de CLIENTE:
-#### Gestión de Perfil:
-* Acceso y modificación del perfil personal.
-#### Visualización de Encargos:
-*Ver detalles de los proyectos asociados, como responsables, fechas de entrega y próximas reuniones.
-#### Registro y Asociación:
-* Registro como nuevo cliente.
-* Visualización de proyectos una vez que se asocian a su perfil.
+**Perfil VISITA**
+>Página de Inicio:
+>>Acceso a la página de inicio para obtener información sobre los servicios ofrecidos y la posibilidad de registrarse como usuario.
 
+**Perfil ADMIN**
+>Gestión de Proyectos
 
-● El ADMIN puede agregar proyectos, modificarlos y eliminarlos. Puede cambiar
-el estado de los proyectos. Puede asignar a agentes al proyecto. Puede visualizar
-el dashboard general. Puede crear cuentas de agentes y eliminarlas.
+>>Agregar, editar y eliminar proyectos. Cambiar el estado de los proyectos (en progreso, completado, etc.). Asignar agentes a proyectos.
 
-● El dashboard general de la empresa donde se ve el estado de los proyectos y
-los colaboradores asociados. Se puede filtrar por empresa o tipo de proyecto.
-Al hacer click se puede acceder a los proyectos individuales. Los agentes
-colaboradores de proyecto pueden cambiar el estado del proyecto.
+>Gestión de Agentes
+>>Crear cuentas de agentes. Eliminar cuentas de agentes.
 
-● El AGENTE puede acceder a su perfil y modificarlo. Cargar reuniones al
-proyecto y estas pueden ser visualizadas por el cliente. Cargar proyectos,
-modificarlos y darles de baja. El agente puede aceptar proyectos ya creados
-sin agente asignado. Puede visualizar todos los proyectos y su avance, pero
-no puede modificarlos ni darles de baja si no son propios.
+>Dashboard General
+>>Visualización del estado general de los proyectos. Filtros por empresa o tipo de proyecto. Acceso rápido a proyectos individuales desde el dashboard.
 
-● Cada AGENTE deberá tener un block de notas y to-do.
+**Perfil AGENTE**
+>Gestión de Perfil
+>>Acceso y modificación del perfil personal. Gestión del bloque de notas y lista de tareas (to-do).
 
-● El CLIENTE no puede cargar proyectos, solamente puede entrar a su perfil,
-modificar datos de contacto, visualizar sus encargos con datos como quién
-está a cargo del proyecto y acceder a su perfil para contactarlo, fecha de
-entrega y fecha de reuniones próximas.
+>Gestión de Proyecto
+>>Crear, editar y dar de baja proyectos.Cargar reuniones a los proyectos.Visualizar el avance de los proyectos asignados.Aceptar proyectos sin agente asignado.
 
-● Un CLIENTE puede registrarse como nuevo cliente, acceder a su perfil y
-modificar sus datos, pero no podrá ver proyectos cargados a menos que se los
-asocie a estos.
+>Visualización de Proyectos
+>>Ver todos los proyectos y su progreso.Restricciones para modificar o dar de baja proyectos no asignados.
 
 ## Diagrama UML
 
