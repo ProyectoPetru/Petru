@@ -13,9 +13,12 @@ import com.grupop.petru.entidades.Imagen;
 import com.grupop.petru.excepciones.MiException;
 import com.grupop.petru.repositorios.ImagenRepositorio;
 
+import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,28 +49,31 @@ public class ImagenServicio {
             }
         }
 
-        InputStream inputStream = ClassLoader.getSystemResourceAsStream(url + "/img/user.png");
-        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-
-        int nRead;
-        byte[] data = new byte[1024];
-
         try {
+            URL url = new URL(this.url + "/img/user.png");
+
+            InputStream inputStream = new BufferedInputStream(url.openStream());
+
+            ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+
+            int nRead;
+            byte[] data = new byte[1024];
+
             while ((nRead = inputStream.read(data, 0, data.length)) != -1) {
                 buffer.write(data, 0, nRead);
             }
 
             buffer.flush();
+
+            Imagen imagen = new Imagen();
+            imagen.setNombre("user");
+            imagen.setTipo("image/png");
+            imagen.setContenido(buffer.toByteArray());
+            return imagenRepositorio.save(imagen);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
-        Imagen imagen = new Imagen();
-        imagen.setNombre("user");
-        imagen.setTipo("image/png");
-        imagen.setContenido(buffer.toByteArray());
-        return imagenRepositorio.save(imagen);
+        return null;
     }
 
     @Transactional
@@ -122,7 +128,7 @@ public class ImagenServicio {
         if (imagen.isPresent()) {
             return imagen.get();
         }
-        
+
         throw new MiException("Imagen no encontrada");
     }
 
