@@ -88,8 +88,6 @@ JavaScript [![My Skills](https://skillicons.dev/icons?i=js)](https://skillicons.
 
 ´´
 
-
-
 ## Integrantes Equipo Petrus
 <a href="https://github.com/ProyectoPetru/Petru/graphs/contributors" alt="Contributors">
         <img src="https://img.shields.io/github/contributors/ProyectoPetru/Petru" /></a>
