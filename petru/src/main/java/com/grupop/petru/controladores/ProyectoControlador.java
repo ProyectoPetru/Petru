@@ -94,9 +94,9 @@ public class ProyectoControlador {
             return "redirect:/proyecto/" + id;
         } catch (MiException e) {
             session.setAttribute("error", e.getMessage());
-        }
 
-        return "redirect:/proyecto";
+            return "redirect:/proyecto/" + id;
+        }
     }
 
     @PostMapping("/buscar")
@@ -186,7 +186,7 @@ public class ProyectoControlador {
     }
 
 
-    @PostMapping("/buscar")
+    @PostMapping("/busqueda")
     public String busca_proyecto(@RequestParam String busca, HttpSession session, ModelMap modelo) {
         
         cargarModelo(modelo, session);
