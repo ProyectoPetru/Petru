@@ -27,8 +27,7 @@ main>div>div tr>th:last-child  {
 }
 
 main>div>div tr>th {
-    background: var(--background);
-    filter: brightness(80%);
+    background: var(--secondary);
 }
 
 main>div>div td, th {
