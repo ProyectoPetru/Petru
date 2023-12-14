@@ -19,6 +19,7 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,6 +29,8 @@ public class ImagenServicio {
 
     @Autowired
     private ImagenRepositorio imagenRepositorio;
+    @Value("${spring.page.url}")
+    private String url;
 
     @Transactional
     public Imagen guardar(MultipartFile archivo) throws MiException {
@@ -43,7 +46,7 @@ public class ImagenServicio {
             }
         }
 
-        InputStream inputStream = ClassLoader.getSystemResourceAsStream("static/img/user.png");
+        InputStream inputStream = ClassLoader.getSystemResourceAsStream(url + "/img/user.png");
         ByteArrayOutputStream buffer = new ByteArrayOutputStream();
 
         int nRead;
