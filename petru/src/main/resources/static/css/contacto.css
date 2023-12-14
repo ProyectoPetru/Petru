@@ -2,7 +2,7 @@
     margin: 5rem 2rem 5rem 2rem;
     display: flex;
     justify-content: space-around;
-    
+
 }
 
 .formulario-container form {
@@ -35,42 +35,34 @@
     }
 }
 
-@media(max-width: 1000px) {
-    .formulario-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .formulario-container .info-form {
-        width: 30rem;
-        margin: 0 0 4rem 0;
-    }
-}
-
 .indice-contacto {
     padding-top: 15px;
     padding-left: 42%;
-    margin-top: 35px;
+    margin-top: 50px;
     margin-bottom: 0px;
     animation: fadeIn-index 0.4s ease;
     display: flex;
 }
-@keyframes fadeIn-index{
+
+@keyframes fadeIn-index {
     0% {
         opacity: 0;
         transform: translateY(-10rem);
     }
+
     25% {
         opacity: 0;
     }
+
     50% {
         opacity: 0.5;
         transform: translateY(0.8rem);
     }
+
     75% {
         opacity: 0.5;
     }
+
     100% {
         opacity: 1;
         transform: translatey(0rem);
@@ -188,55 +180,67 @@
     cursor: pointer;
     background-color: green;
 }
-.info-form satelital{
+
+.info-form satelital {
     padding-left: 30%;
     max-width: 50px;
     min-width: none;
     max-height: 50px;
     min-height: none;
 }
-.info-form p{
+
+.info-form p {
     display: flex;
     align-items: center;
 }
-.info-form mapa{
+
+.info-form mapa {
     animation: fadeIn-Mapa 2s;
 }
-@keyframes fadeIn-Mapa{
-    0%{
+
+@keyframes fadeIn-Mapa {
+    0% {
         transform: translateX(-10rem);
     }
-    50%{
+
+    50% {
         transform: translateX(2rem);
     }
-    100%{
+
+    100% {
         transform: translateX(0);
     }
 }
-.indice-preguntas-frecuentes{
+
+.indice-preguntas-frecuentes {
     display: flex;
     justify-content: space-around;
     animation: fadeIn-index 3s ease;
 }
-.preguntas-frecuentes{
+
+.preguntas-frecuentes {
     display: flex;
     justify-content: center;
 }
-.preguntas-frecuentes a:hover{
+
+.preguntas-frecuentes a:hover {
     position: relative;
-  animation: shine 0.4s forwards;
+    animation: shine 0.4s forwards;
 }
-@keyframes shine{
-    to{
+
+@keyframes shine {
+    to {
         background-color: darkorange;
         background-size: 200% 100%;
         background-position: -100% 0;
     }
 }
-.preguntas-frecuentes h1{
+
+.preguntas-frecuentes h1 {
     margin-top: 10px;
 }
-.preguntas-frecuentes .barra1{
+
+.preguntas-frecuentes .barra1 {
     text-align: center;
     margin-top: 20px;
     display: flex;
@@ -245,7 +249,8 @@
     margin-right: 10%;
     animation: fadeIn-Barras 4s ease;
 }
-.preguntas-frecuentes .barra2{
+
+.preguntas-frecuentes .barra2 {
     text-align: center;
     margin-top: 20px;
     display: flex;
@@ -254,51 +259,94 @@
     margin-left: 10%;
     animation: fadeIn-Barras 4s ease;
 }
-@keyframes fadeIn-Barras{
+
+@keyframes fadeIn-Barras {
     0% {
         opacity: 0;
-        }
+    }
+
     25% {
         opacity: 0;
     }
+
     50% {
         opacity: 0;
     }
+
     75% {
         opacity: 0.5;
     }
+
     100% {
         opacity: 1;
     }
 }
-.barra1 h2{
-    margin-top: 8px;
 
+@media(max-width: 1000px) {
+    .indice-contacto {
+        animation: fadeIn-index 0.4s ease;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    .formulario-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 5rem 0 0 0;
+        width: 90%;
+    }
+
+    .formulario-container .mapa iframe{
+        width: 15rem;
+    }
+
+    .formulario-container form{
+        align-items: center;
+    }
+
+    .formulario-container input{
+        width: 90%;
+    }
+
+    .formulario-container form textarea{
+        min-width: 90%;
+        max-width: 90%;
+    }
+
+    .formulario-container form button[type=submit] {
+        width: 90%;
+    }
+
+    .formulario-container .info-form {
+        width: 15rem;
+        margin: 0 0 0 0;
+    }
+
+    .indice-preguntas-frecuentes {
+        width: 90%;
+    }
+
+    .preguntas-frecuentes {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        width: 90%;
+    }
+
+    .preguntas-frecuentes .barra1 {
+        width: 80%;
+        margin-right: 0;
+        animation: fadeIn-Barras 4s ease;
+    }
     
-}
-.barra2 h2{
-    margin-top: 8px;
-
-}
-.barra1 h3{
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: 5px;
-}
-.barra2 h3{
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: 5px;
-}
-.barra1 p{
-    width: 400px;
-    text-align: center;
-    margin-top: 1px;
-    margin: 2px;
-}
-.barra2 p{
-    width: 400px;
-    text-align: center;
-    margin-top: 1px;
-    margin: 5px;
+    .preguntas-frecuentes .barra2 {
+        width: 80%;
+        margin-left: 0;
+        animation: fadeIn-Barras 4s ease;
+    }
 }
