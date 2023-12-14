@@ -19,3 +19,7 @@
 .container.mt-5 {
     width: 50%;
 }
+
+.fc-unthemed td.fc-today {
+    background: #80722b;
+}

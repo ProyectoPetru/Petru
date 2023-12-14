@@ -1,3 +1,7 @@
+main {
+    color: var(--text);
+}
+
 main>:nth-child(1) {
     background: var(--secondary);
     padding: 5rem 0 1.5rem 0;
@@ -156,18 +160,18 @@ main>:nth-child(1) .usuarios form input::placeholder {
 #proyecto {
     display: grid;
     grid-template-columns: 4fr 8fr;
+    background: var(--background);
+    justify-items: center;
     margin: 0 0 0 0;
 }
 
 #proyecto .calendario {
-    width: 20rem;
     height: 20rem;
     display: flex;
     justify-content: center;
     align-items: center;
     filter: contrast(80%);
-    background: var(--background);
-    margin: 2rem 2rem 0 2rem;
+    margin: 0 0 0 0;
 }
 
 #proyecto .calendario img {
