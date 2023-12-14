@@ -150,6 +150,10 @@ public class ProyectoServicio {
         return proyectoRepositorio.save(proyecto);
     }
 
+    public List<Proyecto> listarPorBusqueda(String nombre) {
+        return proyectoRepositorio.buscarPorNombre(nombre);
+    }
+
     public Proyecto invitar(String id, String email) throws MiException {
         Proyecto proyecto = proyectoRepositorio.getById(id);
 
