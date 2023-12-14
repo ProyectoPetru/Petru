@@ -1,5 +1,4 @@
 
-
 package com.grupop.petru.excepciones;
 
 /**

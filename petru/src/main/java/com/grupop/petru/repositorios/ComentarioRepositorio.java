@@ -1,9 +1,6 @@
 
 package com.grupop.petru.repositorios;
 
-import com.grupop.petru.entidades.Comentario;
-import com.grupop.petru.entidades.Tarea;
-
 /**
  *
  * @authors  Nahiara Denice Alegre - Matias Quispe - Juan Pablo Pontini
@@ -12,6 +9,8 @@ import com.grupop.petru.entidades.Tarea;
  *           Salvador Caldarella - Sebastián A. Petrini
  */
 
+import com.grupop.petru.entidades.Comentario;
+import com.grupop.petru.entidades.Tarea;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

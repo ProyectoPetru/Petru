@@ -1,5 +1,4 @@
 
-
 package com.grupop.petru.enumeraciones;
 
 /**
@@ -9,7 +8,6 @@ package com.grupop.petru.enumeraciones;
  *           Manuel Dominich Martinez - Maximo Carbonetti
  *           Salvador Caldarella - Sebastián A. Petrini
  */
-
 
 public enum Rol {
    VISITA,

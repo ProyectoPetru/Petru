@@ -1,7 +1,6 @@
 
 package com.grupop.petru.entidades;
 
-
 /**
  *
  * @authors  Nahiara Denice Alegre - Matias Quispe - Juan Pablo Pontini
@@ -9,8 +8,6 @@ package com.grupop.petru.entidades;
  *           Manuel Dominich Martinez - Maximo Carbonetti
  *           Salvador Caldarella - Sebastián A. Petrini
  */
-
-
 
 public class ListasDashboard {
     private String nombre;

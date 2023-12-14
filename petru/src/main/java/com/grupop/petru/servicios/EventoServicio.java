@@ -1,16 +1,23 @@
+
 package com.grupop.petru.servicios;
+
+/**
+ *
+ * @authors  Nahiara Denice Alegre - Matias Quispe - Juan Pablo Pontini
+ *           Flavio Romero Averna - Dario Litterio - Cecilia Alsina
+ *           Manuel Dominich Martinez - Maximo Carbonetti
+ *           Salvador Caldarella - Sebastián A. Petrini
+ */
 
 import com.grupop.petru.entidades.Evento;
 import com.grupop.petru.entidades.Proyecto;
 import com.grupop.petru.excepciones.MiException;
 import com.grupop.petru.repositorios.EventoRepositorio;
-
 import com.grupop.petru.repositorios.ProyectoRepositorio;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

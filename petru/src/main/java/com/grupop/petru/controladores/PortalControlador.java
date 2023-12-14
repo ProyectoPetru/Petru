@@ -1,8 +1,6 @@
 
 package com.grupop.petru.controladores;
 
-import com.grupop.petru.entidades.Token;
-
 /**
  *
  * @authors  Nahiara Denice Alegre - Matias Quispe - Juan Pablo Pontini
@@ -11,13 +9,13 @@ import com.grupop.petru.entidades.Token;
  *           Salvador Caldarella - Sebastián A. Petrini
  */
 
+import com.grupop.petru.entidades.Token;
 import com.grupop.petru.entidades.Usuario;
 import com.grupop.petru.enumeraciones.Rol;
 import com.grupop.petru.excepciones.MiException;
 import com.grupop.petru.servicios.EmailServicio;
 import com.grupop.petru.servicios.ProyectoServicio;
 import com.grupop.petru.servicios.UsuarioServicio;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;

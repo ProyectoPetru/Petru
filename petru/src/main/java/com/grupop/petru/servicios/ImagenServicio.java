@@ -12,7 +12,6 @@ package com.grupop.petru.servicios;
 import com.grupop.petru.entidades.Imagen;
 import com.grupop.petru.excepciones.MiException;
 import com.grupop.petru.repositorios.ImagenRepositorio;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;

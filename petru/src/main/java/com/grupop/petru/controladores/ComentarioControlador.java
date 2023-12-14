@@ -1,16 +1,22 @@
 
 package com.grupop.petru.controladores;
 
+/**
+ *
+ * @authors  Nahiara Denice Alegre - Matias Quispe - Juan Pablo Pontini
+ *           Flavio Romero Averna - Dario Litterio - Cecilia Alsina
+ *           Manuel Dominich Martinez - Maximo Carbonetti
+ *           Salvador Caldarella - Sebastián A. Petrini
+ */
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.grupop.petru.entidades.Comentario;
 import com.grupop.petru.entidades.Tarea;
 import com.grupop.petru.entidades.Usuario;
@@ -18,17 +24,8 @@ import com.grupop.petru.enumeraciones.Rol;
 import com.grupop.petru.excepciones.MiException;
 import com.grupop.petru.servicios.ComentarioServicio;
 import com.grupop.petru.servicios.ProyectoServicio;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-
-/**
- *
- * @authors Nahiara Denice Alegre - Matias Quispe - Juan Pablo Pontini
- *          Flavio Romero Averna - Dario Litterio - Cecilia Alsina
- *          Manuel Dominich Martinez - Maximo Carbonetti
- *          Salvador Caldarella - Sebastián A. Petrini
- */
 
 @Controller
 @RequestMapping("/comentario") // localhost:8080/comentario
