@@ -19,6 +19,14 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UsuarioRepositorio extends JpaRepository<Usuario, String>{
+    @Query("SELECT u FROM Usuario u WHERE u.telefono LIKE %:telefono%")
+    public List<Usuario> buscarPorTelefono(@Param("telefono") Long telefono);
+
+    @Query("SELECT u FROM Usuario u WHERE u.email LIKE %:email%")
+    public List<Usuario> buscarPorEmails(@Param("email")String email);
+      
+    @Query("SELECT u FROM Usuario u WHERE u.nombre LIKE %:nombre%")
+    public List<Usuario> buscarPorNombre(@Param("nombre")String nombre);
     
     @Query("SELECT u FROM Usuario u WHERE u.email = :email")
     public Usuario buscarPorEmail(@Param("email")String email);
@@ -43,9 +51,6 @@ public interface UsuarioRepositorio extends JpaRepository<Usuario, String>{
                       + "where (u.rol = 'COLABORADOR' or u.rol = 'ADMIN' ) "
                       + "group by u.nombre", nativeQuery = true)
     public List<Long> listaUsuariosProyecto2();
-      
-    @Query("SELECT u FROM Usuario u WHERE lower (u.nombre) LIKE lower(concat('%',:nombre,'%'))")
-    public List<Usuario> buscarPorNombre(@Param("nombre")String nombre);
 
 
 }

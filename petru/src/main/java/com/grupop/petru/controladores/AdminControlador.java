@@ -30,7 +30,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/admin")
 public class AdminControlador {
-    
+
     @Autowired
     private UsuarioServicio usuarioServicio;
 
@@ -51,14 +51,14 @@ public class AdminControlador {
     @GetMapping("/dashboard")
     public String panelAdmin(HttpSession session, ModelMap modelo) {
         cargarModelo(modelo, session);
-        
+
         List<ListasDashboard> usuariosProyecto = usuarioServicio.listarUsuariosProyecto();
-        
+
         modelo.addAttribute("usuariosProyecto", usuariosProyecto);
 
         return "dashNueva.html";
     }
-    
+
     @GetMapping("/usuarios")
     public String listar(ModelMap modelo, HttpSession session) {
         cargarModelo(modelo, session);
@@ -73,34 +73,41 @@ public class AdminControlador {
     public String cambiarRol(@PathVariable String id, HttpSession session) {
         try {
             usuarioServicio.modificarRolUsuario(id);
-            
+
             session.setAttribute("exito", "Rol modificado con exito");
         } catch (MiException e) {
             session.setAttribute("error", e.getMessage());
         }
         return "redirect:/admin/usuarios";
     }
-    
+
     @GetMapping("/modificarBaja/{id}")
     public String cambiarBaja(@PathVariable String id, HttpSession session) {
         try {
-            usuarioServicio.modificarBajaUsuario(id);            
+            usuarioServicio.modificarBajaUsuario(id);
             session.setAttribute("exito", "Estado modificado con exito");
         } catch (MiException e) {
             session.setAttribute("error", e.getMessage());
         }
         return "redirect:/admin/usuarios";
     }
-    
-    @PostMapping("/buscarUsuario")
-    public String buscarUsuario (@RequestParam String nombre, ModelMap modelo, HttpSession session){
+
+    @PostMapping("/usuarios/buscar")
+    public String buscarUsuario(@RequestParam String busca, @RequestParam String filtro, ModelMap modelo,
+            HttpSession session) {
         cargarModelo(modelo, session);
 
-        List<Usuario> usuarios = usuarioServicio.buscarUsuarios(nombre);
+        List<Usuario> usuarios = new ArrayList<Usuario>();
+        if (filtro.equals("nombre")) {
+            usuarios = usuarioServicio.buscarUsuarios(busca);
+        } else if (filtro.equals("email")) {
+            usuarios = (usuarioServicio.getByEmails(busca));
+        } else if (filtro.equals("telefono")) {
+            usuarios = usuarioServicio.getByTelefono(Long.parseLong(busca));
+        }
         modelo.addAttribute("usuarios", usuarios);
 
         return "usuarios/listar.html";
     }
-    
 
 }

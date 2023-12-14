@@ -425,4 +425,14 @@ public class UsuarioServicio implements UserDetailsService {
     public Usuario getByEmail(String email) {
         return usuarioRepositorio.buscarPorEmail(email);
     }
+
+    @Transactional(readOnly = true)
+    public List<Usuario> getByEmails(String email) {
+        return usuarioRepositorio.buscarPorEmails(email);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Usuario> getByTelefono(Long telefono) {
+        return usuarioRepositorio.buscarPorTelefono(telefono);
+    }
 }

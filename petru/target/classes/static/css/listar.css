@@ -52,6 +52,29 @@ main>div>div form input {
     background: none;
 }
 
+main>div>div form select {
+    background: var(--primary);
+    color: var(--text);
+    padding: .5rem .5rem;
+    border-radius: .5rem;
+    border: none;
+}
+
+main>div>div form select:hover {
+    cursor: pointer;
+}
+
+main>div>div form button[type=submit] {
+    background: var(--primary);
+    color: var(--text);
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+    border: none;
+}
+
+main>div>div form button[type=submit]:hover {
+    cursor: pointer;
+}
 
 main>div>div td select {
     padding: .5rem 1rem .5rem 1rem;
