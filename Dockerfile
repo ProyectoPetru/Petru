@@ -1,4 +1,4 @@
-FROM maven:3.1.6 AS build
+FROM maven:3.9.5 AS build
 COPY /petru .
 RUN mvn clean package -DskipTests
 
