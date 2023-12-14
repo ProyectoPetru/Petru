@@ -1,7 +1,14 @@
 package com.grupop.petru.entidades;
 
-import java.util.Date;
+/**
+ *
+ * @authors  Nahiara Denice Alegre - Matias Quispe - Juan Pablo Pontini
+ *           Flavio Romero Averna - Dario Litterio - Cecilia Alsina
+ *           Manuel Dominich Martinez - Maximo Carbonetti
+ *           Salvador Caldarella - Sebastián A. Petrini
+ */
 
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,9 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
 import org.hibernate.annotations.GenericGenerator;
-
 import lombok.Data;
 
 @Entity

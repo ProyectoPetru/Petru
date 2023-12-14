@@ -9,7 +9,6 @@ package com.grupop.petru.entidades;
  *           Salvador Caldarella - Sebastián A. Petrini
  */
 
-
 import com.grupop.petru.enumeraciones.Visibilidad;
 import java.util.Date;
 import java.util.List;

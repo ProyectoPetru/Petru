@@ -1,8 +1,6 @@
 
 package com.grupop.petru.controladores;
 
-import com.grupop.petru.entidades.Tarea;
-
 /**
  *
  * @authors  Nahiara Denice Alegre - Matias Quispe - Juan Pablo Pontini
@@ -11,6 +9,7 @@ import com.grupop.petru.entidades.Tarea;
  *           Salvador Caldarella - Sebastián A. Petrini
  */
 
+import com.grupop.petru.entidades.Tarea;
 import com.grupop.petru.entidades.Usuario;
 import com.grupop.petru.enumeraciones.TipoTarea;
 import com.grupop.petru.enumeraciones.Visibilidad;
@@ -18,7 +17,6 @@ import com.grupop.petru.excepciones.MiException;
 import com.grupop.petru.servicios.ProyectoServicio;
 import com.grupop.petru.servicios.TareaServicio;
 import com.grupop.petru.servicios.UsuarioServicio;
-
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;

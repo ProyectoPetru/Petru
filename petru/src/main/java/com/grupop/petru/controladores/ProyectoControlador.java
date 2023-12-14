@@ -20,15 +20,12 @@ import com.grupop.petru.excepciones.MiException;
 import com.grupop.petru.servicios.ProyectoServicio;
 import com.grupop.petru.servicios.TareaServicio;
 import com.grupop.petru.servicios.UsuarioServicio;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;

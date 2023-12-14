@@ -12,12 +12,10 @@ package com.grupop.petru.servicios;
 import com.grupop.petru.entidades.Imagen;
 import com.grupop.petru.excepciones.MiException;
 import com.grupop.petru.repositorios.ImagenRepositorio;
-
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 import java.util.Optional;

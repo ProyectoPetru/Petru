@@ -1,25 +1,24 @@
 package com.grupop.petru.servicios;
 
+/**
+ *
+ * @authors  Nahiara Denice Alegre - Matias Quispe - Juan Pablo Pontini
+ *           Flavio Romero Averna - Dario Litterio - Cecilia Alsina
+ *           Manuel Dominich Martinez - Maximo Carbonetti
+ *           Salvador Caldarella - Sebastián A. Petrini
+ */
+
 import com.grupop.petru.entidades.Etiqueta;
 import com.grupop.petru.entidades.Tarea;
 import com.grupop.petru.excepciones.MiException;
 import com.grupop.petru.repositorios.EtiquetaRepositorio;
 import com.grupop.petru.repositorios.TareaRepositorio;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-/**
- *
- * @authors Nahiara Denice Alegre - Matias Quispe - Juan Pablo Pontini
- *          Flavio Romero Averna - Dario Litterio - Cecilia Alsina
- *          Manuel Dominich Martinez - Maximo Carbonetti
- *          Salvador Caldarella - Sebastián A. Petrini
- */
 
 @Service
 public class EtiquetaServicio {

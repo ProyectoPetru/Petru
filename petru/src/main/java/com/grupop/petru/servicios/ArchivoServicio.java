@@ -8,11 +8,9 @@ package com.grupop.petru.servicios;
  *           Salvador Caldarella - Sebastián A. Petrini
  */
 
-
 import com.grupop.petru.entidades.Archivo;
 import com.grupop.petru.excepciones.MiException;
 import com.grupop.petru.repositorios.ArchivoRepositorio;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;

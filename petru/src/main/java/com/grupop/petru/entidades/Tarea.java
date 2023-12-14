@@ -10,11 +10,9 @@ package com.grupop.petru.entidades;
  */
 
 import com.grupop.petru.enumeraciones.TipoTarea;
-
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;

@@ -1,10 +1,16 @@
 package com.grupop.petru.eventListeners;
 
+/**
+ *
+ * @authors  Nahiara Denice Alegre - Matias Quispe - Juan Pablo Pontini
+ *           Flavio Romero Averna - Dario Litterio - Cecilia Alsina
+ *           Manuel Dominich Martinez - Maximo Carbonetti
+ *           Salvador Caldarella - Sebastián A. Petrini
+ */
+
 import java.util.Calendar;
 import java.util.Date;
-
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
 import org.springframework.security.authentication.event.AbstractAuthenticationFailureEvent;
@@ -13,7 +19,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-
 import com.grupop.petru.entidades.Usuario;
 import com.grupop.petru.repositorios.UsuarioRepositorio;
 
