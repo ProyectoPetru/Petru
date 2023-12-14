@@ -13,12 +13,15 @@ import com.grupop.petru.entidades.Tarea;
 
 import com.grupop.petru.entidades.Usuario;
 import com.grupop.petru.enumeraciones.TipoTarea;
+import com.grupop.petru.enumeraciones.Visibilidad;
 import com.grupop.petru.excepciones.MiException;
+import com.grupop.petru.servicios.ProyectoServicio;
 import com.grupop.petru.servicios.TareaServicio;
-
+import com.grupop.petru.servicios.UsuarioServicio;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -33,6 +36,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class TareaControlador {
     @Autowired
     private TareaServicio tareaServicio;
+    @Autowired
+    private UsuarioServicio usuarioServicio;
+    @Autowired
+    private ProyectoServicio proyectoServicio;
 
     private Usuario cargarModelo(ModelMap modelo, HttpSession session) {
         Usuario usuario = (Usuario) session.getAttribute("usuariosession");
@@ -52,7 +59,15 @@ public class TareaControlador {
     public String carga_tareas(@RequestParam(required = false) String error, HttpSession session, ModelMap modelo) {
         Usuario logueado = (Usuario) session.getAttribute("usuariosession");
 
+        List<Usuario> agentes = usuarioServicio.listarColaboradores();
+        List<String> visibilidad = new ArrayList();
+        for (Visibilidad v : Visibilidad.values()) {
+            visibilidad.add(v.toString());
+        }
+        modelo.addAttribute("agentes", agentes);
+        modelo.addAttribute("visibilidad", visibilidad);
         modelo.addAttribute("usuariosession", logueado);
+        modelo.addAttribute("proyectos", proyectoServicio.listarPorUsuario(logueado.getId()));
         modelo.addAttribute("tareas", tareaServicio.listarPorUsuario(logueado.getId()));
 
         return "lista_tareasNueva.html";
@@ -65,6 +80,8 @@ public class TareaControlador {
             tareaServicio.crearTarea(idProyecto, nombre);
         } catch (MiException e) {
             modelo.put("error", e.getMessage());
+            String referer = request.getHeader("Referer");
+            return "redirect:" + referer;
         }
 
         String referer = request.getHeader("Referer");

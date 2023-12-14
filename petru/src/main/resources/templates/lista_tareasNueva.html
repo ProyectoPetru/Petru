@@ -91,15 +91,15 @@
                                             <div class="w3-container">
                                                 <div class="w3-container">
                                                     <form class="w3-table-all w3-margin-top"
-                                                        th:action="@{tarea/listar_tarea}" method="POST"
+                                                        th:action="@{/tarea/registro}" method="POST"
                                                         enctype="multipart/form-data">
 
                                                         <div class="d-grid gap-2 d-md-block">
-                                                            <select class="w3-select" name="idCliente">
+                                                            <select class="w3-select" name="idProyecto">
                                                                 <option selected>Buscar proyecto asociado</option>
-                                                                <option th:each="cliente : ${clientes}"
-                                                                    th:value="${cliente.id}"
-                                                                    th:text="${cliente.nombre}" />
+                                                                <option th:each="proyecto : ${proyectos}"
+                                                                    th:value="${proyecto.id}"
+                                                                    th:text="${proyecto.nombre}" />
                                                             </select>
                                                         </div>
                                                         <br>
