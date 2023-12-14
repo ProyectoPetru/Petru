@@ -21,6 +21,23 @@
         <div>
             <h1>Lista de Usuarios</h1>
             <div>
+                <form th:action="@{/admin/buscarUsuario}" method="post">
+                    <input type="text" name="nombre" placeholder="Nombre">
+                    <!--
+
+                
+                    <input type="text" name="email" placeholder="Email">
+                    <input type="number" name="telefono" placeholder="Telefono">
+                    <select name="rol">
+                        <option value="ADMIN">Admin</option>
+                        <option value="COLABORADOR">Colaborador</option>
+                        <option value="CLIENTE">Cliente</option>
+                        <option value="VISITA">Visita</option>
+                    </select>
+                    <input type="checkbox" name="baja" value="true">Baja
+                        -->
+                    <button type="submit">Buscar</button>
+                </form>
                 <table>
                     <thead>
                         <tr>

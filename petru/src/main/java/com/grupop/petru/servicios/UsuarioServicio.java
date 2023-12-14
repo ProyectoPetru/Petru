@@ -285,6 +285,14 @@ public class UsuarioServicio implements UserDetailsService {
     }
     
     @Transactional(readOnly = true)
+    public List<Usuario> buscarUsuarios(String nombre) {
+        List<Usuario> usuarios = new ArrayList();
+        usuarios = usuarioRepositorio.buscarPorNombre(nombre);
+        return usuarios;
+    }
+
+
+    @Transactional(readOnly = true)
     public List<ListasDashboard> listarUsuariosProyecto() {
         List<String> usuariosProyecto1 = usuarioRepositorio.listaUsuariosProyecto1();
         List<Long> usuariosProyecto2 = usuarioRepositorio.listaUsuariosProyecto2();

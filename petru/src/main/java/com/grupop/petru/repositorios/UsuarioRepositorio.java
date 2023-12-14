@@ -44,4 +44,8 @@ public interface UsuarioRepositorio extends JpaRepository<Usuario, String>{
                       + "group by u.nombre", nativeQuery = true)
     public List<Long> listaUsuariosProyecto2();
       
+    @Query("SELECT u FROM Usuario u WHERE lower (u.nombre) LIKE lower(concat('%',:nombre,'%'))")
+    public List<Usuario> buscarPorNombre(@Param("nombre")String nombre);
+
+
 }

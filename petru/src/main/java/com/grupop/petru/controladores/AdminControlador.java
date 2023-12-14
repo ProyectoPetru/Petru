@@ -23,6 +23,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -52,9 +53,7 @@ public class AdminControlador {
         cargarModelo(modelo, session);
         
         List<ListasDashboard> usuariosProyecto = usuarioServicio.listarUsuariosProyecto();
-        for(ListasDashboard lista : usuariosProyecto){
-            System.out.println(lista.getNombre() + " " + lista.getDato());
-        }
+        
         modelo.addAttribute("usuariosProyecto", usuariosProyecto);
 
         return "dashNueva.html";
@@ -93,7 +92,15 @@ public class AdminControlador {
         return "redirect:/admin/usuarios";
     }
     
-    
+    @PostMapping("/buscarUsuario")
+    public String buscarUsuario (@RequestParam String nombre, ModelMap modelo, HttpSession session){
+        cargarModelo(modelo, session);
+
+        List<Usuario> usuarios = usuarioServicio.buscarUsuarios(nombre);
+        modelo.addAttribute("usuarios", usuarios);
+
+        return "usuarios/listar.html";
+    }
     
 
 }
