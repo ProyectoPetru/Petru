@@ -133,6 +133,10 @@ public class PortalControlador {
     public String login(@RequestParam(required = false) String error, ModelMap modelo, HttpSession session) {
         cargarModelo(modelo, session);
 
+        if (error != null) {
+            modelo.put("error", "Email o clave invalido(s)");
+        }
+
         return "login.html";
     }
 
