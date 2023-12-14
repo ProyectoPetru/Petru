@@ -128,6 +128,11 @@ public class ProyectoServicio {
         return proyectoRepositorio.buscarPorUsuario(idUsuario);
     }
 
+    @Transactional(readOnly = true)
+    public List<Proyecto> listarPorBusqueda(String nombre) {
+        return proyectoRepositorio.buscarPorNombre(nombre);
+    }
+
     public Proyecto invitar(String id, String email) throws MiException {
         Proyecto proyecto = proyectoRepositorio.getById(id);
 

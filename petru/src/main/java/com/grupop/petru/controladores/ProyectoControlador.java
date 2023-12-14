@@ -120,6 +120,34 @@ public class ProyectoControlador {
         return "lista_proyectosNuevo.html";
     }
 
+
+    @PostMapping("/buscar")
+    public String busca_proyecto(@RequestParam String busca, HttpSession session, ModelMap modelo) {
+        
+        cargarModelo(modelo, session);
+        Usuario logueado = cargarModelo(modelo, session);
+
+        List<Usuario> clientes = usuarioServicio.listarClientes();
+        List<Usuario> agentes = usuarioServicio.listarColaboradores();
+        List<String> visibilidad = new ArrayList();
+        for (Visibilidad v : Visibilidad.values()) {
+            visibilidad.add(v.toString());
+        }
+        modelo.addAttribute("clientes", clientes);
+        modelo.addAttribute("agentes", agentes);
+        modelo.addAttribute("visibilidad", visibilidad);
+        modelo.addAttribute("proyectos", proyectoServicio.listarPorBusqueda(busca));
+
+        return "lista_proyectosNuevo.html";
+    }
+
+
+
+
+
+
+
+
     @PostMapping("/registro")
     public String proyectoRegistro(@RequestParam String nombre, @RequestParam(required = false) MultipartFile archivo,
             @RequestParam(required = false) String idCliente, @RequestParam(required = false) String idAgente,
