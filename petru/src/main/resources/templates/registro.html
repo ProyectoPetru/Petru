@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <nav th:replace="/fragments/navbar.html :: nav"></nav>
+    <nav th:replace="fragments/navbar.html :: nav"></nav>
 
     <main>
         <form th:action="@{/registro}" method="POST" enctype="multipart/form-data">
@@ -61,8 +61,8 @@
         </form>
     </main>
 
-    <alert th:replace="/fragments/alertas.html"></alert>
-    <footer th:replace="/fragments/footer.html :: footer"></footer>
+    <alert th:replace="fragments/alertas.html"></alert>
+    <footer th:replace="fragments/footer.html :: footer"></footer>
 
     <script src="/js/registro.js"></script>
     <script src="/js/index.js"></script>

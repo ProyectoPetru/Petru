@@ -113,7 +113,7 @@
 </head>
 
 <body>
-    <nav th:replace="/fragments/navbar.html :: nav"></nav>
+    <nav th:replace="fragments/navbar.html :: nav"></nav>
     <header> </header>
     <main style="position: relative;">
         <div class="table-responsive">
@@ -177,8 +177,8 @@
         </div>
     </main>
 
-    <alert th:replace="/fragments/alertas.html"></alert>
-    <footer th:replace="/fragments/footer.html :: footer"></footer>
+    <alert th:replace="fragments/alertas.html"></alert>
+    <footer th:replace="fragments/footer.html :: footer"></footer>
     <script>
         // Inicializar el popover utilizando JavaScript
         var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));

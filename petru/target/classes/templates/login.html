@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <nav th:replace="/fragments/navbar.html :: nav"></nav>
+    <nav th:replace="fragments/navbar.html :: nav"></nav>
     <main>
         <form class="login-container" th:action="@{/logincheck}" method="POST">
             <div>
@@ -37,7 +37,7 @@
         </form>
     </main>
 
-    <alert th:replace="/fragments/alertas.html"></alert>
+    <alert th:replace="fragments/alertas.html"></alert>
 
     <script src="/js/index.js"></script>
     <script src="/js/login.js"></script>

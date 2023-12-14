@@ -15,14 +15,14 @@
 </head>
 
 <body>
-    <nav th:replace="/fragments/navbar.html :: nav"></nav>
+    <nav th:replace="fragments/navbar.html :: nav"></nav>
 
     <main>
         <!-- Modela la pagina dentro del main -->
     </main>
 
-    <alert th:replace="/fragments/alertas.html"></alert>
-    <footer th:replace="/fragments/footer.html :: footer"></footer>
+    <alert th:replace="fragments/alertas.html"></alert>
+    <footer th:replace="fragments/footer.html :: footer"></footer>
 
     <!-- En esta etiqueta script, pone el script de tu pagina y nombralo con el mismo nombre que la pagina. Ejemplo: inicio.html/inicio.js -->
     <!-- <script src="/js/tupagina.js"></script> -->

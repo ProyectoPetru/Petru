@@ -267,7 +267,7 @@
 </head>
 
 <body>
-    <nav th:replace="/fragments/navbar.html :: nav"></nav>
+    <nav th:replace="fragments/navbar.html :: nav"></nav>
 
     <main>
         <div class="row">
@@ -400,7 +400,7 @@
                     <h1 style="color: purple;">Organización de Eventos</h1>
 
                     <div class="card-body1">
-                        <div th:replace="/fragments/calendario.html :: div"></div>
+                        <div th:replace="fragments/calendario.html :: div"></div>
                     </div>
                 </div>
 
@@ -444,7 +444,7 @@
         </div>
     </main>
 
-    <footer th:replace="/fragments/footer.html :: footer"></footer>
+    <footer th:replace="fragments/footer.html :: footer"></footer>
 
     <!-- Scripts de los gráficos -->
     <script th:inline="javascript">

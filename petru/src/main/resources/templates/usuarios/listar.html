@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <nav th:replace="/fragments/navbar.html :: nav"></nav>
+    <nav th:replace="fragments/navbar.html :: nav"></nav>
 
     <main style="position: relative;">
         <div>
@@ -60,8 +60,8 @@
         </div>
     </main>
 
-    <alert th:replace="/fragments/alertas.html"></alert>
-    <footer th:replace="/fragments/footer.html :: footer"></footer>
+    <alert th:replace="fragments/alertas.html"></alert>
+    <footer th:replace="fragments/footer.html :: footer"></footer>
 
     <script src="/js/index.js"></script>
     <script src="/js/listar.js"></script>

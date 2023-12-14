@@ -21,6 +21,7 @@ import com.grupop.petru.servicios.UsuarioServicio;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -41,6 +42,8 @@ public class PortalControlador {
     private ProyectoServicio proyectoServicio;
     @Autowired
     private EmailServicio emailServicio;
+    @Value("${spring.page.url}")
+    private String url;
 
     private Usuario cargarModelo(ModelMap modelo, HttpSession session) {
         Usuario usuario = (Usuario) session.getAttribute("usuariosession");
@@ -238,7 +241,7 @@ public class PortalControlador {
             String titulo = "Solicitud de modificacion de clave";
             String cuerpo = "<h4 style='margin: 0 1rem 0 1rem; font-weight: normal'>" +
                     "Si ha solicitado la recuperacion de su clave, por favor clickee el siguiente " +
-                    "<a href='http://localhost:8080/perfil/cambiar-clave/" + token.getId()
+                    "<a href='" + url + "/perfil/cambiar-clave/" + token.getId()
                     + "'>link</a>.<br>Si no ha solicitado esta modificacion ignore el mensaje.</h4>";
 
             emailServicio.sendEmail(usuario.getEmail(), titulo, cuerpo);
@@ -323,7 +326,7 @@ public class PortalControlador {
         String titulo = "Solicitud de modificacion de usuario";
         String cuerpo = "<h4 style='margin: 0 1rem 0 1rem; font-weight: normal'>" +
                 "Si has solicitado una modificacion de sus datos, por favor clickee el siguiente " +
-                "<a href='http://localhost:8080/perfil/modificar/" + token.getId()
+                "<a href='" + url + "/perfil/modificar/" + token.getId()
                 + "'>link</a>.<br>Si no ha solicitado esta modificacion ignore el mensaje.</h4>";
 
         emailServicio.sendEmail(usuario.getEmail(), titulo, cuerpo);
