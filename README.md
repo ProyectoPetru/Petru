@@ -91,71 +91,35 @@ JavaScript [![My Skills](https://skillicons.dev/icons?i=js)](https://skillicons.
 
 
 ## Integrantes Equipo Petrus
-
-
-| <img src="https://avatars.githubusercontent.com/u/129103840?v=4" width=50>  | <img src="https://avatars.githubusercontent.com/u/127808099?v=4" width=50>| <img src="   " width=50>| <img src="   " width=50>  |   
-:-:|:-:|:-:|:-:|
-| **Sebastián Petrini**  | **Salvador Caldarella**  | **Maximo Carbonetti**  | **Manuel Dominich **  | 
-| Product Owner-Back End |Agile Delivery Manager-Front End| **Developer-Front End**  | **Developer-Front End**  | 
-| <a href="https://github.com/sebapetrini"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a>| <a href="https://github.com/Salvatury"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a>| <a href="https://github.com/LucasEsca"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/lucasivanfair/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a>| <a href="https://github.com/Pablo2311"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/pablo-ra%C3%BAl-guti%C3%A9rrez/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
-
-
-
-
-### •	[Sebastian Petrini](https://github.com/sebapetrini):
-
-> Lider Tecnico
-
-> Desarrollador Back-end
-
-### •	[Salvador Caldarella](https://github.com/Salvatury):
-
-> Agile Delivery Manager
-
-> Desarrollador Front-end
-
-### •	[Maximo Carbonetti](https://github.com/maximocarbonetti):
-
-> Desarrollador Front-end
-
-> Photoshop
-
-### •	[Manuel Dominich Martinez](https://github.com/Dominiciss):
-
-> Desarrollador Front-end
-
-### •	[Cecilia Alsina](https://github.com/Ceci-Alsina):
-
-> Desarrollador Front-end
-
-### • [Dario Litterio](https://github.com/Darioezequiel17):
-
-> Desarrollador Back-end
-
-### •	[Flavio Romero Averna](https://github.com/flavioav):
-
-> Scrum master
-
-> Desarrollador Front-end
-
-### •	[Juan Pablo Pontini](https://github.com/juampi21):
-
-> Desarrollador Front-end
-
-### •	[Matias Quispe](https://github.com/matias4280):
-
-> Desarrollador Back-end
-
-### •	[Nahiara Denice Alegre](https://github.com/NahiDenice):
-
-> Desarrollador Back-end
-
 <a href="https://github.com/ProyectoPetru/Petru/graphs/contributors" alt="Contributors">
         <img src="https://img.shields.io/github/contributors/ProyectoPetru/Petru" /></a>
 <a href="https://github.com/ProyectoPetru/Petru/commits/main" alt="Commit activity">
         <img src="https://img.shields.io/github/commit-activity/t/ProyectoPetru/Petru" /></a>
 
 
+| <img src="https://avatars.githubusercontent.com/u/129103840?v=4" width=50>  | <img src="https://avatars.githubusercontent.com/u/127808099?v=4" width=50>| <img src="https://avatars.githubusercontent.com/u/121438507?v=4" width=50>| <img src="https://avatars.githubusercontent.com/u/124200890?v=4" width=50>  |   
+:-:|:-:|:-:|:-:|
+|   Sebastián Petrini    |   Salvador Caldarella    |   Maximo Carbonetti    |   Manuel Dominich     | 
+| Product Owner-Back End |Agile Delivery Manager-Front End| **Developer-Front End**  | **Developer-Front End**  | 
+| <a href="https://github.com/sebapetrini"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a>| <a href="https://github.com/Salvatury"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a>| <a href="https://github.com/maximocarbonetti"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a>| <a href="https://github.com/Dominiciss"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
 
-GitHub [![My Skills](https://skillicons.dev/icons?i=github)](https://skillicons.dev)
+| <img src="https://avatars.githubusercontent.com/u/127913044?v=4" width=50>  | <img src="https://avatars.githubusercontent.com/u/59675864?v=4" width=50>| <img src="https://avatars.githubusercontent.com/u/129459490?v=4" width=50>| <img src="https://avatars.githubusercontent.com/u/108185703?v=4" width=50>  |   
+:-:|:-:|:-:|:-:|
+|   Cecilia Alsina    |   Darío Litterio |   Flavio Romero Averna |   Juan Pablo Pontini     | 
+| Developer-Front End |Developer-Back End|  Scrum Master-Back End |   Developer-Front End    | 
+| <a href="https://github.com/Ceci-Alsina"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/cecilia-alsina-3670aa207/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a>| <a href="https://github.com/Darioezequiel17"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a>| <a href="https://github.com/flavioav"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a>| <a href="https://github.com/juampi21"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
+
+| <img src="https://avatars.githubusercontent.com/u/44714657?v=4" width=50>  | <img src="https://avatars.githubusercontent.com/u/128552164?v=4" width=50>| 
+:-:|:-:|
+|   Matías Quispe    |   Nahiara D. Alegre |   
+| Developer-Front End |Developer-Back End|
+| <a href="https://github.com/matias4280"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/cecilia-alsina-3670aa207/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a>| <a href="https://github.com/NahiDenice"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a>| 
+
+
+### Herramientas 🛠️
+<img src=https://www.vectorlogo.zone/logos/asana/asana-ar21.svg><img src=https://www.vectorlogo.zone/logos/discord/discord-ar21.svg><img src=https://www.vectorlogo.zone/logos/whatsapp/whatsapp-ar21.svg><img src=https://github.com/ProyectoPetru/Petru/assets/127913044/557c7527-c807-4d86-a5fe-bc3b3d8a7ab1><img src=https://github.com/ProyectoPetru/Petru/assets/127913044/34a68411-8c7f-46b6-806e-74edf821f2f5>GitHub [![My Skills](https://skillicons.dev/icons?i=github)](https://skillicons.dev)
+
+
+
+
         
