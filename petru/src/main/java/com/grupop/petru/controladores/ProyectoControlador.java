@@ -32,6 +32,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -69,6 +70,7 @@ public class ProyectoControlador {
         return usuario;
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'COLABORADOR')")
     @GetMapping("")
     public String proyectos(@RequestParam(required = false) String error, HttpSession session,
             ModelMap modelo) {
@@ -81,6 +83,7 @@ public class ProyectoControlador {
         return "proyecto/listar.html";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'COLABORADOR')")
     @GetMapping("/unirse/{id}")
     public String unirse(@PathVariable String id, @RequestParam(required = false) String error, HttpSession session,
             ModelMap modelo) {
@@ -99,6 +102,7 @@ public class ProyectoControlador {
         }
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'COLABORADOR')")
     @PostMapping("/buscar")
     public String buscarUsuario(@RequestParam String busca, @RequestParam String filtro, ModelMap modelo,
             HttpSession session) {
@@ -115,6 +119,7 @@ public class ProyectoControlador {
         return "proyecto/listar.html";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'COLABORADOR')")
     @PostMapping("/modificar")
     public String modificar(@RequestParam String id, @RequestParam String nombre, @RequestParam String notas, ModelMap modelo,
             HttpSession session) {
@@ -185,7 +190,7 @@ public class ProyectoControlador {
         return "lista_proyectosNuevo.html";
     }
 
-
+    @PreAuthorize("hasAnyRole('ADMIN', 'COLABORADOR')")
     @PostMapping("/busqueda")
     public String busca_proyecto(@RequestParam String busca, HttpSession session, ModelMap modelo) {
         
