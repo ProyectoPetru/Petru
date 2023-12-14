@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <nav th:replace="/fragments/navbar.html :: nav"></nav>
+    <nav th:replace="fragments/navbar.html :: nav"></nav>
 
     <main>
         <section id="inicio">
@@ -170,8 +170,8 @@
         </section>
     </main>
 
-    <alert th:replace="/fragments/alertas.html"></alert>
-    <footer th:replace="/fragments/footer.html :: footer"></footer>
+    <alert th:replace="fragments/alertas.html"></alert>
+    <footer th:replace="fragments/footer.html :: footer"></footer>
 
     <script src="/js/inicio.js"></script>
     <script src="/js/index.js"></script>
