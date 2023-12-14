@@ -23,6 +23,7 @@ import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -50,6 +51,9 @@ public class UsuarioServicio implements UserDetailsService {
 
     @Autowired
     private EmailServicio emailServicio;
+
+    @Value("${spring.page.url}")
+    private String url;
 
     @Transactional
     public void registrarUsuario(MultipartFile archivo, String nombre, String email, String clave, String clave2,
@@ -79,7 +83,7 @@ public class UsuarioServicio implements UserDetailsService {
 
         emailServicio.sendEmail(email, "Verificacion de usuario " + nombre, "<div><h1 style='margin: 0 0 1rem 0'>"
                 + nombre + "</h1>\n<h2 style='margin: 0 0 1rem 0'>" + email
-                + "</h2>\n<h4 style='margin: 0 1rem 0 1rem; font-weight: normal'>Entra a <a href='http://localhost:8080/usuario/autenticar/"
+                + "</h2>\n<h4 style='margin: 0 1rem 0 1rem; font-weight: normal'>Entra a <a href='" + url + "/usuario/autenticar/"
                 + token.getId() + "'>este link</a> para auntenticarte</h4><div>");
     }
 
