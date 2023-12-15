@@ -110,7 +110,7 @@ JavaScript [![My Skills](https://skillicons.dev/icons?i=js)](https://skillicons.
 | <img src="https://avatars.githubusercontent.com/u/44714657?v=4" width=50>  | <img src="https://avatars.githubusercontent.com/u/128552164?v=4" width=50>| 
 :-:|:-:|
 |   Matías Quispe    |   Nahiara D. Alegre |   
-| Developer-Front End |Developer-Back End|
+| Developer-Back End |Developer-Back End|
 | <a href="https://github.com/matias4280"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/matiasquispe4269"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a>| <a href="https://github.com/NahiDenice"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a>| 
 
 
