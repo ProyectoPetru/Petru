@@ -249,4 +249,201 @@ public class ProyectoControlador {
         String referer = request.getHeader("Referer");
         return "redirect:" + referer;
     }
+
+    /* Propuesta de Mati para el calendario
+     
+    postmapping que va en proyectoControlador
+
+ @PostMapping("/guardarEvento")
+    public String guardarEvento(@RequestParam String title, @RequestParam String description,
+            @RequestParam String start, @RequestParam String end, @RequestParam String projectId,ModelMap modelo, HttpSession session,HttpServletRequest request) throws ParseException {
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        Date fechainicio;
+        Date fechafin ;
+
+         Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+
+        modelo.addAttribute("usuariosession", logueado);
+        try {
+            fechainicio = formato.parse(start);
+            fechafin = formato.parse(end);
+            eventoServicio.crearEvento(title, fechainicio, fechafin, description, projectId);
+            
+        } catch (MiException e) {
+             session.setAttribute("error", e.getMessage());
+
+            String referer = request.getHeader("Referer");
+            return "redirect:" + referer;
+        }
+        String referer = request.getHeader("Referer");
+        return "redirect:" + referer;
+    }
+
+
+    calendario.js modificado
+
+    $(document).ready(function () {
+    // Mapa para almacenar colores asociados a IDs de eventos
+    const eventColorMap = {};
+
+    $('#calendar').fullCalendar({
+        header: {
+            left: 'prev,today',
+            center: 'title',
+            right: 'next'
+        },
+        buttonText: {
+            today: 'Hoy',
+            month: 'Mes',
+        },
+        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+        dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+        dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+        editable: true,
+        eventClick: function (event) {
+            // Lógica al hacer clic en un evento
+            showEventDetails(event);
+        },
+        dayClick: function (date) {
+            // Muestra un formulario en un cuadro de diálogo para ingresar detalles del evento
+            showEventDetails({
+                start: date,
+                end: date
+            });
+        },
+        eventRender: function (event, element) {
+            // Verifica si el evento ya tiene un color asignado
+            if (!eventColorMap[event._id]) {
+                // Si no tiene un color asignado, genera uno y lo almacena en el mapa
+                eventColorMap[event._id] = getRandomColor();
+            }
+
+            // Asigna el color al evento
+            element.css('background-color', eventColorMap[event._id]);
+        }
+    });
+
+    function showEventDetails(event) {
+        
+        const projectId = obtenerIdProyectoDeUrl();
+
+        const projectIdInput = '<input type="hidden" name="projectId" value="' + projectId + '">';
+        // Determina si es un nuevo evento o uno existente
+        const isNewEvent = !event.title;
+
+        // Configuración del formulario en el cuadro de diálogo
+        const formHtml =
+            '<label for="event-title">Título:</label>' +
+            '<input type="text" id="event-title" class="swal2-input" value="' + (event.title || '') + '">' +
+            '<label for="event-description">Descripción:</label>' +
+            '<textarea id="event-description" class="swal2-input">' + (event.description || '') + '</textarea>' +
+            '<label for="event-start">Inicio:</label>' +
+            '<input type="date" id="event-start" class="swal2-input" value="' + formatDate(event.start) + '">' +
+            '<label for="event-end">Fin:</label>' +
+            '<input type="date" id="event-end" class="swal2-input" value="' + formatDate(event.end) + '">';
+
+        // Configuración de los botones en el cuadro de diálogo
+        const buttons = {
+            guardar: {
+                text: 'Guardar',
+                value: 'save',
+            },
+            cancelar: 'Cancelar',
+        };
+
+        // Add "Eliminar" (Delete) button for existing events
+        if (!isNewEvent) {
+            buttons.eliminar = {
+                text: 'Eliminar',
+                value: 'delete',
+                className: 'btn-danger'
+            };
+        }
+
+        // Muestra el cuadro de diálogo
+        Swal.fire({
+            title: isNewEvent ? 'Ingrese los detalles del evento' : 'Modificar evento',
+            html: projectIdInput + formHtml,
+            focusConfirm: false,
+            showCancelButton: true,
+            customClass: {
+                container: 'custom-swal-container'
+            },
+            confirmButtonText: 'Guardar',
+            cancelButtonText: 'Cancelar',
+            showLoaderOnConfirm: true,
+            preConfirm: () => {
+                // Captura los valores del formulario
+                return {
+                    title: $('#event-title').val(),
+                    description: $('#event-description').val(),
+                    start: $('#event-start').val(),
+                    end: $('#event-end').val()
+                };
+            },
+            allowOutsideClick: () => !Swal.isLoading(),
+            buttons: buttons,  // Use the custom buttons configuration
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Guarda o actualiza el evento en el calendario
+                if (isNewEvent) {
+                    $('#calendar').fullCalendar('renderEvent', result.value, true);
+                } else {
+                    event.title = result.value.title;
+                    event.description = result.value.description;
+                    event.start = result.value.start;
+                    event.end = result.value.end;
+                    $('#calendar').fullCalendar('updateEvent', event);
+                }
+            } else if (result.value === 'delete') {
+                // Elimina el evento si se hace clic en "Eliminar" y el evento ya existe
+                $('#calendar').fullCalendar('removeEvents', event._id);
+            }
+            if (result.isConfirmed) {
+                const form = document.createElement('form');
+                form.action = '/proyecto/guardarEvento'; // Ruta del controlador en el servidor para guardar eventos
+                form.method = 'post';
+            
+                const eventData = {
+                    title: $('#event-title').val(),
+                    description: $('#event-description').val(),
+                    start: $('#event-start').val(),
+                    end: $('#event-end').val(),
+                    projectId: projectId
+                };
+            
+                // Crear campos ocultos para enviar los datos al servidor
+                Object.entries(eventData).forEach(([key, value]) => {
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = key;
+                    input.value = value;
+                    form.appendChild(input);
+                });
+
+                window.location.href = '/proyecto/guardarEvento?' + $.param(eventData);
+            
+                document.body.appendChild(form);
+                form.submit();
+            }
+        });
+    }
+    function obtenerIdProyectoDeUrl() {
+        const url = window.location.href;
+        const match = url.match(/proyecto\/([a-f\d-]+)$/); // Patron para extraer el ID del proyecto
+        return match ? match[1] : null;
+    }
+    function formatDate(date) {
+        // Función para formatear la fecha en formato YYYY-MM-DD
+        return date ? moment(date).format('YYYY-MM-DD') : '';
+    }
+
+    function getRandomColor() {
+        // Genera un color hexadecimal aleatorio
+        return '#' + Math.floor(Math.random()*16777215).toString(16);
+    }
+});
+     
+     */
 }
