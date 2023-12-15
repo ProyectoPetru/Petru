@@ -182,7 +182,10 @@ public class ProyectoControlador {
         modelo.addAttribute("clientes", clientes);
         modelo.addAttribute("agentes", agentes);
         modelo.addAttribute("visibilidad", visibilidad);
-        modelo.addAttribute("proyectos", proyectoServicio.listarPorUsuario(logueado.getId()));
+        if (logueado.getRol().toString().equals("ADMIN"))
+            modelo.addAttribute("proyectos", proyectoServicio.listarTodos());
+        else
+            modelo.addAttribute("proyectos", proyectoServicio.listarPorUsuario(logueado.getId()));
 
         return "lista_proyectosNuevo.html";
     }

@@ -28,5 +28,4 @@ public interface ProyectoRepositorio extends JpaRepository<Proyecto, String>{
     @Query("SELECT p FROM Proyecto p WHERE p.notas LIKE %:notas%")
     public List<Proyecto> buscarPorNotas(@Param("notas")String notas);
 
-
 }
