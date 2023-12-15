@@ -109,7 +109,7 @@ public class PortalControlador {
     @PostMapping("/registro")
     public String registro(@RequestParam String nombre, @RequestParam String email, @RequestParam String clave,
             @RequestParam String clave2, @RequestParam MultipartFile archivo,
-            @RequestParam(required = false) Long telefono, @RequestParam String descripcion,
+            @RequestParam(required = false) Long telefono, @RequestParam(required = false) String descripcion,
             ModelMap modelo, HttpSession session) {
         try {
             usuarioServicio.registrarUsuario(archivo, nombre, email, clave, clave2, telefono, descripcion);
