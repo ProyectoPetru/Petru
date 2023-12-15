@@ -70,7 +70,10 @@ public class TareaControlador {
         modelo.addAttribute("visibilidad", visibilidad);
         modelo.addAttribute("usuariosession", logueado);
         modelo.addAttribute("proyectos", proyectoServicio.listarPorUsuario(logueado.getId()));
-        modelo.addAttribute("tareas", tareaServicio.listarPorUsuario(logueado.getId()));
+        if (logueado.getRol().toString().equals("ADMIN"))
+            modelo.addAttribute("tareas", tareaServicio.listarTareas());
+        else
+            modelo.addAttribute("tareas", tareaServicio.listarPorUsuario(logueado.getId()));
 
         return "lista_tareasNueva.html";
     }
