@@ -79,12 +79,12 @@ las tareas que se encuentran sin realizar, se podrá visualizar en qué está tr
 <h5 align = "center"><img src=diagrama.png width=450 high=400></h5>
 
 ### Construido con 🛠️
-Java [![My Skills](https://skillicons.dev/icons?i=java)](https://skillicons.dev)
-Maven [![My Skills](https://skillicons.dev/icons?i=maven)](https://skillicons.dev)
-Spring boot [![My Skills](https://skillicons.dev/icons?i=spring)](https://skillicons.dev)
-HTML [![My Skills](https://skillicons.dev/icons?i=html)](https://skillicons.dev)
-CSS [![My Skills](https://skillicons.dev/icons?i=css)](https://skillicons.dev)
-JavaScript [![My Skills](https://skillicons.dev/icons?i=js)](https://skillicons.dev)
+![Java](https://skillicons.dev/icons?i=java)
+![Maven](https://skillicons.dev/icons?i=maven)
+![Spring](https://skillicons.dev/icons?i=spring)
+![HTML](https://skillicons.dev/icons?i=html)
+![CSS](https://skillicons.dev/icons?i=css)
+![JS](https://skillicons.dev/icons?i=js)
 
 ´´
 
