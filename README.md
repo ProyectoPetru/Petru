@@ -36,6 +36,9 @@ las tareas que se encuentran sin realizar, se podrá visualizar en qué está tr
 >Página de Inicio:
 >>Acceso a la página de inicio para obtener información sobre los servicios ofrecidos y la posibilidad de registrarse como usuario.
 
+>Pagina de Contacto:
+>>Acceso a la pagina de contacto la cual te permite mandarle un correo electronico a la empresa, junto a ver un numero de telefono y su ubicacion en google maps.
+
 **Perfil ADMIN** 👑
 
 
