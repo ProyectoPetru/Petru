@@ -113,12 +113,7 @@ las tareas que se encuentran sin realizar, se podrá visualizar en qué está tr
 
 
 ### Herramientas 🛠️
-<img src=https://www.vectorlogo.zone/logos/asana/asana-ar21.svg>
-<img src=https://www.vectorlogo.zone/logos/discord/discord-ar21.svg>
-<img src=https://www.vectorlogo.zone/logos/whatsapp/whatsapp-ar21.svg>
-<img src=https://www.vectorlogo.zone/logos/whatsapp/whatsapp-ar21.svg>
-<img src=https://www.vectorlogo.zone/logos/zoomus/zoomus-ar21.svg>
-<img src=https://www.vectorlogo.zone/logos/github/github-ar21.svg>
+<img src=https://www.vectorlogo.zone/logos/asana/asana-ar21.svg><img src=https://www.vectorlogo.zone/logos/discord/discord-ar21.svg><img src=https://www.vectorlogo.zone/logos/whatsapp/whatsapp-ar21.svg><img src=https://www.vectorlogo.zone/logos/zoomus/zoomus-ar21.svg><img src=https://www.vectorlogo.zone/logos/github/github-ar21.svg>
 
 
 
