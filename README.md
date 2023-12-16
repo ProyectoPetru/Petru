@@ -9,8 +9,7 @@ Este es un proyecto en desarrollo de una aplicación web que busca brindar orden
 las tareas que se encuentran sin realizar, se podrá visualizar en qué está trabajando cada agente, tener disponible una agenda de contactos y un calendario de eventos. 
 
  
-## Requerimientos del proyecto ![image](https://github.com/No-Country/s12-10-m-java-angular/assets/127913044/91dbc679-206a-44f4-bde0-95e3d29a13a0)
-
+## Requerimientos del proyecto 🧾
 ✔️Registro y Login con Spring Security
 
 ✔️Crear al menos DOS roles distintos para los usuarios.
@@ -29,15 +28,15 @@ las tareas que se encuentran sin realizar, se podrá visualizar en qué está tr
 
 ✔️Diagrama UML de entidades
 
-## Funcionalidades ![image](https://github.com/ProyectoPetru/Petru/assets/127913044/c7fc9202-b27e-46c0-a6b9-ac7ba20726cb)
+## Funcionalidades 👁‍🗨
 
-**Perfil VISITA** ![image](https://github.com/ProyectoPetru/Petru/assets/127913044/e2372e96-0297-42c2-aba5-9f64ad32dc9f)
+**Perfil VISITA** 📍
 
 
 >Página de Inicio:
 >>Acceso a la página de inicio para obtener información sobre los servicios ofrecidos y la posibilidad de registrarse como usuario.
 
-**Perfil ADMIN** ![image](https://github.com/ProyectoPetru/Petru/assets/127913044/51a64f84-4cf3-471c-932b-583d1a903c24)
+**Perfil ADMIN** 👑
 
 
 >Gestión de Proyectos:
@@ -50,7 +49,7 @@ las tareas que se encuentran sin realizar, se podrá visualizar en qué está tr
 >Dashboard General:
 >>Visualización del estado general de los proyectos. Filtros por empresa o tipo de proyecto. Acceso rápido a proyectos individuales desde el dashboard.
 
-**Perfil AGENTE** ![image](https://github.com/ProyectoPetru/Petru/assets/127913044/fa8a5333-9d31-450c-b82e-c3c5ff100f6d)
+**Perfil AGENTE** 👨‍💼
 
 
 >Gestión de Perfil:
@@ -62,8 +61,7 @@ las tareas que se encuentran sin realizar, se podrá visualizar en qué está tr
 >Visualización de Proyectos:
 >>Ver todos los proyectos y su progreso.Restricciones para modificar o dar de baja proyectos no asignados.
 
-**Perfil de CLIENTE** ![image](https://github.com/ProyectoPetru/Petru/assets/127913044/703c5ddc-a0cb-4151-9600-ed87ea311ec6)
-
+**Perfil de CLIENTE** 🙍‍♂️
 
 
 >Gestión de Perfil:
