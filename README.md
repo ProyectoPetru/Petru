@@ -86,8 +86,6 @@ las tareas que se encuentran sin realizar, se podrá visualizar en qué está tr
 ![CSS](https://skillicons.dev/icons?i=css)
 ![JS](https://skillicons.dev/icons?i=js)
 
-´´
-
 ## Integrantes Equipo Petrus
 <a href="https://github.com/ProyectoPetru/Petru/graphs/contributors" alt="Contributors">
         <img src="https://img.shields.io/github/contributors/ProyectoPetru/Petru" /></a>
@@ -115,7 +113,12 @@ las tareas que se encuentran sin realizar, se podrá visualizar en qué está tr
 
 
 ### Herramientas 🛠️
-<img src=https://www.vectorlogo.zone/logos/asana/asana-ar21.svg><img src=https://www.vectorlogo.zone/logos/discord/discord-ar21.svg><img src=https://www.vectorlogo.zone/logos/whatsapp/whatsapp-ar21.svg><img src=https://github.com/ProyectoPetru/Petru/assets/127913044/557c7527-c807-4d86-a5fe-bc3b3d8a7ab1><img src=https://github.com/ProyectoPetru/Petru/assets/127913044/34a68411-8c7f-46b6-806e-74edf821f2f5>GitHub [![My Skills](https://skillicons.dev/icons?i=github)](https://skillicons.dev)
+<img src=https://www.vectorlogo.zone/logos/asana/asana-ar21.svg>
+<img src=https://www.vectorlogo.zone/logos/discord/discord-ar21.svg>
+<img src=https://www.vectorlogo.zone/logos/whatsapp/whatsapp-ar21.svg>
+<img src=https://www.vectorlogo.zone/logos/whatsapp/whatsapp-ar21.svg>
+<img src=https://www.vectorlogo.zone/logos/zoomus/zoomus-ar21.svg>
+<img src=https://www.vectorlogo.zone/logos/github/github-ar21.svg>
 
 
 
