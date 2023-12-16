@@ -96,7 +96,8 @@
                 <div class="divider"></div>
                 <div class="registro">
                     <h3>Registrarse</h3>
-                    <form th:action="@{/registro}" method="POST">
+                    <form th:action="@{/registro}" method="POST" enctype="multipart/form-data">
+                        <input hidden type="file" name="archivo">
                         <input type="text" name="nombre" placeholder="Ingrese su nombre">
                         <input type="email" name="email" placeholder="Ingrese su email">
                         <input type="number" name="telefono" placeholder="Ingrese su telefono">
