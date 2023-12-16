@@ -3,7 +3,7 @@
   <img src="https://readme-typing-svg.demolab.com/?lines=Proyecto+Final+Integrador+Egg;EQUIPO+P&font=Fira%20Code&center=true&width=380&height=50&duration=4000&pause=1000" alt="Agencia de Publicidad">
 </p>
 
-## Descripción ![image](https://github.com/ProyectoPetru/Petru/assets/127913044/8698e6ab-a9b7-4a8e-90bd-0dfa0c735bc0)
+## Descripción 📝
 
 Este es un proyecto en desarrollo de una aplicación web que busca brindar orden en el trabajo de una agencia de publicidad que se llama "Petru". La app podrá dar a conocer a todos los agentes 
 las tareas que se encuentran sin realizar, se podrá visualizar en qué está trabajando cada agente, tener disponible una agenda de contactos y un calendario de eventos. 
