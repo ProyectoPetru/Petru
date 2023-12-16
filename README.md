@@ -79,7 +79,7 @@ las tareas que se encuentran sin realizar, se podrá visualizar en qué está tr
 <h5 align = "center"><img src=diagrama.png width=450 high=400></h5>
 
 ### Construido con 🛠️
-<img src=https://skillicons.dev/icons?i=java>
+![Java](https://skillicons.dev/icons?i=java)
 ![Maven](https://skillicons.dev/icons?i=maven)
 ![Spring](https://skillicons.dev/icons?i=spring)
 ![HTML](https://skillicons.dev/icons?i=html)
