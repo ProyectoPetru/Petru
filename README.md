@@ -117,7 +117,7 @@ las tareas que se encuentran sin realizar, se podrá visualizar en qué está tr
 <img src=https://www.vectorlogo.zone/logos/asana/asana-ar21.svg><img src=https://www.vectorlogo.zone/logos/discord/discord-ar21.svg><img src=https://www.vectorlogo.zone/logos/whatsapp/whatsapp-ar21.svg><img src=https://www.vectorlogo.zone/logos/zoomus/zoomus-ar21.svg><img src=https://www.vectorlogo.zone/logos/github/github-ar21.svg>
 
 
-### Spring
+### Demo Final Egg
 
 https://github.com/ProyectoPetru/Petru/assets/124200890/b38f9cf7-7c20-45dc-b004-e42e4f2475cf
 
