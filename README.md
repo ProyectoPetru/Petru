@@ -3,6 +3,10 @@
   <img src="https://readme-typing-svg.demolab.com/?lines=Proyecto+Final+Integrador+Egg;EQUIPO+P&font=Fira%20Code&center=true&width=380&height=50&duration=4000&pause=1000" alt="Agencia de Publicidad">
 </p>
 
+## Deploy 🛫
+Se hizo un deploy de la app en **render** con un **dockerfile**. (Al ser un host gratuito puede tardar entre 4 a 6 minutos en cargar cuando no se usa por un tiempo)
+Link: https://petru.onrender.com
+
 ## Descripción 📝
 
 Este es un proyecto en desarrollo de una aplicación web que busca brindar orden en el trabajo de una agencia de publicidad que se llama "Petru". La app podrá dar a conocer a todos los agentes 
