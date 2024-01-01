@@ -4,8 +4,7 @@
 </p>
 
 ## Deploy 🛫
-Se hizo un deploy de la app en **render** con un **dockerfile**. (Al ser un host gratuito puede tardar entre 4 a 6 minutos en cargar cuando no se usa por un tiempo)
-Link: https://petru.onrender.com
+Se hizo un deploy de la app en **render** con un **dockerfile**. (Al ser un host gratuito puede tardar entre 4 a 6 minutos en cargar cuando no se usa por un tiempo) [Click aqui para ir](https://petru.onrender.com){:target="_blank"}
 
 ## Descripción 📝
 
